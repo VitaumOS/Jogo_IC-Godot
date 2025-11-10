@@ -1,0 +1,17 @@
+# Godot specific files
+.import/
+export_presets.cfg
+.godot/
+.mono/
+# *.tscn.remap  # Removido se estiver usando Godot 4+ e quer evitar tracking de remaps
+
+# macOS files
+.DS_Store
+
+# Windows files
+thumbs.db
+
+# Build/Export files
+bin/
+
+*.tmp

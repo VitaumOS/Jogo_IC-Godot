@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://xssr1johtnwf"]
+
+[ext_resource type="Script" uid="uid://b0xgd8amglmnu" path="res://script/Main.gd" id="1_7e7p4"]
+[ext_resource type="PackedScene" uid="uid://bmkygui34kxth" path="res://scene/Piece.tscn" id="2_x2khy"]
+[ext_resource type="PackedScene" uid="uid://cuuxi8q0r6481" path="res://scene/ButtonUI.tscn" id="3_urehh"]
+[ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/Padrao_Corte.tscn" id="4_uwuwm"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_7e7p4")
+cena_peca = ExtResource("2_x2khy")
+cena_botao_ui = ExtResource("3_urehh")
+cena_padrao_corte = ExtResource("4_uwuwm")
+
+[node name="Container" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RectanglesParent" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="FeedbackLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AvailablePiecesVBox" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PadraoCorteSalvo" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 440.0
+offset_right = 77.0
+offset_bottom = 480.0
