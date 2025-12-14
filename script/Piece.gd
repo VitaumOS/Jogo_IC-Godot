@@ -62,6 +62,7 @@ func _input(event: InputEvent):
 				var no_principal = get_tree().get_first_node_in_group("main_logic")
 				if no_principal:
 					no_principal._tentar_encaixar_peca(self)
+					
 func _process(delta):
 	if arrastando:
 		global_position = get_global_mouse_position() + deslocamento_arrasto # <--- ACESSO CORRIGIDO
