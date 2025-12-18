@@ -28,10 +28,10 @@ metadata/_edit_use_anchors_ = true
 [node name="FeedbackLabel" type="Label" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 7.925
-anchor_top = 0.425
-anchor_right = 7.925
-anchor_bottom = 0.5
+anchor_left = 7.25
+anchor_top = 0.675
+anchor_right = 7.25
+anchor_bottom = 0.75
 offset_right = 40.0
 offset_bottom = 20.0
 metadata/_edit_use_anchors_ = true

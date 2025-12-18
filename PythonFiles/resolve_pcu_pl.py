@@ -33,7 +33,7 @@ def resolver_pcu_pl(demanda_qtd: list[float], padroes_qtd: list[list[float]]):
         prob += p.lpSum([padroes_qtd[j][i] * variaveis_x[nomes_padroes[j]] for j in range(num_padroes)]) >= demanda[peca], \
             f"Restricao_{peca}"
             
-    prob.solve(p.PULP_CBC_CMD(msg=False,options=["presolve off","maxIt=30"]))
+    prob.solve(p.PULP_CBC_CMD(options=["presolve off","maxIt=100"]))
     resultado = {}
 
     if p.LpStatus[prob.status] == "Optimal":

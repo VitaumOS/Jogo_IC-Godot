@@ -40,29 +40,3 @@ func _ready():
 		visual_sprite.scale = Vector2(largura_peca / tamanho_textura.x, comprimento_peca / tamanho_textura.y)
 	# 3. Centraliza o sprite
 	visual_sprite.position = Vector2(largura_peca / 2.0, comprimento_peca / 2.0)
-
-
-func _input(event: InputEvent):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		var posicao_mouse = get_global_mouse_position()
-		var retangulo_peca = Rect2(global_position, Vector2(largura_peca, comprimento_peca))
-		if retangulo_peca.has_point(posicao_mouse):
-			if event.pressed:
-				# Início do clique
-				if esta_no_container: 
-					emit_signal("peca_removida", self) 
-					queue_free()
-				else:
-					# Inicia o arrasto
-					arrastando = true 
-					deslocamento_arrasto = global_position - posicao_mouse
-			elif arrastando:
-				# Fim do arrasto: Tenta encaixar
-				arrastando = false 
-				var no_principal = get_tree().get_first_node_in_group("main_logic")
-				if no_principal:
-					no_principal._tentar_encaixar_peca(self)
-					
-func _process(delta):
-	if arrastando:
-		global_position = get_global_mouse_position() + deslocamento_arrasto # <--- ACESSO CORRIGIDO

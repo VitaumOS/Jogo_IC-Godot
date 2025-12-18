@@ -1,7 +1,6 @@
 # Main.gd
 extends Node2D
 
-
 # Cenas Exportadas
 @export var cena_peca: PackedScene
 @export var cena_botao_ui: PackedScene
@@ -10,25 +9,27 @@ extends Node2D
 # Referências de Nós (@onready)
 @onready var retangulo_container: ColorRect = $Container
 @onready var pai_pecas: Node2D = $RectanglesParent
+
 @onready var rotulo_feedback: Label = $UI/FeedbackLabel
 @onready var vbox_pecas_disponiveis: VBoxContainer = $UI/AvailablePiecesVBox
 @onready var vbox_padroes_salvos: VBoxContainer = $UI/PadraoCorteSalvo
-@onready var rotulo_demanda: Label = $UI/DemandaLabel # Rótulo para mostrar a demanda
+@onready var rotulo_demanda: Label = $UI/DemandaLabel 
 
 # Variáveis
 var largura_container: float
 var largura_total_atual: float = 0.0
-var pecas_encaixadas: Array[PieceScript] = [] # Mantido, mas não usado na nova lógica
+var pecas_encaixadas: Array[PieceScript] = [] 
 var botao_visivel: bool
-var padroes_corte_salvos: Array = [] # Dicionários de dados para exibição
-var padroes_corte_salvos_valor: Array = [] # Array de Arrays numéricos [[4,0,0], [0,3,0], [0,0,2]]
-var padroes_selecionados: Array = [] # Índices dos padrões ativos (0, 1, 2, ...)
+var padroes_corte_salvos: Array = [] 
+var padroes_corte_salvos_valor: Array = [] 
+var padroes_selecionados: Array = [] 
+var text_edits_padroes: Array[TextEdit] = []
 
 var PYTHON_PATH = ProjectSettings.globalize_path("res://PythonFiles/venv/Scripts/python.exe")
 var PYTHON_SCRIPT = ProjectSettings.globalize_path("res://PythonFiles/resolve_pcu_pl.py")
-const OUTPUT_FILE_NAME = "res://pulp_solution.json" # Mudando para user:// para garantir escrita
+const OUTPUT_FILE_NAME = "res://pulp_solution.json" 
 
-var demanda: Array = [5, 3, 2] # Adaga(P), Espada L(M), Espada G(L)
+var demanda: Array = [5, 3, 2]
 
 # Dados das Peças
 var pecas_disponiveis: Array = [
@@ -38,7 +39,6 @@ var pecas_disponiveis: Array = [
 ]
 
 func _criar_padroes_automaticos():
-	# Padrões automáticos que você solicitou: [4,0,0], [0,3,0], [0,0,2]
 	var padroes_iniciais = [
 		[4, 0, 0], # Padrão 1
 		[0, 3, 0], # Padrão 2
@@ -61,10 +61,9 @@ func _criar_padroes_automaticos():
 		var dados_padrao = {
 			"largura": largura_ocupada,
 			"eficiencia": (largura_ocupada / largura_container) * 100.0,
-			"pecas": [], # Lista de peças para exibição visual (apenas ilustrativo)
+			"pecas": [],
 			"nome": "Padrão %d" % (i + 1)
 		}
-		
 		# Populando a lista 'pecas' para a exibição visual
 		for j in range(padrao_numerico.size()):
 			var tipo_peca = pecas_disponiveis[j]
@@ -84,15 +83,13 @@ func _criar_padroes_automaticos():
 func _on_gerar_demanda_aleatoria_pressed():
 	var nova_demanda: Array = []
 	for _i in range(pecas_disponiveis.size()):
-		# Gera demanda aleatória entre 1 e 10 para cada tipo de peça
+		# Gera demanda aleatória entre 0 e 70 para cada tipo de peça
 		nova_demanda.append(randi_range(0, 70)) 
 		
 	demanda = nova_demanda
 	
 	_atualizar_texto_resultado("Nova Demanda Aleatória Gerada: %s" % demanda)
 	_atualizar_rotulo_demanda()
-
-	
 
 func _atualizar_rotulo_demanda():
 	var texto_demanda = "Demanda Atual:\n"
@@ -101,7 +98,6 @@ func _atualizar_rotulo_demanda():
 		texto_demanda += " - %s: %d\n" % [nome_peca, demanda[i]]
 	rotulo_demanda.text = texto_demanda
 
-# --- MODIFICAÇÕES NAS FUNÇÕES EXISTENTES ---
 
 func _ready():
 	add_to_group("main_logic")
@@ -113,24 +109,19 @@ func _ready():
 	retangulo_container.color = Color.WHITE
 	retangulo_container.position = Vector2(300, 100)
 	
-
-	
-	# CRIAÇÃO AUTOMÁTICA DOS PADRÕES
 	_criar_padroes_automaticos() 
 	
 	_configurar_botoes_ui()
 	_reiniciar_jogo() # Limpa as peças, mas não a UI
 	_atualizar_rotulo_demanda()
 
-# ESTA FUNÇÃO É REMOVIDA
-# func cria_padraocorte(padrao): pass 
 
 func _configurar_botoes_ui():
 	# Limpa botões antigos
 	for child in vbox_pecas_disponiveis.get_children():
 		child.queue_free()
 	
-	# 1. Botão de Gerar Demanda Aleatória
+	#Botão de Gerar Demanda Aleatória
 	var botao_demanda: Button = cena_botao_ui.instantiate()
 	botao_demanda.text = "Gerar Demanda Aleatória"
 	botao_demanda.pressed.connect(_on_gerar_demanda_aleatoria_pressed)
@@ -138,9 +129,24 @@ func _configurar_botoes_ui():
 	
 	#Selecionar a quantidade de vezes que vai cortar tal padrão
 	for i in range(padroes_corte_salvos.size()):
-		var barra_selecao = TextEdit.new()
-		barra_selecao.size.y = 200
-		vbox_pecas_disponiveis.add_child(barra_selecao)
+		var dados_padrao = padroes_corte_salvos[i]
+		
+		var hbox = HBoxContainer.new()
+		hbox.alignment = HBoxContainer.ALIGNMENT_BEGIN
+		
+		var rotulo_padrao = Label.new()
+		rotulo_padrao.text = "%s:" % dados_padrao.nome
+		rotulo_padrao.custom_minimum_size.x = 100 # Garante alinhamento
+		hbox.add_child(rotulo_padrao)
+		
+		var text_edit = TextEdit.new()
+		text_edit.text = "0"
+		text_edit.custom_minimum_size = Vector2(50, 30) 
+		hbox.add_child(text_edit)
+		
+		# Armazena a referência
+		text_edits_padroes.append(text_edit)
+		vbox_pecas_disponiveis.add_child(hbox)
 	
 	#Botão de Resolução do PCU
 	var botao_resolver_pcu: Button = cena_botao_ui.instantiate()
@@ -153,7 +159,43 @@ func _configurar_botoes_ui():
 	separador.custom_minimum_size = Vector2(0, 10)
 	vbox_pecas_disponiveis.add_child(separador)
 	
+
+func verifica_cortes_usuario() -> bool:
+	var total_produzido: Array = []
+	for i in range(demanda.size()):
+		total_produzido.append(0)
+	
+	for i in range(text_edits_padroes.size()):
+		var text_edit = text_edits_padroes[i]
+		var texto_uso = text_edit.text.strip_edges().split("\n")[0]
+		
+		var qtd_uso: int = 0
+		if texto_uso.is_valid_int():
+			qtd_uso = clampi(texto_uso.to_int(), 0, 999) 
+	
+		var composicao_padrao = padroes_corte_salvos_valor[i]
+		
+		for j in range(composicao_padrao.size()):
+			total_produzido[j] += composicao_padrao[j] * qtd_uso	
+	for i in range(demanda.size()):
+		var qtd_necessaria = demanda[i]
+		var qtd_feita = total_produzido[i]
+		if qtd_feita < qtd_necessaria:
+			return false
+	return true
+
+	
+	
 func _resolver_pcu():
+	
+	if !verifica_cortes_usuario():
+		var resultado_erro = "Quantidade de cortes insuficientes!"
+		_atualizar_texto_resultado(resultado_erro)
+		return
+	
+	var chapas_totais_jogador = 0
+	for i in text_edits_padroes:
+		chapas_totais_jogador += int(i.text)
 
 	var padroes_para_resolver: Array = []
 	for index in padroes_selecionados:
@@ -164,7 +206,7 @@ func _resolver_pcu():
 	args.append(demanda)
 	for padrao in padroes_para_resolver:
 		args.append(padrao)
-
+	
 	var exit_code = OS.execute(PYTHON_PATH, args)
 	
 	var z_otimo_pulp: int = -1
@@ -209,14 +251,14 @@ func _resolver_pcu():
 					if uso > 0:
 						texto_resultado += " - %s: %d vezes\n" % [nome_padrao_display, uso]
 			
-			var chapas_cortadas_pelo_jogador = 2 
+			
 			var proximidade = 0.0
 			
-			if chapas_cortadas_pelo_jogador >= z_otimo_pulp:
-				proximidade = (float(z_otimo_pulp) / float(chapas_cortadas_pelo_jogador)) * 100.0
+			if chapas_totais_jogador >= z_otimo_pulp:
+				proximidade = (float(z_otimo_pulp) / float(chapas_totais_jogador)) * 100.0
 			
 			texto_resultado += "\nAnálise de Eficiência \n"
-			texto_resultado += "Chapas Cortadas: %d\n" % chapas_cortadas_pelo_jogador
+			texto_resultado += "Chapas Cortadas: %d\n" % chapas_totais_jogador
 			texto_resultado += "Proximidade do Ótimo (Z): %.2f%%\n" % proximidade
 			
 			_atualizar_texto_resultado(texto_resultado)
@@ -284,11 +326,7 @@ func _atualizar_texto_resultado(mensagem_status: String = ""):
 	if is_instance_valid(retangulo_container):
 		largura_container = retangulo_container.size.x
 
-
-	var texto_resultado = "Resultado do Corte\n"
-	
+	var texto_resultado = ""
 	if mensagem_status:
-		texto_resultado += "\nSTATUS: %s" % mensagem_status
-
+		texto_resultado += "STATUS: %s" % mensagem_status
 	rotulo_feedback.text = texto_resultado
-	rotulo_feedback.position = Vector2(400, 40)
