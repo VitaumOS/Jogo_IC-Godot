@@ -1,43 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://xssr1johtnwf"]
+[gd_scene format=3 uid="uid://xssr1johtnwf"]
 
 [ext_resource type="Script" uid="uid://b0xgd8amglmnu" path="res://script/Main.gd" id="1_7e7p4"]
-[ext_resource type="PackedScene" uid="uid://bmkygui34kxth" path="res://scene/Piece.tscn" id="2_x2khy"]
 [ext_resource type="PackedScene" uid="uid://cuuxi8q0r6481" path="res://scene/ButtonUI.tscn" id="3_urehh"]
 [ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/Padrao_Corte.tscn" id="4_uwuwm"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1792108250]
 script = ExtResource("1_7e7p4")
-cena_peca = ExtResource("2_x2khy")
 cena_botao_ui = ExtResource("3_urehh")
 cena_padrao_corte = ExtResource("4_uwuwm")
 
-[node name="Container" type="ColorRect" parent="."]
-visible = false
+[node name="Background" type="TextureRect" parent="." unique_id=54058751]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RectanglesParent" type="Node2D" parent="."]
+[node name="RectanglesParent" type="Node2D" parent="." unique_id=1562575107]
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="UI" type="CanvasLayer" parent="." unique_id=741060722]
 metadata/_edit_use_anchors_ = true
 
-[node name="FeedbackLabel" type="Label" parent="UI"]
-layout_mode = 1
+[node name="FeedbackLabel" type="Label" parent="UI" unique_id=2041737914]
 anchors_preset = -1
-anchor_left = 7.25
-anchor_top = 0.675
-anchor_right = 7.25
-anchor_bottom = 0.75
+anchor_left = 13.125
+anchor_top = 4.3
+anchor_right = 13.125
+anchor_bottom = 4.3
 offset_right = 40.0
-offset_bottom = 20.0
+offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
 
-[node name="AvailablePiecesVBox" type="VBoxContainer" parent="UI"]
-layout_mode = 1
+[node name="AvailablePiecesVBox" type="VBoxContainer" parent="UI" unique_id=189371943]
 anchors_preset = -1
 anchor_left = 0.175
 anchor_top = 0.325
@@ -47,16 +38,61 @@ offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
-[node name="PadraoCorteSalvo" type="VBoxContainer" parent="UI"]
-layout_mode = 0
-offset_left = 861.0
-offset_top = 104.0
-offset_right = 901.0
-offset_bottom = 144.0
-
-[node name="DemandaLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 676.0
+[node name="DemandaLabel" type="Label" parent="UI" unique_id=1485831407]
+offset_left = 726.0
 offset_top = 30.0
-offset_right = 716.0
+offset_right = 766.0
 offset_bottom = 53.0
+
+[node name="Topo" type="HBoxContainer" parent="UI" unique_id=686192741]
+offset_left = 553.0
+offset_top = 3.0
+offset_right = 799.0
+offset_bottom = 46.0
+
+[node name="TimerPanel" type="Label" parent="UI/Topo" unique_id=441350416]
+layout_mode = 2
+
+[node name="DiaPanel" type="Label" parent="UI/Topo" unique_id=1964791292]
+layout_mode = 2
+
+[node name="DinheiroPanel" type="Label" parent="UI/Topo" unique_id=725101515]
+layout_mode = 2
+
+[node name="CorpoCentral" type="HBoxContainer" parent="UI" unique_id=1861903148]
+offset_left = 1.0
+offset_top = 56.0
+offset_right = 948.0
+offset_bottom = 562.0
+
+[node name="LadoEsquerdo" type="MarginContainer" parent="UI/CorpoCentral" unique_id=387953885]
+layout_mode = 2
+
+[node name="BotaoContratoGrande" type="Button" parent="UI/CorpoCentral/LadoEsquerdo" unique_id=2038583882]
+layout_mode = 2
+
+[node name="LadoDireito" type="VBoxContainer" parent="UI/CorpoCentral" unique_id=2131989489]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/CorpoCentral/LadoDireito" unique_id=763312148]
+custom_minimum_size = Vector2(600, 500)
+layout_mode = 2
+
+[node name="PadraoCorteSalvo" type="VBoxContainer" parent="UI/CorpoCentral/LadoDireito/ScrollContainer" unique_id=33567406]
+custom_minimum_size = Vector2(600, 500)
+layout_mode = 2
+
+[node name="Rodape" type="HBoxContainer" parent="UI" unique_id=205919892]
+offset_left = 198.0
+offset_top = 686.0
+offset_right = 314.0
+offset_bottom = 757.0
+
+[node name="BtnResolver" type="Button" parent="UI/Rodape" unique_id=827788209]
+layout_mode = 2
+
+[node name="BtnLoja" type="Button" parent="UI/Rodape" unique_id=493769893]
+layout_mode = 2
+
+[node name="BtnSair" type="Button" parent="UI/Rodape" unique_id=1780927715]
+layout_mode = 2

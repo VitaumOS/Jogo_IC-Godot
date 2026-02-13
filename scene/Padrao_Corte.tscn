@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://7kv2da5w42t5"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=1343394717]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="BackGround" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1171566003]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PatternLabel" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1033798898]
 layout_mode = 0
 offset_left = 227.0
 offset_top = 1.0
 offset_right = 264.0
 offset_bottom = 24.0
 
-[node name="PatternVisualizer" type="HBoxContainer" parent="."]
+[node name="Visualizador_Padrao" type="HBoxContainer" parent="." unique_id=975580504]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cuuxi8q0r6481"]
 
-[node name="Node2D" type="Button"]
+[node name="Node2D" type="Button" unique_id=1584280765]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 12.0

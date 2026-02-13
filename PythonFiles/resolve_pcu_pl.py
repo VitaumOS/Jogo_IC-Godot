@@ -1,7 +1,6 @@
 import pulp as p
 import sys
 import json 
-import os
 
 
 OUTPUT_FILE_NAME = "pulp_solution.json" 
@@ -18,7 +17,7 @@ def resolver_pcu_pl(demanda_qtd: list[float], padroes_qtd: list[list[float]]):
     num_padroes = len(padroes_qtd)
     
     tipos_peca = [f"Peca_{i+1}" for i in range(num_tipos_peca)]
-    nomes_padroes = [f"Padrão_{j+1}" for j in range(num_padroes)]
+    nomes_padroes = [f"Padrao_{j+1}" for j in range(num_padroes)]
     
     demanda = {tipos_peca[i]: demanda_qtd[i] for i in range(num_tipos_peca)}
     
@@ -43,7 +42,6 @@ def resolver_pcu_pl(demanda_qtd: list[float], padroes_qtd: list[list[float]]):
         plano_corte = {}
         for nome_padrao in nomes_padroes:
             uso = p.value(variaveis_x[nome_padrao])
-            # Salva APENAS os padrões utilizados
             if uso > 0:
                 plano_corte[nome_padrao] = int(uso)
         
@@ -53,26 +51,22 @@ def resolver_pcu_pl(demanda_qtd: list[float], padroes_qtd: list[list[float]]):
         resultado['status'] = p.LpStatus[prob.status]
         resultado['erro_detalhe'] = f"PuLP não encontrou solução ótima: {p.LpStatus[prob.status]}"
         
-    # Salva o resultado no arquivo JSON
     with open(OUTPUT_FILE_NAME, 'w') as f:
         json.dump(resultado, f, indent=4)
     sys.exit(0)
 
 if __name__ == '__main__':
-    
+
     if len(sys.argv) > 1:
         args = sys.argv[1:]  
     try:
-        demanda_string = args[0]
+        demanda_string = args[0] # Demanda = [d1,d2,...,dn]
         demanda_qtd = parse_list_string(demanda_string)
-        
         padroes_qtd = []
         for i in range(1, len(args)):
-            padrao_string = args[i]
+            padrao_string = args[i] #Padrão de corte = [[a11,a12,...,a1n], [a21,a22,...,a2n],...]
             padroes_qtd.append(parse_list_string(padrao_string))
-
     except Exception as e:
-        sys.stderr.write(f"Falha ao converter string para lista numérica. {e}")
         sys.exit(1)
     
     resolver_pcu_pl(demanda_qtd, padroes_qtd)

@@ -1,0 +1,27 @@
+{
+  "contratos": [
+    { "dia_minimo": 1, "nome": "Patrulha Rural", "demanda": [5, 0, 0, 0, 0, 0], "recompensa": 150 },
+    { "dia_minimo": 1, "nome": "Segurança de Taberna", "demanda": [2, 3, 0, 0, 0, 0], "recompensa": 220 },
+    { "dia_minimo": 2, "nome": "Caça aos Ratos Gigantes", "demanda": [0, 8, 2, 0, 0, 0], "recompensa": 450 },
+    { "dia_minimo": 2, "nome": "Caravana de Seda", "demanda": [4, 4, 4, 0, 0, 0], "recompensa": 600 },
+    { "dia_minimo": 3, "nome": "Supressão de Bandidos", "demanda": [10, 10, 0, 0, 0, 0], "recompensa": 900 },
+    { "dia_minimo": 3, "nome": "Escolte de Ervanário", "demanda": [0, 5, 5, 5, 0, 0], "recompensa": 1100 },
+    { "dia_minimo": 4, "nome": "Vigília Noturna", "demanda": [0, 0, 15, 5, 0, 0], "recompensa": 1100 },
+    { "dia_minimo": 4, "nome": "Manutenção de Muralhas", "demanda": [10, 5, 10, 0, 0, 0], "recompensa": 1250 },
+    { "dia_minimo": 5, "nome": "Cerco ao Forte Abandonado", "demanda": [20, 10, 5, 0, 0, 0], "recompensa": 1800 },
+    { "dia_minimo": 5, "nome": "Proteção de Comboio Real", "demanda": [10, 10, 10, 5, 5, 0], "recompensa": 2500 },
+    { "dia_minimo": 6, "nome": "Exploração de Minas", "demanda": [5, 5, 20, 10, 0, 0], "recompensa": 2500 },
+    { "dia_minimo": 7, "nome": "Guarda de Honra Ducal", "demanda": [0, 0, 10, 10, 10, 0], "recompensa": 3200 },
+    { "dia_minimo": 8, "nome": "Limpeza de Esgotos Reais", "demanda": [15, 15, 15, 0, 5, 0], "recompensa": 3800 },
+    { "dia_minimo": 9, "nome": "Linha de Suprimento Sul", "demanda": [10, 0, 10, 0, 20, 5], "recompensa": 4500 },
+    { "dia_minimo": 10, "nome": "Vanguarda de Fronteira", "demanda": [30, 10, 0, 10, 0, 10], "recompensa": 5500 },
+    { "dia_minimo": 12, "nome": "Pacificação de Província", "demanda": [20, 20, 20, 10, 10, 5], "recompensa": 7500 },
+    { "dia_minimo": 14, "nome": "Inquisição de Culto Arcano", "demanda": [5, 5, 30, 0, 30, 15], "recompensa": 9200 },
+    { "dia_minimo": 15, "nome": "Grande Torneio Real", "demanda": [40, 40, 0, 0, 10, 10], "recompensa": 11000 },
+    { "dia_minimo": 18, "nome": "Defesa de Porto Comercial", "demanda": [15, 15, 15, 15, 15, 15], "recompensa": 14000 },
+    { "dia_minimo": 20, "nome": "Campanha no Deserto", "demanda": [50, 20, 10, 10, 5, 20], "recompensa": 18500 },
+    { "dia_minimo": 25, "nome": "Cerco à Capital Rebelde", "demanda": [100, 50, 50, 20, 20, 0], "recompensa": 35000 },
+    { "dia_minimo": 28, "nome": "Matador de Dragões", "demanda": [0, 0, 40, 60, 80, 100], "recompensa": 60000 },
+    { "dia_minimo": 30, "nome": "Guerra Total (Cruzada)", "demanda": [150, 150, 100, 100, 50, 50], "recompensa": 120000 }
+  ]
+}
