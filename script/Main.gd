@@ -2,10 +2,9 @@
 extends Node2D
 
 # Cenas Exportadas
-@export var cena_botao_ui: PackedScene
 @export var cena_padrao_corte: PackedScene
 
-#Variáveis de Nodes
+# Variáveis de Nodes
 @onready var label_timer = $UI/Topo/TimerPanel
 @onready var label_dia = $UI/Topo/DiaPanel
 @onready var label_dinheiro = $UI/Topo/DinheiroPanel
@@ -21,7 +20,7 @@ var largura_container: float
 var padroes_corte_salvos: Array = [] 
 var padroes_corte_salvos_valor: Array = [] 
 var padroes_selecionados: Array = [] 
-var text_edits_padroes: Array[TextEdit] = []
+var labels_qtd_referencia: Array[Label] = [] # Alterado o nome para refletir que são Labels
 
 var PYTHON_PATH = ProjectSettings.globalize_path("res://PythonFiles/venv/Scripts/python.exe")
 var PYTHON_SCRIPT = ProjectSettings.globalize_path("res://PythonFiles/resolve_pcu_pl.py")
@@ -35,10 +34,13 @@ func _ready():
 	largura_container = Global.tamanho_container
 	
 	demanda = Global.contrato_ativo.demanda if Global.contrato_ativo else [0,0,0,0,0,0]
+	
 	_carregar_padroes_da_loja()
 	_configurar_botoes_fixos()
 	_atualizar_ui_estatica()
 	_atualizar_display_contrato()
+	if Global.ultimo_desempenho_ritmo >= 0:
+		_finalizar_logica_pulp()
 
 func _process(delta):
 	if Global.tempo_restante > 0:
@@ -47,24 +49,25 @@ func _process(delta):
 	else: 
 		get_tree().change_scene_to_file("res://scene/Cena_Resumo.tscn")
 
-#UI E NAVEGAÇÃO
 func _configurar_botoes_fixos():
-	
-	# Botão Resolver
-	btn_resolver.text = "🔨 BATER O FERRO\n(Resolver PCU)"
+	btn_resolver.text = "🔨 BATER O FERRO"
 	if not btn_resolver.pressed.is_connected(_resolver_pcu):
 		btn_resolver.pressed.connect(_resolver_pcu)
 	
-	# Botão Loja
 	btn_loja.text = "🏪 IR À LOJA"
-	btn_loja.pressed.connect(func(): get_tree().change_scene_to_file("res://scene/Cena_Loja.tscn"))
+	if not btn_loja.pressed.is_connected(_on_loja_pressed):
+		btn_loja.pressed.connect(_on_loja_pressed)
 	
-	# Botão Sair
 	btn_sair.text = "🚪 ENCERRAR DIA"
-	btn_sair.pressed.connect(func(): get_tree().change_scene_to_file("res://scene/Cena_Resumo.tscn"))
+	if not btn_sair.pressed.is_connected(_on_sair_pressed):
+		btn_sair.pressed.connect(_on_sair_pressed)
 	
-	# Botão de Contrato
-	btn_contrato_grande.pressed.connect(func(): get_tree().change_scene_to_file("res://scene/Cena_contratos.tscn"))
+	if not btn_contrato_grande.pressed.is_connected(_on_contrato_pressed):
+		btn_contrato_grande.pressed.connect(_on_contrato_pressed)
+
+func _on_loja_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Loja.tscn")
+func _on_sair_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Resumo.tscn")
+func _on_contrato_pressed(): get_tree().change_scene_to_file("res://scene/Cena_contratos.tscn")
 
 func _atualizar_ui_timer():
 	var min = int(Global.tempo_restante) / 60
@@ -80,13 +83,17 @@ func _atualizar_display_contrato():
 		btn_contrato_grande.text = "MURAL DE CONTRATOS"
 		return
 	var txt = "📜 %s\n\nDEMANDA:\n" % Global.contrato_ativo.nome
-	#mostra apenas as peças a serem cortadas
 	for i in demanda.size():
 		if demanda[i] > 0:
 			txt += "- %s: %d\n" % [pecas_disponiveis[i].nome, demanda[i]]
 	btn_contrato_grande.text = txt
 
+
 func _carregar_padroes_da_loja():
+	# Limpa a lista visual e as referências antes de carregar
+	for c in vbox_padroes_lista.get_children(): c.queue_free()
+	labels_qtd_referencia.clear()
+	
 	for item in Global.padroes_desbloqueados:
 		if not padroes_corte_salvos.any(func(p): return p.nome == item.nome):
 			_registrar_novo_padrao(item.composicao, item.nome)
@@ -99,10 +106,18 @@ func _registrar_novo_padrao(padrao_numerico: Array, nome_customizado: String):
 		var qtd = padrao_numerico[i] if i < padrao_numerico.size() else 0
 		largura_ocupada += Global.pecas_disponiveis[i].largura * qtd
 		for n in qtd: 
-			pecas_data.append({"largura_peca": Global.pecas_disponiveis[i].largura, "caminho_textura": Global.pecas_disponiveis[i].caminho_textura})
+			pecas_data.append({
+				"largura_peca": Global.pecas_disponiveis[i].largura, 
+				"caminho_textura": Global.pecas_disponiveis[i].caminho_textura
+			})
 	
-	var dados = {"largura": largura_ocupada, "eficiencia": (largura_ocupada / largura_container) * 100.0, 
-				 "pecas": pecas_data, "nome": nome_customizado, "composicao": padrao_numerico}
+	var dados = {
+		"largura": largura_ocupada, 
+		"eficiencia": (largura_ocupada / largura_container) * 100.0, 
+		"pecas": pecas_data, 
+		"nome": nome_customizado, 
+		"composicao": padrao_numerico
+	}
 	
 	padroes_corte_salvos_valor.append(padrao_numerico)
 	padroes_corte_salvos.append(dados)
@@ -111,21 +126,15 @@ func _registrar_novo_padrao(padrao_numerico: Array, nome_customizado: String):
 
 func _exibir_padrao_na_lista(dados: Dictionary):
 	var h_linha = HBoxContainer.new()
-	h_linha.custom_minimum_size.y = 40
 	h_linha.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	
-	# Instancia o visual
 	var visual = cena_padrao_corte.instantiate()
-	visual.custom_minimum_size = Vector2(500, 50) # Define um tamanho base
-	var bg:ColorRect = visual.get_node("Background")
-	bg.custom_minimum_size = Vector2(500,50)
+	visual.custom_minimum_size = Vector2(550, 50)
+	visual.get_node("Background").custom_minimum_size = Vector2(550, 50)
 	
-	# Atualiza o texto e as peças
-	visual.get_node("Label").text = "%s (%.1f%%)" % [dados.nome, dados.eficiencia]
 	var container_pecas = visual.get_node("Visualizador_Padrao")
-	
 	for p in dados.pecas:
-		var w = Control.new(); w.custom_minimum_size = Vector2(p.largura_peca, 30)
+		var w = Control.new(); w.custom_minimum_size = Vector2(p.largura_peca, 10)
 		var s = Sprite2D.new(); s.texture = load(p.caminho_textura)
 		if s.texture:
 			s.scale = Vector2(p.largura_peca / s.texture.get_size().x, 0.6)
@@ -133,67 +142,93 @@ func _exibir_padrao_na_lista(dados: Dictionary):
 		w.add_child(s)
 		container_pecas.add_child(w)
 
-	# Lado do Input
-	var v_input = VBoxContainer.new()
-	v_input.alignment = BoxContainer.ALIGNMENT_CENTER
+	var v_selecao = VBoxContainer.new()
+	v_selecao.alignment = BoxContainer.ALIGNMENT_CENTER
 	
-	var lbl = Label.new(); lbl.text = "Qtd:"
-	var input = TextEdit.new()
-	input.custom_minimum_size = Vector2(80, 30)
-	input.text = "0"
-	text_edits_padroes.append(input)
+	var lbl_titulo = Label.new(); lbl_titulo.text = "Quantidade"; lbl_titulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER 
+	lbl_titulo.add_theme_font_size_override("font_size", 12)
+	var h_controles = HBoxContainer.new(); h_controles.alignment = BoxContainer.ALIGNMENT_CENTER
 	
-	v_input.add_child(lbl)
-	v_input.add_child(input)
-	h_linha.add_child(visual)
-	h_linha.add_child(v_input)
+	var btn_menos = Button.new(); btn_menos.text = " - "; btn_menos.custom_minimum_size = Vector2(25, 25)
+	var btn_mais = Button.new(); btn_mais.text = " + "; btn_mais.custom_minimum_size = Vector2(25, 25)
+	var lbl_qtd = Label.new(); lbl_qtd.text = "0"; lbl_qtd.custom_minimum_size = Vector2(25, 0)
+	lbl_qtd.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
-	# Adiciona a linha ao container que está no Scroll
+	labels_qtd_referencia.append(lbl_qtd) 
+
+	btn_menos.pressed.connect(func(): if int(lbl_qtd.text) > 0: lbl_qtd.text = str(int(lbl_qtd.text) - 1))
+	btn_mais.pressed.connect(func(): lbl_qtd.text = str(int(lbl_qtd.text) + 1))
+	
+	h_controles.add_child(btn_menos); h_controles.add_child(lbl_qtd); h_controles.add_child(btn_mais)
+	v_selecao.add_child(lbl_titulo); v_selecao.add_child(h_controles)
+	
+	h_linha.add_child(visual); h_linha.add_child(v_selecao)
 	vbox_padroes_lista.add_child(h_linha)
-	var spc = Control.new(); spc.custom_minimum_size.y = 20
+	
+	var spc = Control.new(); spc.custom_minimum_size.y = 10
 	vbox_padroes_lista.add_child(spc)
 
 func verifica_cortes_usuario() -> bool:
-	var total = [0,0,0,0,0,0]
-	for i in text_edits_padroes.size():
-		var qtd = text_edits_padroes[i].text.to_int()
+	var total = [0, 0, 0, 0, 0, 0]
+	for i in labels_qtd_referencia.size():
+		var qtd = int(labels_qtd_referencia[i].text)
 		for j in padroes_corte_salvos_valor[i].size(): 
 			total[j] += padroes_corte_salvos_valor[i][j] * qtd
+	
 	for i in demanda.size():
 		if total[i] < demanda[i]: return false
 	return true
 
 func get_total_chapas_usadas() -> int:
 	var s = 0
-	for te in text_edits_padroes: s += te.text.to_int()
+	for lbl in labels_qtd_referencia: s += int(lbl.text)
 	return s
 
 func _resolver_pcu():
 	if Global.contrato_ativo == null or !verifica_cortes_usuario():
-		_atualizar_texto_resultado("Erro: Cortes insuficientes para a demanda!")
+		_atualizar_texto_resultado("Erro: Cortes insuficientes!")
 		return
 
+	var lista_para_forjar = []
+	for i in range(labels_qtd_referencia.size()):
+		var qtd_chapas = int(labels_qtd_referencia[i].text)
+		if qtd_chapas > 0:
+			var composicao = padroes_corte_salvos_valor[i]
+			for peca_idx in range(composicao.size()):
+				for n in range(composicao[peca_idx] * qtd_chapas):
+					lista_para_forjar.append(pecas_disponiveis[peca_idx].nome)
+
+	Global.armas_na_esteira_atual = lista_para_forjar
+	Global.chapas_usadas_pelo_jogador = get_total_chapas_usadas()
+	
+	get_tree().change_scene_to_file("res://scene/Forja_Ritmo.tscn")
+
+func _finalizar_logica_pulp():
 	var args = [PYTHON_SCRIPT, str(demanda)]
-	for idx in padroes_selecionados: args.append(str(padroes_corte_salvos_valor[idx]))
+	for padrao in padroes_corte_salvos_valor:
+		args.append(str(padrao))
 	
 	if OS.execute(PYTHON_PATH, args) == 0:
 		var res = JSON.parse_string(FileAccess.get_file_as_string(OUTPUT_FILE_NAME))
 		if res and res.get("status") == "Optimal":
 			var z_pulp = res["chapas_usadas"]
-			var z_user = get_total_chapas_usadas()
-			var rec = Global.contrato_ativo.recompensa
-			var bonus = false
+			var z_user = Global.chapas_usadas_pelo_jogador
 			
-			if z_user <= z_pulp:
-				rec = int(rec * 1.2)
-				bonus = true
-				_atualizar_texto_resultado("PERFEITO! BÔNUS DE 20%%\nTotal Gasto: %d chapas" % z_user)
+			var otimizou = (z_user <= z_pulp)
+			var ritmo_perfeito = (Global.ultimo_desempenho_ritmo >= 1.0) # 100% de acertos
+			
+			Global.completar_contrato(otimizou and ritmo_perfeito)
+			
+			if otimizou and ritmo_perfeito:
+				_atualizar_texto_resultado("PERFEITO! Bônus de 20%%!")
 			else:
-				_atualizar_texto_resultado("CONCLUÍDO!\nSeu gasto: %d | Mínimo IA: %d" % [z_user, z_pulp])
-			
-			Global.completar_contrato(bonus)
-			_atualizar_ui_estatica()
-			_atualizar_display_contrato()
+				_atualizar_texto_resultado("Concluído. Gasto: %d | IA: %d" % [z_user, z_pulp])
+
+	# Resetar variáveis de transição
+	Global.armas_na_esteira_atual = []
+	Global.ultimo_desempenho_ritmo = -1.0
+	_atualizar_ui_estatica()
+	_atualizar_display_contrato()
 
 func _atualizar_texto_resultado(msg: String):
 	rotulo_feedback.text = msg

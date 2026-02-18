@@ -17,6 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Jogo_IC"
 run/main_scene="uid://xssr1johtnwf"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.1311107, 0.15224427, 0.069968686, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,8 +26,9 @@ Global="*res://script/global.gd"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=800
+window/size/viewport_width=900
+window/size/viewport_height=900
+window/size/resizable=false
 
 [editor_plugins]
 

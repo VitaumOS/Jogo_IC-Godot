@@ -9,6 +9,10 @@ var tempo_restante: float = 120.0
 const DURACAO_DIA = 120.0
 const CUSTO_DIARIO = 200 #Aluguel/Impostos
 
+var armas_na_esteira_atual: Array = []
+var chapas_usadas_pelo_jogador: int = 0
+var ultimo_desempenho_ritmo: float = -1.0 # -1 indica que não veio da forja
+
 var pecas_disponiveis: Array = [
 	{"nome": "Adaga", "largura": 50.0, "caminho_textura": "res://Sprite/adaga.png"},
 	{"nome": "Espada M", "largura": 95.0, "caminho_textura": "res://Sprite/Esp_Larg.png"},

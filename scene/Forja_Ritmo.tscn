@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dbkh1g8chucti"]
+
+[ext_resource type="Script" uid="uid://bvryhcfe4u3sh" path="res://script/Forja_Ritmo.gd" id="1_1oy20"]
+
+[node name="ForjaRitmo" type="Node2D" unique_id=377505144]
+script = ExtResource("1_1oy20")
+
+[node name="Esteira" type="ColorRect" parent="." unique_id=868272621]
+offset_left = 29.0
+offset_top = 470.0
+offset_right = 69.0
+offset_bottom = 510.0
+
+[node name="AreaAlvo" type="Panel" parent="." unique_id=1347860911]
+offset_left = -10.0
+offset_top = 7.0
+offset_right = 30.0
+offset_bottom = 47.0
+
+[node name="ArmasContainer" type="Node2D" parent="." unique_id=1822504001]
+
+[node name="FeedbackLabel" type="Label" parent="." unique_id=1915888874]
+offset_left = -14.0
+offset_top = 7.0
+offset_right = 26.0
+offset_bottom = 30.0
+
+[node name="BotoesGuia" type="HBoxContainer" parent="." unique_id=1619626118]
+offset_left = -18.0
+offset_top = 8.0
+offset_right = 22.0
+offset_bottom = 48.0
