@@ -1,6 +1,6 @@
 {
   "padroes": [
-    { "dia_minimo": 1, "nome": "Lote de Adagas", "composicao": [10, 0, 0, 0, 0, 0], "preco": 100 },
+    { "dia_minimo": 1, "nome": "Lote de Adagas", "composicao": [9, 0, 0, 0, 0, 0], "preco": 100 },
     { "dia_minimo": 1, "nome": "Trio de Espadas M", "composicao": [1, 4, 0, 0, 0, 0], "preco": 180 },
     { "dia_minimo": 1, "nome": "Combo Inicial", "composicao": [2, 2, 1, 0, 0, 0], "preco": 220 },
     { "dia_minimo": 1, "nome": "Linha de Frente", "composicao": [0, 0, 3, 0, 0, 0], "preco": 150 },

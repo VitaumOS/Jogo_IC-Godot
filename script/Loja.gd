@@ -5,10 +5,12 @@ const PRECO_PADRAO = 150
 ## Cena do botão customizado vinda do Inspector
 @export var cena_botao_ui: PackedScene
 
-@onready var label_dinheiro = $UI/LabelDinheiro
+@onready var label_dinheiro = $UI/HBoxContainer/LabelDinheiro
 @onready var container_itens = $UI/ScrollContainer/VBoxItens
 @onready var container_opcoes: VBoxContainer = $UI/Container_Opcoes
 @onready var label_feedback = $UI/LabelFeedback
+@onready var lbl_estoque_chapas = $UI/HBoxContainer/LabelQuantidade
+@onready var btn_comprar_chapa = $UI/PainelChapas/BtnComprarChapa 
 
 ## Lista de padrões inicialmente disponíveis
 var catalogo_loja = []
@@ -18,7 +20,27 @@ func _ready():
 	_atualizar_ui_dinheiro()
 	_gerar_itens_loja()
 	_configurar_botoes()
+	_configurar_compra_chapa()
+	_atualizar_display_chapas()
+	
+func _configurar_compra_chapa():
+	btn_comprar_chapa.text = "Comprar Chapa Extra (R$ %d)" % Global.preco_chapa_extra
+	if not btn_comprar_chapa.pressed.is_connected(_comprar_chapa_extra):
+		btn_comprar_chapa.pressed.connect(_comprar_chapa_extra)
 
+func _comprar_chapa_extra():
+	if Global.dinheiro >= Global.preco_chapa_extra:
+		Global.dinheiro -= Global.preco_chapa_extra
+		Global.estoque_chapas_extras += 1
+		_atualizar_ui_dinheiro()
+		_atualizar_display_chapas()
+		label_feedback.text = "Chapa extra adquirida!"
+	else:
+		label_feedback.text = "Saldo insuficiente para chapa!"
+
+func _atualizar_display_chapas():
+	lbl_estoque_chapas.text = "📦 Chapas: %d" % Global.estoque_chapas_extras
+	
 ## Configura botões de navegação usando a cena exportada
 func _configurar_botoes():
 	for c in container_opcoes.get_children(): c.queue_free()

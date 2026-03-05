@@ -8,6 +8,8 @@ var ganhos_do_dia: int = 0
 var tempo_restante: float = 120.0
 const DURACAO_DIA = 120.0
 const CUSTO_DIARIO = 200 #Aluguel/Impostos
+var estoque_chapas_extras: int = 0
+var preco_chapa_extra: int = 150 # Defina o preço que desejar
 
 var armas_na_esteira_atual: Array = []
 var chapas_usadas_pelo_jogador: int = 0
@@ -33,6 +35,13 @@ var padroes_desbloqueados: Array = []
 func _ready():
 	gerar_conteudo_do_dia()
 
+
+# Função para consumir a chapa
+func usar_chapa_extra():
+	if estoque_chapas_extras > 0:
+		estoque_chapas_extras -= 1
+		return true
+	return false
 ## Gera novos contratos e padrões aleatórios
 func gerar_conteudo_do_dia():
 	contratos_disponiveis.clear()
@@ -49,7 +58,7 @@ func gerar_conteudo_do_dia():
 		contratos_disponiveis.append(contratos_possiveis[i])
 		
 	padroes_possiveis.shuffle()
-	for i in range(min(3, padroes_possiveis.size())):
+	for i in range(min(5, padroes_possiveis.size())):
 		padroes_na_loja.append(padroes_possiveis[i])
 
 ## Função auxiliar para ler qualquer arquivo JSON

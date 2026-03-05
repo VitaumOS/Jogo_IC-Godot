@@ -5,11 +5,11 @@ extends Node2D
 @export var cena_padrao_corte: PackedScene
 
 # Variáveis de Nodes
-@onready var label_timer = $UI/Topo/TimerPanel
 @onready var label_dia = $UI/Topo/DiaPanel
 @onready var label_dinheiro = $UI/Topo/DinheiroPanel
 @onready var btn_contrato_grande = $UI/CorpoCentral/LadoEsquerdo/BotaoContratoGrande
 @onready var vbox_padroes_lista = $UI/CorpoCentral/LadoDireito/ScrollContainer/PadraoCorteSalvo
+@onready var lbl_estoque_chapas = $UI/Topo/LabelQuantidade
 @onready var rotulo_feedback = $UI/FeedbackLabel
 @onready var btn_resolver = $UI/Rodape/BtnResolver
 @onready var btn_loja = $UI/Rodape/BtnLoja
@@ -42,12 +42,10 @@ func _ready():
 	if Global.ultimo_desempenho_ritmo >= 0:
 		_finalizar_logica_pulp()
 
-func _process(delta):
-	if Global.tempo_restante > 0:
-		Global.tempo_restante -= delta
-		_atualizar_ui_timer()
-	else: 
-		get_tree().change_scene_to_file("res://scene/Cena_Resumo.tscn")
+# No Main.gd, dentro do seu _ready ou uma função de atualização de UI
+func _atualizar_display_estoque():
+	$UI/IconeChapa/LabelQtd.text = str(Global.estoque_chapas_extras)
+	
 
 func _configurar_botoes_fixos():
 	btn_resolver.text = "🔨 BATER O FERRO"
@@ -69,14 +67,12 @@ func _on_loja_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Loja.
 func _on_sair_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Resumo.tscn")
 func _on_contrato_pressed(): get_tree().change_scene_to_file("res://scene/Cena_contratos.tscn")
 
-func _atualizar_ui_timer():
-	var min = int(Global.tempo_restante) / 60
-	var seg = int(Global.tempo_restante) % 60
-	label_timer.text = "⌛ %02d:%02d" % [min, seg]
 
+	
 func _atualizar_ui_estatica():
 	label_dia.text = "📅 DIA: %d" % Global.dia_atual
 	label_dinheiro.text = "💰 R$ %d" % Global.dinheiro
+	lbl_estoque_chapas.text = "📦 Chapas: %d" % Global.estoque_chapas_extras
 
 func _atualizar_display_contrato():
 	if not Global.contrato_ativo:
@@ -208,27 +204,53 @@ func _finalizar_logica_pulp():
 	for padrao in padroes_corte_salvos_valor:
 		args.append(str(padrao))
 	
+	# 1. Verificar se o jogador tem chapas suficientes no estoque ANTES de processar
+	var z_user = Global.chapas_usadas_pelo_jogador
+	
+	if Global.estoque_chapas_extras < z_user:
+		_atualizar_texto_resultado("FALHA: Você não tem chapas (estoque: %d) para produzir as %d unidades planejadas!" % [Global.estoque_chapas_extras, z_user])
+
+		_limpar_dados_transicao()
+		return
+
+	# 2. Executar o Solver Python (PuLP)
 	if OS.execute(PYTHON_PATH, args) == 0:
-		var res = JSON.parse_string(FileAccess.get_file_as_string(OUTPUT_FILE_NAME))
+		var arquivo = FileAccess.open(OUTPUT_FILE_NAME, FileAccess.READ)
+		var res = JSON.parse_string(arquivo.get_as_text())
+		
 		if res and res.get("status") == "Optimal":
 			var z_pulp = res["chapas_usadas"]
-			var z_user = Global.chapas_usadas_pelo_jogador
 			
+			# 3. Consumir as chapas do estoque global
+			Global.estoque_chapas_extras -= z_user
+			
+			# 4. Validar critérios de sucesso (Matemática + Ritmo)
 			var otimizou = (z_user <= z_pulp)
-			var ritmo_perfeito = (Global.ultimo_desempenho_ritmo >= 1.0) # 100% de acertos
+			var ritmo_perfeito = (Global.ultimo_desempenho_ritmo >= 1.0)
 			
+			# O Global decide o bônus financeiro
 			Global.completar_contrato(otimizou and ritmo_perfeito)
 			
+			# 5. Feedback Visual
 			if otimizou and ritmo_perfeito:
-				_atualizar_texto_resultado("PERFEITO! Bônus de 20%%!")
-			else:
-				_atualizar_texto_resultado("Concluído. Gasto: %d | IA: %d" % [z_user, z_pulp])
+				_atualizar_texto_resultado("PERFEITO! Matemática Otimizada e Forja Impecável (+20%%)")
+			elif !otimizou:
+				_atualizar_texto_resultado("CONCLUÍDO. Mas cuidado: você gastou %d chapas e a IA faria com %d." % [z_user, z_pulp])
+			elif !ritmo_perfeito:
+				_atualizar_texto_resultado("MATEMÁTICA OK, mas você errou batidas na forja. Sem bônus de qualidade.")
+		else:
+			_atualizar_texto_resultado("Erro: O Solver não encontrou solução.")
+	
+	_limpar_dados_transicao()
 
-	# Resetar variáveis de transição
+# Função auxiliar para manter o código limpo
+func _limpar_dados_transicao():
 	Global.armas_na_esteira_atual = []
 	Global.ultimo_desempenho_ritmo = -1.0
 	_atualizar_ui_estatica()
 	_atualizar_display_contrato()
+	# Se você tiver um ícone de estoque na Main, atualize-o aqui:
+	# label_estoque_main.text = str(Global.estoque_chapas_extras)
 
 func _atualizar_texto_resultado(msg: String):
 	rotulo_feedback.text = msg

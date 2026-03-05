@@ -13,13 +13,10 @@ var teclas = ["W", "A", "S", "D"]
 var CENTRO_TELA = Vector2(450, 450)
 
 func _ready():
-	# Pegamos a lista que a Main deixou no Global
 	var lista_nomes = Global.armas_na_esteira_atual
 	total_pecas = lista_nomes.size()
-	area_alvo.position = CENTRO_TELA 
-	
-	feedback_label.position = Vector2(450, 300) # Feedback acima do centro
-	esteira.custom_minimum_size = Vector2(900,300)
+	area_alvo.position = Vector2(450, 380)
+
 	
 	if total_pecas == 0:
 		get_tree().change_scene_to_file("res://scene/Main.tscn")
@@ -29,12 +26,10 @@ func _ready():
 		var nome = lista_nomes[i]
 		var sprite = Sprite2D.new()
 		
-		# Busca a textura no Global
 		var dados = Global.pecas_disponiveis.filter(func(p): return p.nome == nome)[0]
 		sprite.texture = load(dados.caminho_textura)
 		
-		# Posição: Espaçadas horizontalmente
-		sprite.position = Vector2(1000 + (i * 300), area_alvo.position.y)
+		sprite.position = Vector2(1000 + (i * 300), esteira.position.y+25)
 		
 		# Configura Tecla WASD
 		var tecla_sorteada = teclas[randi() % teclas.size()]
@@ -77,9 +72,11 @@ func _checar_batida(tecla):
 			if arma.get_meta("tecla") == tecla:
 				acertos += 1
 				feedback_label.text = "PERFEITO!"
+				feedback_label.modulate = Color.GREEN
 				_remover_arma(arma, true)
 			else:
 				feedback_label.text = "ERROU A TECLA!"
+				feedback_label.modulate = Color.RED
 				_remover_arma(arma, false)
 			return
 

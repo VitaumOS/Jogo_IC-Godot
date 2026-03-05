@@ -18,14 +18,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FeedbackLabel" type="Label" parent="UI" unique_id=2041737914]
 anchors_preset = -1
-anchor_left = 11.7288885
+anchor_left = 11.4
 anchor_top = 4.3
-anchor_right = 11.897778
+anchor_right = 12.28
 anchor_bottom = 4.318889
-offset_left = -9876.0
-offset_top = -3046.0002
-offset_right = -9836.0
-offset_bottom = -3023.0002
+offset_left = -10212.0
+offset_top = -3106.0002
+offset_right = -10172.0
+offset_bottom = -3083.0002
 metadata/_edit_use_anchors_ = true
 
 [node name="AvailablePiecesVBox" type="VBoxContainer" parent="UI" unique_id=189371943]
@@ -45,25 +45,36 @@ offset_right = 766.0
 offset_bottom = 53.0
 
 [node name="Topo" type="HBoxContainer" parent="UI" unique_id=686192741]
-offset_left = 649.0
-offset_top = 5.0
-offset_right = 895.0
-offset_bottom = 48.0
+offset_left = 560.0
+offset_top = 8.0
+offset_right = 868.0
+offset_bottom = 51.0
 
-[node name="TimerPanel" type="Label" parent="UI/Topo" unique_id=441350416]
+[node name="LabelQuantidade" type="Label" parent="UI/Topo" unique_id=1382755545]
+layout_mode = 2
+text = "📦 Chapas: %d"
+
+[node name="VSeparator" type="VSeparator" parent="UI/Topo" unique_id=1558154562]
+custom_minimum_size = Vector2(10.885, 7.925)
 layout_mode = 2
 
 [node name="DiaPanel" type="Label" parent="UI/Topo" unique_id=1964791292]
 layout_mode = 2
+text = "📅 DIA: %d"
+
+[node name="VSeparator2" type="VSeparator" parent="UI/Topo" unique_id=595437555]
+custom_minimum_size = Vector2(10.885, 7.925)
+layout_mode = 2
 
 [node name="DinheiroPanel" type="Label" parent="UI/Topo" unique_id=725101515]
 layout_mode = 2
+text = "💰 R$ %d"
 
 [node name="CorpoCentral" type="HBoxContainer" parent="UI" unique_id=1861903148]
 offset_left = 1.0
 offset_top = 56.0
-offset_right = 948.0
-offset_bottom = 562.0
+offset_right = 944.0
+offset_bottom = 756.0
 
 [node name="LadoEsquerdo" type="MarginContainer" parent="UI/CorpoCentral" unique_id=387953885]
 layout_mode = 2
@@ -71,6 +82,7 @@ layout_mode = 2
 [node name="BotaoContratoGrande" type="Button" parent="UI/CorpoCentral/LadoEsquerdo" unique_id=2038583882]
 custom_minimum_size = Vector2(200, 600)
 layout_mode = 2
+text = "MURAL DE CONTRATOS"
 
 [node name="LadoDireito" type="VBoxContainer" parent="UI/CorpoCentral" unique_id=2131989489]
 layout_mode = 2
@@ -84,16 +96,20 @@ custom_minimum_size = Vector2(600, 700)
 layout_mode = 2
 
 [node name="Rodape" type="HBoxContainer" parent="UI" unique_id=205919892]
-offset_left = 262.0
-offset_top = 808.0
-offset_right = 378.0
-offset_bottom = 879.0
+offset_left = 224.0
+offset_top = 816.0
+offset_right = 675.0
+offset_bottom = 887.0
+alignment = 1
 
 [node name="BtnResolver" type="Button" parent="UI/Rodape" unique_id=827788209]
 layout_mode = 2
-
-[node name="BtnLoja" type="Button" parent="UI/Rodape" unique_id=493769893]
-layout_mode = 2
+text = "🔨 BATER O FERRO"
 
 [node name="BtnSair" type="Button" parent="UI/Rodape" unique_id=1780927715]
 layout_mode = 2
+text = "🚪 ENCERRAR DIA"
+
+[node name="BtnLoja" type="Button" parent="UI/Rodape" unique_id=493769893]
+layout_mode = 2
+text = "🏪 IR À LOJA"

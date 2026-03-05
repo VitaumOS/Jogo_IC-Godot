@@ -6,27 +6,31 @@
 script = ExtResource("1_1oy20")
 
 [node name="Esteira" type="ColorRect" parent="." unique_id=868272621]
-offset_left = 29.0
-offset_top = 470.0
-offset_right = 69.0
-offset_bottom = 510.0
+offset_left = -2.0
+offset_top = 434.0
+offset_right = 902.0
+offset_bottom = 484.0
 
 [node name="AreaAlvo" type="Panel" parent="." unique_id=1347860911]
-offset_left = -10.0
-offset_top = 7.0
-offset_right = 30.0
-offset_bottom = 47.0
+offset_left = 450.0
+offset_top = 450.0
+offset_right = 490.0
+offset_bottom = 490.0
 
 [node name="ArmasContainer" type="Node2D" parent="." unique_id=1822504001]
 
 [node name="FeedbackLabel" type="Label" parent="." unique_id=1915888874]
-offset_left = -14.0
-offset_top = 7.0
-offset_right = 26.0
-offset_bottom = 30.0
+offset_left = 296.0
+offset_top = 192.0
+offset_right = 579.0
+offset_bottom = 278.0
+theme_override_font_sizes/font_size = 62
+text = "Prepare-se!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BotoesGuia" type="HBoxContainer" parent="." unique_id=1619626118]
-offset_left = -18.0
-offset_top = 8.0
-offset_right = 22.0
-offset_bottom = 48.0
+offset_left = 127.0
+offset_top = 153.0
+offset_right = 167.0
+offset_bottom = 193.0
