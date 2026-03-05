@@ -7,7 +7,7 @@ const PRECO_PADRAO = 150
 
 @onready var label_dinheiro = $UI/HBoxContainer/LabelDinheiro
 @onready var container_itens = $UI/ScrollContainer/VBoxItens
-@onready var container_opcoes: VBoxContainer = $UI/Container_Opcoes
+@onready var btn_voltar: Button= $UI/BtnVoltar
 @onready var label_feedback = $UI/LabelFeedback
 @onready var lbl_estoque_chapas = $UI/HBoxContainer/LabelQuantidade
 @onready var btn_comprar_chapa = $UI/PainelChapas/BtnComprarChapa 
@@ -17,11 +17,10 @@ var catalogo_loja = []
 
 func _ready():
 	catalogo_loja = Global.padroes_na_loja
-	_atualizar_ui_dinheiro()
 	_gerar_itens_loja()
-	_configurar_botoes()
+	btn_voltar.pressed.connect(_on_voltar_pcu)
 	_configurar_compra_chapa()
-	_atualizar_display_chapas()
+	_atualizar_display()
 	
 func _configurar_compra_chapa():
 	btn_comprar_chapa.text = "Comprar Chapa Extra (R$ %d)" % Global.preco_chapa_extra
@@ -32,28 +31,20 @@ func _comprar_chapa_extra():
 	if Global.dinheiro >= Global.preco_chapa_extra:
 		Global.dinheiro -= Global.preco_chapa_extra
 		Global.estoque_chapas_extras += 1
-		_atualizar_ui_dinheiro()
-		_atualizar_display_chapas()
+		_atualizar_display()
 		label_feedback.text = "Chapa extra adquirida!"
 	else:
 		label_feedback.text = "Saldo insuficiente para chapa!"
 
-func _atualizar_display_chapas():
+func _atualizar_display():
 	lbl_estoque_chapas.text = "📦 Chapas: %d" % Global.estoque_chapas_extras
+	label_dinheiro.text = "Carteira: R$ %d" % Global.dinheiro
 	
-## Configura botões de navegação usando a cena exportada
-func _configurar_botoes():
-	for c in container_opcoes.get_children(): c.queue_free()
-	var btn = cena_botao_ui.instantiate()
-	btn.text = "Voltar ao Jogo"; btn.pressed.connect(_on_voltar_pcu)
-	container_opcoes.add_child(btn)
 
 ## Retorna para a cena principal
 func _on_voltar_pcu():
 	if get_tree().change_scene_to_file("res://scene/Cena_1.tscn") != OK: print("Erro ao carregar cena")
 
-func _atualizar_ui_dinheiro():
-	label_dinheiro.text = "Carteira: R$ %d" % Global.dinheiro
 
 func _gerar_itens_loja():
 	for c in container_itens.get_children(): c.queue_free()
@@ -107,6 +98,6 @@ func _ja_possui(item) -> bool:
 func _tentar_comprar(item, botao):
 	if Global.remover_dinheiro(item.preco):
 		Global.padroes_desbloqueados.append(item)
-		botao.disabled = true; botao.text = "Adquirido"; _atualizar_ui_dinheiro()
+		botao.disabled = true; botao.text = "Adquirido"; _atualizar_display()
 		label_feedback.text = "Padrão desbloqueado!"
 	else: label_feedback.text = "Saldo insuficiente!"

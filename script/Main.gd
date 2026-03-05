@@ -208,8 +208,7 @@ func _finalizar_logica_pulp():
 	var z_user = Global.chapas_usadas_pelo_jogador
 	
 	if Global.estoque_chapas_extras < z_user:
-		_atualizar_texto_resultado("FALHA: Você não tem chapas (estoque: %d) para produzir as %d unidades planejadas!" % [Global.estoque_chapas_extras, z_user])
-
+		_atualizar_texto_resultado("FALHA: Você não tem chapas suficientes!")
 		_limpar_dados_transicao()
 		return
 
@@ -221,26 +220,20 @@ func _finalizar_logica_pulp():
 		if res and res.get("status") == "Optimal":
 			var z_pulp = res["chapas_usadas"]
 			
-			# 3. Consumir as chapas do estoque global
 			Global.estoque_chapas_extras -= z_user
-			
-			# 4. Validar critérios de sucesso (Matemática + Ritmo)
+		
 			var otimizou = (z_user <= z_pulp)
 			var ritmo_perfeito = (Global.ultimo_desempenho_ritmo >= 1.0)
 			
-			# O Global decide o bônus financeiro
 			Global.completar_contrato(otimizou and ritmo_perfeito)
 			
 			# 5. Feedback Visual
 			if otimizou and ritmo_perfeito:
 				_atualizar_texto_resultado("PERFEITO! Matemática Otimizada e Forja Impecável (+20%%)")
 			elif !otimizou:
-				_atualizar_texto_resultado("CONCLUÍDO. Mas cuidado: você gastou %d chapas e a IA faria com %d." % [z_user, z_pulp])
+				_atualizar_texto_resultado("CONCLUÍDO. Gastou %d chapas. Mínimo necessário:%d." % [z_user, z_pulp])
 			elif !ritmo_perfeito:
-				_atualizar_texto_resultado("MATEMÁTICA OK, mas você errou batidas na forja. Sem bônus de qualidade.")
-		else:
-			_atualizar_texto_resultado("Erro: O Solver não encontrou solução.")
-	
+				_atualizar_texto_resultado("CONCLUÍDO")
 	_limpar_dados_transicao()
 
 # Função auxiliar para manter o código limpo
@@ -249,8 +242,6 @@ func _limpar_dados_transicao():
 	Global.ultimo_desempenho_ritmo = -1.0
 	_atualizar_ui_estatica()
 	_atualizar_display_contrato()
-	# Se você tiver um ícone de estoque na Main, atualize-o aqui:
-	# label_estoque_main.text = str(Global.estoque_chapas_extras)
 
 func _atualizar_texto_resultado(msg: String):
 	rotulo_feedback.text = msg

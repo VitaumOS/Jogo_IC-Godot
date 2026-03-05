@@ -91,3 +91,11 @@ layout_mode = 2
 [node name="LabelDinheiro" type="Label" parent="UI/HBoxContainer" unique_id=1041009093]
 layout_mode = 2
 text = "Carteira: R$"
+
+[node name="BtnVoltar" type="Button" parent="UI" unique_id=451513788]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 132.0
+offset_bottom = 39.0
+text = "Voltar ao Jogo"

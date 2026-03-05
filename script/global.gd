@@ -54,7 +54,7 @@ func gerar_conteudo_do_dia():
 	var padroes_possiveis = dados_padroes.get("padroes", []).filter(func(p): return p.dia_minimo <= dia_atual)
 	
 	contratos_possiveis.shuffle()
-	for i in range(min(3, contratos_possiveis.size())):
+	for i in range(min(5, contratos_possiveis.size())):
 		contratos_disponiveis.append(contratos_possiveis[i])
 		
 	padroes_possiveis.shuffle()
