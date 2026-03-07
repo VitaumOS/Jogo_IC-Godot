@@ -2,12 +2,21 @@
 
 [ext_resource type="Script" uid="uid://b5h61pvucrck8" path="res://script/Loja.gd" id="1_i4mbc"]
 [ext_resource type="PackedScene" uid="uid://cuuxi8q0r6481" path="res://scene/ButtonUI.tscn" id="2_g40k3"]
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_l66g6"]
+[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_mypxv"]
 
 [node name="Loja" type="Control" unique_id=961802527]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_i4mbc")
 cena_botao_ui = ExtResource("2_g40k3")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1845126463]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("3_l66g6")
+expand_mode = 1
 
 [node name="UI" type="Control" parent="." unique_id=2051966678]
 anchors_preset = 0
@@ -18,31 +27,21 @@ offset_bottom = 8.0
 
 [node name="LabelFeedback" type="Label" parent="UI" unique_id=1725209788]
 layout_mode = 0
-offset_left = 376.0
-offset_top = 752.0
-offset_right = 416.0
-offset_bottom = 775.0
+offset_left = 312.0
+offset_top = 768.0
+offset_right = 548.0
+offset_bottom = 807.0
+horizontal_alignment = 1
 
-[node name="ScrollContainer" type="Control" parent="UI" unique_id=1622795760]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI" unique_id=1154573931]
 layout_mode = 1
-offset_left = -200.0
-offset_top = 56.0
-offset_right = -56.0
-offset_bottom = 208.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 856.0
+offset_bottom = 760.0
 
 [node name="VBoxItens" type="VBoxContainer" parent="UI/ScrollContainer" unique_id=952896832]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.3610001
-anchor_top = -0.026
-anchor_right = 1.3610001
-anchor_bottom = -0.026
-offset_left = 4.015991
-offset_top = 3.9520001
-offset_right = 868.016
-offset_bottom = 571.952
+layout_mode = 2
 
 [node name="Container_Opcoes" type="VBoxContainer" parent="UI" unique_id=407412559]
 layout_mode = 1
@@ -65,37 +64,42 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 312.0
-offset_top = 752.0
+offset_top = 799.0
 offset_right = 548.0
-offset_bottom = 813.0
+offset_bottom = 860.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Comprar Chapa Extra (R$ %d)"
+theme_override_styles/normal = ExtResource("3_mypxv")
+text = "Comprar Chapas (R$ %d)"
 icon_alignment = 1
 vertical_icon_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=1601850019]
 layout_mode = 0
-offset_left = 584.0
-offset_right = 840.0
-offset_bottom = 40.0
+offset_left = 488.0
+offset_top = 16.0
+offset_right = 851.0
+offset_bottom = 72.0
 
 [node name="LabelQuantidade" type="Label" parent="UI/HBoxContainer" unique_id=527180709]
 layout_mode = 2
-text = "📦 Chapas: %d"
+theme_override_styles/normal = ExtResource("3_mypxv")
+text = "Chapas: %d"
 
 [node name="VSeparator" type="VSeparator" parent="UI/HBoxContainer" unique_id=2009678965]
-custom_minimum_size = Vector2(10.885, 7.925)
+custom_minimum_size = Vector2(102.495, 7.925)
 layout_mode = 2
 
 [node name="LabelDinheiro" type="Label" parent="UI/HBoxContainer" unique_id=1041009093]
 layout_mode = 2
+theme_override_styles/normal = ExtResource("3_mypxv")
 text = "Carteira: R$"
 
 [node name="BtnVoltar" type="Button" parent="UI" unique_id=451513788]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 132.0
-offset_bottom = 39.0
+offset_left = 71.0
+offset_top = 816.0
+offset_right = 187.0
+offset_bottom = 847.0
+theme_override_styles/normal = ExtResource("3_mypxv")
 text = "Voltar ao Jogo"

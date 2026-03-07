@@ -6,7 +6,6 @@ extends Control
 @export var cena_botao_ui: PackedScene
 
 # Referências aos nós (ajuste os nomes se necessário)
-@onready var color_rect = $ColorRect
 @onready var center_container = $CenterContainer
 @onready var vbox = $CenterContainer/PanelContainer/MarginContainer/VBox
 @onready var label_titulo =$CenterContainer/PanelContainer/MarginContainer/VBox/Titulo
@@ -20,8 +19,6 @@ func _ready():
 ## Define todos os tamanhos e alinhamentos via código para evitar erros de UI
 func _configurar_layout_base():
 	self.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	color_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	color_rect.color = Color(0, 0, 0, 0.8)
 	#Centralizar o painel de resumo
 	center_container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	#Configurar espaçamentos do VBox

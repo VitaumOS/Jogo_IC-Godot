@@ -1,28 +1,42 @@
 [gd_scene format=3 uid="uid://dbkh1g8chucti"]
 
 [ext_resource type="Script" uid="uid://bvryhcfe4u3sh" path="res://script/Forja_Ritmo.gd" id="1_1oy20"]
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_ooc03"]
+[ext_resource type="Texture2D" uid="uid://ukp4n3dlw7r8" path="res://images/cobre.png" id="3_sd6ah"]
 
 [node name="ForjaRitmo" type="Node2D" unique_id=377505144]
 script = ExtResource("1_1oy20")
 
+[node name="Background" type="TextureRect" parent="." unique_id=2012359238]
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("2_ooc03")
+expand_mode = 1
+
 [node name="Esteira" type="ColorRect" parent="." unique_id=868272621]
-offset_left = -2.0
+offset_left = 72.0
 offset_top = 434.0
-offset_right = 902.0
+offset_right = 872.0
 offset_bottom = 484.0
 
+[node name="Background" type="Sprite2D" parent="Esteira" unique_id=1656192740]
+position = Vector2(372.67453, 30.000006)
+scale = Vector2(0.9207567, 0.288)
+texture = ExtResource("3_sd6ah")
+offset = Vector2(7.545, -27.71)
+
 [node name="AreaAlvo" type="Panel" parent="." unique_id=1347860911]
-offset_left = 450.0
-offset_top = 450.0
-offset_right = 490.0
-offset_bottom = 490.0
+offset_left = 425.0
+offset_top = 365.0
+offset_right = 465.0
+offset_bottom = 405.0
 
 [node name="ArmasContainer" type="Node2D" parent="." unique_id=1822504001]
 
 [node name="FeedbackLabel" type="Label" parent="." unique_id=1915888874]
-offset_left = 296.0
+offset_left = 16.0
 offset_top = 192.0
-offset_right = 579.0
+offset_right = 880.0
 offset_bottom = 278.0
 theme_override_font_sizes/font_size = 62
 text = "Prepare-se!"
@@ -34,3 +48,12 @@ offset_left = 127.0
 offset_top = 153.0
 offset_right = 167.0
 offset_bottom = 193.0
+
+[node name="Contador" type="Label" parent="." unique_id=259258111]
+offset_left = 16.0
+offset_top = 184.0
+offset_right = 880.0
+offset_bottom = 207.0
+text = "0/40"
+horizontal_alignment = 1
+vertical_alignment = 1

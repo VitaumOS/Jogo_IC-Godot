@@ -18,7 +18,7 @@ func _ready():
 	_configurar_botoes_navegacao()
 
 func _atualizar_ui_dinheiro():
-	if label_dinheiro: label_dinheiro.text = "Carteira: R$ %d" % Global.dinheiro
+	if label_dinheiro: label_dinheiro.text = "R$ %d" % Global.dinheiro
 
 func _gerar_lista_contratos():
 	for c in container_contratos.get_children(): c.queue_free()
@@ -68,6 +68,8 @@ func gerar_contrato(contrato):
 		var btn = cena_botao_ui.instantiate(); btn.custom_minimum_size = Vector2(0, 45)
 		if Global.contrato_ativo != null:
 			btn.disabled = true; btn.text = "Trabalho em Andamento..."
+		elif Global.contratos_concluidos.has(contrato):
+			btn.disabled = true; btn.text = "Contrato Concluído!"
 		else:
 			btn.text = "Aceitar Contrato"; btn.pressed.connect(func(): _aceitar_contrato(contrato))
 		vbox.add_child(btn)

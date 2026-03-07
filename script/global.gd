@@ -5,11 +5,10 @@ var tamanho_container: float = 500.0
 var dia_atual: int = 1
 var dinheiro: int = 1000
 var ganhos_do_dia: int = 0
-var tempo_restante: float = 120.0
-const DURACAO_DIA = 120.0
 const CUSTO_DIARIO = 200 #Aluguel/Impostos
 var estoque_chapas_extras: int = 0
-var preco_chapa_extra: int = 150 # Defina o preço que desejar
+var preco_chapa: int = 100 
+var recompensa_final: float = 0
 
 var armas_na_esteira_atual: Array = []
 var chapas_usadas_pelo_jogador: int = 0
@@ -31,10 +30,14 @@ var padroes_na_loja: Array = []
 #Inventário Permanente
 var contrato_ativo = null
 var padroes_desbloqueados: Array = []
+var contratos_concluidos: Array = []
 
 func _ready():
 	gerar_conteudo_do_dia()
 
+func registrar_contrato_concluido(contrato):
+	if not contratos_concluidos.has(contrato):
+		contratos_concluidos.append(contrato)
 
 # Função para consumir a chapa
 func usar_chapa_extra():
@@ -42,24 +45,24 @@ func usar_chapa_extra():
 		estoque_chapas_extras -= 1
 		return true
 	return false
+	
 ## Gera novos contratos e padrões aleatórios
 func gerar_conteudo_do_dia():
 	contratos_disponiveis.clear()
-	padroes_na_loja.clear()
 	
 	var dados_contratos = _carregar_json("res://data_json/contratos.json")
 	var dados_padroes = _carregar_json("res://data_json/padroes.json")
 
-	var contratos_possiveis = dados_contratos.get("contratos", []).filter(func(c): return c.dia_minimo <= dia_atual)
-	var padroes_possiveis = dados_padroes.get("padroes", []).filter(func(p): return p.dia_minimo <= dia_atual)
+	var contratos_possiveis = dados_contratos.get("contratos", []).filter(func(c): return c.dia == dia_atual)
+	var padroes_possiveis = dados_padroes.get("padroes", []).filter(func(p): return p.dia == dia_atual)
 	
 	contratos_possiveis.shuffle()
-	for i in range(min(5, contratos_possiveis.size())):
-		contratos_disponiveis.append(contratos_possiveis[i])
+	for i in contratos_possiveis:
+		contratos_disponiveis.append(i)
 		
 	padroes_possiveis.shuffle()
-	for i in range(min(5, padroes_possiveis.size())):
-		padroes_na_loja.append(padroes_possiveis[i])
+	for i in padroes_possiveis:
+		padroes_na_loja.append(i)
 
 ## Função auxiliar para ler qualquer arquivo JSON
 func _carregar_json(caminho: String) -> Dictionary:
@@ -79,12 +82,16 @@ func _carregar_json(caminho: String) -> Dictionary:
 		return {}
 
 ## Função chamada quando o jogador resolve o PCU com sucesso
-func completar_contrato(conseguiu_minimo: bool):
-	
+func completar_contrato(conseguiu_minimo: bool, ritmo : float):
 	if contrato_ativo != null:
 		var recompensa = contrato_ativo.recompensa
+		var bonus = 0.0
 		if conseguiu_minimo:
-			recompensa*=1.2
+			bonus = recompensa*0.2
+		#a recompensa é dado pela metade da recompensa do contrato + a proporção de acertos + o bonus do mínimo
+		recompensa = (recompensa/2.0)+((recompensa*ritmo)/2.0) 
+		recompensa += bonus
+		recompensa_final = recompensa
 		dinheiro += recompensa
 		ganhos_do_dia += recompensa
 		contrato_ativo = null
@@ -105,9 +112,7 @@ func remover_dinheiro(qtd: int) -> bool:
 ##Inicia o próximo dia
 func proximo_dia():
 	dia_atual += 1
-	dinheiro -= CUSTO_DIARIO
 	ganhos_do_dia = 0
-	tempo_restante = DURACAO_DIA
 	contrato_ativo = null
 	gerar_conteudo_do_dia()
 	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")

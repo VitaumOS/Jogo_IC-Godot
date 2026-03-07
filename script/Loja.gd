@@ -17,19 +17,20 @@ var catalogo_loja = []
 
 func _ready():
 	catalogo_loja = Global.padroes_na_loja
+	container_itens.custom_minimum_size= Vector2(800,80)
 	_gerar_itens_loja()
 	btn_voltar.pressed.connect(_on_voltar_pcu)
 	_configurar_compra_chapa()
 	_atualizar_display()
 	
 func _configurar_compra_chapa():
-	btn_comprar_chapa.text = "Comprar Chapa Extra (R$ %d)" % Global.preco_chapa_extra
+	btn_comprar_chapa.text = "Comprar Chapas (R$ %d)" % Global.preco_chapa
 	if not btn_comprar_chapa.pressed.is_connected(_comprar_chapa_extra):
 		btn_comprar_chapa.pressed.connect(_comprar_chapa_extra)
 
 func _comprar_chapa_extra():
-	if Global.dinheiro >= Global.preco_chapa_extra:
-		Global.dinheiro -= Global.preco_chapa_extra
+	if Global.dinheiro >= Global.preco_chapa:
+		Global.dinheiro -= Global.preco_chapa
 		Global.estoque_chapas_extras += 1
 		_atualizar_display()
 		label_feedback.text = "Chapa extra adquirida!"
@@ -37,8 +38,8 @@ func _comprar_chapa_extra():
 		label_feedback.text = "Saldo insuficiente para chapa!"
 
 func _atualizar_display():
-	lbl_estoque_chapas.text = "📦 Chapas: %d" % Global.estoque_chapas_extras
-	label_dinheiro.text = "Carteira: R$ %d" % Global.dinheiro
+	lbl_estoque_chapas.text = "Chapas: %d" % Global.estoque_chapas_extras
+	label_dinheiro.text = "R$ %d" % Global.dinheiro
 	
 
 ## Retorna para a cena principal

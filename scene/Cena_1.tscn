@@ -1,15 +1,26 @@
 [gd_scene format=3 uid="uid://xssr1johtnwf"]
 
 [ext_resource type="Script" uid="uid://b0xgd8amglmnu" path="res://script/Main.gd" id="1_7e7p4"]
+[ext_resource type="FontFile" uid="uid://bss7sc7tkvtqg" path="res://font/MedievalSharp-Regular.ttf" id="3_ex411"]
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_r2s5b"]
+[ext_resource type="StyleBox" uid="uid://c1jeoar3pix3q" path="res://modelos/modelo_contrato.tres" id="4_r2s5b"]
 [ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/Padrao_Corte.tscn" id="4_uwuwm"]
+[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="5_bjq5w"]
+[ext_resource type="StyleBox" uid="uid://ciisrgd277gvm" path="res://modelos/modelo_botão_embaixo.tres" id="5_uwuwm"]
+
+[sub_resource type="Theme" id="Theme_bjq5w"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2xbwx"]
 
 [node name="Main" type="Node2D" unique_id=1792108250]
 script = ExtResource("1_7e7p4")
 cena_padrao_corte = ExtResource("4_uwuwm")
 
 [node name="Background" type="TextureRect" parent="." unique_id=54058751]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("3_r2s5b")
+expand_mode = 1
 
 [node name="RectanglesParent" type="Node2D" parent="." unique_id=1562575107]
 
@@ -19,12 +30,12 @@ metadata/_edit_use_anchors_ = true
 [node name="FeedbackLabel" type="Label" parent="UI" unique_id=2041737914]
 anchors_preset = -1
 anchor_left = 11.4
-anchor_top = 4.3
-anchor_right = 12.28
-anchor_bottom = 4.318889
-offset_left = -10212.0
+anchor_top = 4.2700005
+anchor_right = 12.27
+anchor_bottom = 4.2744446
+offset_left = -10244.0
 offset_top = -3106.0002
-offset_right = -10172.0
+offset_right = -10203.0
 offset_bottom = -3083.0002
 metadata/_edit_use_anchors_ = true
 
@@ -45,71 +56,108 @@ offset_right = 766.0
 offset_bottom = 53.0
 
 [node name="Topo" type="HBoxContainer" parent="UI" unique_id=686192741]
-offset_left = 560.0
-offset_top = 8.0
-offset_right = 868.0
-offset_bottom = 51.0
+offset_left = 409.0
+offset_top = 37.0
+offset_right = 1021.0
+offset_bottom = 78.0
 
 [node name="LabelQuantidade" type="Label" parent="UI/Topo" unique_id=1382755545]
 layout_mode = 2
-text = "📦 Chapas: %d"
+theme_override_fonts/font = ExtResource("3_ex411")
+theme_override_styles/normal = ExtResource("5_bjq5w")
+text = "Chapas: %d"
 
 [node name="VSeparator" type="VSeparator" parent="UI/Topo" unique_id=1558154562]
-custom_minimum_size = Vector2(10.885, 7.925)
+custom_minimum_size = Vector2(100, 7.925)
 layout_mode = 2
 
 [node name="DiaPanel" type="Label" parent="UI/Topo" unique_id=1964791292]
 layout_mode = 2
-text = "📅 DIA: %d"
+theme_override_styles/normal = ExtResource("5_bjq5w")
+text = " DIA: %d"
 
 [node name="VSeparator2" type="VSeparator" parent="UI/Topo" unique_id=595437555]
-custom_minimum_size = Vector2(10.885, 7.925)
+custom_minimum_size = Vector2(100, 7.925)
 layout_mode = 2
 
 [node name="DinheiroPanel" type="Label" parent="UI/Topo" unique_id=725101515]
 layout_mode = 2
-text = "💰 R$ %d"
+theme_override_styles/normal = ExtResource("5_bjq5w")
+text = " R$ %d"
 
-[node name="CorpoCentral" type="HBoxContainer" parent="UI" unique_id=1861903148]
-offset_left = 1.0
-offset_top = 56.0
-offset_right = 944.0
-offset_bottom = 756.0
+[node name="Controle_Corpo" type="Control" parent="UI" unique_id=1039932040]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 96.0
+offset_right = 89.0
+offset_bottom = 128.0
 
-[node name="LadoEsquerdo" type="MarginContainer" parent="UI/CorpoCentral" unique_id=387953885]
+[node name="CorpoCentral" type="HBoxContainer" parent="UI/Controle_Corpo" unique_id=1861903148]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062000003
+anchor_top = 1.4000001
+anchor_right = 0.062000003
+anchor_bottom = 1.4000001
+offset_left = 0.015999794
+offset_right = 878.016
+offset_bottom = 400.0
+
+[node name="LadoEsquerdo" type="MarginContainer" parent="UI/Controle_Corpo/CorpoCentral" unique_id=387953885]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 
-[node name="BotaoContratoGrande" type="Button" parent="UI/CorpoCentral/LadoEsquerdo" unique_id=2038583882]
-custom_minimum_size = Vector2(200, 600)
+[node name="BotaoContratoGrande" type="Button" parent="UI/Controle_Corpo/CorpoCentral/LadoEsquerdo" unique_id=2038583882]
+custom_minimum_size = Vector2(199.72, 400)
 layout_mode = 2
-text = "MURAL DE CONTRATOS"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("4_r2s5b")
+theme_override_styles/hover = ExtResource("4_r2s5b")
+text = "MURAL 
+DE CONTRATOS"
+icon_alignment = 1
+expand_icon = true
 
-[node name="LadoDireito" type="VBoxContainer" parent="UI/CorpoCentral" unique_id=2131989489]
+[node name="VSeparator" type="VSeparator" parent="UI/Controle_Corpo/CorpoCentral" unique_id=57280159]
+custom_minimum_size = Vector2(-2.79, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="LadoDireito" type="VBoxContainer" parent="UI/Controle_Corpo/CorpoCentral" unique_id=2131989489]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/CorpoCentral/LadoDireito" unique_id=763312148]
-custom_minimum_size = Vector2(650, 700)
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Controle_Corpo/CorpoCentral/LadoDireito" unique_id=763312148]
+custom_minimum_size = Vector2(650, 400)
 layout_mode = 2
 
-[node name="PadraoCorteSalvo" type="VBoxContainer" parent="UI/CorpoCentral/LadoDireito/ScrollContainer" unique_id=33567406]
-custom_minimum_size = Vector2(600, 700)
+[node name="PadraoCorteSalvo" type="VBoxContainer" parent="UI/Controle_Corpo/CorpoCentral/LadoDireito/ScrollContainer" unique_id=33567406]
+custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
 
 [node name="Rodape" type="HBoxContainer" parent="UI" unique_id=205919892]
-offset_left = 224.0
-offset_top = 816.0
-offset_right = 675.0
-offset_bottom = 887.0
+offset_top = 764.0
+offset_right = 896.0
+offset_bottom = 859.0
 alignment = 1
 
 [node name="BtnResolver" type="Button" parent="UI/Rodape" unique_id=827788209]
+custom_minimum_size = Vector2(160.975, 0)
 layout_mode = 2
-text = "🔨 BATER O FERRO"
+theme_override_styles/normal = ExtResource("5_uwuwm")
+text = "     BATER O FERRO     "
+icon_alignment = 1
 
 [node name="BtnSair" type="Button" parent="UI/Rodape" unique_id=1780927715]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-text = "🚪 ENCERRAR DIA"
+theme = SubResource("Theme_bjq5w")
+text = "ENCERRAR DIA"
+icon = SubResource("CompressedTexture2D_2xbwx")
 
 [node name="BtnLoja" type="Button" parent="UI/Rodape" unique_id=493769893]
+custom_minimum_size = Vector2(148.885, 0)
 layout_mode = 2
-text = "🏪 IR À LOJA"
+theme_override_styles/normal = ExtResource("5_uwuwm")
+text = "LOJA"

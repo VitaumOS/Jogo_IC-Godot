@@ -4,6 +4,7 @@ extends Node2D
 @onready var area_alvo = $AreaAlvo
 @onready var feedback_label = $FeedbackLabel
 @onready var esteira = $Esteira
+@onready var cont = $Contador
 
 var velocidade = 350.0
 var armas_na_fila = []
@@ -16,7 +17,7 @@ func _ready():
 	var lista_nomes = Global.armas_na_esteira_atual
 	total_pecas = lista_nomes.size()
 	area_alvo.position = Vector2(450, 380)
-
+	cont.text = ("%d/%d" %[acertos,total_pecas])
 	
 	if total_pecas == 0:
 		get_tree().change_scene_to_file("res://scene/Main.tscn")
@@ -60,6 +61,9 @@ func _process(delta):
 		if arma.position.x < area_alvo.position.x - 100:
 			_remover_arma(arma, false)
 
+func _atualiza_contador():
+	cont.text = ("%d/%d" %[acertos,total_pecas])
+
 func _input(event):
 	if event is InputEventKey and event.is_pressed():
 		var tecla_pressionada = OS.get_keycode_string(event.get_keycode_with_modifiers())
@@ -81,6 +85,9 @@ func _checar_batida(tecla):
 			return
 
 func _remover_arma(arma, sucesso):
+	if sucesso:
+		_atualiza_contador()
+		
 	armas_na_fila.erase(arma)
 	# Efeito simples de sumir
 	var t = create_tween()

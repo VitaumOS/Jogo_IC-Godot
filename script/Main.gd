@@ -7,8 +7,8 @@ extends Node2D
 # Variáveis de Nodes
 @onready var label_dia = $UI/Topo/DiaPanel
 @onready var label_dinheiro = $UI/Topo/DinheiroPanel
-@onready var btn_contrato_grande = $UI/CorpoCentral/LadoEsquerdo/BotaoContratoGrande
-@onready var vbox_padroes_lista = $UI/CorpoCentral/LadoDireito/ScrollContainer/PadraoCorteSalvo
+@onready var btn_contrato_grande = $UI/Controle_Corpo/CorpoCentral/LadoEsquerdo/BotaoContratoGrande
+@onready var vbox_padroes_lista = $UI/Controle_Corpo/CorpoCentral/LadoDireito/ScrollContainer/PadraoCorteSalvo
 @onready var lbl_estoque_chapas = $UI/Topo/LabelQuantidade
 @onready var rotulo_feedback = $UI/FeedbackLabel
 @onready var btn_resolver = $UI/Rodape/BtnResolver
@@ -48,15 +48,14 @@ func _atualizar_display_estoque():
 	
 
 func _configurar_botoes_fixos():
-	btn_resolver.text = "🔨 BATER O FERRO"
+
 	if not btn_resolver.pressed.is_connected(_resolver_pcu):
 		btn_resolver.pressed.connect(_resolver_pcu)
 	
-	btn_loja.text = "🏪 IR À LOJA"
+
 	if not btn_loja.pressed.is_connected(_on_loja_pressed):
 		btn_loja.pressed.connect(_on_loja_pressed)
 	
-	btn_sair.text = "🚪 ENCERRAR DIA"
 	if not btn_sair.pressed.is_connected(_on_sair_pressed):
 		btn_sair.pressed.connect(_on_sair_pressed)
 	
@@ -70,15 +69,15 @@ func _on_contrato_pressed(): get_tree().change_scene_to_file("res://scene/Cena_c
 
 	
 func _atualizar_ui_estatica():
-	label_dia.text = "📅 DIA: %d" % Global.dia_atual
-	label_dinheiro.text = "💰 R$ %d" % Global.dinheiro
-	lbl_estoque_chapas.text = "📦 Chapas: %d" % Global.estoque_chapas_extras
+	label_dia.text = "DIA: %d" % Global.dia_atual
+	label_dinheiro.text = "R$ %d" % Global.dinheiro
+	lbl_estoque_chapas.text = "Chapas: %d" % Global.estoque_chapas_extras
 
 func _atualizar_display_contrato():
 	if not Global.contrato_ativo:
-		btn_contrato_grande.text = "MURAL DE CONTRATOS"
+		btn_contrato_grande.text = "MURAL DE \nCONTRATOS"
 		return
-	var txt = "📜 %s\n\nDEMANDA:\n" % Global.contrato_ativo.nome
+	var txt = "%s\n\nDEMANDA:\n" % Global.contrato_ativo.nome
 	for i in demanda.size():
 		if demanda[i] > 0:
 			txt += "- %s: %d\n" % [pecas_disponiveis[i].nome, demanda[i]]
@@ -126,7 +125,7 @@ func _exibir_padrao_na_lista(dados: Dictionary):
 	
 	var visual = cena_padrao_corte.instantiate()
 	visual.custom_minimum_size = Vector2(550, 50)
-	visual.get_node("Background").custom_minimum_size = Vector2(550, 50)
+
 	
 	var container_pecas = visual.get_node("Visualizador_Padrao")
 	for p in dados.pecas:
@@ -223,17 +222,19 @@ func _finalizar_logica_pulp():
 			Global.estoque_chapas_extras -= z_user
 		
 			var otimizou = (z_user <= z_pulp)
-			var ritmo_perfeito = (Global.ultimo_desempenho_ritmo >= 1.0)
+			var ritmo = Global.ultimo_desempenho_ritmo
+			Global.registrar_contrato_concluido(Global.contrato_ativo)
+			Global.completar_contrato(otimizou, ritmo)
 			
-			Global.completar_contrato(otimizou and ritmo_perfeito)
 			
 			# 5. Feedback Visual
-			if otimizou and ritmo_perfeito:
-				_atualizar_texto_resultado("PERFEITO! Matemática Otimizada e Forja Impecável (+20%%)")
+			if otimizou and ritmo==1.0:
+				_atualizar_texto_resultado("PERFEITO! Usou o mínimo e teve batida perfeita! Ganhou: R$%.2f" %[Global.recompensa_final])
 			elif !otimizou:
-				_atualizar_texto_resultado("CONCLUÍDO. Gastou %d chapas. Mínimo necessário:%d." % [z_user, z_pulp])
-			elif !ritmo_perfeito:
-				_atualizar_texto_resultado("CONCLUÍDO")
+				_atualizar_texto_resultado("CONCLUÍDO. Gastou %d chapas. Mínimo necessário:%d. Ganhou: R$%.2f" % [z_user, z_pulp, Global.recompensa_final])
+			else:
+				_atualizar_texto_resultado("CONCLUÍDO! Ganhou: R$%.2f" %[Global.recompensa_final])
+			
 	_limpar_dados_transicao()
 
 # Função auxiliar para manter o código limpo

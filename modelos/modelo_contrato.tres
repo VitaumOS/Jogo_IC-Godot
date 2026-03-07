@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://c1jeoar3pix3q"]
+
+[ext_resource type="Texture2D" uid="uid://c2orn4wtmhpxv" path="res://images/contrato.png" id="1_l0sxw"]
+
+[resource]
+texture = ExtResource("1_l0sxw")
+expand_margin_left = 143.0
+expand_margin_top = 95.0
+expand_margin_right = 143.0
+expand_margin_bottom = 50.0

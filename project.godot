@@ -33,3 +33,7 @@ window/size/resizable=false
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[gui]
+
+theme/custom_font="uid://bss7sc7tkvtqg"

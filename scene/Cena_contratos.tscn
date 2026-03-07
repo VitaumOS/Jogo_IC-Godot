@@ -2,12 +2,21 @@
 
 [ext_resource type="Script" uid="uid://nqmv7wb7vd20" path="res://script/cena_contratos.gd" id="1_lx4bj"]
 [ext_resource type="PackedScene" uid="uid://cuuxi8q0r6481" path="res://scene/ButtonUI.tscn" id="2_kegxw"]
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_76e4m"]
+[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_yji0f"]
 
 [node name="Cena_Contratos" type="Control" unique_id=1920571904]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_lx4bj")
 cena_botao_ui = ExtResource("2_kegxw")
+
+[node name="Background" type="TextureRect" parent="." unique_id=665838833]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("3_76e4m")
+expand_mode = 1
 
 [node name="UI" type="Control" parent="." unique_id=1230002425]
 anchors_preset = 0
@@ -16,16 +25,17 @@ offset_bottom = 800.0
 
 [node name="LabelDinheiro" type="Label" parent="UI" unique_id=1563394821]
 layout_mode = 0
-offset_left = 704.0
-offset_top = 24.0
-offset_right = 840.0
-offset_bottom = 47.0
+offset_left = 703.0
+offset_top = 42.0
+offset_right = 839.0
+offset_bottom = 65.0
+theme_override_styles/normal = ExtResource("3_yji0f")
 text = "Carteira: R$ %d"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI" unique_id=570385356]
 layout_mode = 0
 offset_left = 28.0
-offset_top = 56.0
+offset_top = 86.0
 offset_right = 864.0
 offset_bottom = 860.0
 
@@ -34,7 +44,7 @@ layout_mode = 2
 
 [node name="Container_Opcoes" type="VBoxContainer" parent="UI" unique_id=1499401884]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 21.0
-offset_right = 77.0
-offset_bottom = 54.0
+offset_left = 33.0
+offset_top = 35.0
+offset_right = 82.0
+offset_bottom = 68.0

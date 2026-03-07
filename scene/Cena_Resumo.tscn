@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cftrsto61dfey" path="res://script/Cena_Resumo.gd" id="1_xr33j"]
 [ext_resource type="PackedScene" uid="uid://cuuxi8q0r6481" path="res://scene/ButtonUI.tscn" id="2_ins1g"]
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_kgimw"]
 
 [node name="Cena_Resumo" type="Control" unique_id=854328993]
 layout_mode = 3
@@ -9,10 +10,12 @@ anchors_preset = 0
 script = ExtResource("1_xr33j")
 cena_botao_ui = ExtResource("2_ins1g")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=857122720]
+[node name="Background" type="TextureRect" parent="." unique_id=2094250288]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("3_kgimw")
+expand_mode = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=558701607]
 layout_mode = 0
