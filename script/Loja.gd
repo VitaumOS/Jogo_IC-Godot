@@ -53,11 +53,11 @@ func _gerar_itens_loja():
 	for item in Global.padroes_na_loja:
 		var card = PanelContainer.new(); card.custom_minimum_size.y = 100
 		var h_box = HBoxContainer.new(); card.add_child(h_box)
-		#Visualizador do padrão
+
 		var vis = Control.new() 
 		vis.custom_minimum_size = Vector2(500, 60) 
 		vis.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		
+	
 		var bg = ColorRect.new() 
 		bg.color = Color(1, 1, 1, 0.1) 
 		bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -71,7 +71,6 @@ func _gerar_itens_loja():
 		_renderizar_previa_no_card(p_hbox, item.composicao); 
 		h_box.add_child(vis)
 		
-		#Informações e Botão
 		var v_info = VBoxContainer.new(); v_info.size_flags_horizontal = Control.SIZE_EXPAND_FILL; v_info.alignment = BoxContainer.ALIGNMENT_CENTER
 		var lbl = Label.new(); lbl.text = item.nome; lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		var btn = cena_botao_ui.instantiate(); btn.text = "Comprar (R$ %d)" % item.preco

@@ -37,23 +37,11 @@ horizontal_alignment = 1
 layout_mode = 1
 offset_left = 24.0
 offset_top = 80.0
-offset_right = 856.0
+offset_right = 851.0
 offset_bottom = 760.0
 
 [node name="VBoxItens" type="VBoxContainer" parent="UI/ScrollContainer" unique_id=952896832]
 layout_mode = 2
-
-[node name="Container_Opcoes" type="VBoxContainer" parent="UI" unique_id=407412559]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 2.0700002
-anchor_top = 0.135
-anchor_right = 2.0700002
-anchor_bottom = 0.135
-offset_left = 32.0
-offset_top = 8.0
-offset_right = 71.0
-offset_bottom = 47.0
 
 [node name="PainelChapas" type="Node2D" parent="UI" unique_id=687913666]
 
@@ -85,6 +73,7 @@ offset_bottom = 72.0
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_mypxv")
 text = "Chapas: %d"
+horizontal_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="UI/HBoxContainer" unique_id=2009678965]
 custom_minimum_size = Vector2(102.495, 7.925)
@@ -94,6 +83,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_mypxv")
 text = "Carteira: R$"
+horizontal_alignment = 1
 
 [node name="BtnVoltar" type="Button" parent="UI" unique_id=451513788]
 layout_mode = 0

@@ -5,14 +5,14 @@ var tamanho_container: float = 500.0
 var dia_atual: int = 1
 var dinheiro: int = 1000
 var ganhos_do_dia: int = 0
-const CUSTO_DIARIO = 200 #Aluguel/Impostos
+const CUSTO_DIARIO = 200
 var estoque_chapas_extras: int = 0
 var preco_chapa: int = 100 
 var recompensa_final: float = 0
 
 var armas_na_esteira_atual: Array = []
 var chapas_usadas_pelo_jogador: int = 0
-var ultimo_desempenho_ritmo: float = -1.0 # -1 indica que não veio da forja
+var ultimo_desempenho_ritmo: float = -1.0 
 
 var pecas_disponiveis: Array = [
 	{"nome": "Adaga", "largura": 50.0, "caminho_textura": "res://Sprite/adaga.png"},
@@ -23,11 +23,11 @@ var pecas_disponiveis: Array = [
 	{"nome": "Lança", "largura": 220.0, "caminho_textura": "res://Sprite/lanca.png"}
 ]
 
-#Listas Dinâmicas
+const PREFAB_POPUP = preload("res://scene/Popup.tscn")
+
 var contratos_disponiveis: Array = []
 var padroes_na_loja: Array = []
 
-#Inventário Permanente
 var contrato_ativo = null
 var padroes_desbloqueados: Array = []
 var contratos_concluidos: Array = []
@@ -39,7 +39,7 @@ func registrar_contrato_concluido(contrato):
 	if not contratos_concluidos.has(contrato):
 		contratos_concluidos.append(contrato)
 
-# Função para consumir a chapa
+## Função para consumir a chapa
 func usar_chapa_extra():
 	if estoque_chapas_extras > 0:
 		estoque_chapas_extras -= 1

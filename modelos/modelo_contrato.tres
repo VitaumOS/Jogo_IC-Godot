@@ -4,7 +4,7 @@
 
 [resource]
 texture = ExtResource("1_l0sxw")
-expand_margin_left = 143.0
-expand_margin_top = 95.0
-expand_margin_right = 143.0
-expand_margin_bottom = 50.0
+expand_margin_left = 170.0
+expand_margin_top = 80.0
+expand_margin_right = 170.0
+expand_margin_bottom = 80.0

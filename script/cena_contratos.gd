@@ -4,7 +4,7 @@ extends Control
 @export var cena_botao_ui: PackedScene
 
 @onready var container_contratos = $UI/ScrollContainer/VBoxContratos
-@onready var container_opcoes = $UI/Container_Opcoes
+@onready var btn = $UI/BtnVoltar
 @onready var label_dinheiro = $UI/LabelDinheiro
 
 #variavel inicial, somente para testes
@@ -29,11 +29,10 @@ func _gerar_lista_contratos():
 	for contrato in lista_contratos: gerar_contrato(contrato)
 
 func _configurar_botoes_navegacao():
-	for c in container_opcoes.get_children(): c.queue_free()
-	if cena_botao_ui:
-		var btn = cena_botao_ui.instantiate()
-		btn.text = "Voltar ao Menu"; btn.pressed.connect(_on_voltar_pressed)
-		container_opcoes.add_child(btn)
+	
+	btn.text = "Voltar ao Menu" 
+	btn.pressed.connect(_on_voltar_pressed)
+
 		
 ##Gera um contrato para a página de contratos
 func gerar_contrato(contrato):
@@ -76,8 +75,11 @@ func gerar_contrato(contrato):
 	container_contratos.add_child(card)	
 
 func _aceitar_contrato(contrato_escolhido):
+	var popup = Global.PREFAB_POPUP.instantiate()
+	add_child(popup)
+	popup.mostrar_mensagem("Contrato aceito!")
 	Global.contrato_ativo = contrato_escolhido
-	_on_voltar_pressed()
+	
 
 func _on_voltar_pressed():
 	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")

@@ -2,10 +2,9 @@
 
 extends Control
 
-## Cena do botão exportada do Inspector
 @export var cena_botao_ui: PackedScene
 
-# Referências aos nós (ajuste os nomes se necessário)
+# Referências aos nós
 @onready var center_container = $CenterContainer
 @onready var vbox = $CenterContainer/PanelContainer/MarginContainer/VBox
 @onready var label_titulo =$CenterContainer/PanelContainer/MarginContainer/VBox/Titulo
@@ -19,13 +18,10 @@ func _ready():
 ## Define todos os tamanhos e alinhamentos via código para evitar erros de UI
 func _configurar_layout_base():
 	self.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	#Centralizar o painel de resumo
 	center_container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	#Configurar espaçamentos do VBox
 	vbox.custom_minimum_size = Vector2(400, 0)
 	vbox.add_theme_constant_override("separation", 15)
 	
-	#Configurar texto do Label
 	label_titulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label_titulo.add_theme_font_size_override("font_size", 25)
 
@@ -35,7 +31,6 @@ func _processar_financeiro_do_dia():
 	var custos = Global.CUSTO_DIARIO
 	var lucro_liquido = ganhos - custos
 	
-	# Atualiza o saldo real no Global
 	Global.dinheiro -= custos
 	label_titulo.text = "\nRELATÓRIO DO DIA %d " % Global.dia_atual
 	
@@ -71,6 +66,5 @@ func _criar_botao_proximo_dia():
 	btn.text = "Encerrar Dia e Dormir"
 	btn.custom_minimum_size = Vector2(0, 50)
 	
-	# Conecta o clique ao Global para resetar o dia
 	btn.pressed.connect(func():Global.proximo_dia())
 	vbox.add_child(btn)

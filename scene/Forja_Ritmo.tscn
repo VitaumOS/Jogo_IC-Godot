@@ -20,16 +20,17 @@ offset_right = 872.0
 offset_bottom = 484.0
 
 [node name="Background" type="Sprite2D" parent="Esteira" unique_id=1656192740]
-position = Vector2(372.67453, 30.000006)
-scale = Vector2(0.9207567, 0.288)
+position = Vector2(372.67453, 32.645515)
+scale = Vector2(0.9207567, 0.31200004)
 texture = ExtResource("3_sd6ah")
 offset = Vector2(7.545, -27.71)
 
 [node name="AreaAlvo" type="Panel" parent="." unique_id=1347860911]
 offset_left = 425.0
-offset_top = 365.0
+offset_top = 384.0
 offset_right = 465.0
-offset_bottom = 405.0
+offset_bottom = 424.0
+pivot_offset = Vector2(20, 20)
 
 [node name="ArmasContainer" type="Node2D" parent="." unique_id=1822504001]
 

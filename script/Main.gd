@@ -20,7 +20,7 @@ var largura_container: float
 var padroes_corte_salvos: Array = [] 
 var padroes_corte_salvos_valor: Array = [] 
 var padroes_selecionados: Array = [] 
-var labels_qtd_referencia: Array[Label] = [] # Alterado o nome para refletir que são Labels
+var labels_qtd_referencia: Array[Label] = [] 
 
 var PYTHON_PATH = ProjectSettings.globalize_path("res://PythonFiles/venv/Scripts/python.exe")
 var PYTHON_SCRIPT = ProjectSettings.globalize_path("res://PythonFiles/resolve_pcu_pl.py")
@@ -42,31 +42,23 @@ func _ready():
 	if Global.ultimo_desempenho_ritmo >= 0:
 		_finalizar_logica_pulp()
 
-# No Main.gd, dentro do seu _ready ou uma função de atualização de UI
 func _atualizar_display_estoque():
 	$UI/IconeChapa/LabelQtd.text = str(Global.estoque_chapas_extras)
 	
 
 func _configurar_botoes_fixos():
-
 	if not btn_resolver.pressed.is_connected(_resolver_pcu):
 		btn_resolver.pressed.connect(_resolver_pcu)
-	
-
 	if not btn_loja.pressed.is_connected(_on_loja_pressed):
 		btn_loja.pressed.connect(_on_loja_pressed)
-	
 	if not btn_sair.pressed.is_connected(_on_sair_pressed):
 		btn_sair.pressed.connect(_on_sair_pressed)
-	
 	if not btn_contrato_grande.pressed.is_connected(_on_contrato_pressed):
 		btn_contrato_grande.pressed.connect(_on_contrato_pressed)
-
+		
 func _on_loja_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Loja.tscn")
 func _on_sair_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Resumo.tscn")
 func _on_contrato_pressed(): get_tree().change_scene_to_file("res://scene/Cena_contratos.tscn")
-
-
 	
 func _atualizar_ui_estatica():
 	label_dia.text = "DIA: %d" % Global.dia_atual
@@ -83,12 +75,9 @@ func _atualizar_display_contrato():
 			txt += "- %s: %d\n" % [pecas_disponiveis[i].nome, demanda[i]]
 	btn_contrato_grande.text = txt
 
-
 func _carregar_padroes_da_loja():
-	# Limpa a lista visual e as referências antes de carregar
 	for c in vbox_padroes_lista.get_children(): c.queue_free()
 	labels_qtd_referencia.clear()
-	
 	for item in Global.padroes_desbloqueados:
 		if not padroes_corte_salvos.any(func(p): return p.nome == item.nome):
 			_registrar_novo_padrao(item.composicao, item.nome)
@@ -113,7 +102,6 @@ func _registrar_novo_padrao(padrao_numerico: Array, nome_customizado: String):
 		"nome": nome_customizado, 
 		"composicao": padrao_numerico
 	}
-	
 	padroes_corte_salvos_valor.append(padrao_numerico)
 	padroes_corte_salvos.append(dados)
 	padroes_selecionados.append(padroes_corte_salvos.size() - 1)
@@ -122,11 +110,9 @@ func _registrar_novo_padrao(padrao_numerico: Array, nome_customizado: String):
 func _exibir_padrao_na_lista(dados: Dictionary):
 	var h_linha = HBoxContainer.new()
 	h_linha.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	
 	var visual = cena_padrao_corte.instantiate()
 	visual.custom_minimum_size = Vector2(550, 50)
 
-	
 	var container_pecas = visual.get_node("Visualizador_Padrao")
 	for p in dados.pecas:
 		var w = Control.new(); w.custom_minimum_size = Vector2(p.largura_peca, 10)
@@ -156,6 +142,7 @@ func _exibir_padrao_na_lista(dados: Dictionary):
 	
 	h_controles.add_child(btn_menos); h_controles.add_child(lbl_qtd); h_controles.add_child(btn_mais)
 	v_selecao.add_child(lbl_titulo); v_selecao.add_child(h_controles)
+	v_selecao.position = Vector2(-100,0)
 	
 	h_linha.add_child(visual); h_linha.add_child(v_selecao)
 	vbox_padroes_lista.add_child(h_linha)
@@ -169,7 +156,6 @@ func verifica_cortes_usuario() -> bool:
 		var qtd = int(labels_qtd_referencia[i].text)
 		for j in padroes_corte_salvos_valor[i].size(): 
 			total[j] += padroes_corte_salvos_valor[i][j] * qtd
-	
 	for i in demanda.size():
 		if total[i] < demanda[i]: return false
 	return true
@@ -203,7 +189,6 @@ func _finalizar_logica_pulp():
 	for padrao in padroes_corte_salvos_valor:
 		args.append(str(padrao))
 	
-	# 1. Verificar se o jogador tem chapas suficientes no estoque ANTES de processar
 	var z_user = Global.chapas_usadas_pelo_jogador
 	
 	if Global.estoque_chapas_extras < z_user:
@@ -211,7 +196,7 @@ func _finalizar_logica_pulp():
 		_limpar_dados_transicao()
 		return
 
-	# 2. Executar o Solver Python (PuLP)
+	#Executa o Solver Python (PuLP)
 	if OS.execute(PYTHON_PATH, args) == 0:
 		var arquivo = FileAccess.open(OUTPUT_FILE_NAME, FileAccess.READ)
 		var res = JSON.parse_string(arquivo.get_as_text())
@@ -226,8 +211,6 @@ func _finalizar_logica_pulp():
 			Global.registrar_contrato_concluido(Global.contrato_ativo)
 			Global.completar_contrato(otimizou, ritmo)
 			
-			
-			# 5. Feedback Visual
 			if otimizou and ritmo==1.0:
 				_atualizar_texto_resultado("PERFEITO! Usou o mínimo e teve batida perfeita! Ganhou: R$%.2f" %[Global.recompensa_final])
 			elif !otimizou:

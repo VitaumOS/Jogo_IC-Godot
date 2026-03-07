@@ -16,7 +16,6 @@ var CENTRO_TELA = Vector2(450, 450)
 func _ready():
 	var lista_nomes = Global.armas_na_esteira_atual
 	total_pecas = lista_nomes.size()
-	area_alvo.position = Vector2(450, 380)
 	cont.text = ("%d/%d" %[acertos,total_pecas])
 	
 	if total_pecas == 0:
@@ -32,11 +31,9 @@ func _ready():
 		
 		sprite.position = Vector2(1000 + (i * 300), esteira.position.y+25)
 		
-		# Configura Tecla WASD
 		var tecla_sorteada = teclas[randi() % teclas.size()]
 		sprite.set_meta("tecla", tecla_sorteada)
 		
-		# Texto visual da tecla
 		var lbl = Label.new()
 		lbl.text = tecla_sorteada
 		lbl.position = Vector2(-15, -60)
@@ -58,7 +55,7 @@ func preparar_esteira(nomes_armas: Array):
 func _process(delta):
 	for arma in armas_na_fila:
 		arma.position.x -= velocidade * delta
-		if arma.position.x < area_alvo.position.x - 100:
+		if arma.position.x < area_alvo.position.x - 300:
 			_remover_arma(arma, false)
 
 func _atualiza_contador():
@@ -89,7 +86,6 @@ func _remover_arma(arma, sucesso):
 		_atualiza_contador()
 		
 	armas_na_fila.erase(arma)
-	# Efeito simples de sumir
 	var t = create_tween()
 	t.tween_property(arma, "modulate:a", 0.0, 0.2)
 	t.tween_callback(arma.queue_free)
