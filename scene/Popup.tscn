@@ -1,72 +1,83 @@
 [gd_scene format=3 uid="uid://niwiqe2egaiv"]
 
 [ext_resource type="Script" uid="uid://bfsddobccdcyu" path="res://script/popup.gd" id="1_eykc1"]
-[ext_resource type="StyleBox" uid="uid://c1jeoar3pix3q" path="res://modelos/modelo_contrato.tres" id="2_6e60i"]
+[ext_resource type="Texture2D" uid="uid://ccqr7becoqn31" path="res://images/placa_3.png" id="2_6e60i"]
 
-[node name="Control" type="Control" unique_id=1019503320]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 304.0
-offset_top = 288.0
-offset_right = 304.0
-offset_bottom = 288.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bry1k"]
+texture = ExtResource("2_6e60i")
+expand_margin_left = 100.0
+expand_margin_top = 90.0
+expand_margin_right = 100.0
+expand_margin_bottom = 90.0
+
+[node name="PopUp" type="CanvasLayer" unique_id=1294504964]
+process_mode = 3
 script = ExtResource("1_eykc1")
 
-[node name="PopUp" type="CanvasLayer" parent="." unique_id=540076022]
-
-[node name="Background" type="ColorRect" parent="PopUp" unique_id=1372817576]
-visible = false
-offset_left = 304.0
-offset_top = 288.0
-offset_right = 592.0
+[node name="Placa" type="PanelContainer" parent="." unique_id=568186395]
+offset_left = 272.0
+offset_top = 344.0
+offset_right = 632.0
 offset_bottom = 578.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_bry1k")
 
-[node name="Placa" type="PanelContainer" parent="PopUp" unique_id=568186395]
-offset_left = 304.0
-offset_top = 288.0
-offset_right = 592.0
-offset_bottom = 578.0
-theme_override_styles/panel = ExtResource("2_6e60i")
+[node name="Control2" type="Control" parent="." unique_id=821875847]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 505.0
+offset_top = 540.0
+offset_right = 505.0
+offset_bottom = 575.0
+mouse_filter = 1
 
-[node name="VBox" type="VBoxContainer" parent="PopUp/Placa" unique_id=914745123]
-layout_mode = 2
-
-[node name="Control2" type="Control" parent="PopUp/Placa/VBox" unique_id=821875847]
-layout_mode = 2
-
-[node name="Mensagem" type="Label" parent="PopUp/Placa/VBox/Control2" unique_id=1672440580]
-custom_minimum_size = Vector2(0.31, 145.97)
+[node name="Mensagem" type="Label" parent="Control2" unique_id=1672440580]
+custom_minimum_size = Vector2(0.31, 0)
 layout_mode = 0
-offset_left = 40.0
-offset_top = 24.0
-offset_right = 248.0
-offset_bottom = 232.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = -257.0
+offset_top = -108.0
+offset_right = 151.0
+offset_bottom = -12.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 20
-text = "asdasdasdasdasdasdasdasdasdasdsdasd"
+text = "Texto de Teste"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
 
-[node name="Control" type="Control" parent="PopUp/Placa/VBox" unique_id=1263314372]
-layout_mode = 2
+[node name="Control" type="Control" parent="." unique_id=1263314372]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 272.0
+offset_top = 344.0
+offset_right = 632.0
+offset_bottom = 578.0
+mouse_filter = 1
 
-[node name="HBoxBtn" type="HBoxContainer" parent="PopUp/Placa/VBox/Control" unique_id=1129267965]
+[node name="HBoxBtn" type="HBoxContainer" parent="Control" unique_id=1129267965]
 layout_mode = 0
-offset_top = 252.0
-offset_right = 288.0
-offset_bottom = 279.0
+offset_left = -24.0
+offset_top = 196.0
+offset_right = 376.0
+offset_bottom = 231.0
 alignment = 1
 
-[node name="BtnSim" type="Button" parent="PopUp/Placa/VBox/Control/HBoxBtn" unique_id=309139895]
+[node name="BtnSim" type="Button" parent="Control/HBoxBtn" unique_id=309139895]
+process_mode = 3
 layout_mode = 2
 text = "Sim"
 
-[node name="BtnNao" type="Button" parent="PopUp/Placa/VBox/Control/HBoxBtn" unique_id=1079789033]
+[node name="BtnNao" type="Button" parent="Control/HBoxBtn" unique_id=1079789033]
+process_mode = 3
 layout_mode = 2
 text = "Não"
 
-[node name="BtnOk" type="Button" parent="PopUp/Placa/VBox/Control/HBoxBtn" unique_id=30888743]
+[node name="BtnOk" type="Button" parent="Control/HBoxBtn" unique_id=30888743]
+process_mode = 3
 layout_mode = 2
 text = "OK"
+
+[connection signal="pressed" from="Control/HBoxBtn/BtnSim" to="." method="_on_btn_sim_pressed"]
+[connection signal="pressed" from="Control/HBoxBtn/BtnNao" to="." method="_on_btn_nao_pressed"]
+[connection signal="pressed" from="Control/HBoxBtn/BtnOk" to="." method="_on_btn_ok_pressed"]

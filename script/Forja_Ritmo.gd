@@ -19,7 +19,7 @@ func _ready():
 	cont.text = ("%d/%d" %[acertos,total_pecas])
 	
 	if total_pecas == 0:
-		get_tree().change_scene_to_file("res://scene/Main.tscn")
+		get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
 		return
 
 	for i in range(total_pecas):

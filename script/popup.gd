@@ -1,16 +1,13 @@
-extends Control
+extends CanvasLayer
 
 signal resposta(valor: bool)
 
-@onready var label_mensagem = $PopUp/Placa/VBox/Control2/Mensagem
-@onready var btn_sim = $PopUp/Placa/VBox/Control/HBoxBtn/BtnSim
-@onready var btn_nao = $PopUp/Placa/VBox/Control/HBoxBtn/BtnNao
-@onready var btn_ok = $PopUp/Placa/VBox/Control/HBoxBtn/BtnOk
+@onready var label_mensagem = $Control2/Mensagem
+@onready var btn_sim = $Control/HBoxBtn/BtnSim
+@onready var btn_nao = $Control/HBoxBtn/BtnNao
+@onready var btn_ok = $Control/HBoxBtn/BtnOk
 
 func _ready():
-	btn_sim.pressed.connect(_on_btn_sim_pressed)
-	btn_nao.pressed.connect(_on_btn_nao_pressed)
-	btn_ok.pressed.connect(_on_btn_ok_pressed)
 	visible = false
 
 ## Função para apenas exibir uma mensagem com botão OK
@@ -31,18 +28,27 @@ func mostrar_confirmacao(texto: String):
 
 func _abrir():
 	visible = true
-	var tween = create_tween()
-	$PopUp/Placa.scale = Vector2.ZERO
-	tween.tween_property($PopUp/Placa, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_BACK)
+	get_tree().paused = true
+	
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS) # Garante que a animação rode no pause
+	$Placa.scale = Vector2.ZERO
+	tween.tween_property($Placa, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_BACK)
+
+func _fechar_e_retornar():
+	# 1. Verificamos se o nó ainda está na árvore antes de acessar o tree
+	if is_inside_tree():
+		get_tree().paused = false 
+	
+	visible = false
 
 func _on_btn_sim_pressed():
 	resposta.emit(true)
-	queue_free()
-	
+	_fechar_e_retornar()
+
 func _on_btn_nao_pressed():
 	resposta.emit(false)
-	queue_free()
+	_fechar_e_retornar()
 
 func _on_btn_ok_pressed():
 	resposta.emit(true)
-	queue_free()
+	_fechar_e_retornar()

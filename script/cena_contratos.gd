@@ -4,8 +4,9 @@ extends Control
 @export var cena_botao_ui: PackedScene
 
 @onready var container_contratos = $UI/ScrollContainer/VBoxContratos
-@onready var btn = $UI/BtnVoltar
+@onready var btn_voltar = $UI/BtnVoltar
 @onready var label_dinheiro = $UI/LabelDinheiro
+@onready var popup = $PopUp
 
 #variavel inicial, somente para testes
 var lista_contratos = []
@@ -15,10 +16,9 @@ func _ready():
 	
 	_atualizar_ui_dinheiro()
 	_gerar_lista_contratos()
-	_configurar_botoes_navegacao()
 
 func _atualizar_ui_dinheiro():
-	if label_dinheiro: label_dinheiro.text = "R$ %d" % Global.dinheiro
+	label_dinheiro.text = "R$ %d" % Global.dinheiro
 
 func _gerar_lista_contratos():
 	for c in container_contratos.get_children(): c.queue_free()
@@ -28,10 +28,6 @@ func _gerar_lista_contratos():
 
 	for contrato in lista_contratos: gerar_contrato(contrato)
 
-func _configurar_botoes_navegacao():
-	
-	btn.text = "Voltar ao Menu" 
-	btn.pressed.connect(_on_voltar_pressed)
 
 		
 ##Gera um contrato para a página de contratos
@@ -75,11 +71,15 @@ func gerar_contrato(contrato):
 	container_contratos.add_child(card)	
 
 func _aceitar_contrato(contrato_escolhido):
-	var popup = Global.PREFAB_POPUP.instantiate()
-	add_child(popup)
-	popup.mostrar_mensagem("Contrato aceito!")
-	Global.contrato_ativo = contrato_escolhido
 	
+	#popup.mostrar_mensagem("Contrato Aceito!")
+	#var confirma = await popup.resposta
+	#if confirma:
+	Global.contrato_ativo = contrato_escolhido
+	_on_voltar_pressed()
 
 func _on_voltar_pressed():
 	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
+
+func _on_btn_voltar_pressed() -> void:
+	_on_voltar_pressed()

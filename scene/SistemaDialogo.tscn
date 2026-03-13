@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dnci0t7lpn3u5"]
+
+[ext_resource type="Script" uid="uid://blf1qegii74ss" path="res://script/SistemaDialogo.gd" id="1_ij1vx"]
+[ext_resource type="Texture2D" uid="uid://dnhdenmr0eu8c" path="res://Sprite/gatinhos/NekoJorge.png" id="2_qn2xm"]
+[ext_resource type="Texture2D" uid="uid://bot8j6y37hdl0" path="res://images/pergaminho.png" id="3_6anm4"]
+
+[node name="SistemaDialogo" type="CanvasLayer" unique_id=477801998]
+script = ExtResource("1_ij1vx")
+
+[node name="RetratoControl" type="Control" parent="." unique_id=118587594]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 688.0
+offset_right = 16.0
+offset_bottom = 872.0
+
+[node name="RetratoSprite" type="TextureRect" parent="RetratoControl" unique_id=246108845]
+layout_mode = 0
+offset_left = 488.0
+offset_top = -320.0
+offset_right = 800.0
+offset_bottom = -8.0
+texture = ExtResource("2_qn2xm")
+expand_mode = 5
+
+[node name="Background" type="TextureRect" parent="." unique_id=893882926]
+offset_left = -48.0
+offset_top = 528.0
+offset_right = 920.0
+offset_bottom = 864.0
+texture = ExtResource("3_6anm4")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="." unique_id=1186265395]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 544.0
+offset_right = 116.0
+offset_bottom = 576.0
+
+[node name="NomeLabel" type="Label" parent="Control" unique_id=828267703]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 736.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 29
+text = "Gato"
+
+[node name="TextoLabel" type="RichTextLabel" parent="Control" unique_id=1209306460]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 744.0
+offset_bottom = 232.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "Texto genérico aqui pra testar um monte de coisa ner
+"
+fit_content = true
+autowrap_mode = 2
+
+[node name="SetaPassar" type="TextureRect" parent="." unique_id=467913938]
+offset_left = 828.0
+offset_top = 744.0
+offset_right = 868.0
+offset_bottom = 784.0

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://shbv5578mx2h"]
+
+[ext_resource type="Script" uid="uid://1sopopv3cr6k" path="res://script/telainicial.gd" id="1_jvgit"]
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_sl5yf"]
+[ext_resource type="StyleBox" uid="uid://c1laj21bixtl" path="res://modelos/modelo_botao_2.tres" id="3_sl5yf"]
+
+[node name="Telainicial" type="Control" unique_id=494973562]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jvgit")
+
+[node name="Background" type="TextureRect" parent="." unique_id=353547432]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("2_sl5yf")
+expand_mode = 1
+
+[node name="LogoJogo" type="Label" parent="." unique_id=878677476]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 900.0
+offset_bottom = 322.0
+theme_override_font_sizes/font_size = 132
+text = "NekoJorge"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuBotoes" type="VBoxContainer" parent="." unique_id=1144824196]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 541.0
+offset_right = 811.0
+offset_bottom = 748.0
+
+[node name="BtnJogar" type="Button" parent="MenuBotoes" unique_id=1265485227]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_sl5yf")
+text = "Iniciar Jogo"
+
+[node name="HSeparator" type="HSeparator" parent="MenuBotoes" unique_id=1472345835]
+modulate = Color(0, 0, 0, 0)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BtnOpcoes" type="Button" parent="MenuBotoes" unique_id=1363676767]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_sl5yf")
+text = "Opções"
+
+[node name="HSeparator2" type="HSeparator" parent="MenuBotoes" unique_id=1877227195]
+modulate = Color(0, 0, 0, 0)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BtnSair" type="Button" parent="MenuBotoes" unique_id=1758298611]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_sl5yf")
+text = "Sair"
+
+[node name="VersaoBael" type="Label" parent="." unique_id=376734861]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 839.0
+offset_right = 874.0
+offset_bottom = 863.0
+text = "V0.1 - Teste"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MenuBotoes/BtnJogar" to="." method="_on_btn_jogar_pressed"]
+[connection signal="pressed" from="MenuBotoes/BtnOpcoes" to="." method="_on_btn_opcoes_pressed"]
+[connection signal="pressed" from="MenuBotoes/BtnSair" to="." method="_on_btn_sair_pressed"]

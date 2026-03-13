@@ -23,7 +23,6 @@ var pecas_disponiveis: Array = [
 	{"nome": "Lança", "largura": 220.0, "caminho_textura": "res://Sprite/lanca.png"}
 ]
 
-const PREFAB_POPUP = preload("res://scene/Popup.tscn")
 
 var contratos_disponiveis: Array = []
 var padroes_na_loja: Array = []

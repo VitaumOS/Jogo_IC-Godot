@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b6if7jes5m0v4"]
+
+[ext_resource type="Script" uid="uid://drbm1p0vl1sck" path="res://script/linhaListaPadrao.gd" id="1_4tggn"]
+[ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/Padrao_Corte.tscn" id="1_cvc00"]
+
+[node name="LinhaListaPadrao" type="HBoxContainer" unique_id=1823299021]
+offset_right = 598.0
+offset_bottom = 41.0
+theme_override_constants/separation = 4
+script = ExtResource("1_4tggn")
+
+[node name="EspaçadorVisual" type="MarginContainer" parent="." unique_id=838465071]
+layout_mode = 2
+
+[node name="Control" parent="EspaçadorVisual" unique_id=1343394717 instance=ExtResource("1_cvc00")]
+custom_minimum_size = Vector2(8.46, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="." unique_id=458382069]
+layout_mode = 2
+
+[node name="ControlesQuantidade" type="VBoxContainer" parent="Control" unique_id=1927556592]
+layout_mode = 0
+offset_left = 533.0
+offset_right = 586.0
+offset_bottom = 50.0
+alignment = 1
+
+[node name="lblTitulo" type="Label" parent="Control/ControlesQuantidade" unique_id=2009286401]
+layout_mode = 2
+text = "Qtd"
+horizontal_alignment = 1
+
+[node name="HBoxBotoes" type="HBoxContainer" parent="Control/ControlesQuantidade" unique_id=1441030852]
+layout_mode = 2
+
+[node name="btnMenos" type="Button" parent="Control/ControlesQuantidade/HBoxBotoes" unique_id=604155571]
+layout_mode = 2
+text = "-"
+
+[node name="lblQtd" type="Label" parent="Control/ControlesQuantidade/HBoxBotoes" unique_id=919808864]
+layout_mode = 2
+text = "0"
+
+[node name="btnMais" type="Button" parent="Control/ControlesQuantidade/HBoxBotoes" unique_id=1522758180]
+layout_mode = 2
+text = "+"
+
+[connection signal="pressed" from="Control/ControlesQuantidade/HBoxBotoes/btnMenos" to="." method="_on_btn_menos_pressed"]
+[connection signal="pressed" from="Control/ControlesQuantidade/HBoxBotoes/btnMais" to="." method="_on_btn_mais_pressed"]
