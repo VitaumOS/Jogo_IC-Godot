@@ -1,6 +1,6 @@
 extends Node2D
 
-# --- CENAS EXPORTADAS ---
+
 @export var cena_linha_padrao: PackedScene
 
 # --- REFERÊNCIAS DE NÓS ---
@@ -24,13 +24,33 @@ const OUTPUT_FILE_NAME = "res://pulp_solution.json"
 func _ready():
 	add_to_group("main_logic")
 	demanda = Global.contrato_ativo.demanda if Global.contrato_ativo else [0,0,0,0,0,0]
-	
 	_carregar_padroes_da_loja()
 	_atualizar_ui_estatica()
 	_atualizar_display_contrato()
 	
-	if Global.ultimo_desempenho_ritmo >= 0:
+	if Global.ultimo_desempenho_ritmo < 0:
+		_verificar_dialogo_diario()
+	else:
 		_finalizar_logica_pulp()
+
+func _verificar_dialogo_diario():
+	if Global.deve_exibir_dialogo_do_dia():
+		var todos_dialogos = _carregar_json("res://data_json/dialogos.json")
+		var dia_str = str(Global.dia_atual)
+		
+		if todos_dialogos.has(dia_str):
+			var falas_do_dia = todos_dialogos[dia_str]
+			if has_node("/root/Dialogo"):
+				for fala in falas_do_dia:
+					if fala.has("retrato"):
+						fala["retrato"] = load(fala["retrato"])
+				Dialogo.iniciar_dialogo(falas_do_dia)
+
+# Função auxiliar de carregamento (caso não tenha no Main, pode usar a do Global)
+func _carregar_json(caminho: String) -> Dictionary:
+	if not FileAccess.file_exists(caminho): return {}
+	var arquivo = FileAccess.open(caminho, FileAccess.READ)
+	return JSON.parse_string(arquivo.get_as_text())
 
 func _carregar_padroes_da_loja():
 	for c in vbox_padroes_lista.get_children(): 
@@ -109,7 +129,7 @@ func _preparar_e_iniciar_forja():
 func _atualizar_ui_estatica():
 	label_dia.text = "DIA: %d" % Global.dia_atual
 	label_dinheiro.text = "R$ %d" % Global.dinheiro
-	lbl_estoque_chapas.text = "Chapas: %d" % Global.estoque_chapas_extras
+	lbl_estoque_chapas.text = "Chapas: %d" % Global.estoque_chapas
 
 func _atualizar_display_contrato():
 	if not Global.contrato_ativo:
@@ -123,7 +143,7 @@ func _atualizar_display_contrato():
 
 func _finalizar_logica_pulp():
 	var z_user = Global.chapas_usadas_pelo_jogador
-	if Global.estoque_chapas_extras < z_user:
+	if Global.estoque_chapas < z_user:
 		rotulo_feedback.text = "FALHA: Chapas insuficientes!"
 		_limpar_dados_transicao()
 		return
@@ -136,7 +156,7 @@ func _finalizar_logica_pulp():
 		var res = JSON.parse_string(arquivo.get_as_text())
 		if res and res.get("status") == "Optimal":
 			var z_pulp = res["chapas_usadas"]
-			Global.estoque_chapas_extras -= z_user
+			Global.estoque_chapas -= z_user
 			Global.registrar_contrato_concluido(Global.contrato_ativo)
 			Global.completar_contrato(z_user <= z_pulp, Global.ultimo_desempenho_ritmo)
 			rotulo_feedback.text = "Contrato Concluído! Ganhou: R$%.2f" % Global.recompensa_final

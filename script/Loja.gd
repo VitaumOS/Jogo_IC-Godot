@@ -1,13 +1,10 @@
 extends Control
 
-const PRECO_PADRAO = 150
-
 ## Cena do botão customizado vinda do Inspector
 @export var cena_botao_ui: PackedScene
 
 @onready var label_dinheiro = $UI/HBoxContainer/LabelDinheiro
 @onready var container_itens = $UI/ScrollContainer/VBoxItens
-@onready var btn_voltar: Button= $UI/BtnVoltar
 @onready var label_feedback = $UI/LabelFeedback
 @onready var lbl_estoque_chapas = $UI/HBoxContainer/LabelQuantidade
 @onready var btn_comprar_chapa = $UI/PainelChapas/BtnComprarChapa 
@@ -17,39 +14,29 @@ var catalogo_loja = []
 
 func _ready():
 	catalogo_loja = Global.padroes_na_loja
-	container_itens.custom_minimum_size= Vector2(800,80)
-	_gerar_itens_loja()
-	btn_voltar.pressed.connect(_on_voltar_pcu)
-	_configurar_compra_chapa()
-	_atualizar_display()
-	
-func _configurar_compra_chapa():
 	btn_comprar_chapa.text = "Comprar Chapas (R$ %d)" % Global.preco_chapa
-	if not btn_comprar_chapa.pressed.is_connected(_comprar_chapa_extra):
-		btn_comprar_chapa.pressed.connect(_comprar_chapa_extra)
+	_gerar_itens_loja()
+	_atualizar_display()
 
-func _comprar_chapa_extra():
+func _comprar_chapa():
 	if Global.dinheiro >= Global.preco_chapa:
 		Global.dinheiro -= Global.preco_chapa
-		Global.estoque_chapas_extras += 1
+		Global.estoque_chapas += 1
 		_atualizar_display()
 		label_feedback.text = "Chapa extra adquirida!"
 	else:
 		label_feedback.text = "Saldo insuficiente para chapa!"
 
 func _atualizar_display():
-	lbl_estoque_chapas.text = "Chapas: %d" % Global.estoque_chapas_extras
+	lbl_estoque_chapas.text = "Chapas: %d" % Global.estoque_chapas
 	label_dinheiro.text = "R$ %d" % Global.dinheiro
 	
-
 ## Retorna para a cena principal
 func _on_voltar_pcu():
 	if get_tree().change_scene_to_file("res://scene/Cena_1.tscn") != OK: print("Erro ao carregar cena")
 
-
 func _gerar_itens_loja():
 	for c in container_itens.get_children(): c.queue_free()
-		
 	for item in Global.padroes_na_loja:
 		var card = PanelContainer.new(); card.custom_minimum_size.y = 100
 		var h_box = HBoxContainer.new(); card.add_child(h_box)

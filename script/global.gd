@@ -1,35 +1,36 @@
 extends Node
 
-#Variaveis
+const CUSTO_DIARIO = 200
+
 var tamanho_container: float = 500.0
 var dia_atual: int = 1
-var dinheiro: int = 1000
+var dinheiro: int = 500
 var ganhos_do_dia: int = 0
-const CUSTO_DIARIO = 200
-var estoque_chapas_extras: int = 0
+var estoque_chapas: int = 0
 var preco_chapa: int = 100 
 var recompensa_final: float = 0
 
-var armas_na_esteira_atual: Array = []
 var chapas_usadas_pelo_jogador: int = 0
 var ultimo_desempenho_ritmo: float = -1.0 
 
 var pecas_disponiveis: Array = [
-	{"nome": "Adaga", "largura": 50.0, "caminho_textura": "res://Sprite/adaga.png"},
-	{"nome": "Espada M", "largura": 95.0, "caminho_textura": "res://Sprite/Esp_Larg.png"},
-	{"nome": "Espada G", "largura": 130.0, "caminho_textura": "res://Sprite/Esp_Grande.png"},
-	{"nome": "Machado", "largura": 90.0, "caminho_textura": "res://Sprite/machado.png"},
-	{"nome": "Arco", "largura": 160.0, "caminho_textura": "res://Sprite/arco.png"},
-	{"nome": "Lança", "largura": 220.0, "caminho_textura": "res://Sprite/lanca.png"}
+	{"nome": "Adaga", "largura": 53.0, "caminho_textura": "res://Sprite/adaga.png"},
+	{"nome": "Espada M", "largura": 97.0, "caminho_textura": "res://Sprite/Esp_Larg.png"},
+	{"nome": "Espada G", "largura": 123.0, "caminho_textura": "res://Sprite/Esp_Grande.png"},
+	{"nome": "Machado", "largura": 89.0, "caminho_textura": "res://Sprite/machado.png"},
+	{"nome": "Arco", "largura": 167.0, "caminho_textura": "res://Sprite/arco.png"},
+	{"nome": "Lança", "largura": 211.0, "caminho_textura": "res://Sprite/lanca.png"}
 ]
 
+var dialogos_vistos_hoje: Dictionary = {}
 
 var contratos_disponiveis: Array = []
 var padroes_na_loja: Array = []
-
-var contrato_ativo = null
+var armas_na_esteira_atual: Array = []
 var padroes_desbloqueados: Array = []
 var contratos_concluidos: Array = []
+
+var contrato_ativo = null
 
 func _ready():
 	gerar_conteudo_do_dia()
@@ -38,10 +39,16 @@ func registrar_contrato_concluido(contrato):
 	if not contratos_concluidos.has(contrato):
 		contratos_concluidos.append(contrato)
 
+func deve_exibir_dialogo_do_dia() -> bool:
+	if not dialogos_vistos_hoje.has(dia_atual):
+		dialogos_vistos_hoje[dia_atual] = true
+		return true
+	return false
+
 ## Função para consumir a chapa
 func usar_chapa_extra():
-	if estoque_chapas_extras > 0:
-		estoque_chapas_extras -= 1
+	if estoque_chapas > 0:
+		estoque_chapas -= 1
 		return true
 	return false
 	

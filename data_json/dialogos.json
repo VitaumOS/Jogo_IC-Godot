@@ -1,0 +1,23 @@
+{
+  "1": [
+    {"nome": "Mestre Gato", "texto": "Miau! Começamos a semana. Os contratos iniciais são simples, foca-te em aprender o ritmo.", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+  ],
+  "2": [
+    {"nome": "Mestre Gato", "texto": "As encomendas estão a crescer. Se gastares chapas sem pensar, o ouro não vai chegar para os novos padrões!", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+  ],
+  "3": [
+    {"nome": "Mestre Gato", "texto": "Atenção Jorge! A partir de hoje as contas têm de ser exatas. Usa o Solver, ou as sobras de metal vão levar-nos à falência!", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+  ],
+  "4": [
+    {"nome": "Mestre Gato", "texto": "Metade do caminho! O mercado quer armas maiores. Já passaste na loja para ver as novidades?", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+  ],
+  "5": [
+    {"nome": "Mestre Gato", "texto": "Os cavaleiros reais são exigentes. Um erro no corte hoje e perdemos o lucro da semana toda.", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+  ],
+  "6": [
+    {"nome": "Mestre Gato", "texto": "Estamos quase lá. Amanhã é o grande dia do Ducado. Prepara o teu melhor aço.", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+  ],
+  "7": [
+    {"nome": "Mestre Gato", "texto": "O dia final! Mostra a todos que és o ferreiro mais eficiente destas terras. Boa sorte!", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+  ]
+}

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bf7ivebfxw2wm"]
+
+[ext_resource type="Texture2D" uid="uid://b0covusih4ypb" path="res://Sprite/adaga.png" id="1_juvp8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k8yr"]
+size = Vector2(10, 14)
+
+[node name="PecaRitmo" type="Node2D" unique_id=1237597533]
+position = Vector2(0, -2)
+
+[node name="Arma" type="Sprite2D" parent="." unique_id=509852646]
+position = Vector2(0, 70)
+scale = Vector2(0.55250007, 0.72999984)
+texture = ExtResource("1_juvp8")
+
+[node name="AreaLetra" type="Area2D" parent="." unique_id=1419380839]
+
+[node name="Letra" type="Label" parent="AreaLetra" unique_id=582828041]
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 11.0
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Colisao" type="CollisionShape2D" parent="AreaLetra" unique_id=1868013224]
+shape = SubResource("RectangleShape2D_1k8yr")

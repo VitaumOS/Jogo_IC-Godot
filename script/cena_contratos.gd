@@ -22,10 +22,8 @@ func _atualizar_ui_dinheiro():
 
 func _gerar_lista_contratos():
 	for c in container_contratos.get_children(): c.queue_free()
-	
 	container_contratos.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	container_contratos.size_flags_vertical = Control.SIZE_EXPAND_FILL
-
 	for contrato in lista_contratos: gerar_contrato(contrato)
 
 

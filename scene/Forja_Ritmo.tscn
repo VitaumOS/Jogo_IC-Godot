@@ -3,9 +3,14 @@
 [ext_resource type="Script" uid="uid://bvryhcfe4u3sh" path="res://script/Forja_Ritmo.gd" id="1_1oy20"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_ooc03"]
 [ext_resource type="Texture2D" uid="uid://ukp4n3dlw7r8" path="res://images/cobre.png" id="3_sd6ah"]
+[ext_resource type="PackedScene" uid="uid://bf7ivebfxw2wm" path="res://scene/Cena_peca_ritmo.tscn" id="4_4vvbd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sd6ah"]
+size = Vector2(40, 40)
 
 [node name="ForjaRitmo" type="Node2D" unique_id=377505144]
 script = ExtResource("1_1oy20")
+cena_peca_ritmo = ExtResource("4_4vvbd")
 
 [node name="Background" type="TextureRect" parent="." unique_id=2012359238]
 offset_right = 900.0
@@ -25,14 +30,27 @@ scale = Vector2(0.9207567, 0.31200004)
 texture = ExtResource("3_sd6ah")
 offset = Vector2(7.545, -27.71)
 
-[node name="AreaAlvo" type="Panel" parent="." unique_id=1347860911]
-offset_left = 425.0
-offset_top = 384.0
-offset_right = 465.0
-offset_bottom = 424.0
-pivot_offset = Vector2(20, 20)
+[node name="AreaAlvo" type="Area2D" parent="." unique_id=381046131]
+position = Vector2(449, 380)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAlvo" unique_id=1199386157]
+visibility_layer = 3
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_sd6ah")
+debug_color = Color(0.10980392, 0.54509807, 0.92156863, 1)
+
+[node name="ColorRect" type="ColorRect" parent="AreaAlvo" unique_id=921005268]
+offset_left = -20.0
+offset_top = -9.0
+offset_right = 20.0
+offset_bottom = 31.0
+color = Color(0.32941177, 0.32941177, 0.32941177, 0.7411765)
 
 [node name="ArmasContainer" type="Node2D" parent="." unique_id=1822504001]
+
+[node name="PecaRitmo" parent="ArmasContainer" unique_id=1237597533 instance=ExtResource("4_4vvbd")]
+visible = false
+position = Vector2(429, 392)
 
 [node name="FeedbackLabel" type="Label" parent="." unique_id=1915888874]
 offset_left = 16.0

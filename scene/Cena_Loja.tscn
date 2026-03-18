@@ -41,6 +41,7 @@ offset_right = 851.0
 offset_bottom = 760.0
 
 [node name="VBoxItens" type="VBoxContainer" parent="UI/ScrollContainer" unique_id=952896832]
+custom_minimum_size = Vector2(800, 80)
 layout_mode = 2
 
 [node name="PainelChapas" type="Node2D" parent="UI" unique_id=687913666]
@@ -93,3 +94,6 @@ offset_right = 187.0
 offset_bottom = 847.0
 theme_override_styles/normal = ExtResource("3_mypxv")
 text = "Voltar ao Jogo"
+
+[connection signal="pressed" from="UI/PainelChapas/BtnComprarChapa" to="." method="_comprar_chapa"]
+[connection signal="pressed" from="UI/BtnVoltar" to="." method="_on_voltar_pcu"]
