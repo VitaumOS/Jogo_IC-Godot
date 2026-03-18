@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://diuv07vponv35"]
 
 [ext_resource type="Script" uid="uid://nqmv7wb7vd20" path="res://script/cena_contratos.gd" id="1_lx4bj"]
-[ext_resource type="PackedScene" uid="uid://cuuxi8q0r6481" path="res://scene/ButtonUI.tscn" id="2_kegxw"]
+[ext_resource type="PackedScene" uid="uid://bk2cgr6pirs1o" path="res://scene/Card_Contratos.tscn" id="2_jgr8c"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_76e4m"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_yji0f"]
 [ext_resource type="PackedScene" uid="uid://niwiqe2egaiv" path="res://scene/Popup.tscn" id="5_jgr8c"]
@@ -10,7 +10,7 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_lx4bj")
-cena_botao_ui = ExtResource("2_kegxw")
+card_contrato = ExtResource("2_jgr8c")
 
 [node name="Background" type="TextureRect" parent="." unique_id=665838833]
 layout_mode = 0
@@ -46,6 +46,8 @@ offset_bottom = 860.0
 
 [node name="VBoxContratos" type="VBoxContainer" parent="UI/ScrollContainer" unique_id=1797218846]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="BtnVoltar" type="Button" parent="UI" unique_id=1163623123]
 layout_mode = 0

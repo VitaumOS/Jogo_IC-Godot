@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bk2cgr6pirs1o"]
+
+[node name="Node2D" type="PanelContainer" unique_id=358080767]
+custom_minimum_size = Vector2(320, 150)
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=979367962]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=1870603455]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Nome" type="Label" parent="Margin/VBox" unique_id=146723028]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "📜"
+horizontal_alignment = 1
+
+[node name="Demanda" type="Label" parent="Margin/VBox" unique_id=2068101297]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Pedido:
+"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Valor" type="Label" parent="Margin/VBox" unique_id=1952062046]
+modulate = Color(0, 1, 0.7294118, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Pagamento: R$"
+horizontal_alignment = 1
+
+[node name="Btn" type="Button" parent="Margin/VBox" unique_id=678981136]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+text = "Aceitar Contrato"
