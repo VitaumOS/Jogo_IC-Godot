@@ -1,23 +1,82 @@
 {
   "1": [
-    {"nome": "Mestre Gato", "texto": "Miau! Começamos a semana. Os contratos iniciais são simples, foca-te em aprender o ritmo.", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+    {
+      "nome": "Jorge",
+      "texto": "Ah! Mais um dia de trabalho! O que será que o Mestre vai ter para mim hoje?",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Mestre Gato",
+      "texto": "[wave amp=30 freq=3]Miau![/wave] Escuta com atenção, Jorge. Recebi um chamado real e ficarei fora por [b]7 dias[/b]. A ferraria está em suas patas agora!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "S-Sete dias?! Mas Mestre... eu ainda me perco nos cálculos das chapas, não sou bom o suficiente com isso!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Mestre Gato",
+      "texto": "Não tema, Jorge! Confio em você, só não faça essa ferraria falir nesses 7 dias, ok? FUI!.",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "[wave amp=30 freq=3]...[/wave]",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "V-Vamos ver o que consigo fazer hoje!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    }
   ],
   "2": [
-    {"nome": "Mestre Gato", "texto": "As encomendas estão a crescer. Se gastares chapas sem pensar, o ouro não vai chegar para os novos padrões!", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+    {
+      "nome": "Jorge",
+      "texto": "O Mestre partiu... [shake rate=10 level=5]ai de mim![/shake] As encomendas já estão aumentando. Preciso otimizar esses cortes ou o estoque não vai durar.",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "E Parece que chegou novas armas pra fazer!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    }
   ],
   "3": [
-    {"nome": "Mestre Gato", "texto": "Atenção Jorge! A partir de hoje as contas têm de ser exatas. Usa o Solver, ou as sobras de metal vão levar-nos à falência!", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
-  ],
-  "4": [
-    {"nome": "Mestre Gato", "texto": "Metade do caminho! O mercado quer armas maiores. Já passaste na loja para ver as novidades?", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+    {
+      "nome": "Jorge",
+      "texto": "Meu Deus, não [shake rate=10 level=5]DÁ[/shake] pra fazer isso de cabeça mais!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Já sei! Vou precisar usar aquela ferramenta que o chefe me ensinou a usar! O PuLP!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    }
   ],
   "5": [
-    {"nome": "Mestre Gato", "texto": "Os cavaleiros reais são exigentes. Um erro no corte hoje e perdemos o lucro da semana toda.", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
-  ],
-  "6": [
-    {"nome": "Mestre Gato", "texto": "Estamos quase lá. Amanhã é o grande dia do Ducado. Prepara o teu melhor aço.", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+    {
+      "nome": "Jorge",
+      "texto": "Só mais 3 dias...só mais 3 dias......",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Só....mais......3[wave amp=30 freq=3]...[/wave][wave amp=40 freq=3]...[/wave][wave amp=50 freq=3]...[/wave]",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "[shake rate=10 level=5]EITA![/shake]Quase apaguei!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    }
   ],
   "7": [
-    {"nome": "Mestre Gato", "texto": "O dia final! Mostra a todos que és o ferreiro mais eficiente destas terras. Boa sorte!", "retrato": "res://Sprite/gatinhos/Ferreiro.png"}
+    {
+      "nome": "Jorge",
+      "texto": "[rainbow freq=0.5 sat=0.6 val=0.9]O sétimo dia![/rainbow] É o teste final da demo. Se eu for eficiente hoje, provarei que posso cuidar da ferraria até o Mestre voltar!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    }
   ]
 }

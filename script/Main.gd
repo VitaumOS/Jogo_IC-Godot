@@ -9,7 +9,6 @@ extends Node2D
 @onready var label_dinheiro = $UI/Topo/DinheiroPanel
 @onready var lbl_estoque_chapas = $UI/Topo/LabelQuantidade
 @onready var btn_contrato_visual = $UI/Controle_Corpo/CorpoCentral/LadoEsquerdo/BotaoContratoGrande
-@onready var rotulo_feedback = $UI/FeedbackLabel
 @onready var popup = $PopUp
 
 # --- VARIÁVEIS DE LÓGICA ---
@@ -102,13 +101,22 @@ func get_total_chapas_usadas() -> int:
 	return soma
 
 func _on_resolver_pressed():
-	#popup.mostrar_confirmacao("Deseja iniciar o corte com esses padrões?")
-	#if !await popup.resposta: return
+	popup.mostrar_confirmacao("Deseja iniciar o corte?")
+	var confirma = await popup.resposta 
 	
-	if Global.contrato_ativo == null or !verifica_cortes_usuario():
-		rotulo_feedback.text = "Erro: Cortes insuficientes!"
-		return
-	_preparar_e_iniciar_forja()
+	if confirma:
+		if !verifica_cortes_usuario():
+			popup.mostrar_mensagem_erro("Cortes insuficientes!")
+			return
+		elif Global.contrato_ativo == null:
+			popup.mostrar_mensagem_erro("Nenhum contrato foi solicitado!")
+			return
+		elif get_total_chapas_usadas()>Global.estoque_chapas:
+			popup.mostrar_mensagem_erro("Chapas insuficientes!")
+			return
+		
+		
+		_preparar_e_iniciar_forja()
 
 func _preparar_e_iniciar_forja():
 	var lista_para_forjar = []
@@ -144,7 +152,6 @@ func _atualizar_display_contrato():
 func _finalizar_logica_pulp():
 	var z_user = Global.chapas_usadas_pelo_jogador
 	if Global.estoque_chapas < z_user:
-		rotulo_feedback.text = "FALHA: Chapas insuficientes!"
 		_limpar_dados_transicao()
 		return
 
@@ -159,7 +166,7 @@ func _finalizar_logica_pulp():
 			Global.estoque_chapas -= z_user
 			Global.registrar_contrato_concluido(Global.contrato_ativo)
 			Global.completar_contrato(z_user <= z_pulp, Global.ultimo_desempenho_ritmo)
-			rotulo_feedback.text = "Contrato Concluído! Ganhou: R$%.2f" % Global.recompensa_final
+			popup.mostrar_conclusao_contrato()
 
 	_limpar_dados_transicao()
 

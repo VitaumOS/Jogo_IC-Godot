@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dd0ohe51j087n"]
+
+[ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/Padrao_Corte.tscn" id="1_g54nd"]
+
+[node name="Card" type="PanelContainer" unique_id=286221418]
+custom_minimum_size = Vector2(0, 100)
+offset_right = 784.0
+offset_bottom = 100.0
+
+[node name="HBox" type="HBoxContainer" parent="." unique_id=19104466]
+layout_mode = 2
+
+[node name="Control2" parent="HBox" unique_id=1343394717 instance=ExtResource("1_g54nd")]
+custom_minimum_size = Vector2(530, 79.125)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="VInfo" type="VBoxContainer" parent="HBox" unique_id=773375079]
+custom_minimum_size = Vector2(246.635, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="HBox/VInfo" unique_id=1296401988]
+layout_mode = 2
+text = "Comprar (R$ %d)"
+
+[node name="Label" type="Label" parent="HBox/VInfo" unique_id=1266618805]
+layout_mode = 2
+text = "Item"
+horizontal_alignment = 1

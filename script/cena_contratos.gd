@@ -53,11 +53,11 @@ func gerar_contrato(contrato):
 
 func _aceitar_contrato(contrato_escolhido):
 	
-	#popup.mostrar_mensagem("Contrato Aceito!")
-	#var confirma = await popup.resposta
-	#if confirma:
-	Global.contrato_ativo = contrato_escolhido
-	_on_voltar_pressed()
+	popup.mostrar_confirmacao("Deseja escolher esse contrato?")
+	var confirma = await popup.resposta 
+	if confirma:
+		Global.contrato_ativo = contrato_escolhido
+		_on_voltar_pressed()
 
 func _on_voltar_pressed():
 	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")

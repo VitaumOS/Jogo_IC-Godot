@@ -1,7 +1,7 @@
 extends Control
 
 ## Cena do botão customizado vinda do Inspector
-@export var cena_botao_ui: PackedScene
+@export var cena_card: PackedScene
 
 @onready var label_dinheiro = $UI/HBoxContainer/LabelDinheiro
 @onready var container_itens = $UI/ScrollContainer/VBoxItens
@@ -38,33 +38,17 @@ func _on_voltar_pcu():
 func _gerar_itens_loja():
 	for c in container_itens.get_children(): c.queue_free()
 	for item in Global.padroes_na_loja:
-		var card = PanelContainer.new(); card.custom_minimum_size.y = 100
-		var h_box = HBoxContainer.new(); card.add_child(h_box)
-
-		var vis = Control.new() 
-		vis.custom_minimum_size = Vector2(500, 60) 
-		vis.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	
-		var bg = ColorRect.new() 
-		bg.color = Color(1, 1, 1, 0.1) 
-		bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		
-		var p_hbox = HBoxContainer.new() 
-		p_hbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT) 
-		p_hbox.add_theme_constant_override("separation", 2)
-		
-		vis.add_child(bg); vis.add_child(p_hbox); 
+		var card = cena_card.instantiate()
+		var p_hbox = card.find_child("Control2").find_child("Visualizador_Padrao")
 		
 		_renderizar_previa_no_card(p_hbox, item.composicao); 
-		h_box.add_child(vis)
-		
-		var v_info = VBoxContainer.new(); v_info.size_flags_horizontal = Control.SIZE_EXPAND_FILL; v_info.alignment = BoxContainer.ALIGNMENT_CENTER
-		var lbl = Label.new(); lbl.text = item.nome; lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		var btn = cena_botao_ui.instantiate(); btn.text = "Comprar (R$ %d)" % item.preco
+
+		card.find_child("Label").text = item.nome
+		var btn = card.find_child("Button"); btn.text = "Comprar (R$ %d)" % item.preco
 		
 		if _ja_possui(item): btn.disabled = true; btn.text = "Adquirido"
 		btn.pressed.connect(func(): _tentar_comprar(item, btn))
-		v_info.add_child(lbl); v_info.add_child(btn); h_box.add_child(v_info); container_itens.add_child(card)
+		container_itens.add_child(card)
 
 ## Desenha as miniaturas das peças dentro do card da loja
 func _renderizar_previa_no_card(container: HBoxContainer, comp: Array):
@@ -76,7 +60,7 @@ func _renderizar_previa_no_card(container: HBoxContainer, comp: Array):
 			if s.texture:
 				var t_size = s.texture.get_size()
 				s.scale = Vector2(peca.largura / t_size.x, 50.0 / t_size.y)
-				s.position = Vector2(peca.largura / 2.0, 30)
+				s.position = Vector2(peca.largura / 2.0, 25)
 			w.add_child(s); container.add_child(w)
 
 func _ja_possui(item) -> bool:

@@ -38,18 +38,6 @@ expand_mode = 1
 layer = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="FeedbackLabel" type="Label" parent="UI" unique_id=2041737914]
-anchors_preset = -1
-anchor_left = 11.432222
-anchor_top = 4.2355556
-anchor_right = 12.27
-anchor_bottom = 4.2522225
-offset_left = -10244.0
-offset_top = -3106.0002
-offset_right = -10203.0
-offset_bottom = -3083.0002
-metadata/_edit_use_anchors_ = true
-
 [node name="AvailablePiecesVBox" type="VBoxContainer" parent="UI" unique_id=189371943]
 anchors_preset = -1
 anchor_left = 0.175
