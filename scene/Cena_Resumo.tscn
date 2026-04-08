@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cftrsto61dfey" path="res://script/Cena_Resumo.gd" id="1_xr33j"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_kgimw"]
+[ext_resource type="Texture2D" uid="uid://c2orn4wtmhpxv" path="res://images/contrato.png" id="3_vqc6o"]
+[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="4_p4c0f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h5dlb"]
+texture = ExtResource("3_vqc6o")
+expand_margin_left = 300.0
+expand_margin_top = 120.0
+expand_margin_right = 300.0
+expand_margin_bottom = 100.0
 
 [node name="Cena_Resumo" type="Control" unique_id=854328993]
 layout_mode = 3
@@ -26,18 +35,21 @@ offset_right = 896.0
 offset_bottom = 902.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=790821855]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_h5dlb")
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1550774154]
 layout_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1136549728]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="Titulo" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBox" unique_id=1193549807]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "RELATÓRIO DO DIA 1"
 horizontal_alignment = 1
@@ -50,6 +62,7 @@ layout_mode = 2
 
 [node name="Label1" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBox/VboxTexto" unique_id=323716789]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 
@@ -60,15 +73,18 @@ horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBox/VboxTexto" unique_id=95876632]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBox" unique_id=1267934251]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="EncerrarDia" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBox" unique_id=207069106]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("4_p4c0f")
 text = "Encerrar Dia e Dormir"
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBox/EncerrarDia" to="." method="_iniciar_proximo_dia"]

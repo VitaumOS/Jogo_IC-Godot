@@ -1,28 +1,44 @@
 [gd_scene format=3 uid="uid://dd0ohe51j087n"]
 
+[ext_resource type="StyleBox" uid="uid://cm8l14sk7oxig" path="res://modelos/modelo_cards.tres" id="1_84gtg"]
 [ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/Padrao_Corte.tscn" id="1_g54nd"]
+[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_84gtg"]
 
 [node name="Card" type="PanelContainer" unique_id=286221418]
 custom_minimum_size = Vector2(0, 100)
-offset_right = 784.0
-offset_bottom = 100.0
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 823.0
+offset_bottom = 136.0
+theme_override_styles/panel = ExtResource("1_84gtg")
 
 [node name="HBox" type="HBoxContainer" parent="." unique_id=19104466]
 layout_mode = 2
 
+[node name="VSeparator" type="VSeparator" parent="HBox" unique_id=693216427]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(26.77, 0)
+layout_mode = 2
+
 [node name="Control2" parent="HBox" unique_id=1343394717 instance=ExtResource("1_g54nd")]
-custom_minimum_size = Vector2(530, 79.125)
+custom_minimum_size = Vector2(530, 80)
 layout_mode = 2
 size_flags_vertical = 8
 
 [node name="VInfo" type="VBoxContainer" parent="HBox" unique_id=773375079]
-custom_minimum_size = Vector2(246.635, 0)
+custom_minimum_size = Vector2(217.365, 0)
 layout_mode = 2
 alignment = 1
 
 [node name="Button" type="Button" parent="HBox/VInfo" unique_id=1296401988]
 layout_mode = 2
+theme_override_styles/normal = ExtResource("3_84gtg")
 text = "Comprar (R$ %d)"
+
+[node name="HSeparator" type="HSeparator" parent="HBox/VInfo" unique_id=1354105774]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 7.66)
+layout_mode = 2
 
 [node name="Label" type="Label" parent="HBox/VInfo" unique_id=1266618805]
 layout_mode = 2
