@@ -39,16 +39,15 @@ func _gerar_itens_loja():
 	for c in container_itens.get_children(): c.queue_free()
 	for item in Global.padroes_na_loja:
 		var card = cena_card.instantiate()
+		container_itens.add_child(card)
 		var p_hbox = card.find_child("Control2").find_child("Visualizador_Padrao")
-		
 		_renderizar_previa_no_card(p_hbox, item.composicao); 
 
 		card.find_child("Label").text = item.nome
 		var btn = card.find_child("Button"); btn.text = "Comprar (R$ %d)" % item.preco
-		
 		if _ja_possui(item): btn.disabled = true; btn.text = "Adquirido"
 		btn.pressed.connect(func(): _tentar_comprar(item, btn))
-		container_itens.add_child(card)
+		
 
 ## Desenha as miniaturas das peças dentro do card da loja
 func _renderizar_previa_no_card(container: HBoxContainer, comp: Array):

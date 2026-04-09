@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://dm76hbonk5i8a"]
 
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="1_tbok3"]
+[ext_resource type="Script" uid="uid://bbpyvdto8o8eg" path="res://script/GameOver.gd" id="1_u7gfx"]
 [ext_resource type="StyleBox" uid="uid://c1laj21bixtl" path="res://modelos/modelo_botao_2.tres" id="2_vq0q6"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/SistemaDialogo.tscn" id="3_vq0q6"]
 
 [node name="GameOver" type="Control" unique_id=2075479652]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_u7gfx")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1315591185]
 layout_mode = 0
@@ -15,7 +17,7 @@ offset_bottom = 900.0
 texture = ExtResource("1_tbok3")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="." unique_id=342653777]
+[node name="TituloFaliu" type="Label" parent="." unique_id=342653777]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 231.0
@@ -28,7 +30,7 @@ text = "VOCÊ FALIU..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="." unique_id=618037606]
+[node name="BtnVoltar" type="Button" parent="." unique_id=618037606]
 layout_mode = 0
 offset_left = 208.0
 offset_top = 696.0
@@ -39,3 +41,5 @@ theme_override_styles/normal = ExtResource("2_vq0q6")
 text = "Voltar pro Menu Principal"
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("3_vq0q6")]
+
+[connection signal="pressed" from="BtnVoltar" to="." method="_on_btn_voltar_pressed"]

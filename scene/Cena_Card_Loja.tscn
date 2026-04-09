@@ -42,5 +42,4 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="HBox/VInfo" unique_id=1266618805]
 layout_mode = 2
-text = "Item"
 horizontal_alignment = 1
