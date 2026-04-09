@@ -2,7 +2,7 @@
   "padroes": [
     { "dia": 1, "nome": "Lote Irregular", "composicao": [9, 0, 0, 0, 0, 0], "preco": 100 },
     { "dia": 1, "nome": "Kit Desajustado", "composicao": [2, 4, 0, 0, 0, 0], "preco": 120 },
-    { "dia": 2, "nome": "Fronteira Torta", "composicao": [0, 2, 2, 0, 0, 0], "preco": 280 },
+    { "dia": 2, "nome": "Fronteira Torta", "composicao": [0, 2, 2, 0, 0, 0], "preco": 200 },
     { "dia": 2, "nome": "Corte Serrado", "composicao": [1, 0, 1, 3, 0, 0], "preco": 150 },
     { "dia": 3, "nome": "Dilema do Mestre", "composicao": [1, 1, 1, 1, 0, 0], "preco": 220 },
     { "dia": 3, "nome": "Sucata Organizada", "composicao": [3, 0, 2, 1, 0, 0], "preco": 190 },

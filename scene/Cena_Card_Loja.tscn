@@ -37,9 +37,12 @@ text = "Comprar (R$ %d)"
 
 [node name="HSeparator" type="HSeparator" parent="HBox/VInfo" unique_id=1354105774]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 7.66)
+custom_minimum_size = Vector2(0, 7.01)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBox/VInfo" unique_id=1266618805]
+[node name="NomePadrao" type="Label" parent="HBox/VInfo" unique_id=508027419]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Teste"
 horizontal_alignment = 1
+vertical_alignment = 1

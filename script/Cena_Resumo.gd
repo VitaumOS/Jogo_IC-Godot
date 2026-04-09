@@ -36,7 +36,10 @@ func _processar_financeiro_do_dia():
 ##Ao apertar o botão, começa o próximo dia
 func _iniciar_proximo_dia():
 	if Global.dinheiro < 0:
-		# Se estiver devendo, vai para a cena de Game Over
+		# Se estiver com saldo negativo, vai para a cena de Game Over
 		get_tree().change_scene_to_file("res://scene/GameOver.tscn")
+	if Global.dia_atual >= Global.DIA_FINAL:
+		# Se venceu o último dia, vai para a vitória
+		get_tree().change_scene_to_file("res://scene/Vitoria.tscn")
 	else:
 		Global.proximo_dia()

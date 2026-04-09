@@ -1,6 +1,7 @@
 extends Node
 
 const CUSTO_DIARIO = 200
+const DIA_FINAL: int = 7
 
 var tamanho_container: float = 500.0
 var dia_atual: int = 1

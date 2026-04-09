@@ -43,7 +43,7 @@ func _gerar_itens_loja():
 		var p_hbox = card.find_child("Control2").find_child("Visualizador_Padrao")
 		_renderizar_previa_no_card(p_hbox, item.composicao); 
 
-		card.find_child("Label").text = item.nome
+		card.find_child("NomePadrao").text = item.nome
 		var btn = card.find_child("Button"); btn.text = "Comprar (R$ %d)" % item.preco
 		if _ja_possui(item): btn.disabled = true; btn.text = "Adquirido"
 		btn.pressed.connect(func(): _tentar_comprar(item, btn))
