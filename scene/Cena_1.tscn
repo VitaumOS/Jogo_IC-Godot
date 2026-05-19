@@ -103,6 +103,7 @@ anchor_top = 1.4000001
 anchor_right = 0.062000003
 anchor_bottom = 1.4000001
 offset_left = 0.015999794
+offset_top = -38.800003
 offset_right = 870.016
 offset_bottom = 400.0
 
@@ -127,14 +128,14 @@ custom_minimum_size = Vector2(13.56, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 
-[node name="LadoDireito" type="VBoxContainer" parent="UI/Controle_Corpo/CorpoCentral" unique_id=2131989489]
+[node name="LadoDireito" type="HBoxContainer" parent="UI/Controle_Corpo/CorpoCentral" unique_id=1958655811]
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/Controle_Corpo/CorpoCentral/LadoDireito" unique_id=763312148]
 custom_minimum_size = Vector2(650, 400)
 layout_mode = 2
 
-[node name="PadraoCorteSalvo" type="VBoxContainer" parent="UI/Controle_Corpo/CorpoCentral/LadoDireito/ScrollContainer" unique_id=33567406]
+[node name="PadraoCorteSalvo" type="HBoxContainer" parent="UI/Controle_Corpo/CorpoCentral/LadoDireito/ScrollContainer" unique_id=507703508]
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
 theme_override_constants/separation = 57

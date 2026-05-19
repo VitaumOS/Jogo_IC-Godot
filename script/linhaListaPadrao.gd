@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends VBoxContainer
 
 @onready var lbl_qtd = $Control/ControlesQuantidade/HBoxBotoes/lblQtd
 @onready var container_visualizador = $EspaçadorVisual/Control/Visualizador_Padrao
