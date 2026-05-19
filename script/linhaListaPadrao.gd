@@ -27,6 +27,7 @@ func configurar(dados: Dictionary):
 func _on_btn_mais_pressed() -> void:
 	quantidade += 1
 	lbl_qtd.text = str(quantidade)
+	
 
 func _on_btn_menos_pressed() -> void:
 	if quantidade > 0:

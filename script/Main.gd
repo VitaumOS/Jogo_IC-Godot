@@ -11,6 +11,9 @@ extends Node2D
 @onready var btn_contrato_visual = $UI/Controle_Corpo/CorpoCentral/LadoEsquerdo/BotaoContratoGrande
 @onready var popup = $PopUp
 
+@onready var container_excesso = $UI/VisualizadorContrato/ContainerExcesso
+@onready var container_chapa = $UI/VisualizadorContrato/FundoChapa/MarginContainer/ContainerChapa
+
 # --- VARIÁVEIS DE LÓGICA ---
 var padroes_corte_salvos_valor: Array = [] 
 var demanda: Array = []
@@ -31,6 +34,64 @@ func _ready():
 		_verificar_dialogo_diario()
 	else:
 		_finalizar_logica_pulp()
+	_gerar_visualizacao_demanda()
+	_atualizar_pintura_demanda()
+	
+func _gerar_visualizacao_demanda():
+	for c in container_chapa.get_children(): c.queue_free()
+	for c in container_excesso.get_children(): c.queue_free()
+	
+	if Global.contrato_ativo == null: return
+	
+	for i in demanda.size():
+		var qtd_necessaria = demanda[i]
+		var peca_info = Global.pecas_disponiveis[i]
+		
+		for n in range(qtd_necessaria):
+			var icone = _criar_icone_arma(peca_info.caminho_textura, i)
+			icone.modulate = Color(0.3, 0.3, 0.3, 0.5) 
+			container_chapa.add_child(icone)
+
+
+func _atualizar_pintura_demanda():
+	var producao_total = [0, 0, 0, 0, 0, 0] 
+	
+	for linha in vbox_padroes_lista.get_children():
+		var qtd_uso = linha.quantidade 
+		if linha.has_meta("composicao"):
+			var composicao = linha.get_meta("composicao") 
+			for i in composicao.size():
+				producao_total[i] += (composicao[i] * qtd_uso)
+			
+	var producao_restante = producao_total.duplicate()
+	for icone in container_chapa.get_children():
+		var tipo_id = icone.get_meta("tipo_id")
+		
+		if producao_restante[tipo_id] > 0:
+			icone.modulate = Color(0.2, 0.8, 0.2, 1.0)
+			producao_restante[tipo_id] -= 1
+		else:
+			icone.modulate = Color(0.3, 0.3, 0.3, 0.5)
+			
+	for c in container_excesso.get_children(): c.queue_free()
+	for i in producao_restante.size():
+		var qtd_excesso = producao_restante[i]
+		if qtd_excesso > 0:
+			var peca_info = Global.pecas_disponiveis[i]
+	
+			for n in range(qtd_excesso):
+				var icone_extra = _criar_icone_arma(peca_info.caminho_textura, i)
+				icone_extra.modulate = Color(0.8, 0.1, 0.1, 1.0) 
+				container_excesso.add_child(icone_extra)
+
+func _criar_icone_arma(caminho_textura: String, tipo_id: int) -> TextureRect:
+	var icone = TextureRect.new()
+	icone.texture = load(caminho_textura)
+	icone.custom_minimum_size = Vector2(40, 40)
+	icone.expand_mode = TextureRect.EXPAND_KEEP_SIZE
+	icone.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icone.set_meta("tipo_id", tipo_id) 
+	return icone
 
 func _verificar_dialogo_diario():
 	if Global.deve_exibir_dialogo_do_dia():
@@ -72,6 +133,7 @@ func _exibir_padrao_na_lista(item: Dictionary):
 	var linha = cena_linha_padrao.instantiate()
 	vbox_padroes_lista.add_child(linha)
 	linha.configurar(item)
+
 	
 	padroes_corte_salvos_valor.append(item.composicao)
 
