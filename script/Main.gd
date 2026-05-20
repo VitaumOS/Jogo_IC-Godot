@@ -238,6 +238,7 @@ func _limpar_dados_transicao():
 	_atualizar_ui_estatica()
 	_atualizar_display_contrato()
 
+func _on_modelagem_pressed(): get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")
 func _on_loja_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Loja.tscn")
 func _on_sair_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Resumo.tscn")
 func _on_contrato_pressed(): get_tree().change_scene_to_file("res://scene/Cena_contratos.tscn")

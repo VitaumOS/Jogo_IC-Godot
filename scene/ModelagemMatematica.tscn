@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cllk8x12y65w8"]
+
+[ext_resource type="Script" uid="uid://c02wodmxxy1a7" path="res://script/ModelagemMatematica.gd" id="1_k2b62"]
+
+[node name="Modelagem" type="Control" unique_id=1765818540]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_k2b62")
+
+[node name="MainMargin" type="MarginContainer" parent="." unique_id=185168060]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LayoutPrincipal" type="VBoxContainer" parent="MainMargin" unique_id=1744733661]
+layout_mode = 2
+
+[node name="PainelEsquerdo" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=15311472]
+layout_mode = 2
+
+[node name="FuncaoObjetivo" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=587102331]
+layout_mode = 2
+text = "Min Z = a1 + a2 +..."
+
+[node name="ScrollRestricoes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=170431360]
+layout_mode = 2
+
+[node name="ContainerRestricoes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes" unique_id=866054742]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=1002267743]
+layout_mode = 2
+
+[node name="Resolver" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=347996932]
+layout_mode = 2
+text = "RESOLVER"
+
+[node name="Voltar" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=1336589408]
+layout_mode = 2
+text = "Voltar
+"
+
+[node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1305794751]
+layout_mode = 2
+
+[node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1285108412]
+layout_mode = 2
+
+[node name="ScrollPadroes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=286250799]
+layout_mode = 2
+
+[node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=735313933]
+layout_mode = 2
+
+[connection signal="pressed" from="MainMargin/LayoutPrincipal/PainelEsquerdo/Resolver" to="." method="_on_btn_resolver_pressed"]
+[connection signal="pressed" from="MainMargin/LayoutPrincipal/PainelEsquerdo/Voltar" to="." method="_on_btn_voltar_pressed"]

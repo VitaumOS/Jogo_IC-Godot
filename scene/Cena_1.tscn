@@ -198,6 +198,16 @@ layout_mode = 2
 theme_override_styles/normal = ExtResource("5_uwuwm")
 text = "LOJA"
 
+[node name="VSeparator3" type="VSeparator" parent="UI/Rodape" unique_id=1858660115]
+modulate = Color(0, 0, 0, 0)
+custom_minimum_size = Vector2(13.56, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="BtnModel" type="Button" parent="UI/Rodape" unique_id=1435772189]
+layout_mode = 2
+text = "MODELAGEM"
+
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("9_2xbwx")]
 visible = false
 
@@ -208,3 +218,4 @@ visible = false
 [connection signal="pressed" from="UI/Rodape/BtnResolver" to="." method="_on_resolver_pressed"]
 [connection signal="pressed" from="UI/Rodape/BtnSair" to="." method="_on_sair_pressed"]
 [connection signal="pressed" from="UI/Rodape/BtnLoja" to="." method="_on_loja_pressed"]
+[connection signal="pressed" from="UI/Rodape/BtnModel" to="." method="_on_modelagem_pressed"]
