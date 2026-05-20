@@ -1,7 +1,7 @@
 extends Control
 
 # --- CAMINHO FIXO DA CENA DO PADRÃO ---
-var cena_padrao_visual: PackedScene = load("res://scene/Padrao_Corte.tscn")
+var cena_padrao_visual = load("res://scene/Padrao_Corte.tscn")
 
 # --- REFERÊNCIAS DOS NÓS (USANDO UNIQUE NAMES %) ---
 @onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/FuncaoObjetivo
@@ -22,9 +22,6 @@ var padroes_selecionados_indices: Array = []
 var inputs_demanda: Dictionary = {}             
 
 func _ready() -> void:
-	# Conecta os botões principais
-	btn_resolver.pressed.connect(_on_btn_resolver_pressed)
-	btn_voltar.pressed.connect(_on_btn_voltar_pressed)
 	
 	# Carrega os padrões salvos do inventário do jogador
 	if Global.get("padroes_salvos") != null:
@@ -39,16 +36,12 @@ func _ready() -> void:
 
 # --- PAINEL DIREITO: SEUS PADRÕES DISPONÍVEIS ---
 func _gerar_lista_direita_padroes() -> void:
-	if not container_padroes_selecao:
-		print("ERRO CRÍTICO: ContainerPadroesSelecao não foi encontrado!")
-		return
 
 	for child in container_padroes_selecao.get_children():
 		child.queue_free()
-		
-	for idx in range(lista_padroes_disponiveis.size()):
-		var padrao = lista_padroes_disponiveis[idx]
-		
+	
+	var i =0
+	for padrao in Global.padroes_na_loja:
 		var h_box_item = HBoxContainer.new()
 		h_box_item.custom_minimum_size = Vector2(0, 60)
 		
@@ -58,41 +51,33 @@ func _gerar_lista_direita_padroes() -> void:
 		btn_toggle.custom_minimum_size = Vector2(90, 0)
 		h_box_item.add_child(btn_toggle)
 		
-		if cena_padrao_visual:
-			var instancia_visual = cena_padrao_visual.instantiate() as Control
-			instancia_visual.custom_minimum_size = Vector2(400, 60)
-			h_box_item.add_child(instancia_visual)
+		var instancia_visual = cena_padrao_visual.instantiate()
+		h_box_item.add_child(instancia_visual)
 			
-			var visualizador = instancia_visual.find_child("Visualizador_Padrao", true, false) as HBoxContainer
-			if visualizador:
-				_desenhar_sprites_no_visualizador(visualizador, padrao.get("composicao", []))
+		var visualizador = instancia_visual.find_child("Visualizador_Padrao")
+		_desenhar_sprites_no_visualizador(visualizador, padrao.get("composicao", []))
 		
 		btn_toggle.toggled.connect(func(is_pressed):
-			_alternar_padrao_na_modelagem(idx, is_pressed, btn_toggle)
+			_alternar_padrao_na_modelagem(i, is_pressed, btn_toggle)
 		)
-		
 		container_padroes_selecao.add_child(h_box_item)
+		i=i+1
 
 func _desenhar_sprites_no_visualizador(container: HBoxContainer, composicao: Array) -> void:
 	for c in container.get_children():
 		c.queue_free()
-		
 	for i in range(composicao.size()):
 		var quantidade_pecas = composicao[i]
 		var peca_info = Global.pecas_disponiveis[i]
-		
 		for n in range(quantidade_pecas):
 			var wrapper = Control.new()
 			wrapper.custom_minimum_size = Vector2(peca_info.largura * 0.5, 40)
-			
 			var sprite = Sprite2D.new()
 			sprite.texture = load(peca_info.caminhi_textura if peca_info.has("caminhi_textura") else peca_info.caminho_textura)
 			sprite.centered = false
-			
 			if sprite.texture:
 				var t_size = sprite.texture.get_size()
 				sprite.scale = Vector2((peca_info.largura * 0.5) / t_size.x, 40.0 / t_size.y)
-				
 			wrapper.add_child(sprite)
 			container.add_child(wrapper)
 
@@ -182,14 +167,14 @@ func _atualizar_equacoes_na_tela() -> void:
 			var lbl_coef = container_restricoes.find_child("CoeficientesPeca_" + str(i), true, false) as Label
 			if lbl_coef:
 				var termos_da_peca = []
-				for j in range(padroes_selecionados_indices.size()):
-					var idx_p = padroes_selecionados_indices[j]
-					var comp_padrao = lista_padroes_disponiveis[idx_p].get("composicao", [])
+				var j=0
+				for padrao in Global.padroes_na_loja:
+					var comp_padrao = padrao.get("composicao", [])
 					var qtd_na_chapa = comp_padrao[i] if i < comp_padrao.size() else 0
 					
 					if qtd_na_chapa > 0:
 						termos_da_peca.append(str(qtd_na_chapa) + "x" + str(j + 1))
-						
+					j=j+1
 				if termos_da_peca.is_empty():
 					lbl_coef.text = "0"
 				else:
@@ -200,8 +185,8 @@ func _on_btn_resolver_pressed() -> void:
 	if padroes_selecionados_indices.is_empty(): return
 		
 	var composicoes_enviadas = []
-	for idx in padroes_selecionados_indices:
-		composicoes_enviadas.append(lista_padroes_disponiveis[idx].get("composicao", []))
+	for padrao in Global.padroes_na_loja:
+		composicoes_enviadas.append(padrao.get("composicao", []))
 		
 	var matriz_demanda_manual = []
 	matriz_demanda_manual.resize(Global.pecas_disponiveis.size())
@@ -224,9 +209,8 @@ func _on_btn_resolver_pressed() -> void:
 		var resultado = JSON.parse_string(file.get_as_text())
 		file.close()
 		
-		if resultado and resultado.status == "Optimal":
-			Global.aplicar_solucao_pulp(resultado.solucao)
-			get_tree().change_scene_to_file("res://scene/Main.tscn")
+		print(resultado)
+			
 
 func _on_btn_voltar_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene/Main.tscn")
+	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")

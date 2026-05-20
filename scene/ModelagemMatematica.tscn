@@ -1,31 +1,48 @@
 [gd_scene format=3 uid="uid://cllk8x12y65w8"]
 
 [ext_resource type="Script" uid="uid://c02wodmxxy1a7" path="res://script/ModelagemMatematica.gd" id="1_k2b62"]
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_dxiy0"]
 
 [node name="Modelagem" type="Control" unique_id=1765818540]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_k2b62")
 
-[node name="MainMargin" type="MarginContainer" parent="." unique_id=185168060]
+[node name="Background" type="TextureRect" parent="." unique_id=1917918744]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("2_dxiy0")
+expand_mode = 1
+
+[node name="MainMargin" type="Control" parent="." unique_id=697386958]
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 23.0
+offset_right = 889.0
+offset_bottom = 873.0
 
 [node name="LayoutPrincipal" type="VBoxContainer" parent="MainMargin" unique_id=1744733661]
-layout_mode = 2
+layout_mode = 0
+offset_right = 878.0
+offset_bottom = 916.0
 
 [node name="PainelEsquerdo" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=15311472]
 layout_mode = 2
 
 [node name="FuncaoObjetivo" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=587102331]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Min Z = a1 + a2 +..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollRestricoes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=170431360]
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 
 [node name="ContainerRestricoes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes" unique_id=866054742]
+custom_minimum_size = Vector2(900, 400)
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=1002267743]
@@ -45,11 +62,14 @@ layout_mode = 2
 
 [node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1285108412]
 layout_mode = 2
+text = "Inventário"
 
 [node name="ScrollPadroes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=286250799]
+custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=735313933]
+custom_minimum_size = Vector2(900, 300)
 layout_mode = 2
 
 [connection signal="pressed" from="MainMargin/LayoutPrincipal/PainelEsquerdo/Resolver" to="." method="_on_btn_resolver_pressed"]
