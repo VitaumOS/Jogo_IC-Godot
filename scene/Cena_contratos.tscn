@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bk2cgr6pirs1o" path="res://scene/Card_Contratos.tscn" id="2_jgr8c"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_76e4m"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_yji0f"]
+[ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="5_5rhh1"]
 [ext_resource type="PackedScene" uid="uid://niwiqe2egaiv" path="res://scene/Popup.tscn" id="5_jgr8c"]
 
 [node name="Cena_Contratos" type="Control" unique_id=1920571904]
@@ -59,6 +60,9 @@ offset_right = 157.0
 offset_bottom = 65.0
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = ExtResource("3_yji0f")
+theme_override_styles/pressed = ExtResource("5_5rhh1")
+theme_override_styles/hover = ExtResource("5_5rhh1")
+theme_override_styles/hover_pressed = ExtResource("5_5rhh1")
 text = "Voltar ao jogo"
 
 [node name="PopUp" parent="." unique_id=195816423 instance=ExtResource("5_jgr8c")]

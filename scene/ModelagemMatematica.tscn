@@ -18,7 +18,7 @@ expand_mode = 1
 [node name="MainMargin" type="Control" parent="." unique_id=697386958]
 anchors_preset = 0
 offset_left = 11.0
-offset_top = 23.0
+offset_top = 40.0
 offset_right = 889.0
 offset_bottom = 873.0
 
@@ -46,23 +46,17 @@ custom_minimum_size = Vector2(900, 300)
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=1002267743]
+custom_minimum_size = Vector2(0, 44.105)
 layout_mode = 2
-
-[node name="Resolver" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=347996932]
-layout_mode = 2
-text = "RESOLVER"
-
-[node name="Voltar" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=1336589408]
-layout_mode = 2
-text = "Voltar
-"
 
 [node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1305794751]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 
 [node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1285108412]
 layout_mode = 2
 text = "Inventário"
+horizontal_alignment = 1
 
 [node name="ScrollPadroes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=286250799]
 custom_minimum_size = Vector2(900, 300)
@@ -72,5 +66,17 @@ layout_mode = 2
 custom_minimum_size = Vector2(900, 300)
 layout_mode = 2
 
-[connection signal="pressed" from="MainMargin/LayoutPrincipal/PainelEsquerdo/Resolver" to="." method="_on_btn_resolver_pressed"]
-[connection signal="pressed" from="MainMargin/LayoutPrincipal/PainelEsquerdo/Voltar" to="." method="_on_btn_voltar_pressed"]
+[node name="Botoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1170674162]
+layout_mode = 2
+alignment = 1
+
+[node name="Resolver" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1928015222]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "RESOLVER"
+
+[node name="Voltar" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=822601583]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Voltar
+"

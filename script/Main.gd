@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @export var cena_linha_padrao: PackedScene
 
 # --- REFERÊNCIAS DE NÓS ---
@@ -36,8 +35,6 @@ func _ready():
 		_finalizar_logica_pulp()
 	_gerar_visualizacao_demanda()
 	_atualizar_pintura_demanda()
-	
-	# Conecta os sinais dos botões de quantidade de cada linha criada para atualizar a pintura dinamicamente
 	_conectar_sinais_botoes_quantidade()
 	
 func _gerar_visualizacao_demanda():
@@ -90,26 +87,19 @@ func _atualizar_pintura_demanda():
 func _criar_icone_arma(peca, tipo_id: int) -> TextureRect:
 	var icone = TextureRect.new()
 	icone.texture = load(peca.caminho_textura)
-	
-	# Define o tamanho controlado ideal para caber dentro dos seus containers da Main
 	icone.custom_minimum_size = Vector2(40, 40)
-	
-	# Força o redimensionamento respeitando os limites e mantendo a proporção da arma centralizada
 	icone.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icone.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	
 	icone.set_meta("tipo_id", tipo_id) 
 	return icone
 
 # Monitora e conecta os botões de mais e menos de cada padrão de corte da lista
 func _conectar_sinais_botoes_quantidade():
-	await get_tree().process_frame # Garante que os nós filhos já carregaram por completo
+	await get_tree().process_frame
 	for linha in vbox_padroes_lista.get_children():
 		var btn_mais = linha.find_child("btn_mais", true, false) as Button
 		var btn_menos = linha.find_child("btn_menos", true, false) as Button
 		
-		# Se os nomes dos botões dentro da sua cena linha de padrão forem diferentes,
-		# você também pode buscar de forma genérica usando get_node ou find_children
 		if not btn_mais or not btn_menos:
 			for filho in linha.find_children("*", "Button", true, false):
 				filho.pressed.connect(func(): _atualizar_pintura_demanda())
@@ -153,13 +143,10 @@ func _exibir_padrao_na_lista(item: Dictionary):
 	item["pecas"] = pecas_data
 	var linha = cena_linha_padrao.instantiate()
 	
-	# Define a metadado composição diretamente na instância do nó para leitura do pintura_demanda
 	linha.set_meta("composicao", item.composicao)
 	
 	vbox_padroes_lista.add_child(linha)
 	linha.configurar(item)
-
-	
 	padroes_corte_salvos_valor.append(item.composicao)
 
 # Função auxiliar interna criada estritamente para manter o escopo limpo

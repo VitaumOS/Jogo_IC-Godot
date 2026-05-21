@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://bb27gk2e4050f"]
+
+[ext_resource type="Texture2D" uid="uid://bu80t0n3ojcjo" path="res://images/placa_baixo_brilha.png" id="1_yalfy"]
+
+[resource]
+texture = ExtResource("1_yalfy")
+expand_margin_left = 60.0
+expand_margin_top = 179.0
+expand_margin_right = 62.0
+expand_margin_bottom = 150.0

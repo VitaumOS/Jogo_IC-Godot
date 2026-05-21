@@ -5,7 +5,7 @@ const DIA_FINAL: int = 7
 
 var tamanho_container: float = 500.0
 var dia_atual: int = 1
-var dinheiro: int = 500
+var dinheiro: int = 10000
 var ganhos_do_dia: int = 0
 var estoque_chapas: int = 0
 var preco_chapa: int = 100 

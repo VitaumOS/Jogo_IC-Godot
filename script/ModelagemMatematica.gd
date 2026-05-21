@@ -41,7 +41,7 @@ func _gerar_lista_direita_padroes() -> void:
 		child.queue_free()
 	
 	var i =0
-	for padrao in Global.padroes_na_loja:
+	for padrao in Global.padroes_desbloqueados:
 		var h_box_item = HBoxContainer.new()
 		h_box_item.custom_minimum_size = Vector2(0, 60)
 		
@@ -148,7 +148,6 @@ func _gerar_restricoes_demanda() -> void:
 			inputs_demanda[i] = input_qtd
 
 func _atualizar_equacoes_na_tela() -> void:
-	# 1. Função Objetivo
 	var termos_funcao_obj = []
 	for i in range(padroes_selecionados_indices.size()):
 		termos_funcao_obj.append("x" + str(i + 1))
@@ -158,7 +157,6 @@ func _atualizar_equacoes_na_tela() -> void:
 	else:
 		funcao_objetivo_lbl.text = "Função Objetivo:\nMin Z = " + " + ".join(termos_funcao_obj)
 		
-	# 2. Restrições Coeficientes
 	if not Global.contrato_ativo: return
 	var demanda_contrato = Global.contrato_ativo.demanda
 	
@@ -168,7 +166,7 @@ func _atualizar_equacoes_na_tela() -> void:
 			if lbl_coef:
 				var termos_da_peca = []
 				var j=0
-				for padrao in Global.padroes_na_loja:
+				for padrao in Global.padroes_desbloqueados:
 					var comp_padrao = padrao.get("composicao", [])
 					var qtd_na_chapa = comp_padrao[i] if i < comp_padrao.size() else 0
 					

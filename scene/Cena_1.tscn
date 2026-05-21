@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://b6if7jes5m0v4" path="res://scene/LinhaListaPadrao.tscn" id="7_i1ld1"]
 [ext_resource type="Texture2D" uid="uid://crs5owxlqap0n" path="res://images/placa_2.png" id="8_bjq5w"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/SistemaDialogo.tscn" id="9_2xbwx"]
+[ext_resource type="StyleBox" uid="uid://bicnub0owc76w" path="res://modelos/modelo_botao_brilha2.tres" id="9_i1ld1"]
 [ext_resource type="PackedScene" uid="uid://niwiqe2egaiv" path="res://scene/Popup.tscn" id="10_6qt7c"]
+[ext_resource type="StyleBox" uid="uid://bb27gk2e4050f" path="res://modelos/modelo_botao_brilhaembaixo.tres" id="10_ptkpm"]
 
 [sub_resource type="Theme" id="Theme_bjq5w"]
 
@@ -149,67 +151,86 @@ offset_top = 620.0
 offset_right = 885.0
 offset_bottom = 742.0
 
-[node name="ContainerExcesso" type="HBoxContainer" parent="UI/VisualizadorContrato" unique_id=565625551]
+[node name="ContainerExcesso" type="HFlowContainer" parent="UI/VisualizadorContrato" unique_id=503230766]
 layout_mode = 2
 
 [node name="FundoChapa" type="PanelContainer" parent="UI/VisualizadorContrato" unique_id=222044135]
 layout_mode = 2
 
-[node name="MarginContainer" type="ScrollContainer" parent="UI/VisualizadorContrato/FundoChapa" unique_id=2131463621]
+[node name="MarginContainer" type="MarginContainer" parent="UI/VisualizadorContrato/FundoChapa" unique_id=320032127]
 custom_minimum_size = Vector2(800, 120)
 layout_mode = 2
 
-[node name="ContainerChapa" type="HBoxContainer" parent="UI/VisualizadorContrato/FundoChapa/MarginContainer" unique_id=937080127]
+[node name="ContainerChapa" type="HFlowContainer" parent="UI/VisualizadorContrato/FundoChapa/MarginContainer" unique_id=2031152459]
 layout_mode = 2
 
-[node name="Rodape" type="HBoxContainer" parent="UI" unique_id=205919892]
-offset_top = 764.0
-offset_right = 895.0
-offset_bottom = 832.0
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=2119517920]
+offset_left = 23.0
+offset_top = 776.0
+offset_right = 875.0
+offset_bottom = 864.0
+
+[node name="Rodape" type="HBoxContainer" parent="UI/VBoxContainer" unique_id=205919892]
+layout_mode = 2
 alignment = 1
 
-[node name="BtnResolver" type="Button" parent="UI/Rodape" unique_id=827788209]
+[node name="BtnResolver" type="Button" parent="UI/VBoxContainer/Rodape" unique_id=827788209]
 custom_minimum_size = Vector2(160.975, 0)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("5_uwuwm")
+theme_override_styles/pressed = ExtResource("5_uwuwm")
+theme_override_styles/hover = ExtResource("5_uwuwm")
 text = "     BATER O FERRO     "
 icon_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="UI/Rodape" unique_id=1276734818]
+[node name="VSeparator" type="VSeparator" parent="UI/VBoxContainer/Rodape" unique_id=1276734818]
 modulate = Color(0, 0, 0, 0)
 custom_minimum_size = Vector2(13.56, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 
-[node name="BtnSair" type="Button" parent="UI/Rodape" unique_id=1780927715]
+[node name="BtnSair" type="Button" parent="UI/VBoxContainer/Rodape" unique_id=1780927715]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme = SubResource("Theme_bjq5w")
 theme_override_styles/normal = SubResource("StyleBoxTexture_2xbwx")
+theme_override_styles/pressed = ExtResource("9_i1ld1")
+theme_override_styles/hover = ExtResource("9_i1ld1")
+theme_override_styles/hover_pressed = ExtResource("9_i1ld1")
 text = "ENCERRAR DIA"
 icon = SubResource("CompressedTexture2D_2xbwx")
 
-[node name="VSeparator2" type="VSeparator" parent="UI/Rodape" unique_id=1539532409]
+[node name="VSeparator2" type="VSeparator" parent="UI/VBoxContainer/Rodape" unique_id=1539532409]
 modulate = Color(0, 0, 0, 0)
 custom_minimum_size = Vector2(13.56, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 
-[node name="BtnLoja" type="Button" parent="UI/Rodape" unique_id=493769893]
+[node name="BtnLoja" type="Button" parent="UI/VBoxContainer/Rodape" unique_id=493769893]
 custom_minimum_size = Vector2(148.885, 0)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("5_uwuwm")
+theme_override_styles/pressed = ExtResource("10_ptkpm")
+theme_override_styles/hover = ExtResource("5_uwuwm")
 text = "LOJA"
 
-[node name="VSeparator3" type="VSeparator" parent="UI/Rodape" unique_id=1858660115]
+[node name="VSeparator2" type="VSeparator" parent="UI/VBoxContainer" unique_id=1238166107]
 modulate = Color(0, 0, 0, 0)
-custom_minimum_size = Vector2(13.56, 0)
+custom_minimum_size = Vector2(13.56, 22.815)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 
-[node name="BtnModel" type="Button" parent="UI/Rodape" unique_id=1435772189]
+[node name="Control" type="Control" parent="UI/VBoxContainer" unique_id=1181324846]
 layout_mode = 2
-text = "MODELAGEM"
+
+[node name="BtnModel" type="Button" parent="UI/VBoxContainer/Control" unique_id=1435772189]
+layout_mode = 0
+offset_left = 293.0
+offset_top = 7.0
+offset_right = 560.0
+offset_bottom = 26.0
+theme_override_styles/normal = ExtResource("5_bjq5w")
+text = "MODELAGEM MATEMÁTICA"
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("9_2xbwx")]
 visible = false
@@ -218,7 +239,7 @@ visible = false
 visible = false
 
 [connection signal="pressed" from="UI/Controle_Corpo/CorpoCentral/LadoEsquerdo/BotaoContratoGrande" to="." method="_on_contrato_pressed"]
-[connection signal="pressed" from="UI/Rodape/BtnResolver" to="." method="_on_resolver_pressed"]
-[connection signal="pressed" from="UI/Rodape/BtnSair" to="." method="_on_sair_pressed"]
-[connection signal="pressed" from="UI/Rodape/BtnLoja" to="." method="_on_loja_pressed"]
-[connection signal="pressed" from="UI/Rodape/BtnModel" to="." method="_on_modelagem_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Rodape/BtnResolver" to="." method="_on_resolver_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Rodape/BtnSair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Rodape/BtnLoja" to="." method="_on_loja_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Control/BtnModel" to="." method="_on_modelagem_pressed"]
