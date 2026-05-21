@@ -7,7 +7,7 @@ var cena_padrao_visual = load("res://scene/Padrao_Corte.tscn")
 @onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/FuncaoObjetivo
 @onready var container_restricoes = $MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes/ContainerRestricoes
 @onready var container_padroes_selecao = $MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes/ContainerPadroesSelecao
-
+@onready var resultado_lbl = $ResultadoCortesLabel
 @onready var btn_resolver = $MainMargin/LayoutPrincipal/PainelEsquerdo/Resolver
 @onready var btn_voltar = $MainMargin/LayoutPrincipal/PainelEsquerdo/Voltar
 
@@ -64,21 +64,17 @@ func _gerar_lista_direita_padroes() -> void:
 		i=i+1
 
 func _desenhar_sprites_no_visualizador(container: HBoxContainer, composicao: Array) -> void:
-	for c in container.get_children():
-		c.queue_free()
 	for i in range(composicao.size()):
-		var quantidade_pecas = composicao[i]
-		var peca_info = Global.pecas_disponiveis[i]
-		for n in range(quantidade_pecas):
-			var wrapper = Control.new()
-			wrapper.custom_minimum_size = Vector2(peca_info.largura * 0.5, 40)
-			var sprite = Sprite2D.new()
-			sprite.texture = load(peca_info.caminhi_textura if peca_info.has("caminhi_textura") else peca_info.caminho_textura)
-			sprite.centered = false
-			if sprite.texture:
-				var t_size = sprite.texture.get_size()
-				sprite.scale = Vector2((peca_info.largura * 0.5) / t_size.x, 40.0 / t_size.y)
-			wrapper.add_child(sprite)
+		var qtd = composicao[i]
+		var peca = Global.pecas_disponiveis[i]
+		for n in range(qtd):
+			var wrapper = Control.new(); wrapper.custom_minimum_size = Vector2(peca.largura, 50)
+			var s = Sprite2D.new(); s.texture = load(peca.caminho_textura)
+			if s.texture:
+				var t_size = s.texture.get_size()
+				s.scale = Vector2(peca.largura / t_size.x, 50.0 / t_size.y)
+				s.position = Vector2(peca.largura / 2.0, 25)
+			wrapper.add_child(s)
 			container.add_child(wrapper)
 
 func _alternar_padrao_na_modelagem(idx_padrao: int, is_active: bool, botao: Button) -> void:
@@ -160,19 +156,25 @@ func _atualizar_equacoes_na_tela() -> void:
 	if not Global.contrato_ativo: return
 	var demanda_contrato = Global.contrato_ativo.demanda
 	
+	# Varre cada tipo de peça da demanda do contrato
 	for i in range(demanda_contrato.size()):
 		if demanda_contrato[i] > 0:
 			var lbl_coef = container_restricoes.find_child("CoeficientesPeca_" + str(i), true, false) as Label
 			if lbl_coef:
 				var termos_da_peca = []
-				var j=0
-				for padrao in Global.padroes_desbloqueados:
+				
+				# Em vez de olhar todos os desbloqueados, varre estritamente os incluídos
+				for j in range(padroes_selecionados_indices.size()):
+					var idx_padrao_original = padroes_selecionados_indices[j]
+					var padrao = Global.padroes_desbloqueados[idx_padrao_original]
+					
 					var comp_padrao = padrao.get("composicao", [])
 					var qtd_na_chapa = comp_padrao[i] if i < comp_padrao.size() else 0
 					
+					# Se o padrão incluído contiver essa peça, j+1 casa com a numeração do x da F.O.
 					if qtd_na_chapa > 0:
 						termos_da_peca.append(str(qtd_na_chapa) + "x" + str(j + 1))
-					j=j+1
+						
 				if termos_da_peca.is_empty():
 					lbl_coef.text = "0"
 				else:
@@ -183,7 +185,8 @@ func _on_btn_resolver_pressed() -> void:
 	if padroes_selecionados_indices.is_empty(): return
 		
 	var composicoes_enviadas = []
-	for padrao in Global.padroes_na_loja:
+	for idx in padroes_selecionados_indices:
+		var padrao = Global.padroes_desbloqueados[idx]
 		composicoes_enviadas.append(padrao.get("composicao", []))
 		
 	var matriz_demanda_manual = []
@@ -196,6 +199,8 @@ func _on_btn_resolver_pressed() -> void:
 		var valor_real_contrato = Global.contrato_ativo.demanda[idx_peca]
 		
 		if input_edit.text.strip_edges() == "" or valor_digitado != valor_real_contrato:
+			if resultado_lbl:
+				resultado_lbl.text = "Erro: Valores digitados nas restrições divergem do Contrato!"
 			return
 		matriz_demanda_manual[idx_peca] = valor_digitado
 
@@ -207,7 +212,21 @@ func _on_btn_resolver_pressed() -> void:
 		var resultado = JSON.parse_string(file.get_as_text())
 		file.close()
 		
-		print(resultado)
+		if resultado and resultado.get("status") == "Optimal":
+			var solucao_lista = resultado.get("solucao", [])
+			var texto_resultado = "Plano de Corte Recomendado:\n"
+			var total_chapas = 0
+			
+			for j in range(solucao_lista.size()):
+				var qtd_cortes = int(solucao_lista[j])
+				total_chapas += qtd_cortes
+				texto_resultado += "Padrão x%d: cortar %d vez(es)\n" % [(j + 1), qtd_cortes]
+			
+			texto_resultado += "\nTotal de Chapas Utilizadas: %d" % total_chapas
+			
+			if resultado_lbl:
+				resultado_lbl.text = texto_resultado
+				resultado_lbl.modulate = Color.GREEN
 			
 
 func _on_btn_voltar_pressed() -> void:

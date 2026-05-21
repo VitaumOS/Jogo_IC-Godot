@@ -10,8 +10,8 @@ extends Node2D
 @onready var btn_contrato_visual = $UI/Controle_Corpo/CorpoCentral/LadoEsquerdo/BotaoContratoGrande
 @onready var popup = $PopUp
 
-@onready var container_excesso = $UI/VisualizadorContrato/ContainerExcesso
-@onready var container_chapa = $UI/VisualizadorContrato/FundoChapa/MarginContainer/ContainerChapa
+@onready var container_excesso = $UI/VisualizadorContrato/VBoxContainer/ContainerExcesso
+@onready var container_chapa = $UI/VisualizadorContrato/VBoxContainer/FundoChapa/MarginContainer/ContainerChapa
 
 # --- VARIÁVEIS DE LÓGICA ---
 var padroes_corte_salvos_valor: Array = [] 
@@ -38,6 +38,7 @@ func _ready():
 	_conectar_sinais_botoes_quantidade()
 	
 func _gerar_visualizacao_demanda():
+	# Limpa os restos visuais antigos com segurança antes de repopular
 	for c in container_chapa.get_children(): c.queue_free()
 	for c in container_excesso.get_children(): c.queue_free()
 	
@@ -49,13 +50,14 @@ func _gerar_visualizacao_demanda():
 		
 		for n in range(qtd_necessaria):
 			var icone = _criar_icone_arma(peca_info, i)
-			icone.modulate = Color(0.3, 0.3, 0.3, 0.5) 
+			icone.modulate = Color(0.3, 0.3, 0.3, 0.5) # Cor cinza padrão (não produzida)
 			container_chapa.add_child(icone)
 
 
 func _atualizar_pintura_demanda():
 	var producao_total = [0, 0, 0, 0, 0, 0] 
 	
+	# Calcula o quanto os padrões de corte atuais estão produzindo
 	for linha in vbox_padroes_lista.get_children():
 		var qtd_uso = linha.quantidade 
 		if linha.has_meta("composicao"):
@@ -64,16 +66,19 @@ func _atualizar_pintura_demanda():
 				producao_total[i] += (composicao[i] * qtd_uso)
 			
 	var producao_restante = producao_total.duplicate()
+	
 	for icone in container_chapa.get_children():
 		var tipo_id = icone.get_meta("tipo_id")
 		
 		if producao_restante[tipo_id] > 0:
-			icone.modulate = Color(0.2, 0.8, 0.2, 1.0)
+			icone.modulate = Color(0.2, 0.8, 0.2, 1.0) # Verde: Item do contrato feito
 			producao_restante[tipo_id] -= 1
 		else:
-			icone.modulate = Color(0.3, 0.3, 0.3, 0.5)
+			icone.modulate = Color(0.3, 0.3, 0.3, 0.5) # Cinza: Ainda faltando
 			
 	for c in container_excesso.get_children(): c.queue_free()
+	
+	# Adiciona as armas que sobraram (Desperdício) no container de cima
 	for i in producao_restante.size():
 		var qtd_excesso = producao_restante[i]
 		if qtd_excesso > 0:
@@ -81,13 +86,13 @@ func _atualizar_pintura_demanda():
 	
 			for n in range(qtd_excesso):
 				var icone_extra = _criar_icone_arma(peca_info, i)
-				icone_extra.modulate = Color(0.8, 0.1, 0.1, 1.0) 
+				icone_extra.modulate = Color(0.8, 0.1, 0.1, 1.0) # Vermelho: Desperdiçada
 				container_excesso.add_child(icone_extra)
 
 func _criar_icone_arma(peca, tipo_id: int) -> TextureRect:
 	var icone = TextureRect.new()
 	icone.texture = load(peca.caminho_textura)
-	icone.custom_minimum_size = Vector2(40, 40)
+	icone.custom_minimum_size = Vector2(50, 50)
 	icone.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icone.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	icone.set_meta("tipo_id", tipo_id) 
