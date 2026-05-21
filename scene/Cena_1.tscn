@@ -155,7 +155,8 @@ layout_mode = 2
 [node name="FundoChapa" type="PanelContainer" parent="UI/VisualizadorContrato" unique_id=222044135]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/VisualizadorContrato/FundoChapa" unique_id=1138058628]
+[node name="MarginContainer" type="ScrollContainer" parent="UI/VisualizadorContrato/FundoChapa" unique_id=2131463621]
+custom_minimum_size = Vector2(800, 120)
 layout_mode = 2
 
 [node name="ContainerChapa" type="HBoxContainer" parent="UI/VisualizadorContrato/FundoChapa/MarginContainer" unique_id=937080127]
