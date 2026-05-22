@@ -36,6 +36,29 @@ var contrato_ativo = null
 func _ready():
 	gerar_conteudo_do_dia()
 
+
+# Função adaptada para encontrar e rodar o diálogo na cena atual
+func _verificar_gatilho_tutorial(chave_tutorial: String) -> void:
+	if not Global.has_meta("tutoriais_vistos"):
+		Global.set_meta("tutoriais_vistos", {})
+		
+	var tutoriais_vistos = Global.get_meta("tutoriais_vistos")
+	
+	if not tutoriais_vistos.has(chave_tutorial):
+		tutoriais_vistos[chave_tutorial] = true 
+		Global.set_meta("tutoriais_vistos", tutoriais_vistos)
+		
+		var todos_dialogos = _carregar_json("res://data_json/dialogos.json")
+		
+		if todos_dialogos.has(chave_tutorial):
+			var falas_do_tutorial = todos_dialogos[chave_tutorial]
+			
+			if has_node("/root/Dialogo"):
+				for fala in falas_do_tutorial:
+					if fala.has("retrato") and fala["retrato"] is String:
+						fala["retrato"] = load(fala["retrato"])
+				Dialogo.iniciar_dialogo(falas_do_tutorial)
+
 func registrar_contrato_concluido(contrato):
 	if not contratos_concluidos.has(contrato):
 		contratos_concluidos.append(contrato)

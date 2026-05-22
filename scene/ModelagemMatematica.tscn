@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_dxiy0"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_iqu4r"]
 [ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="4_0v088"]
+[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/SistemaDialogo.tscn" id="5_0v088"]
 
 [node name="Modelagem" type="Control" unique_id=1765818540]
 layout_mode = 3
@@ -105,6 +106,9 @@ offset_top = 288.0
 offset_right = 888.0
 offset_bottom = 400.0
 horizontal_alignment = 1
+
+[node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("5_0v088")]
+visible = false
 
 [connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/Resolver" to="." method="_on_btn_resolver_pressed"]
 [connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/Voltar" to="." method="_on_btn_voltar_pressed"]

@@ -38,56 +38,96 @@ func _ready():
 	_conectar_sinais_botoes_quantidade()
 	
 func _gerar_visualizacao_demanda():
-	# Limpa os restos visuais antigos com segurança antes de repopular
-	for c in container_chapa.get_children(): c.queue_free()
-	for c in container_excesso.get_children(): c.queue_free()
-	
+
 	if Global.contrato_ativo == null: return
 	
+	# 1. CRIAR AS LINHAS DE DEMANDA DO CONTRATO
 	for i in demanda.size():
 		var qtd_necessaria = demanda[i]
+		if qtd_necessaria > 0:
+			var peca_info = Global.pecas_disponiveis[i]
+			
+			var linha_meta = HBoxContainer.new()
+			linha_meta.name = "LinhaMeta_" + str(i)
+			linha_meta.set_meta("tipo_id", i)
+			linha_meta.set_meta("qtd_necessaria", qtd_necessaria)
+			
+			var icone = _criar_icone_arma(peca_info, i)
+			
+			var label_progresso = Label.new()
+			label_progresso.name = "TextoProgresso"
+			label_progresso.text = "0/%d" % qtd_necessaria
+			
+			linha_meta.add_child(icone)
+			linha_meta.add_child(label_progresso)
+			linha_meta.modulate = Color(0.8, 0.8, 0.8, 1.0) # Cinza inicial
+			
+			container_chapa.add_child(linha_meta)
+
+	for i in demanda.size():
 		var peca_info = Global.pecas_disponiveis[i]
 		
-		for n in range(qtd_necessaria):
-			var icone = _criar_icone_arma(peca_info, i)
-			icone.modulate = Color(0.3, 0.3, 0.3, 0.5) # Cor cinza padrão (não produzida)
-			container_chapa.add_child(icone)
+		var linha_desperdicio = HBoxContainer.new()
+		linha_desperdicio.name = "LinhaDesperdicio_" + str(i)
+		linha_desperdicio.set_meta("tipo_id", i)
+		linha_desperdicio.visible = false
+		
+		var icone_perda = _criar_icone_arma(peca_info, i)
+
+		var label_perda = Label.new()
+		label_perda.name = "TextoPerda"
+		label_perda.text = " x0"
+		
+		linha_desperdicio.add_child(icone_perda)
+		linha_desperdicio.add_child(label_perda)
+		linha_desperdicio.modulate = Color(0.9, 0.2, 0.2, 1.0) # Vermelho fixo
+		
+		container_chapa.add_child(linha_desperdicio)
 
 
 func _atualizar_pintura_demanda():
 	var producao_total = [0, 0, 0, 0, 0, 0] 
 	
-	# Calcula o quanto os padrões de corte atuais estão produzindo
 	for linha in vbox_padroes_lista.get_children():
 		var qtd_uso = linha.quantidade 
 		if linha.has_meta("composicao"):
 			var composicao = linha.get_meta("composicao") 
 			for i in composicao.size():
 				producao_total[i] += (composicao[i] * qtd_uso)
-			
-	var producao_restante = producao_total.duplicate()
-	
-	for icone in container_chapa.get_children():
-		var tipo_id = icone.get_meta("tipo_id")
-		
-		if producao_restante[tipo_id] > 0:
-			icone.modulate = Color(0.2, 0.8, 0.2, 1.0) # Verde: Item do contrato feito
-			producao_restante[tipo_id] -= 1
-		else:
-			icone.modulate = Color(0.3, 0.3, 0.3, 0.5) # Cinza: Ainda faltando
-			
+				
 	for c in container_excesso.get_children(): c.queue_free()
-	
-	# Adiciona as armas que sobraram (Desperdício) no container de cima
-	for i in producao_restante.size():
-		var qtd_excesso = producao_restante[i]
-		if qtd_excesso > 0:
-			var peca_info = Global.pecas_disponiveis[i]
-	
-			for n in range(qtd_excesso):
-				var icone_extra = _criar_icone_arma(peca_info, i)
-				icone_extra.modulate = Color(0.8, 0.1, 0.1, 1.0) # Vermelho: Desperdiçada
-				container_excesso.add_child(icone_extra)
+	for filho in container_chapa.get_children():
+		
+		if filho.name.begins_with("LinhaMeta_") and filho.has_meta("tipo_id"):
+			var tipo_id = filho.get_meta("tipo_id")
+			var qtd_necessaria = filho.get_meta("qtd_necessaria")
+			var label_texto = filho.get_node("TextoProgresso") as Label
+			
+			var qtd_feita = producao_total[tipo_id]
+			
+			var qtd_exibida = qtd_feita if qtd_feita <= qtd_necessaria else qtd_necessaria
+			if label_texto:
+				label_texto.text = " %d/%d" % [qtd_exibida, qtd_necessaria]
+			if qtd_feita >= qtd_necessaria:
+				filho.modulate = Color(0.2, 0.8, 0.2, 1.0)
+			else:
+				filho.modulate = Color(0.8, 0.8, 0.8, 1.0)
+				
+		elif filho.name.begins_with("LinhaDesperdicio_") and filho.has_meta("tipo_id"):
+			var tipo_id = filho.get_meta("tipo_id")
+			var label_perda = filho.get_node("TextoPerda") as Label
+			
+			var qtd_produzida = producao_total[tipo_id]
+			var qtd_necessaria = demanda[tipo_id]
+			var qtd_desperdicio = qtd_produzida - qtd_necessaria
+			
+			if qtd_desperdicio > 0:
+				Global._verificar_gatilho_tutorial("primeiro_desperdicio")
+				if label_perda:
+					label_perda.text = " x%d" % qtd_desperdicio
+				filho.visible = true
+			else:
+				filho.visible = false
 
 func _criar_icone_arma(peca, tipo_id: int) -> TextureRect:
 	var icone = TextureRect.new()

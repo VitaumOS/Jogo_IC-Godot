@@ -1,81 +1,129 @@
 {
   "1": [
     {
-      "nome": "Jorge",
-      "texto": "Ah! Mais um dia de trabalho! O que será que o Mestre vai ter para mim hoje?",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
       "nome": "Mestre Gato",
-      "texto": "[wave amp=30 freq=3]Miau![/wave] Escuta com atenção, Jorge. Recebi um chamado real e ficarei fora por [b]7 dias[/b]. A ferraria está em suas patas agora!",
+      "texto": "[wave amp=20 freq=3]Miau![/wave] Escute com atenção, Jorge. Ficarei fora por [b]7 dias[/b] em uma conferência do Reino. A ferraria está sob o seu comando!",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
     {
       "nome": "Jorge",
-      "texto": "S-Sete dias?! Mas Mestre... eu ainda me perco nos cálculos das chapas, não sou bom o suficiente com isso!",
+      "texto": "S-Sete dias, Mestre?! Mas eu ainda me confundo um pouco na hora de planejar o corte das chapas de metal...",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
       "nome": "Mestre Gato",
-      "texto": "Não tema, Jorge! Confio em você, só não faça essa ferraria falir nesses 7 dias, ok? FUI!.",
+      "texto": "Não tema. O segredo é a eficiência: cada chapa master que compramos custa caro ([b]R$ 100[/b]). Seu objetivo é produzir as armas combinando nossos [b]Padrões de Corte[/b] salvos.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
     {
-      "nome": "Jorge",
-      "texto": "[wave amp=30 freq=3]...[/wave]",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
+      "nome": "Mestre Gato",
+      "texto": "Se você atender às demandas gastando o mínimo possível de chapas, nossa margem de lucro será alta e a ferraria prospera. Use os botões [+] e [-] na lista para decidir quantas vezes usar cada padrão hoje!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    }
+  ],
+  "primeira_loja": [
     {
       "nome": "Jorge",
-      "texto": "V-Vamos ver o que consigo fazer hoje!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Bem-vindo à [b]Loja de Padrões[/b]! Aqui você usa seus lucros para liberar novas combinações de corte. Quanto mais padrões você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
+    }
+  ],
+  "primeiro_mural": [
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Este é o [b]Mural de Contratos[/b]. Aqui você escolhe quais pedidos a ferraria vai atender hoje. Fique de olho na demanda de armas e na recompensa antes de aceitar!"
+    }
+  ],
+  "primeiro_desperdicio": [
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Preste atenção, Jorge! Aquela barra [b]Vermelha[/b] ali embaixo apareceu. Isso significa [b]Desperdício[/b]! Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
+    }
+  ],
+  "primeira_modelagem": [
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Chega de adivinhar de cabeça! Esta é a tela de [b]Modelagem Matemática[/b]. Aqui nós transformamos a demanda em Restrições e os padrões em Variáveis de Decisão. O solver PuLP vai calcular a solução ótima para você!"
     }
   ],
   "2": [
     {
       "nome": "Jorge",
-      "texto": "O Mestre partiu... [shake rate=10 level=5]ai de mim![/shake] As encomendas já estão aumentando. Preciso otimizar esses cortes ou o estoque não vai durar.",
+      "texto": "Ufa, o primeiro dia foi tranquilo. Mas olhe o chão da ferraria... está cheio de retalhos e pedaços de metal que sobraram dos cortes.",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
+      "nome": "Mestre Gato (Nota no Quadro)",
+      "texto": "『Jorge, cada chapa master tem exatamente [b]500mm[/b]. Quando um padrão não preenche totalmente esses 500mm, a sobra é [b]Desperdício[/b] puro! Dinheiro jogado no lixo.』",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+    {
       "nome": "Jorge",
-      "texto": "E Parece que chegou novas armas pra fazer!",
+      "texto": "Entendi! Hoje os clientes pediram itens diferentes. Preciso olhar com atenção a barra visual de cada padrão e escolher aqueles que geram a menor perda de material possível.",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
   ],
   "3": [
     {
       "nome": "Jorge",
-      "texto": "Meu Deus, não [shake rate=10 level=5]DÁ[/shake] pra fazer isso de cabeça mais!",
+      "texto": "Os pedidos estão aumentando! A Guarda Real enviou um contrato complexo combinando Adagas, Espadas e Machados...",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
       "nome": "Jorge",
-      "texto": "Já sei! Vou precisar usar aquela ferramenta que o chefe me ensinou a usar! O PuLP!",
+      "texto": "[shake rate=15 level=4]Minha cabeça está dando nós![/shake] Se eu coloco mais do Padrão 1 para suprir as adagas, acabo fazendo machados demais e estourando o estoque de chapas. Tentar adivinhar a combinação perfeita está ficando difícil...",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    }
+  ],
+  "4": [
+    {
+      "nome": "Jorge",
+      "texto": "Chega! [shake rate=20 level=8]Não dá mais![/shake] O contrato de hoje exige dezenas de armas. Passar horas combinando números de cabeça vai falir a ferraria ou me deixar louco.",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Mestre Gato (Livro Antigo)",
+      "texto": "『Para problemas complexos, os antigos ferreiros usavam a [b]Modelagem Matemática[/b]. Deixamos de adivinhar e passamos a calcular com precisão cirúrgica.』",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Como funciona isso? Ah, entendi: transformamos decisões em variáveis! [b]x1[/b] é a quantidade de vezes que usaremos o Padrão 1, [b]x2[/b] para o Padrão 2... ",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Nosso objetivo é gastar o mínimo de chapas, certo? Então a nossa [b]Função Objetivo[/b] é: [b]Minimizar Z = x1 + x2 + ... + xn[/b]. Onde Z é o total de chapas utilizadas.",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "E as [b]Restrições[/b] garantem que a quantidade de peças geradas pelos padrões escolhidos seja maior ou igual (>=) à Demanda do cliente. Genial!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Para resolver esse sistema de equações sem testar infinitas combinações no escuro, cientistas criaram o [b]Método Simplex[/b]: um algoritmo que viaja geometricamente pelos cantos da região viável para achar a solução ótima em milissegundos!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "O biblioteca [b]PuLP[/b] no nosso computador faz exatamente isso. A partir de hoje, vou traduzir os contratos para a linguagem da álgebra e deixar o solver fazer a mágica!",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
   ],
   "5": [
     {
       "nome": "Jorge",
-      "texto": "Só mais 3 dias...só mais 3 dias......",
+      "texto": "Agora sim! Com a tela de Formulação Matemática ativada, posso ver as equações se formando em tempo real enquanto seleciono quais variáveis (padrões) farão parte do modelo.",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
       "nome": "Jorge",
-      "texto": "Só....mais......3[wave amp=30 freq=3]...[/wave][wave amp=40 freq=3]...[/wave][wave amp=50 freq=3]...[/wave]",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "[shake rate=10 level=5]EITA![/shake]Quase apaguei!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    }
-  ],
-  "7": [
-    {
-      "nome": "Jorge",
-      "texto": "[rainbow freq=0.5 sat=0.6 val=0.9]O sétimo dia![/rainbow] É o teste final da demo. Se eu for eficiente hoje, provarei que posso cuidar da ferraria até o Mestre voltar!",
+      "texto": "Lembrete: Eu preciso garantir que as restrições reflitam exatamente a demanda do contrato para que o algoritmo do Simplex encontre a [b]Solução Ótima Inteira[/b]. Vamos modelar!",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
   ]

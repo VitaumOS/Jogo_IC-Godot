@@ -1,18 +1,19 @@
 {
   "padroes": [
-    { "dia": 1, "nome": "Lote Irregular", "composicao": [9, 0, 0, 0, 0, 0], "preco": 100 },
-    { "dia": 1, "nome": "Kit Desajustado", "composicao": [2, 4, 0, 0, 0, 0], "preco": 120 },
-    { "dia": 2, "nome": "Fronteira Torta", "composicao": [0, 2, 2, 0, 0, 0], "preco": 200 },
-    { "dia": 2, "nome": "Corte Serrado", "composicao": [1, 0, 1, 3, 0, 0], "preco": 150 },
-    { "dia": 3, "nome": "Dilema do Mestre", "composicao": [1, 1, 1, 1, 0, 0], "preco": 220 },
-    { "dia": 3, "nome": "Sucata Organizada", "composicao": [3, 0, 2, 1, 0, 0], "preco": 190 },
-    { "dia": 4, "nome": "Lâminas Dentadas", "composicao": [2, 2, 1, 0, 0, 0], "preco": 400 },
-    { "dia": 4, "nome": "Carga de Longo Alcance", "composicao": [0, 1, 0, 1, 2, 0], "preco": 450 },
-    { "dia": 5, "nome": "Assimetria Real", "composicao": [1, 1, 1, 0, 1, 0], "preco": 550 },
-    { "dia": 5, "nome": "Kit de Emboscada", "composicao": [1, 0, 0, 2, 1, 0], "preco": 580 },
-    { "dia": 6, "nome": "Peso Pesado", "composicao": [0, 0, 0, 3, 1, 0], "preco": 650 },
-    { "dia": 6, "nome": "Invasão do Norte", "composicao": [1, 1, 1, 1, 0, 1], "preco": 680 },
-    { "dia": 7, "nome": "Lanças de Elite", "composicao": [1, 0, 0, 0, 0, 2], "preco": 800 },
-    { "dia": 7, "nome": "O Padrão Impossível", "composicao": [0, 1, 1, 0, 0, 1], "preco": 750 }
+    { "dia": 1, "nome": "Lote Adagas Essencial", "composicao": [9, 0, 0, 0, 0, 0], "preco": 200 },
+    { "dia": 1, "nome": "Kit Inicial Misto", "composicao": [2, 4, 0, 0, 0, 0], "preco": 250 },
+    
+    { "dia": 2, "nome": "Fronteira Espadas G", "composicao": [0, 0, 4, 0, 0, 0], "preco": 100 },
+    { "dia": 2, "nome": "Corte Machado e Adaga", "composicao": [1, 0, 0, 5, 0, 0], "preco": 120 },
+    
+    { "dia": 3, "nome": "Padrão Desperdiçador (Ruim)", "composicao": [1, 1, 0, 0, 0, 0], "preco": 50 },
+    { "dia": 3, "nome": "Sucata Otimizada G", "composicao": [3, 0, 2, 1, 0, 0], "preco": 200 },
+    
+    { "dia": 4, "nome": "Combo Lâminas Pesadas", "composicao": [0, 2, 1, 2, 0, 0], "preco": 250 },
+    { "dia": 4, "nome": "Carga Arcos Longos", "composicao": [0, 0, 0, 0, 2, 0], "preco": 300 },
+    
+    { "dia": 5, "nome": "Linha de Lanças Real", "composicao": [0, 0, 0, 0, 0, 2], "preco": 350 },
+    { "dia": 5, "nome": "Mix de Linha de Frente", "composicao": [2, 1, 1, 1, 1, 0], "preco": 400 },
+    { "dia": 6, "nome": "Padrão de Emergência Ineficiente", "composicao": [1, 0, 0, 0, 1, 0], "preco": 100 }
   ]
 }

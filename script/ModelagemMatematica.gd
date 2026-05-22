@@ -33,6 +33,7 @@ func _ready() -> void:
 	_gerar_lista_direita_padroes()
 	_gerar_restricoes_demanda()
 	_atualizar_equacoes_na_tela()
+	Global._verificar_gatilho_tutorial("primeira_modelagem")
 
 # --- PAINEL DIREITO: SEUS PADRÕES DISPONÍVEIS ---
 func _gerar_lista_direita_padroes() -> void:

@@ -14,6 +14,7 @@ func _ready():
 	lista_contratos = Global.contratos_disponiveis
 	_atualizar_ui_dinheiro()
 	_gerar_lista_contratos()
+	Global._verificar_gatilho_tutorial("primeiro_mural")
 
 func _atualizar_ui_dinheiro():
 	label_dinheiro.text = "R$ %d" % Global.dinheiro
