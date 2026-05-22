@@ -91,7 +91,7 @@ text = " R$ %d"
 layout_mode = 3
 anchors_preset = 0
 offset_left = 15.0
-offset_top = -216.0
+offset_top = -209.0
 offset_right = 885.0
 offset_bottom = 744.0
 
@@ -123,7 +123,7 @@ anchors_preset = 0
 offset_left = 45.0
 offset_top = 96.0
 offset_right = 89.0
-offset_bottom = 128.0
+offset_bottom = 138.0
 
 [node name="CorpoCentral" type="HBoxContainer" parent="UI/Controle_Corpo" unique_id=1861903148]
 custom_minimum_size = Vector2(0, 400)
@@ -138,11 +138,17 @@ offset_top = -60.800003
 offset_right = 870.016
 offset_bottom = 445.2
 
-[node name="LadoEsquerdo" type="MarginContainer" parent="UI/Controle_Corpo/CorpoCentral" unique_id=387953885]
-custom_minimum_size = Vector2(0, 400)
+[node name="Control2" type="Control" parent="UI/Controle_Corpo/CorpoCentral" unique_id=2016512735]
 layout_mode = 2
 
-[node name="BotaoContratoGrande" type="Button" parent="UI/Controle_Corpo/CorpoCentral/LadoEsquerdo" unique_id=2038583882]
+[node name="LadoEsquerdo" type="MarginContainer" parent="UI/Controle_Corpo/CorpoCentral/Control2" unique_id=387953885]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 0
+offset_top = 37.0
+offset_right = 199.72
+offset_bottom = 437.0
+
+[node name="BotaoContratoGrande" type="Button" parent="UI/Controle_Corpo/CorpoCentral/Control2/LadoEsquerdo" unique_id=2038583882]
 custom_minimum_size = Vector2(199.72, 400)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -159,19 +165,26 @@ custom_minimum_size = Vector2(20.775, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 
-[node name="LadoDireito" type="HBoxContainer" parent="UI/Controle_Corpo/CorpoCentral" unique_id=1958655811]
+[node name="Control" type="Control" parent="UI/Controle_Corpo/CorpoCentral" unique_id=1553266264]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/Controle_Corpo/CorpoCentral/LadoDireito" unique_id=763312148]
-custom_minimum_size = Vector2(600.195, 400)
+[node name="LadoDireito" type="HBoxContainer" parent="UI/Controle_Corpo/CorpoCentral/Control" unique_id=1958655811]
+layout_mode = 0
+offset_left = 203.256
+offset_top = 29.0
+offset_right = 804.256
+offset_bottom = 536.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Controle_Corpo/CorpoCentral/Control/LadoDireito" unique_id=763312148]
+custom_minimum_size = Vector2(601.255, 234)
 layout_mode = 2
 
-[node name="PadraoCorteSalvo" type="HBoxContainer" parent="UI/Controle_Corpo/CorpoCentral/LadoDireito/ScrollContainer" unique_id=507703508]
+[node name="PadraoCorteSalvo" type="HBoxContainer" parent="UI/Controle_Corpo/CorpoCentral/Control/LadoDireito/ScrollContainer" unique_id=507703508]
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
 theme_override_constants/separation = 67
 
-[node name="LinhaListaPadrao" parent="UI/Controle_Corpo/CorpoCentral/LadoDireito/ScrollContainer/PadraoCorteSalvo" unique_id=1823299021 instance=ExtResource("7_i1ld1")]
+[node name="LinhaListaPadrao" parent="UI/Controle_Corpo/CorpoCentral/Control/LadoDireito/ScrollContainer/PadraoCorteSalvo" unique_id=1823299021 instance=ExtResource("7_i1ld1")]
 custom_minimum_size = Vector2(0, 124.43)
 layout_mode = 2
 
@@ -248,7 +261,7 @@ visible = false
 [node name="PopUp" parent="." unique_id=1294504964 instance=ExtResource("10_6qt7c")]
 visible = false
 
-[connection signal="pressed" from="UI/Controle_Corpo/CorpoCentral/LadoEsquerdo/BotaoContratoGrande" to="." method="_on_contrato_pressed"]
+[connection signal="pressed" from="UI/Controle_Corpo/CorpoCentral/Control2/LadoEsquerdo/BotaoContratoGrande" to="." method="_on_contrato_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Rodape/BtnResolver" to="." method="_on_resolver_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Rodape/BtnSair" to="." method="_on_sair_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Rodape/BtnLoja" to="." method="_on_loja_pressed"]

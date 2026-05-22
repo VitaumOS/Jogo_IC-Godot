@@ -18,9 +18,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 11.794918
-offset_top = 446.61902
-offset_right = 503.47864
-offset_bottom = 451.33246
+offset_top = 449.409
+offset_right = 504.44797
+offset_bottom = 454.12244
 rotation = -1.5707964
 scale = Vector2(0.815, 0.815)
 
@@ -30,8 +30,8 @@ layout_mode = 2
 [node name="ControlesQuantidade" type="VBoxContainer" parent="Control" unique_id=1927556592]
 layout_mode = 0
 offset_left = 5.0
-offset_top = 449.0
-offset_right = 58.0
+offset_top = 443.0
+offset_right = 60.0
 offset_bottom = 499.0
 alignment = 1
 
@@ -54,6 +54,15 @@ text = "0"
 [node name="btnMais" type="Button" parent="Control/ControlesQuantidade/HBoxBotoes" unique_id=1522758180]
 layout_mode = 2
 text = "+"
+
+[node name="Perda" type="Label" parent="Control" unique_id=132077738]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -4.0
+offset_right = 57.0
+offset_bottom = 15.0
+text = "99.9%"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Control/ControlesQuantidade/HBoxBotoes/btnMenos" to="." method="_on_btn_menos_pressed"]
 [connection signal="pressed" from="Control/ControlesQuantidade/HBoxBotoes/btnMais" to="." method="_on_btn_mais_pressed"]

@@ -3,11 +3,11 @@ extends Node2D
 @export var cena_linha_padrao: PackedScene
 
 # --- REFERÊNCIAS DE NÓS ---
-@onready var vbox_padroes_lista = $UI/Controle_Corpo/CorpoCentral/LadoDireito/ScrollContainer/PadraoCorteSalvo
+@onready var vbox_padroes_lista = $UI/Controle_Corpo/CorpoCentral/Control/LadoDireito/ScrollContainer/PadraoCorteSalvo
 @onready var label_dia = $UI/Topo/DiaPanel
 @onready var label_dinheiro = $UI/Topo/DinheiroPanel
 @onready var lbl_estoque_chapas = $UI/Topo/LabelQuantidade
-@onready var btn_contrato_visual = $UI/Controle_Corpo/CorpoCentral/LadoEsquerdo/BotaoContratoGrande
+@onready var btn_contrato_visual = $UI/Controle_Corpo/CorpoCentral/Control2/LadoEsquerdo/BotaoContratoGrande
 @onready var popup = $PopUp
 
 @onready var container_excesso = $UI/VisualizadorContrato/VBoxContainer/ContainerExcesso
@@ -33,6 +33,12 @@ func _ready():
 		_verificar_dialogo_diario()
 	else:
 		_finalizar_logica_pulp()
+	
+	if Global.dia_atual <= 3:
+		$UI/VBoxContainer/Control/BtnModel.visible = false
+	else:
+		$UI/VBoxContainer/Control/BtnModel.visible = true
+	
 	_gerar_visualizacao_demanda()
 	_atualizar_pintura_demanda()
 	_conectar_sinais_botoes_quantidade()
