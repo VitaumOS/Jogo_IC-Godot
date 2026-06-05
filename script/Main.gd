@@ -33,7 +33,7 @@ func _ready():
 		_verificar_dialogo_diario()
 	else:
 		_finalizar_logica_pulp()
-	
+		
 	if Global.dia_atual <= 3:
 		$UI/VBoxContainer/Control/BtnModel.visible = false
 	else:
@@ -46,8 +46,6 @@ func _ready():
 func _gerar_visualizacao_demanda():
 
 	if Global.contrato_ativo == null: return
-	
-	# 1. CRIAR AS LINHAS DE DEMANDA DO CONTRATO
 	for i in demanda.size():
 		var qtd_necessaria = demanda[i]
 		if qtd_necessaria > 0:
@@ -86,7 +84,7 @@ func _gerar_visualizacao_demanda():
 		
 		linha_desperdicio.add_child(icone_perda)
 		linha_desperdicio.add_child(label_perda)
-		linha_desperdicio.modulate = Color(0.9, 0.2, 0.2, 1.0) # Vermelho fixo
+		linha_desperdicio.modulate = Color(0.9, 0.2, 0.2, 1.0)
 		
 		container_chapa.add_child(linha_desperdicio)
 
@@ -148,15 +146,14 @@ func _criar_icone_arma(peca, tipo_id: int) -> TextureRect:
 func _conectar_sinais_botoes_quantidade():
 	await get_tree().process_frame
 	for linha in vbox_padroes_lista.get_children():
-		var btn_mais = linha.find_child("btn_mais", true, false) as Button
-		var btn_menos = linha.find_child("btn_menos", true, false) as Button
+		var btn_mais = linha.find_child("btnMais") as Button
+		var btn_menos = linha.find_child("btnMenos") as Button
+		btn_mais.pressed.connect(func(): _atualizar_pintura_demanda())
+		btn_menos.pressed.connect(func(): _atualizar_pintura_demanda())
 		
-		if not btn_mais or not btn_menos:
-			for filho in linha.find_children("*", "Button", true, false):
-				filho.pressed.connect(func(): _atualizar_pintura_demanda())
-		else:
-			btn_mais.pressed.connect(func(): _atualizar_pintura_demanda())
-			btn_menos.pressed.connect(func(): _atualizar_pintura_demanda())
+		if Global.dia_atual==1:
+			var label_perda= linha.find_child("Perda") as Label
+			label_perda.visible=false
 
 func _verificar_dialogo_diario():
 	if Global.deve_exibir_dialogo_do_dia():

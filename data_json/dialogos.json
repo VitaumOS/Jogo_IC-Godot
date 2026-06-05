@@ -12,22 +12,50 @@
     },
     {
       "nome": "Mestre Gato",
-      "texto": "Não tema. O segredo é a eficiência: cada chapa master que compramos custa caro ([b]R$ 100[/b]). Seu objetivo é produzir as armas combinando nossos [b]Padrões de Corte[/b] salvos.",
+      "texto": "Não tema. Sei que você vai conseguir. Mas lembre-se: nem tudo a gente consegue resolver de cabeça",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
     {
-      "nome": "Mestre Gato",
-      "texto": "Se você atender às demandas gastando o mínimo possível de chapas, nossa margem de lucro será alta e a ferraria prospera. Use os botões [+] e [-] na lista para decidir quantas vezes usar cada padrão hoje!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+      "nome": "Jorge",
+      "texto": "...",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "B-bom, vamos ver o que conseguimos fazer!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+
+    {
+      "nome": "Jorge",
+      "texto": "Antes de mais nada, deixa eu te apresentar a ferraria: Aqui você pode selecionar um contrato, comprar padrões de cortes e chapas para atender o contrato e, quando tiver tudo pronto, você pode começar a BATER O FERRO, para montar todas as armas do contrato.",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Quando terminar tudo que tem para fazer no dia, aperte o botão para passar o dia. Lembre-se que você tem taxas a pagar diariamente, então termine tudo mesmo antes de prosseguir!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
   ],
+
+
+
+
   "primeira_loja": [
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Bem-vindo à [b]Loja de Padrões[/b]! Aqui você usa seus lucros para liberar novas combinações de corte. Quanto mais padrões você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
+      "texto": "Bem-vindo à [b]Loja de Padrões[/b]! Aqui você usa seu dinheiro para liberar novas combinações de corte. Quanto mais padrões você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
+    },
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Você comprar qualquer padrão de corte disponível e também chapas para atender os contratos!"
     }
   ],
+
+
+
   "primeiro_mural": [
     {
       "nome": "Jorge",
@@ -35,13 +63,25 @@
       "texto": "Este é o [b]Mural de Contratos[/b]. Aqui você escolhe quais pedidos a ferraria vai atender hoje. Fique de olho na demanda de armas e na recompensa antes de aceitar!"
     }
   ],
+
+
+
   "primeiro_desperdicio": [
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "texto": "Preste atenção, Jorge! Aquela barra [b]Vermelha[/b] ali embaixo apareceu. Isso significa [b]Desperdício[/b]! Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
+    },
+
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "É normal desperdiçar, as vezes o padrão de corte que você vai usar vai ultrapassar o limite, mas é sempre bom evitar e fazer escolhas mais econômicas!"
     }
   ],
+
+
+
   "primeira_modelagem": [
     {
       "nome": "Jorge",
@@ -49,6 +89,9 @@
       "texto": "Chega de adivinhar de cabeça! Esta é a tela de [b]Modelagem Matemática[/b]. Aqui nós transformamos a demanda em Restrições e os padrões em Variáveis de Decisão. O solver PuLP vai calcular a solução ótima para você!"
     }
   ],
+
+
+
   "2": [
     {
       "nome": "Jorge",
@@ -56,16 +99,18 @@
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
-      "nome": "Mestre Gato (Nota no Quadro)",
-      "texto": "『Jorge, cada chapa master tem exatamente [b]500mm[/b]. Quando um padrão não preenche totalmente esses 500mm, a sobra é [b]Desperdício[/b] puro! Dinheiro jogado no lixo.』",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+      "nome": "Jorge",
+      "texto": "Seria bom termos uma noção do quanto a gente tá desperdiçando,né. Agora podemos ver o quanto estamos gastando em cada padrão de corte!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
       "nome": "Jorge",
-      "texto": "Entendi! Hoje os clientes pediram itens diferentes. Preciso olhar com atenção a barra visual de cada padrão e escolher aqueles que geram a menor perda de material possível.",
+      "texto": "Use isso como um guia para comprar padrões de corte: padrões de corte que desperdiçam muito devem ser evitados!",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
   ],
+
+
   "3": [
     {
       "nome": "Jorge",
@@ -78,6 +123,8 @@
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
   ],
+
+
   "4": [
     {
       "nome": "Jorge",
@@ -115,6 +162,9 @@
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
   ],
+
+
+
   "5": [
     {
       "nome": "Jorge",

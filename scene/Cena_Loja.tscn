@@ -39,7 +39,7 @@ horizontal_alignment = 1
 layout_mode = 1
 offset_left = 24.0
 offset_top = 80.0
-offset_right = 851.0
+offset_right = 877.0
 offset_bottom = 760.0
 
 [node name="VBoxItens" type="VBoxContainer" parent="UI/ScrollContainer" unique_id=952896832]
