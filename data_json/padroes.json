@@ -6,7 +6,6 @@
     { "dia": 2, "nome": "Fronteira Espadas G", "composicao": [0, 0, 4, 0, 0, 0], "preco": 100 },
     { "dia": 2, "nome": "Corte Machado e Adaga", "composicao": [1, 0, 0, 5, 0, 0], "preco": 120 },
     { "dia": 2, "nome": "Trinca de Espadas M", "composicao": [0, 3, 1, 0, 0, 0], "preco": 140 },
-    { "dia": 2, "nome": "Lote Adaga Otimizado", "composicao": [9, 0, 0, 0, 0, 0], "preco": 180 },
     { "dia": 2, "nome": "Corte Misto de Defesa", "composicao": [2, 2, 1, 0, 0, 0], "preco": 160 },
     { "dia": 2, "nome": "Par de Machados Compacto", "composicao": [0, 0, 0, 2, 0, 0], "preco": 90 },
     { "dia": 2, "nome": "Dupla Espada e Machado", "composicao": [0, 2, 0, 2, 0, 0], "preco": 150 },

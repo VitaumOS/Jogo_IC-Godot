@@ -176,5 +176,13 @@
       "texto": "Lembrete: Eu preciso garantir que as restrições reflitam exatamente a demanda do contrato para que o algoritmo do Simplex encontre a [b]Solução Ótima Inteira[/b]. Vamos modelar!",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
+  ],
+
+  "6":[
+    {
+      "nome": "Jorge",
+      "texto": "Finalmente tá mais tranquilo de resolver os contratos! Eles ficam mais complexos, mas esse algoritmo resolve tudo!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    }
   ]
 }

@@ -38,6 +38,7 @@ func _ready():
 		$UI/VBoxContainer/Control/BtnModel.visible = false
 	else:
 		$UI/VBoxContainer/Control/BtnModel.visible = true
+		
 	
 	_gerar_visualizacao_demanda()
 	_atualizar_pintura_demanda()
@@ -305,7 +306,11 @@ func _limpar_dados_transicao():
 	_atualizar_ui_estatica()
 	_atualizar_display_contrato()
 
-func _on_modelagem_pressed(): get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")
+func _on_modelagem_pressed():
+	if Global.dia_atual == 4 and !Global.finalizou_treino:
+		get_tree().change_scene_to_file("res://scene/TreinoModelagem.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")
 func _on_loja_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Loja.tscn")
 func _on_sair_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Resumo.tscn")
 func _on_contrato_pressed(): get_tree().change_scene_to_file("res://scene/Cena_contratos.tscn")

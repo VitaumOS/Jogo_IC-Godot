@@ -23,7 +23,7 @@ func _ready():
 	_atualiza_contador()
 	
 	# Dificuldade progressiva baseada no dia
-	var multiplicador = 1.0 + (Global.dia_atual - 1) * 0.20
+	var multiplicador = 1.0 + (Global.dia_atual - 1) * 0.02
 	velocidade_atual = velocidade_base * multiplicador
 	var espacamento_dia = espacamento_base / (1.0 + (Global.dia_atual - 1) * 0.1)
 

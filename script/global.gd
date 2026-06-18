@@ -10,6 +10,7 @@ var ganhos_do_dia: int = 0
 var estoque_chapas: int = 0
 var preco_chapa: int = 100 
 var recompensa_final: float = 0
+var finalizou_treino=false
 
 var chapas_usadas_pelo_jogador: int = 0
 var ultimo_desempenho_ritmo: float = -1.0 
