@@ -1,7 +1,7 @@
 extends Control
 
-@onready var titulo_faliu = $TituloFaliu # O Label com "Você faliu..."
-@onready var btn_voltar = $BtnVoltar     # Botão para voltar ao menu
+@onready var titulo_faliu = $TituloFaliu 
+@onready var btn_voltar = $BtnVoltar    
 
 func _ready():
 	# Inicializa o estado visual
@@ -22,9 +22,7 @@ func _sequencia_game_over():
 			"retrato": load("res://Sprite/gatinhos/NekoJorge.png")
 		}
 	]
-	
 	var sistema_dialogo = get_tree().root.find_child("SistemaDialogo", true, false)
-	
 	if sistema_dialogo:
 		sistema_dialogo.iniciar_dialogo(fala_derrota)
 		sistema_dialogo.dialogo_encerrado.connect(_mostrar_botao_final, CONNECT_ONE_SHOT)
@@ -34,14 +32,13 @@ func _sequencia_game_over():
 func _mostrar_botao_final():
 	btn_voltar.visible = true
 	btn_voltar.disabled = false
-	# Um pequeno fade in no botão para não aparecer do nada
 	var tween = create_tween()
 	btn_voltar.modulate.a = 0
 	tween.tween_property(btn_voltar, "modulate:a", 1.0, 0.5)
 
 func _on_btn_voltar_pressed():
 	# Reset dos dados globais antes de voltar
-	Global.dinheiro = 500
+	Global.dinheiro = Global.DINHEIRO_INICIAL
 	Global.dia_atual = 1
 	Global.estoque_chapas = 0
 	Global.contrato_ativo = null

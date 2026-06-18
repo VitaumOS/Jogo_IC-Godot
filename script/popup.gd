@@ -48,30 +48,24 @@ func mostrar_confirmacao(texto: String):
 
 func _abrir():
 	visible = true
-	# Pausa o jogo inteiro
 	get_tree().paused = true 
 	
-	# O Tween precisa processar durante o pause para a animação aparecer
 	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	$Placa.scale = Vector2.ZERO
 	tween.tween_property($Placa, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_BACK)
 
 func _fechar_e_retornar():
 	visible = false
-	# Despausa o jogo para o ciclo continuar
 	get_tree().paused = false
 
 func _on_btn_sim_pressed():
 	_fechar_e_retornar()
 	resposta.emit(true)
-	
 
 func _on_btn_nao_pressed():
 	_fechar_e_retornar()
 	resposta.emit(false)
-	
 
 func _on_btn_ok_pressed():
 	_fechar_e_retornar()
 	resposta.emit(true)
-	

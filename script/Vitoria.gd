@@ -1,6 +1,6 @@
 extends Control
 
-@onready var label_transicao = $CanvasLayer/LabelDia # Ex: "DIA 8" ou "O Retorno"
+@onready var label_transicao = $CanvasLayer/LabelDia 
 @onready var titulo_vitoria = $CanvasLayer/TituloVitoria
 @onready var botao_voltar = $Button
 
@@ -14,9 +14,7 @@ func _sequencia_final():
 	label_transicao.text = "DIA 8\nO Retorno do Mestre"
 	var tween = create_tween()
 	tween.tween_property(label_transicao, "modulate:a", 1.0, 1.0)
-	
 	await get_tree().create_timer(3.0).timeout
-	
 	create_tween().tween_property(label_transicao, "modulate:a", 0.0, 0.5)
 	await get_tree().create_timer(0.5).timeout
 	
@@ -57,8 +55,5 @@ func _mostrar_tela_vitoria():
 	botao_voltar.modulate.a = 0
 	tw.tween_property(botao_voltar, "modulate:a", 1.0, 2.0)
 	
-	
-	
-
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/telainicial.tscn")

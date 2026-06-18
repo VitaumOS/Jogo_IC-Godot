@@ -27,23 +27,18 @@ func configurar(dados: Dictionary):
 		wrapper.add_child(sprite)
 		container_visualizador.add_child(wrapper)
 		
-		# Acumula a largura de cada peça adicionada neste padrão
 		largura_utilizada += p.largura_peca
 
-	# --- CÁLCULO DA PERDA DO PADRÃO ---
 	var tamanho_total_chapa = Global.tamanho_container
 	var sobra_material = tamanho_total_chapa - largura_utilizada
 	
-	# Evita qualquer dízima ou valor negativo por arredondamento de float
 	if sobra_material < 0: 
 		sobra_material = 0.0
-		
 	var percentual_perda: float = (sobra_material / tamanho_total_chapa) * 100.0
 	
-	# Atualiza o texto da sua Label "Perda" com uma casa decimal (Ex: "Perda: 12.5%")
+	# Atualiza o texto da Label "Perda"
 	if label_perda:
 		label_perda.text = "%.1f%%" % percentual_perda
-		
 		# Feedback visual por cores baseado na eficiência do corte
 		if percentual_perda == 0.0:
 			label_perda.modulate = Color(0.2, 0.8, 0.2) # Verde para desperdício zero
@@ -56,7 +51,6 @@ func _on_btn_mais_pressed() -> void:
 	quantidade += 1
 	lbl_qtd.text = str(quantidade)
 	
-
 func _on_btn_menos_pressed() -> void:
 	if quantidade > 0:
 		quantidade -= 1

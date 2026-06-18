@@ -64,7 +64,6 @@ func _input(event):
 
 func _checar_batida(tecla):
 	var areas_no_alvo = area_alvo.get_overlapping_areas()
-
 	for area_letra in areas_no_alvo:
 		var peca_container = area_letra.get_parent()
 		if peca_container in armas_na_fila:
@@ -85,9 +84,9 @@ func _efeito_fade_e_remover(peca, sucesso):
 	if sucesso: _atualiza_contador()
 	
 	var tween = create_tween()
-	tween.set_parallel(true) # Faz o fade e o movimento ao mesmo tempo
-	tween.tween_property(peca, "modulate:a", 0.0, 0.2) # Alpha vai para 0 em 0.2s
-	tween.tween_property(peca, "scale", Vector2(1.5, 1.5), 0.2) # Aumenta um pouco
+	tween.set_parallel(true) 
+	tween.tween_property(peca, "modulate:a", 0.0, 0.2) 
+	tween.tween_property(peca, "scale", Vector2(1.5, 1.5), 0.2) 
 	
 	tween.finished.connect(func(): 
 		peca.queue_free()

@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-# Sinais para comunicar com o resto do jogo
 signal dialogo_iniciado
 signal dialogo_encerrado
 signal fala_completada(indice: int)
@@ -59,7 +58,6 @@ func _iniciar_digitacao():
 	_esta_digitando = true
 	texto_label.visible_characters = 0
 	
-	# Calcula duração baseada no tamanho do texto
 	var total_caracteres = texto_label.get_total_character_count()
 	var duracao = total_caracteres * 0.04 # 0.04 segundos por letra
 	
@@ -70,14 +68,14 @@ func _iniciar_digitacao():
 
 func _pular_digitacao():
 	if _tween_digitacao and _tween_digitacao.is_running():
-		_tween_digitacao.kill() # Para a animação
+		_tween_digitacao.kill() 
 	
 	texto_label.visible_characters = texto_label.get_total_character_count()
 	_on_digitacao_finalizada()
 
 func _on_digitacao_finalizada():
 	_esta_digitando = false
-	seta_passar.visible = true # Mostra a seta para indicar que pode passar
+	seta_passar.visible = true
 	fala_completada.emit(_indice_atual)
 
 func _avancar_dialogo():

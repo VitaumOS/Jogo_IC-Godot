@@ -1,8 +1,5 @@
-#CENA DE RESUMO DIÁRIO
-
 extends Control
 
-# Referências aos nós
 @onready var label_titulo =$CenterContainer/PanelContainer/MarginContainer/VBox/Titulo
 @onready var label_info = $CenterContainer/PanelContainer/MarginContainer/VBox/VboxTexto/Label1
 @onready var label_info1 = $CenterContainer/PanelContainer/MarginContainer/VBox/VboxTexto/Label2
@@ -10,7 +7,6 @@ extends Control
 
 func _ready():
 	_processar_financeiro_do_dia()
-
 
 ## Calcula os valores finais e exibe na tela
 func _processar_financeiro_do_dia():

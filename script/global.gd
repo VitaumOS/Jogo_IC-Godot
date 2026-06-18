@@ -2,6 +2,7 @@ extends Node
 
 const CUSTO_DIARIO = 200
 const DIA_FINAL: int = 7
+const DINHEIRO_INICIAL: int = 800
 
 var tamanho_container: float = 500.0
 var dia_atual: int = 1
@@ -38,7 +39,7 @@ func _ready():
 	gerar_conteudo_do_dia()
 
 
-# Função adaptada para encontrar e rodar o diálogo na cena atual
+## Função adaptada para encontrar e rodar o diálogo na cena atual
 func _verificar_gatilho_tutorial(chave_tutorial: String) -> void:
 	if not Global.has_meta("tutoriais_vistos"):
 		Global.set_meta("tutoriais_vistos", {})
@@ -80,7 +81,6 @@ func usar_chapa_extra():
 ## Gera novos contratos e padrões aleatórios
 func gerar_conteudo_do_dia():
 	contratos_disponiveis.clear()
-	
 	var dados_contratos = _carregar_json("res://data_json/contratos.json")
 	var dados_padroes = _carregar_json("res://data_json/padroes.json")
 
@@ -90,17 +90,12 @@ func gerar_conteudo_do_dia():
 	contratos_possiveis.shuffle()
 	for i in contratos_possiveis:
 		contratos_disponiveis.append(i)
-		
 	padroes_possiveis.shuffle()
 	for i in padroes_possiveis:
 		padroes_na_loja.append(i)
 
 ## Função auxiliar para ler qualquer arquivo JSON
 func _carregar_json(caminho: String) -> Dictionary:
-	if not FileAccess.file_exists(caminho):
-		print("ERRO: Arquivo não encontrado: ", caminho)
-		return {}
-		
 	var arquivo = FileAccess.open(caminho, FileAccess.READ)
 	var conteudo = arquivo.get_as_text()
 	var json = JSON.new()
@@ -109,7 +104,6 @@ func _carregar_json(caminho: String) -> Dictionary:
 	if erro == OK:
 		return json.data
 	else:
-		print("ERRO ao processar JSON: ", json.get_error_message())
 		return {}
 
 ## Função chamada quando o jogador resolve o PCU com sucesso

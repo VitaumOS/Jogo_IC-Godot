@@ -1,6 +1,5 @@
 extends Control
 
-## Cena do botão customizado vinda do Inspector
 @export var cena_card: PackedScene
 
 @onready var label_dinheiro = $UI/HBoxContainer/LabelDinheiro
@@ -48,7 +47,6 @@ func _gerar_itens_loja():
 		var btn = card.find_child("Button"); btn.text = "Comprar (R$ %d)" % item.preco
 		if _ja_possui(item): btn.disabled = true; btn.text = "Adquirido"
 		btn.pressed.connect(func(): _tentar_comprar(item, btn))
-		
 
 ## Desenha as miniaturas das peças dentro do card da loja
 func _renderizar_previa_no_card(container: HBoxContainer, comp: Array):
