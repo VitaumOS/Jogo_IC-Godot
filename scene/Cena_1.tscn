@@ -6,10 +6,10 @@
 [ext_resource type="StyleBox" uid="uid://c1jeoar3pix3q" path="res://modelos/modelo_contrato.tres" id="4_r2s5b"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="5_bjq5w"]
 [ext_resource type="StyleBox" uid="uid://ciisrgd277gvm" path="res://modelos/modelo_botão_embaixo.tres" id="5_uwuwm"]
-[ext_resource type="PackedScene" uid="uid://b6if7jes5m0v4" path="res://scene/LinhaListaPadrao.tscn" id="7_i1ld1"]
+[ext_resource type="PackedScene" uid="uid://b6if7jes5m0v4" path="res://scene/aux_scene/LinhaListaPadrao.tscn" id="7_i1ld1"]
 [ext_resource type="Texture2D" uid="uid://crs5owxlqap0n" path="res://images/placa_2.png" id="8_bjq5w"]
-[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/SistemaDialogo.tscn" id="9_2xbwx"]
-[ext_resource type="PackedScene" uid="uid://niwiqe2egaiv" path="res://scene/Popup.tscn" id="10_6qt7c"]
+[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="9_2xbwx"]
+[ext_resource type="PackedScene" uid="uid://niwiqe2egaiv" path="res://scene/aux_scene/Popup.tscn" id="10_6qt7c"]
 [ext_resource type="StyleBox" uid="uid://bb27gk2e4050f" path="res://modelos/modelo_botao_brilhaembaixo.tres" id="10_ptkpm"]
 
 [sub_resource type="Theme" id="Theme_bjq5w"]

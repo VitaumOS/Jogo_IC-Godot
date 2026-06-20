@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Jogo_IC"
 run/main_scene="uid://shbv5578mx2h"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/bg_color=Color(0.1311107, 0.15224427, 0.069968686, 1)
 config/icon="res://icon.svg"
 

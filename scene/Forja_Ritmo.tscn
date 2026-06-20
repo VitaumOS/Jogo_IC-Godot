@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bvryhcfe4u3sh" path="res://script/Forja_Ritmo.gd" id="1_1oy20"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_ooc03"]
 [ext_resource type="Texture2D" uid="uid://ukp4n3dlw7r8" path="res://images/cobre.png" id="3_sd6ah"]
-[ext_resource type="PackedScene" uid="uid://bf7ivebfxw2wm" path="res://scene/Cena_peca_ritmo.tscn" id="4_4vvbd"]
+[ext_resource type="PackedScene" uid="uid://bf7ivebfxw2wm" path="res://scene/aux_scene/Cena_peca_ritmo.tscn" id="4_4vvbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sd6ah"]
 size = Vector2(40, 40)

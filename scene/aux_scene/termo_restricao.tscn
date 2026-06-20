@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dxwgvhexs1i1b"]
+
+[ext_resource type="PackedScene" uid="uid://cmi3quifa8djm" path="res://scene/aux_scene/miniatura_modelo_chapa.tscn" id="1_vc2j5"]
+
+[node name="Termo" type="HBoxContainer" unique_id=115538670]
+offset_left = -3.0
+offset_top = 11.0
+offset_right = 32.0
+offset_bottom = 97.0
+theme_override_constants/separation = 19
+alignment = 1
+
+[node name="Qtd" type="Label" parent="." unique_id=215772531]
+custom_minimum_size = Vector2(0, 85.65)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Miniatura" parent="." unique_id=1265181084 instance=ExtResource("1_vc2j5")]
+layout_mode = 2

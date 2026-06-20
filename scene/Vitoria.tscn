@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cs8ybyn7icl70"]
 
-[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/SistemaDialogo.tscn" id="1_sgi23"]
+[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="1_sgi23"]
 [ext_resource type="Script" uid="uid://c1huws2alkim3" path="res://script/Vitoria.gd" id="1_wbk6c"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_wbk6c"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="4_71bpr"]

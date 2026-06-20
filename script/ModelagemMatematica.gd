@@ -1,9 +1,11 @@
 extends Control
 
-var cena_padrao_visual = load("res://scene/Padrao_Corte.tscn")
+var cena_padrao_visual = load("res://scene/aux_scene/Padrao_Corte.tscn")
+var miniatura = load("res://scene/aux_scene/miniatura_modelo_chapa.tscn")
 
-@onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/FuncaoObjetivo
-@onready var container_restricoes = $MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes/ContainerRestricoes
+@onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao/FuncaoObjetivo
+@onready var container_funcao = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao
+@onready var container_restricoes = $MainMargin/LayoutPrincipal/PainelEsquerdo/ContainerRestricoes
 @onready var container_padroes_selecao = $MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes/ContainerPadroesSelecao
 @onready var resultado_lbl = $ResultadoCortesLabel
 @onready var btn_resolver = $MainMargin/LayoutPrincipal/PainelEsquerdo/Resolver
@@ -15,7 +17,7 @@ var OUTPUT_FILE_PATH = ProjectSettings.globalize_path("res://resolve_modelagem.j
 
 var lista_padroes_disponiveis: Array = []       
 var padroes_selecionados_indices: Array = []    
-var inputs_demanda: Dictionary = {}             
+var inputs_demanda: Dictionary = {}              
 
 func _ready() -> void:
 	
@@ -139,13 +141,30 @@ func _gerar_restricoes_demanda() -> void:
 func _atualizar_equacoes_na_tela() -> void:
 	var termos_funcao_obj = []
 	for i in range(padroes_selecionados_indices.size()):
-		termos_funcao_obj.append("x" + str(i + 1))
+		termos_funcao_obj.append(str(i + 1))
 		
 	if termos_funcao_obj.is_empty():
-		funcao_objetivo_lbl.text = "Função Objetivo:\nMin Z = 0"
+		funcao_objetivo_lbl.text = "Minimizar Z = 0"
+		for child in container_funcao.get_children():
+			if child != funcao_objetivo_lbl:
+				child.queue_free()
 	else:
-		funcao_objetivo_lbl.text = "Função Objetivo:\nMin Z = " + " + ".join(termos_funcao_obj)
+		funcao_objetivo_lbl.text = "Minimizar Z = "
+		container_funcao.add_theme_constant_override("separation", 8)
 		
+		for child in container_funcao.get_children():
+			if child != funcao_objetivo_lbl:
+				child.queue_free()
+
+		for i in range(padroes_selecionados_indices.size()):
+			if i > 0:
+				var lbl_mais = Label.new(); lbl_mais.text = "          +"
+				container_funcao.add_child(lbl_mais)
+			var mini = miniatura.instantiate()
+			container_funcao.add_child(mini)
+			mini.find_child("Numero").text = str(i + 1)
+			
+				
 	if not Global.contrato_ativo: return
 	var demanda_contrato = Global.contrato_ativo.demanda
 	

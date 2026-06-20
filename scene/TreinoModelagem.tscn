@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cip36qqen1j4e" path="res://script/TreinoModelagem.gd" id="1_nrhvf"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_jntv4"]
+[ext_resource type="PackedScene" uid="uid://cmi3quifa8djm" path="res://scene/aux_scene/miniatura_modelo_chapa.tscn" id="3_2kx74"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_b2rob"]
+[ext_resource type="PackedScene" uid="uid://ceqrctdai7pi2" path="res://scene/aux_scene/restricao.tscn" id="3_jntv4"]
 [ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="4_2kx74"]
-[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/SistemaDialogo.tscn" id="5_gp12c"]
+[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="5_gp12c"]
 
 [node name="Modelagem" type="Control" unique_id=1165207341]
 layout_mode = 3
@@ -20,59 +22,66 @@ expand_mode = 1
 
 [node name="MainMargin" type="Control" parent="." unique_id=52362942]
 anchors_preset = 0
-offset_left = 11.0
-offset_top = 40.0
-offset_right = 888.0
-offset_bottom = 873.0
+offset_left = 13.0
+offset_top = 26.0
+offset_right = 900.0
+offset_bottom = 875.0
 
 [node name="LayoutPrincipal" type="VBoxContainer" parent="MainMargin" unique_id=429249275]
 layout_mode = 0
 offset_left = 11.0
 offset_right = 861.0
-offset_bottom = 854.0
+offset_bottom = 895.0
 
 [node name="PainelEsquerdo" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1054586216]
 layout_mode = 2
+theme_override_constants/separation = 3
 
-[node name="FuncaoObjetivo" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=239836612]
+[node name="PainelFuncao" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=207390219]
+custom_minimum_size = Vector2(0, 95.355)
+layout_mode = 2
+theme_override_constants/separation = 22
+alignment = 1
+
+[node name="FuncaoObjetivo" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao" unique_id=1871568788]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "Min Z = a1 + a2 +..."
+text = "Minimizar Z = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MiniaturaModeloChapa" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao" unique_id=1265181084 instance=ExtResource("3_2kx74")]
+layout_mode = 2
+
 [node name="ScrollRestricoes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=1281827232]
-custom_minimum_size = Vector2(850, 300)
+custom_minimum_size = Vector2(850, 312.62)
 layout_mode = 2
 
 [node name="ContainerRestricoes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes" unique_id=1681862503]
-custom_minimum_size = Vector2(850, 300)
+custom_minimum_size = Vector2(850, 249.61)
 layout_mode = 2
+theme_override_constants/separation = 9
 
-[node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=622563731]
-custom_minimum_size = Vector2(0, 44.105)
+[node name="Restricao" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes/ContainerRestricoes" unique_id=1322664123 instance=ExtResource("3_jntv4")]
+visible = false
+custom_minimum_size = Vector2(32.78, 72.065)
 layout_mode = 2
 
 [node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=76046166]
-custom_minimum_size = Vector2(0, 371.295)
+custom_minimum_size = Vector2(0, 361.685)
 layout_mode = 2
-
-[node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1590041907]
-layout_mode = 2
-theme_override_font_sizes/font_size = 26
-text = "Inventário"
-horizontal_alignment = 1
 
 [node name="ScrollPadroes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=705050902]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=905768712]
-custom_minimum_size = Vector2(800, 329.785)
+custom_minimum_size = Vector2(800, 300)
 layout_mode = 2
 
 [node name="Botoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1463631653]
 layout_mode = 2
+theme_override_constants/separation = 81
 alignment = 1
 
 [node name="Resolver" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=464434631]
@@ -84,7 +93,13 @@ theme_override_styles/hover = ExtResource("4_2kx74")
 theme_override_styles/hover_pressed = ExtResource("4_2kx74")
 text = "RESOLVER"
 
+[node name="Voltar" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1945429112]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_b2rob")
+text = "VOLTAR"
+
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("5_gp12c")]
 visible = false
 
 [connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/Resolver" to="." method="_on_resolver_pressed"]
+[connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/Voltar" to="." method="_on_voltar_pressed"]

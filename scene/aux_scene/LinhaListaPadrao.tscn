@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6if7jes5m0v4"]
 
 [ext_resource type="Script" uid="uid://drbm1p0vl1sck" path="res://script/linhaListaPadrao.gd" id="1_4tggn"]
-[ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/Padrao_Corte.tscn" id="1_cvc00"]
+[ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/aux_scene/Padrao_Corte.tscn" id="1_cvc00"]
 
 [node name="LinhaListaPadrao" type="VBoxContainer" unique_id=282406503]
 offset_right = 598.0

@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://ceqrctdai7pi2"]
+
+[ext_resource type="Texture2D" uid="uid://b0covusih4ypb" path="res://Sprite/adaga.png" id="1_y6s4v"]
+[ext_resource type="PackedScene" uid="uid://dxwgvhexs1i1b" path="res://scene/aux_scene/termo_restricao.tscn" id="2_ano4k"]
+[ext_resource type="Texture2D" uid="uid://b210afj78xvug" path="res://images/maior_ou_igual.png" id="2_xblx3"]
+
+[node name="Restricao" type="HBoxContainer" unique_id=1322664123]
+custom_minimum_size = Vector2(32.78, 20.99)
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 481.0
+offset_bottom = 100.0
+alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=1480718807]
+layout_mode = 2
+
+[node name="Peca" type="TextureRect" parent="Control" unique_id=1480584354]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.397
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -20.715
+offset_right = 28.320473
+offset_bottom = 31.069275
+rotation = -0.2617994
+texture = ExtResource("1_y6s4v")
+expand_mode = 1
+
+[node name="spacer" type="Control" parent="." unique_id=211413365]
+custom_minimum_size = Vector2(26.52, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1890195571]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = ":"
+
+[node name="Restricao" type="HBoxContainer" parent="." unique_id=2021102660]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Termo" parent="Restricao" unique_id=115538670 instance=ExtResource("2_ano4k")]
+layout_mode = 2
+
+[node name="spacer2" type="Control" parent="." unique_id=751377040]
+custom_minimum_size = Vector2(49.915, 0)
+layout_mode = 2
+
+[node name="maiorigual" type="TextureRect" parent="." unique_id=425211032]
+custom_minimum_size = Vector2(29.6, 34.95)
+layout_mode = 2
+texture = ExtResource("2_xblx3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="spacer4" type="Control" parent="." unique_id=230478360]
+custom_minimum_size = Vector2(6.475, 0)
+layout_mode = 2
+
+[node name="demanda" type="Label" parent="." unique_id=1975933134]
+modulate = Color(1, 0.9063318, 0.58383155, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "22"
+horizontal_alignment = 1
+vertical_alignment = 1

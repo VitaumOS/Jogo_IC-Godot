@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cmi3quifa8djm"]
+
+[ext_resource type="Texture2D" uid="uid://bu5u4guorugic" path="res://images/Miniatura_Modelo.png" id="1_fw3ul"]
+
+[node name="MiniaturaModeloChapa" type="Control" unique_id=1265181084]
+layout_mode = 3
+anchor_left = -0.047000002
+anchor_top = -0.019000001
+anchor_right = -0.047000002
+anchor_bottom = -0.019000001
+offset_left = 19.300003
+offset_top = -30.9
+offset_right = 45.300003
+offset_bottom = -10.9
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1691938254]
+position = Vector2(23, 48)
+scale = Vector2(0.2908745, 0.27368423)
+texture = ExtResource("1_fw3ul")
+
+[node name="Numero" type="Label" parent="." unique_id=372807820]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 4.0
+offset_top = 66.0
+offset_right = 44.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 18
+text = "N"
+horizontal_alignment = 1

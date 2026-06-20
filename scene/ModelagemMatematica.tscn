@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_dxiy0"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_iqu4r"]
 [ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="4_0v088"]
-[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/SistemaDialogo.tscn" id="5_0v088"]
+[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="5_0v088"]
 
 [node name="Modelagem" type="Control" unique_id=1765818540]
 layout_mode = 3
@@ -21,36 +21,38 @@ expand_mode = 1
 [node name="MainMargin" type="Control" parent="." unique_id=697386958]
 anchors_preset = 0
 offset_left = 11.0
-offset_top = 40.0
+offset_top = 43.0
 offset_right = 888.0
 offset_bottom = 873.0
 
 [node name="LayoutPrincipal" type="VBoxContainer" parent="MainMargin" unique_id=1744733661]
 layout_mode = 0
 offset_left = 11.0
+offset_top = 21.0
 offset_right = 861.0
 offset_bottom = 854.0
 
 [node name="PainelEsquerdo" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=15311472]
 layout_mode = 2
 
-[node name="FuncaoObjetivo" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=587102331]
+[node name="PainelFuncao" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=347437643]
+layout_mode = 2
+theme_override_constants/separation = 22
+alignment = 1
+
+[node name="FuncaoObjetivo" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao" unique_id=587102331]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "Min Z = a1 + a2 +..."
+text = "Minimizar Z = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrollRestricoes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=170431360]
-custom_minimum_size = Vector2(850, 300)
-layout_mode = 2
-
-[node name="ContainerRestricoes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes" unique_id=866054742]
-custom_minimum_size = Vector2(850, 300)
-layout_mode = 2
-
 [node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=1002267743]
-custom_minimum_size = Vector2(0, 44.105)
+custom_minimum_size = Vector2(0, 44.955)
+layout_mode = 2
+
+[node name="ContainerRestricoes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=866054742]
+custom_minimum_size = Vector2(850, 240.23)
 layout_mode = 2
 
 [node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1305794751]
@@ -64,11 +66,11 @@ text = "Inventário"
 horizontal_alignment = 1
 
 [node name="ScrollPadroes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=286250799]
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(300, 380)
 layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=735313933]
-custom_minimum_size = Vector2(800, 329.785)
+custom_minimum_size = Vector2(800, 380)
 layout_mode = 2
 
 [node name="Botoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1170674162]
@@ -104,7 +106,7 @@ layout_mode = 0
 offset_left = 24.0
 offset_top = 288.0
 offset_right = 888.0
-offset_bottom = 400.0
+offset_bottom = 374.0
 horizontal_alignment = 1
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("5_0v088")]

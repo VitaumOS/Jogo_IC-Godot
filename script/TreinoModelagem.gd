@@ -1,11 +1,17 @@
 extends Control
 
-var cena_padrao_visual = load("res://scene/Padrao_Corte.tscn")
+var cena_padrao_visual = load("res://scene/aux_scene/Padrao_Corte.tscn")
+var restricao = load("res://scene/aux_scene/restricao.tscn")
+var miniatura = load("res://scene/aux_scene/miniatura_modelo_chapa.tscn")
+var termo_restricao = load("res://scene/aux_scene/termo_restricao.tscn")
 
-@onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/FuncaoObjetivo
+
+@onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao/FuncaoObjetivo
+@onready var container_funcao = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao
 @onready var container_restricoes = $MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes/ContainerRestricoes
 @onready var container_padroes_selecao = $MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes/ContainerPadroesSelecao
 @onready var resultado_lbl = $ResultadoCortesLabel 
+@onready var btn_voltar = $MainMargin/LayoutPrincipal/Botoes/Voltar
 
 var lista_problemas: Array = []
 var indice_problema_atual: int = 0
@@ -17,12 +23,13 @@ var lista_demandas_meta: Array = []
 func _ready() -> void:
 	_carregar_todos_os_desafios()
 	_inicializar_problema(indice_problema_atual)
+	btn_voltar.visible=false
 	
 	_disparar_dialogo_local([
 			{"nome": "Mestre Gato", "texto": "Seguinte, Jorge. Irei te treinar nesse negócio de Modelagem Matemática"},
 			{"nome": "Mestre Gato", "texto": "Pensa que é uma forma de representar as coisas do nosso mundo em uma linguagem matemática. Consequentemente, estamos tentando, através da matemática, procurar respostas para esses problemas do mundo real!"},
 			{"nome": "Mestre Gato", "texto": "Isso que você tá vendo aí em cima é uma modelagem matemática pro problema do corte: A parte de cima te fala que queremos o menor valor possível de cortes."},
-			{"nome": "Mestre Gato", "texto": "A parte debaixo te fala as restrições do problema, até porque se quisessemos o mínimo mesmo, era só colocar 0 para todos os cortes (risada)"},
+			{"nome": "Mestre Gato", "texto": "A parte debaixo te fala as restrições do problem, até porque se quisessemos o mínimo mesmo, era só colocar 0 para todos os cortes (risada)"},
 			{"nome": "Mestre Gato", "texto": "Ahem, enfim! As restrições são, para esse problema, a demanda dos contratos que você estava atendendo"},
 			{"nome": "Mestre Gato", "texto": "Tente resolver esses problemas agora!"}
 	])
@@ -67,11 +74,6 @@ func _gerar_lista_direita_padroes_treino() -> void:
 		input_qtd.placeholder_text = "Vezes"
 		input_qtd.text = "0" 
 		
-		input_qtd.text_changed.connect(func(novo_texto):
-			input_qtd.text = RegEx.create_from_string("[0-9]*").search(novo_texto).get_string()
-			_atualizar_equacoes_na_tela() 
-		)
-		
 		h_box_item.add_child(input_qtd)
 		inputs_quantidade_padrao[i] = input_qtd
 		
@@ -99,66 +101,68 @@ func _desenhar_sprites_no_visualizador(container: HBoxContainer, composicao: Arr
 			container.add_child(wrapper)
 
 func _gerar_restricoes_demanda_treino() -> void:
-	if not container_restricoes: return
-	
 	for child in container_restricoes.get_children():
 		child.queue_free()
 		
 	var demanda_desafio = problema_atual.demanda
 	for i in range(demanda_desafio.size()):
 		if demanda_desafio[i] > 0:
-			var nome_peca = Global.pecas_disponiveis[i].nome
+			var rest = restricao.instantiate()
+			rest.find_child("Peca").texture = load(Global.pecas_disponiveis[i].caminho_textura)
+			var lbl_tecnica = rest.find_child("Restricao")
+
+			for child in lbl_tecnica.get_children():
+				child.queue_free()
+				
+			var primeiro_termo = true
+			for j in range(problema_atual.padroes_disponiveis.size()):
+				var padrao = problema_atual.padroes_disponiveis[j]
+				var comp_padrao = padrao.get("composicao", [])
+				var qtd_na_chapa = comp_padrao[i] if i < comp_padrao.size() else 0
+				
+				if qtd_na_chapa > 0:
+					if not primeiro_termo:
+						var lbl_mais = Label.new()
+						lbl_mais.text = "          +"
+						lbl_mais.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+						lbl_tecnica.add_child(lbl_mais)
+					primeiro_termo = false
+					
+					var termo = termo_restricao.instantiate()
+					var lbl_qtd = termo.find_child("Qtd")
+					lbl_qtd.text = str(qtd_na_chapa)		
+					termo.find_child("Miniatura").find_child("Numero").text = str(j + 1)
+					lbl_tecnica.add_child(termo)
+
+			if primeiro_termo:
+				var lbl_zero = Label.new()
+				lbl_zero.text = "0"
+				lbl_zero.add_theme_font_size_override("font_size", 26)
+				lbl_tecnica.add_child(lbl_zero)
 			
-			var h_box = HBoxContainer.new()
-			h_box.alignment = BoxContainer.ALIGNMENT_CENTER
+			var demanda = rest.find_child("demanda")
+			demanda.text = str(demanda_desafio[i])
 			
-			var lbl_nome = Label.new()
-			lbl_nome.text = nome_peca + ": "
-			h_box.add_child(lbl_nome)
-			
-			var lbl_tecnica = Label.new()
-			lbl_tecnica.name = "CoeficientesPeca_" + str(i)
-			lbl_tecnica.text = "0"
-			h_box.add_child(lbl_tecnica)
-			
-			var lbl_sinal = Label.new()
-			lbl_sinal.text = "  >=  "
-			h_box.add_child(lbl_sinal)
-			
-			var lbl_meta_fixa = Label.new()
-			lbl_meta_fixa.text = str(demanda_desafio[i])
-			lbl_meta_fixa.modulate = Color(1.0, 0.8, 0.3) 
-			
-			h_box.add_child(lbl_meta_fixa)
-			container_restricoes.add_child(h_box)
+			container_restricoes.add_child(rest)
 
 func _atualizar_equacoes_na_tela() -> void:
 	var termos_funcao_obj = []
-	
 	for i in range(problema_atual.padroes_disponiveis.size()):
-		termos_funcao_obj.append("x" + str(i + 1))
+		termos_funcao_obj.append(str(i + 1))
+	funcao_objetivo_lbl.text = "Minimizar Z = "
+	container_funcao.add_theme_constant_override("separation", 8)
 		
-	funcao_objetivo_lbl.text = "Função Objetivo (Minimizar Chapas):\nMin Z = " + " + ".join(termos_funcao_obj)
-		
-	var demanda_desafio = problema_atual.demanda
-	for i in range(demanda_desafio.size()):
-		if demanda_desafio[i] > 0:
-			var lbl_coef = container_restricoes.find_child("CoeficientesPeca_" + str(i), true, false) as Label
-			if lbl_coef:
-				var termos_da_peca = []
-				
-				for j in range(problema_atual.padroes_disponiveis.size()):
-					var padrao = problema_atual.padroes_disponiveis[j]
-					var comp_padrao = padrao.get("composicao", [])
-					var qtd_na_chapa = comp_padrao[i] if i < comp_padrao.size() else 0
-					
-					if qtd_na_chapa > 0:
-						termos_da_peca.append(str(qtd_na_chapa) + "x" + str(j + 1))
-						
-				if termos_da_peca.is_empty():
-					lbl_coef.text = "0"
-				else:
-					lbl_coef.text = " + ".join(termos_da_peca)
+	for child in container_funcao.get_children():
+		if child != funcao_objetivo_lbl:
+			child.queue_free()
+
+	for i in range(problema_atual.padroes_disponiveis.size()):
+		if i > 0:
+			var lbl_mais = Label.new(); lbl_mais.text = "          +"
+			container_funcao.add_child(lbl_mais)
+		var mini = miniatura.instantiate()
+		container_funcao.add_child(mini)
+		mini.find_child("Numero").text = str(i + 1)
 
 func _on_resolver_pressed() -> void:
 	var producao_usuario = [0, 0, 0, 0, 0, 0]
@@ -211,8 +215,9 @@ func _disparar_dialogo_local(falas: Array):
 
 func _finalizar_treino():
 	_disparar_dialogo_local([
-		{"nome": "Mestre Gato", "texto": "Incrível, Jorge! Você provou que domina a modelagem e completou todos os exercícios. Retornando ao fluxo do dia..."}
+		{"nome": "Mestre Gato", "texto": "Incrível, Jorge! Você provou que domina a modelagem e completou todos os exercícios."}
 	])
-	await get_tree().create_timer(5.0).timeout
 	Global.finalizou_treino=true
-	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
+	btn_voltar.visible=true
+	
+func _on_voltar_pressed(): get_tree().change_scene_to_file("res://scene/Cena_1.tscn")

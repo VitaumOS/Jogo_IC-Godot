@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="1_tbok3"]
 [ext_resource type="Script" uid="uid://bbpyvdto8o8eg" path="res://script/GameOver.gd" id="1_u7gfx"]
 [ext_resource type="StyleBox" uid="uid://c1laj21bixtl" path="res://modelos/modelo_botao_2.tres" id="2_vq0q6"]
-[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/SistemaDialogo.tscn" id="3_vq0q6"]
+[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="3_vq0q6"]
 
 [node name="GameOver" type="Control" unique_id=2075479652]
 layout_mode = 3

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyjwis8xpmbg6"
-path="res://.godot/imported/placa_brilha.png-a8229402ebfd4840891582c6f9a79823.ctex"
+uid="uid://b210afj78xvug"
+path="res://.godot/imported/maior_ou_igual.png-753f211b10f3a263d4196323be7beb2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/placa_brilha.png"
-dest_files=["res://.godot/imported/placa_brilha.png-a8229402ebfd4840891582c6f9a79823.ctex"]
+source_file="res://images/maior_ou_igual.png"
+dest_files=["res://.godot/imported/maior_ou_igual.png-753f211b10f3a263d4196323be7beb2e.ctex"]
 
 [params]
 
