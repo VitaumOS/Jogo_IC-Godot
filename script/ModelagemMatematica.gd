@@ -1,7 +1,9 @@
 extends Control
 
 var cena_padrao_visual = load("res://scene/aux_scene/Padrao_Corte.tscn")
+var restricao = load("res://scene/aux_scene/restricao.tscn")
 var miniatura = load("res://scene/aux_scene/miniatura_modelo_chapa.tscn")
+var termo_restricao = load("res://scene/aux_scene/termo_restricao.tscn")
 
 @onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao/FuncaoObjetivo
 @onready var container_funcao = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao
@@ -80,63 +82,67 @@ func _alternar_padrao_na_modelagem(idx_padrao: int, is_active: bool, botao: Butt
 			padroes_selecionados_indices.append(idx_padrao)
 	else:
 		padroes_selecionados_indices.erase(idx_padrao)
+	_gerar_restricoes_demanda()
 	_atualizar_equacoes_na_tela()
 	_reorganizar_texto_botoes()
 
 func _reorganizar_texto_botoes() -> void:
 	var idx_atual = 0
 	for item in container_padroes_selecao.get_children():
-		if item is HBoxContainer:
-			var btn = item.get_child(0) as Button
-			if btn:
-				if btn.is_pressed():
-					var posicao_na_equacao = padroes_selecionados_indices.find(idx_atual)
-					btn.text = " Ativo [x%d] " % (posicao_na_equacao + 1)
-				else:
-					btn.text = " Incluir "
-		idx_atual += 1
+		var btn = item.get_child(0) as Button
+		if btn.is_pressed():
+			var posicao_na_equacao = padroes_selecionados_indices.find(idx_atual)
+			btn.text = " Ativo [%d] " % (posicao_na_equacao + 1)
+		else:
+			btn.text = " Incluir "
+	idx_atual += 1
 
 func _gerar_restricoes_demanda() -> void:
 	if not container_restricoes: return
 	
 	for child in container_restricoes.get_children():
 		child.queue_free()
-	inputs_demanda.clear()
-	
-	if not Global.contrato_ativo: return
 		
+	if not Global.contrato_ativo: return
+	
 	var demanda_contrato = Global.contrato_ativo.demanda
 	for i in range(demanda_contrato.size()):
 		if demanda_contrato[i] > 0:
-			var nome_peca = Global.pecas_disponiveis[i].nome
-			
-			var h_box = HBoxContainer.new()
-			h_box.alignment = BoxContainer.ALIGNMENT_CENTER
-			
-			var lbl_nome = Label.new()
-			lbl_nome.text = nome_peca + ": "
-			h_box.add_child(lbl_nome)
-			
-			var lbl_tecnica = Label.new()
+			var rest = restricao.instantiate()
+			rest.find_child("Peca").texture = load(Global.pecas_disponiveis[i].caminho_textura)
+			var lbl_tecnica = rest.find_child("Restricao")
 			lbl_tecnica.name = "CoeficientesPeca_" + str(i)
-			lbl_tecnica.text = "0"
-			h_box.add_child(lbl_tecnica)
+
+			for child in lbl_tecnica.get_children():
+				child.queue_free()
+				
+			var primeiro_termo = true
+			for j in range(padroes_selecionados_indices.size()):
+				var padrao = Global.padroes_desbloqueados[padroes_selecionados_indices[j]]
+				var comp_padrao = padrao.get("composicao", [])
+				var qtd_na_chapa = comp_padrao[i] if i < comp_padrao.size() else 0
+				
+				if qtd_na_chapa > 0:
+					if not primeiro_termo:
+						var lbl_mais = Label.new()
+						lbl_mais.text = "     +"
+						lbl_mais.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+						lbl_mais.add_theme_font_size_override("font_size", 26)
+						lbl_tecnica.add_child(lbl_mais)
+					primeiro_termo = false
+					
+					var termo = termo_restricao.instantiate()
+					termo.find_child("Qtd").text = str(qtd_na_chapa)        
+					termo.find_child("Miniatura").find_child("Numero").text = str(j + 1)
+					lbl_tecnica.add_child(termo)
+			if primeiro_termo:
+				var lbl_zero = Label.new()
+				lbl_zero.text = "0"
+				lbl_zero.add_theme_font_size_override("font_size", 26)
+				lbl_tecnica.add_child(lbl_zero)
 			
-			var lbl_sinal = Label.new()
-			lbl_sinal.text = "  >=  "
-			h_box.add_child(lbl_sinal)
-			
-			var input_qtd = LineEdit.new()
-			input_qtd.custom_minimum_size = Vector2(60, 0)
-			input_qtd.alignment = HORIZONTAL_ALIGNMENT_CENTER
-			
-			input_qtd.text_changed.connect(func(novo_texto):
-				input_qtd.text = RegEx.create_from_string("[0-9]*").search(novo_texto).get_string()
-			)
-			
-			h_box.add_child(input_qtd)
-			container_restricoes.add_child(h_box)
-			inputs_demanda[i] = input_qtd
+			rest.find_child("demanda").text = str(demanda_contrato[i])
+			container_restricoes.add_child(rest)
 
 func _atualizar_equacoes_na_tela() -> void:
 	var termos_funcao_obj = []
@@ -150,43 +156,19 @@ func _atualizar_equacoes_na_tela() -> void:
 				child.queue_free()
 	else:
 		funcao_objetivo_lbl.text = "Minimizar Z = "
-		container_funcao.add_theme_constant_override("separation", 8)
-		
 		for child in container_funcao.get_children():
 			if child != funcao_objetivo_lbl:
 				child.queue_free()
 
 		for i in range(padroes_selecionados_indices.size()):
 			if i > 0:
-				var lbl_mais = Label.new(); lbl_mais.text = "          +"
+				var lbl_mais = Label.new(); lbl_mais.text = "    +"
+				lbl_mais.add_theme_font_size_override("font_size", 26)
 				container_funcao.add_child(lbl_mais)
 			var mini = miniatura.instantiate()
 			container_funcao.add_child(mini)
-			mini.find_child("Numero").text = str(i + 1)
-			
-				
-	if not Global.contrato_ativo: return
-	var demanda_contrato = Global.contrato_ativo.demanda
-	
-	for i in range(demanda_contrato.size()):
-		if demanda_contrato[i] > 0:
-			var lbl_coef = container_restricoes.find_child("CoeficientesPeca_" + str(i), true, false) as Label
-			if lbl_coef:
-				var termos_da_peca = []
-				for j in range(padroes_selecionados_indices.size()):
-					var idx_padrao_original = padroes_selecionados_indices[j]
-					var padrao = Global.padroes_desbloqueados[idx_padrao_original]
-					
-					var comp_padrao = padrao.get("composicao", [])
-					var qtd_na_chapa = comp_padrao[i] if i < comp_padrao.size() else 0
-
-					if qtd_na_chapa > 0:
-						termos_da_peca.append(str(qtd_na_chapa) + "x" + str(j + 1))
-						
-				if termos_da_peca.is_empty():
-					lbl_coef.text = "0"
-				else:
-					lbl_coef.text = " + ".join(termos_da_peca)
+			var num_node = mini.find_child("Numero")
+			num_node.text = str(i + 1)
 
 func _on_btn_resolver_pressed() -> void:
 	if padroes_selecionados_indices.is_empty(): return
@@ -200,16 +182,9 @@ func _on_btn_resolver_pressed() -> void:
 	matriz_demanda_manual.resize(Global.pecas_disponiveis.size())
 	matriz_demanda_manual.fill(0)
 	
-	for idx_peca in inputs_demanda.keys():
-		var input_edit = inputs_demanda[idx_peca] as LineEdit
-		var valor_digitado = int(input_edit.text.strip_edges())
-		var valor_real_contrato = Global.contrato_ativo.demanda[idx_peca]
-		
-		if input_edit.text.strip_edges() == "" or valor_digitado != valor_real_contrato:
-			if resultado_lbl:
-				resultado_lbl.text = "Erro: Valores digitados nas restrições divergem do Contrato!"
-			return
-		matriz_demanda_manual[idx_peca] = valor_digitado
+	if Global.contrato_ativo:
+		for i in range(Global.contrato_ativo.demanda.size()):
+			matriz_demanda_manual[i] = Global.contrato_ativo.demanda[i]
 
 	var args = [PYTHON_SCRIPT, JSON.stringify(matriz_demanda_manual), JSON.stringify(composicoes_enviadas), OUTPUT_FILE_PATH]
 	OS.execute(PYTHON_PATH, args)

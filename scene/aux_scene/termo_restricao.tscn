@@ -7,7 +7,7 @@ offset_left = -3.0
 offset_top = 11.0
 offset_right = 32.0
 offset_bottom = 97.0
-theme_override_constants/separation = 19
+theme_override_constants/separation = 13
 alignment = 1
 
 [node name="Qtd" type="Label" parent="." unique_id=215772531]

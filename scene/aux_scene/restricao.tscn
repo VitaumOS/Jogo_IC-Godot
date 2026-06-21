@@ -40,7 +40,7 @@ text = ":"
 
 [node name="Restricao" type="HBoxContainer" parent="." unique_id=2021102660]
 layout_mode = 2
-theme_override_constants/separation = 6
+theme_override_constants/separation = 4
 
 [node name="Termo" parent="Restricao" unique_id=115538670 instance=ExtResource("2_ano4k")]
 layout_mode = 2

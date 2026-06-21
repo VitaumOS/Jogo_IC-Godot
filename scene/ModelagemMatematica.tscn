@@ -21,7 +21,7 @@ expand_mode = 1
 [node name="MainMargin" type="Control" parent="." unique_id=697386958]
 anchors_preset = 0
 offset_left = 11.0
-offset_top = 43.0
+offset_top = 11.0
 offset_right = 888.0
 offset_bottom = 873.0
 
@@ -30,14 +30,15 @@ layout_mode = 0
 offset_left = 11.0
 offset_top = 21.0
 offset_right = 861.0
-offset_bottom = 854.0
+offset_bottom = 865.0
 
 [node name="PainelEsquerdo" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=15311472]
 layout_mode = 2
 
 [node name="PainelFuncao" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=347437643]
+custom_minimum_size = Vector2(0, 83.68)
 layout_mode = 2
-theme_override_constants/separation = 22
+theme_override_constants/separation = 7
 alignment = 1
 
 [node name="FuncaoObjetivo" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao" unique_id=587102331]
@@ -48,15 +49,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=1002267743]
-custom_minimum_size = Vector2(0, 44.955)
+custom_minimum_size = Vector2(0, 5.69)
 layout_mode = 2
 
 [node name="ContainerRestricoes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=866054742]
-custom_minimum_size = Vector2(850, 240.23)
+custom_minimum_size = Vector2(850, 341.255)
 layout_mode = 2
+theme_override_constants/separation = -13
 
 [node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1305794751]
-custom_minimum_size = Vector2(0, 371.295)
+custom_minimum_size = Vector2(0, 345)
 layout_mode = 2
 
 [node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1285108412]
@@ -66,11 +68,11 @@ text = "Inventário"
 horizontal_alignment = 1
 
 [node name="ScrollPadroes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=286250799]
-custom_minimum_size = Vector2(300, 380)
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=735313933]
-custom_minimum_size = Vector2(800, 380)
+custom_minimum_size = Vector2(800, 300)
 layout_mode = 2
 
 [node name="Botoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1170674162]
@@ -103,10 +105,10 @@ text = "VOLTAR
 
 [node name="ResultadoCortesLabel" type="Label" parent="." unique_id=959085558]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 288.0
-offset_right = 888.0
-offset_bottom = 374.0
+offset_left = 615.0
+offset_top = 506.0
+offset_right = 877.0
+offset_bottom = 792.0
 horizontal_alignment = 1
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("5_0v088")]
