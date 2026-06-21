@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://88um8jyw770g"]
+
+[node name="BlocoPecaChapa" type="Control" unique_id=83591621]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Textura" type="TextureRect" parent="." unique_id=327110334]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1

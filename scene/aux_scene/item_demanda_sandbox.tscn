@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dysp74t1u4tpp"]
+
+[node name="ItemDemandaSandbox" type="HBoxContainer" unique_id=251691229]
+
+[node name="TexturaArma" type="TextureRect" parent="." unique_id=1043118227]
+layout_mode = 2
+
+[node name="LabelNome" type="Label" parent="." unique_id=1534458408]
+layout_mode = 2
+
+[node name="InputDemanda" type="LineEdit" parent="." unique_id=1282031136]
+layout_mode = 2

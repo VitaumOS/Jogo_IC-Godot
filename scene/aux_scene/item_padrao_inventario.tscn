@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://55nwiy6ok4l4"]
+
+[ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/aux_scene/Padrao_Corte.tscn" id="1_38d6p"]
+
+[node name="ItemPadraoInventario" type="HBoxContainer" unique_id=1505127661]
+
+[node name="BtnRemover" type="Button" parent="." unique_id=645077289]
+layout_mode = 2
+
+[node name="LabelIndice" type="Label" parent="." unique_id=1315747670]
+layout_mode = 2
+
+[node name="InstanciaPadraoVisual" parent="." unique_id=1343394717 instance=ExtResource("1_38d6p")]
+layout_mode = 2
+
+[node name="LabelDesperdicio" type="Label" parent="." unique_id=1362612143]
+layout_mode = 2

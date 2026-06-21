@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://b8mwb1udciwp2"]
+
+[ext_resource type="Script" uid="uid://cke3qs8ajbxtw" path="res://script/sandbox.gd" id="1_h0kme"]
+
+[node name="Sandbox" type="Control" unique_id=1891637544]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h0kme")
+
+[node name="MainMargin" type="MarginContainer" parent="." unique_id=281384731]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 905.0
+offset_bottom = 891.0
+
+[node name="LayoutPrincipal" type="HBoxContainer" parent="MainMargin" unique_id=1893035462]
+layout_mode = 2
+
+[node name="PainelEsquerdo" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=509458363]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PainelCriador" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=35458190]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador" unique_id=1877784234]
+layout_mode = 2
+
+[node name="TituloCriador" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox" unique_id=1170441442]
+layout_mode = 2
+
+[node name="ContainerArmasBotoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox" unique_id=923020306]
+layout_mode = 2
+
+[node name="VisualizadorChapaAtual" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox" unique_id=1042263947]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="LinhaAcoesCriador" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox" unique_id=1877754277]
+layout_mode = 2
+
+[node name="InfoDesperdicio" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox/LinhaAcoesCriador" unique_id=166772068]
+layout_mode = 2
+
+[node name="BtnLimparChapa" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox/LinhaAcoesCriador" unique_id=434935567]
+layout_mode = 2
+text = "LIMPAR"
+
+[node name="BtnAdicionarAoInventario" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox/LinhaAcoesCriador" unique_id=2081153165]
+layout_mode = 2
+text = "ADICIONAR"
+
+[node name="PainelDemandas" type="PanelContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador" unique_id=1083958898]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelDemandas" unique_id=974757920]
+layout_mode = 2
+
+[node name="TituloDemandas" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelDemandas/VBox" unique_id=2102338001]
+layout_mode = 2
+
+[node name="GridDemandasArmas" type="GridContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelDemandas/VBox" unique_id=950749020]
+layout_mode = 2
+columns = 2
+
+[node name="PainelAcoesFinais" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador" unique_id=2132216983]
+layout_mode = 2
+
+[node name="BtnResolverSandbox" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelAcoesFinais" unique_id=834441681]
+layout_mode = 2
+text = "RESOLVER"
+
+[node name="BtnVoltar" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelAcoesFinais" unique_id=1693180716]
+layout_mode = 2
+text = "VOLTAR"
+
+[node name="ResultadoTxtLabel" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelAcoesFinais" unique_id=1182743470]
+layout_mode = 2
+
+[node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=2050211263]
+layout_mode = 2
+
+[node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=119640686]
+layout_mode = 2
+
+[node name="ScrollInventario" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=828971197]
+layout_mode = 2
+
+[node name="ContainerModelagemPadroes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollInventario" unique_id=138965009]
+layout_mode = 2
