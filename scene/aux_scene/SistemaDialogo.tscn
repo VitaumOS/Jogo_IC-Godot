@@ -1,11 +1,29 @@
 [gd_scene format=3 uid="uid://dnci0t7lpn3u5"]
 
 [ext_resource type="Script" uid="uid://blf1qegii74ss" path="res://script/SistemaDialogo.gd" id="1_ij1vx"]
+[ext_resource type="Shader" uid="uid://kv8eh66f5ae7" path="res://scene/aux_scene/SistemaDialogo.gdshader" id="2_nrl86"]
 [ext_resource type="Texture2D" uid="uid://dnhdenmr0eu8c" path="res://Sprite/gatinhos/NekoJorge.png" id="2_qn2xm"]
 [ext_resource type="Texture2D" uid="uid://bot8j6y37hdl0" path="res://images/pergaminho.png" id="3_6anm4"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mucsi"]
+shader = ExtResource("2_nrl86")
+shader_parameter/posicao_foco = Vector2(0, 0)
+shader_parameter/tamanho_foco = Vector2(0, 0)
+shader_parameter/cor_shadow = Color(0, 0, 0, 0.6)
+
 [node name="SistemaDialogo" type="CanvasLayer" unique_id=477801998]
 script = ExtResource("1_ij1vx")
+
+[node name="TelaFoco" type="ColorRect" parent="." unique_id=1228575964]
+visible = false
+material = SubResource("ShaderMaterial_mucsi")
+use_parent_material = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.58400005)
 
 [node name="RetratoControl" type="Control" parent="." unique_id=118587594]
 layout_mode = 3
@@ -17,9 +35,9 @@ offset_bottom = 872.0
 
 [node name="RetratoSprite" type="TextureRect" parent="RetratoControl" unique_id=246108845]
 layout_mode = 0
-offset_left = 498.0
+offset_left = 499.0
 offset_top = -414.0
-offset_right = 810.0
+offset_right = 811.0
 offset_bottom = -102.0
 texture = ExtResource("2_qn2xm")
 expand_mode = 5
@@ -68,3 +86,61 @@ offset_left = 828.0
 offset_top = 744.0
 offset_right = 868.0
 offset_bottom = 784.0
+
+[node name="AgrupadorMiniatura" type="Control" parent="." unique_id=2063621907]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 450.045
+offset_top = 300.215
+offset_right = 501.41562
+offset_bottom = 333.26538
+
+[node name="RetratoSprite_mini" type="TextureRect" parent="AgrupadorMiniatura" unique_id=2019978041]
+layout_mode = 0
+offset_left = -99.01001
+offset_top = -30.919998
+offset_right = 104.98999
+offset_bottom = 173.08
+texture = ExtResource("2_qn2xm")
+expand_mode = 3
+
+[node name="Background_mini" type="TextureRect" parent="AgrupadorMiniatura" unique_id=1145365260]
+layout_mode = 0
+offset_left = -270.01
+offset_top = 114.07999
+offset_right = 263.99
+offset_bottom = 304.08
+texture = ExtResource("3_6anm4")
+expand_mode = 1
+
+[node name="Control_mini" type="Control" parent="AgrupadorMiniatura" unique_id=204048040]
+anchors_preset = 0
+offset_left = -203.01001
+offset_top = 92.08
+offset_right = -151.01001
+offset_bottom = 124.08
+
+[node name="NomeLabel" type="Label" parent="AgrupadorMiniatura/Control_mini" unique_id=785793935]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 407.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "Gato"
+horizontal_alignment = 1
+
+[node name="TextoLabel" type="RichTextLabel" parent="AgrupadorMiniatura/Control_mini" unique_id=101537603]
+layout_mode = 0
+offset_left = -6.0350037
+offset_top = 80.70502
+offset_right = 411.965
+offset_bottom = 176.70502
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Texto genérico aqui pra testar um monte de coisa neraaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa
+"
+fit_content = true
+autowrap_mode = 2

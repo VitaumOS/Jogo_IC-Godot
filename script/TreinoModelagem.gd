@@ -25,14 +25,7 @@ func _ready() -> void:
 	_inicializar_problema(indice_problema_atual)
 	btn_voltar.visible=false
 	
-	_disparar_dialogo_local([
-			{"nome": "Mestre Gato", "texto": "Seguinte, Jorge. Irei te treinar nesse negócio de Modelagem Matemática"},
-			{"nome": "Mestre Gato", "texto": "Pensa que é uma forma de representar as coisas do nosso mundo em uma linguagem matemática. Consequentemente, estamos tentando, através da matemática, procurar respostas para esses problemas do mundo real!"},
-			{"nome": "Mestre Gato", "texto": "Isso que você tá vendo aí em cima é uma modelagem matemática pro problema do corte: A parte de cima te fala que queremos o menor valor possível de cortes."},
-			{"nome": "Mestre Gato", "texto": "A parte debaixo te fala as restrições do problem, até porque se quisessemos o mínimo mesmo, era só colocar 0 para todos os cortes (risada)"},
-			{"nome": "Mestre Gato", "texto": "Ahem, enfim! As restrições são, para esse problema, a demanda dos contratos que você estava atendendo"},
-			{"nome": "Mestre Gato", "texto": "Tente resolver esses problemas agora!"}
-	])
+	Global._verificar_gatilho_tutorial("treinamento_modelagem")
 
 func _carregar_todos_os_desafios():
 	var arquivo = FileAccess.open("res://data_json/desafios_pcu.json", FileAccess.READ)

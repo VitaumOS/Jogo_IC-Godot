@@ -29,6 +29,8 @@ func _ready():
 	_atualizar_ui_estatica()
 	_atualizar_display_contrato()
 	
+	
+	
 	if Global.ultimo_desempenho_ritmo < 0:
 		_verificar_dialogo_diario()
 	else:
@@ -297,7 +299,9 @@ func _finalizar_logica_pulp():
 			Global.registrar_contrato_concluido(Global.contrato_ativo)
 			Global.completar_contrato(z_user <= z_pulp, Global.ultimo_desempenho_ritmo)
 			popup.mostrar_conclusao_contrato()
-
+	if !Global.finalizou_primeiro_contrato:
+		Global.finalizou_primeiro_contrato = true
+		Global._verificar_gatilho_tutorial("primeiro_contrato_concluido")
 	_limpar_dados_transicao()
 
 func _limpar_dados_transicao():

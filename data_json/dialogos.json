@@ -70,17 +70,39 @@
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Preste atenção, Jorge! Aquela barra [b]Vermelha[/b] ali embaixo apareceu. Isso significa [b]Desperdício[/b]! Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
+      "coordenada": [615, 450],
+      "foco_pos": [200, 600],
+      "foco_tamanho": [100, 50],
+      "texto": "Preste atenção! Aquela barra [b]Vermelha[/b] ali embaixo apareceu. Isso significa [b]Desperdício[/b]! "
     },
-
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "coordenada": [615, 450],
+      "foco_pos": [200, 600],
+      "foco_tamanho": [100, 50],
+      "texto": "Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
+    },
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "coordenada": [615, 450],
       "texto": "É normal desperdiçar, as vezes o padrão de corte que você vai usar vai ultrapassar o limite, mas é sempre bom evitar e fazer escolhas mais econômicas!"
     }
   ],
 
-
+  "primeiro_contrato_concluido":[
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Você concluiu seu primeiro contrato! Viu como é importante economizar as chapas utilizadas?"
+    },
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Sempre tente chegar no valor mínimo em todos os contratos para conseguir um bônus em dinheiro."
+    }
+  ],
 
   "primeira_modelagem": [
     {
@@ -163,6 +185,52 @@
     }
   ],
 
+  "treinamento_modelagem": [
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Seguinte, Jorge. Irei te treinar nesse negócio de Modelagem Matemática",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+		{
+      "nome": "Mestre Gato", 
+      "texto": "Pensa que é uma forma de representar as coisas do nosso mundo em uma linguagem matemática. Consequentemente, estamos tentando, através da matemática, procurar respostas para esses problemas do mundo real!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+			
+    {
+      "nome": "Mestre Gato",
+      "texto": "Isso que você tá vendo aqui é uma modelagem matemática pro problema do corte. ",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 300]
+    },
+
+    {
+      "nome": "Mestre Gato",
+      "texto": "A parte de cima te fala que queremos o menor valor possível de cortes.",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 300]
+    },
+
+		{
+      "nome": "Mestre Gato",
+      "texto": "A parte debaixo te fala as restrições do problem, até porque se quisessemos o mínimo mesmo, era só colocar 0 para todos os cortes (risada)",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 300]
+    },
+
+		{
+      "nome": "Mestre Gato",
+      "texto": "Ahem, enfim! As restrições são, para esse problema, a demanda dos contratos que você estava atendendo",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+		{
+      "nome": "Mestre Gato", 
+      "texto": "Tente resolver esses problemas agora!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    }
+  ],
 
 
   "5": [

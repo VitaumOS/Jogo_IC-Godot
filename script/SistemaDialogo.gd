@@ -4,10 +4,23 @@ signal dialogo_iniciado
 signal dialogo_encerrado
 signal fala_completada(indice: int)
 
+# --- Nós do Diálogo Clássico (Padrão) ---
 @onready var retrato_sprite = $RetratoControl/RetratoSprite
 @onready var nome_label = $Control/NomeLabel
 @onready var texto_label = $Control/TextoLabel
 @onready var seta_passar = $SetaPassar
+@onready var background = $Background
+@onready var control_classico = $Control
+@onready var retrato_control_classico = $RetratoControl
+@onready var tela_foco = $TelaFoco
+
+# --- Novos Nós para o Sistema de Miniaturas (Por Coordenada) ---
+@onready var agrupador_miniatura = $AgrupadorMiniatura
+@onready var retrato_sprite_mini = $AgrupadorMiniatura/RetratoSprite_mini
+@onready var background_mini = $AgrupadorMiniatura/Background_mini
+@onready var control_mini = $AgrupadorMiniatura/Control_mini
+@onready var nome_label_mini = $AgrupadorMiniatura/Control_mini/NomeLabel
+@onready var texto_label_mini = $AgrupadorMiniatura/Control_mini/TextoLabel
 
 # Variáveis de controle
 var _lista_falas: Array = []
@@ -16,9 +29,9 @@ var _esta_digitando: bool = false
 var _tween_digitacao: Tween
 
 func _ready():
-
 	visible = false
 	seta_passar.visible = false
+	_esconder_miniaturas()
 	process_mode = PROCESS_MODE_ALWAYS
 
 ## Função principal para iniciar uma sequência de diálogo
@@ -26,7 +39,23 @@ func iniciar_dialogo(falas: Array):
 	if falas.is_empty():
 		return
 		
-	_lista_falas = falas
+	_lista_falas = falas.duplicate()
+	
+	for fala in _lista_falas:
+		if fala.has("coordenada") and fala["coordenada"] is Array:
+			fala["coordenada"] = Vector2(fala["coordenada"][0], fala["coordenada"][1])
+		if fala.has("foco_pos") and fala["foco_pos"] is Array:
+			fala["foco_pos"] = Vector2(fala["foco_pos"][0], fala["foco_pos"][1])
+		if fala.has("foco_tamanho") and fala["foco_tamanho"] is Array:
+			fala["foco_tamanho"] = Vector2(fala["foco_tamanho"][0], fala["foco_tamanho"][1])
+	
+	# Trata automaticamente coordenadas vindas de arquivos JSON [x, y] para Vector2
+	for fala in _lista_falas:
+		if fala.has("coordenada") and fala["coordenada"] is Array:
+			var arr_coord = fala["coordenada"]
+			if arr_coord.size() == 2:
+				fala["coordenada"] = Vector2(arr_coord[0], arr_coord[1])
+				
 	_indice_atual = 0
 	visible = true
 	get_tree().paused = true
@@ -43,34 +72,68 @@ func _input(event):
 
 func _exibir_fala_atual():
 	var fala = _lista_falas[_indice_atual]
-	nome_label.text = fala.get("nome", "???")
-	if fala.has("retrato"):
-		retrato_sprite.texture = fala["retrato"]
-		retrato_sprite.visible = true
-	else:
-		retrato_sprite.visible = false
-
-	texto_label.bbcode_text = fala.get("texto", "")
+	var tem_coordenada = fala.has("coordenada") and fala["coordenada"] is Vector2
 	seta_passar.visible = false
-	_iniciar_digitacao()
+	
+	if fala.has("foco_pos") and fala.has("foco_tamanho"):
+		# Passa os valores convertidos diretamente para o ShaderMaterial
+		var mat = tela_foco.material as ShaderMaterial
+		if mat:
+			mat.set_shader_parameter("posicao_foco", fala["foco_pos"])
+			mat.set_shader_parameter("tamanho_foco", fala["foco_tamanho"])
+		tela_foco.visible = true
+	else:
+		tela_foco.visible = false
 
-func _iniciar_digitacao():
+	if tem_coordenada:
+		_mostrar_miniaturas()
+		control_classico.visible = false
+		retrato_control_classico.visible = false
+		background.visible = false
+		
+		agrupador_miniatura.global_position = fala["coordenada"]
+		
+		nome_label_mini.text = fala.get("nome", "???")
+		texto_label_mini.bbcode_text = fala.get("texto", "")
+		
+		retrato_sprite_mini.texture = fala["retrato"] 
+
+		_iniciar_digitacao(texto_label_mini)
+	else:
+		_esconder_miniaturas()
+		control_classico.visible = true
+		retrato_control_classico.visible = true
+		background.visible = true
+		
+		nome_label.text = fala.get("nome", "???")
+		retrato_sprite.texture = fala["retrato"] 
+
+		texto_label.bbcode_text = fala.get("texto", "")
+		_iniciar_digitacao(texto_label)
+
+func _iniciar_digitacao(label_alvo: RichTextLabel):
 	_esta_digitando = true
 	texto_label.visible_characters = 0
+	texto_label_mini.visible_characters = 0
 	
-	var total_caracteres = texto_label.get_total_character_count()
-	var duracao = total_caracteres * 0.04 # 0.04 segundos por letra
+	var total_caracteres = label_alvo.get_total_character_count()
+	var duracao = total_caracteres * 0.04
 	
 	_tween_digitacao = create_tween()
 	_tween_digitacao.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	_tween_digitacao.tween_property(texto_label, "visible_characters", total_caracteres, duracao)
+	_tween_digitacao.tween_property(label_alvo, "visible_characters", total_caracteres, duracao)
 	_tween_digitacao.finished.connect(_on_digitacao_finalizada)
 
 func _pular_digitacao():
 	if _tween_digitacao and _tween_digitacao.is_running():
 		_tween_digitacao.kill() 
 	
-	texto_label.visible_characters = texto_label.get_total_character_count()
+	var fala = _lista_falas[_indice_atual]
+	if fala.has("coordenada") and fala["coordenada"] is Vector2:
+		texto_label_mini.visible_characters = texto_label_mini.get_total_character_count()
+	else:
+		texto_label.visible_characters = texto_label.get_total_character_count()
+		
 	_on_digitacao_finalizada()
 
 func _on_digitacao_finalizada():
@@ -85,7 +148,20 @@ func _avancar_dialogo():
 	else:
 		_encerrar_dialogo()
 
+func _esconder_miniaturas():
+	retrato_sprite_mini.visible = false
+	background_mini.visible = false
+	control_mini.visible = false
+	
+func _mostrar_miniaturas():
+	retrato_sprite_mini.visible = true
+	background_mini.visible = true
+	control_mini.visible = true
+
 func _encerrar_dialogo():
 	visible = false
+	_esconder_miniaturas()
+	control_classico.visible = true
+	retrato_control_classico.visible = true
 	get_tree().paused = false
 	dialogo_encerrado.emit()
