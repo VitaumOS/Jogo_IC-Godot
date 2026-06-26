@@ -29,8 +29,6 @@ func _ready():
 	_atualizar_ui_estatica()
 	_atualizar_display_contrato()
 	
-	
-	
 	if Global.ultimo_desempenho_ritmo < 0:
 		_verificar_dialogo_diario()
 	else:

@@ -38,7 +38,7 @@ horizontal_alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="UI" unique_id=1154573931]
 layout_mode = 1
 offset_left = 24.0
-offset_top = 80.0
+offset_top = 95.0
 offset_right = 877.0
 offset_bottom = 760.0
 
@@ -67,31 +67,32 @@ theme_override_styles/normal = ExtResource("3_mypxv")
 theme_override_styles/pressed = ExtResource("5_4qugu")
 theme_override_styles/hover = ExtResource("5_4qugu")
 theme_override_styles/hover_pressed = ExtResource("5_4qugu")
-text = "Comprar Chapas (R$ %d)"
+text = "Comprar Chapas (R$ 100)"
 icon_alignment = 1
 vertical_icon_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=1601850019]
 layout_mode = 0
-offset_left = 548.0
-offset_top = 16.0
-offset_right = 911.0
-offset_bottom = 72.0
+offset_left = 498.0
+offset_top = 29.0
+offset_right = 800.0
+offset_bottom = 85.0
+theme_override_constants/separation = 120
 
 [node name="LabelQuantidade" type="Label" parent="UI/HBoxContainer" unique_id=527180709]
+custom_minimum_size = Vector2(93, 0)
+custom_maximum_size = Vector2(93, -1)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_mypxv")
-text = "Chapas: %d"
+text = "Chapas: 999"
 horizontal_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="UI/HBoxContainer" unique_id=2009678965]
-custom_minimum_size = Vector2(102.495, 7.925)
-layout_mode = 2
-
 [node name="LabelDinheiro" type="Label" parent="UI/HBoxContainer" unique_id=1041009093]
+custom_minimum_size = Vector2(76, 0)
+custom_maximum_size = Vector2(76, -1)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_mypxv")
-text = "Carteira: R$"
+text = "R$ 99999"
 horizontal_alignment = 1
 
 [node name="BtnVoltar" type="Button" parent="UI" unique_id=451513788]

@@ -29,27 +29,34 @@ layout_mode = 2
 
 [node name="ControlesQuantidade" type="VBoxContainer" parent="Control" unique_id=1927556592]
 layout_mode = 0
-offset_left = 5.0
+offset_left = 4.0
 offset_top = 443.0
-offset_right = 60.0
-offset_bottom = 499.0
+offset_right = 65.0
+offset_bottom = 493.0
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="lblTitulo" type="Label" parent="Control/ControlesQuantidade" unique_id=2009286401]
+custom_minimum_size = Vector2(55, 0)
+custom_maximum_size = Vector2(55, -1)
 layout_mode = 2
 text = "Qtd"
 horizontal_alignment = 1
 
 [node name="HBoxBotoes" type="HBoxContainer" parent="Control/ControlesQuantidade" unique_id=1441030852]
 layout_mode = 2
+theme_override_constants/separation = 2
 
 [node name="btnMenos" type="Button" parent="Control/ControlesQuantidade/HBoxBotoes" unique_id=604155571]
 layout_mode = 2
 text = "-"
 
 [node name="lblQtd" type="Label" parent="Control/ControlesQuantidade/HBoxBotoes" unique_id=919808864]
+custom_minimum_size = Vector2(22, 0)
+custom_maximum_size = Vector2(22, -1)
 layout_mode = 2
 text = "0"
+horizontal_alignment = 1
 
 [node name="btnMais" type="Button" parent="Control/ControlesQuantidade/HBoxBotoes" unique_id=1522758180]
 layout_mode = 2

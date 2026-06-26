@@ -3,7 +3,7 @@ extends Control
 @export var card_contrato: PackedScene
 
 @onready var container_contratos = $UI/ScrollContainer/VBoxContratos
-@onready var label_dinheiro = $UI/LabelDinheiro
+@onready var label_dinheiro = $UI/HBoxContainer/LabelDinheiro
 @onready var popup = $PopUp
 
 var lista_contratos = []
