@@ -28,9 +28,9 @@ offset_bottom = 873.0
 [node name="LayoutPrincipal" type="VBoxContainer" parent="MainMargin" unique_id=1744733661]
 layout_mode = 0
 offset_left = 11.0
-offset_top = 21.0
+offset_top = 13.0
 offset_right = 861.0
-offset_bottom = 865.0
+offset_bottom = 847.0
 
 [node name="PainelEsquerdo" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=15311472]
 layout_mode = 2
@@ -58,7 +58,8 @@ layout_mode = 2
 theme_override_constants/separation = -13
 
 [node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1305794751]
-custom_minimum_size = Vector2(0, 345)
+custom_minimum_size = Vector2(0, 250)
+custom_maximum_size = Vector2(-1, 250)
 layout_mode = 2
 
 [node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1285108412]
@@ -72,7 +73,7 @@ custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=735313933]
-custom_minimum_size = Vector2(800, 300)
+custom_minimum_size = Vector2(800, 260.365)
 layout_mode = 2
 
 [node name="Botoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1170674162]
