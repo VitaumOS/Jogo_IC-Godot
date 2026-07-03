@@ -1,7 +1,9 @@
 {
     "status": "Optimal",
-    "chapas_usadas": 1,
+    "chapas_usadas": 8,
     "plano_corte": {
-        "Padrao_2": 1
+        "Padrao_1": 2,
+        "Padrao_2": 3,
+        "Padrao_6": 3
     }
 }

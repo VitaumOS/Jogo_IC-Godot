@@ -61,6 +61,14 @@
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "texto": "Este é o [b]Mural de Contratos[/b]. Aqui você escolhe quais pedidos a ferraria vai atender hoje. Fique de olho na demanda de armas e na recompensa antes de aceitar!"
+    }, 
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Quando quiser escolher um contrato, clique no botão 'aceitar contrato' para ele ser enviado a sua ferraria!",
+      "coordenada": [450, 330],
+      "foco_pos": [500, 250],
+      "foco_tamanho": [700, 80]
     }
   ],
 
@@ -156,33 +164,28 @@
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
-      "nome": "Mestre Gato (Livro Antigo)",
-      "texto": "『Para problemas complexos, os antigos ferreiros usavam a [b]Modelagem Matemática[/b]. Deixamos de adivinhar e passamos a calcular com precisão cirúrgica.』",
+      "nome": "Jorge",
+      "texto": "Espera, o que é esse livro? Modelagem Matemática? É algum livro do mestre?",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Tem até uma anotação do mestre aqui atrás do livro. ",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Mestre Gato",
+      "texto": "'Jorge, se tiver problemas em resolver esses problemas de cabeça e precisar de uma ajudinha, esse livro é a solução! '",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
     {
       "nome": "Jorge",
-      "texto": "Como funciona isso? Ah, entendi: transformamos decisões em variáveis! [b]x1[/b] é a quantidade de vezes que usaremos o Padrão 1, [b]x2[/b] para o Padrão 2... ",
+      "texto": "Certo! Entendi!",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
       "nome": "Jorge",
-      "texto": "Nosso objetivo é gastar o mínimo de chapas, certo? Então a nossa [b]Função Objetivo[/b] é: [b]Minimizar Z = x1 + x2 + ... + xn[/b]. Onde Z é o total de chapas utilizadas.",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "E as [b]Restrições[/b] garantem que a quantidade de peças geradas pelos padrões escolhidos seja maior ou igual (>=) à Demanda do cliente. Genial!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Para resolver esse sistema de equações sem testar infinitas combinações no escuro, cientistas criaram o [b]Método Simplex[/b]: um algoritmo que viaja geometricamente pelos cantos da região viável para achar a solução ótima em milissegundos!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "O biblioteca [b]PuLP[/b] no nosso computador faz exatamente isso. A partir de hoje, vou traduzir os contratos para a linguagem da álgebra e deixar o solver fazer a mágica!",
+      "texto": "Para saber mais sobre o tutorial de Modelagem Matemática, clique nesse botão!",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
   ],
@@ -238,12 +241,7 @@
   "5": [
     {
       "nome": "Jorge",
-      "texto": "Agora sim! Com a tela de Formulação Matemática ativada, posso ver as equações se formando em tempo real enquanto seleciono quais variáveis (padrões) farão parte do modelo.",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Lembrete: Eu preciso garantir que as restrições reflitam exatamente a demanda do contrato para que o algoritmo do Simplex encontre a [b]Solução Ótima Inteira[/b]. Vamos modelar!",
+      "texto": "Agora sim! Com a tela de Formulação Matemática ativada, posso ver as equações se formando em tempo real enquanto seleciono quais variáveis farão parte do modelo.",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
   ],

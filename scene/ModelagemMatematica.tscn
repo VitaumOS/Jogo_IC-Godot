@@ -48,18 +48,14 @@ text = "Minimizar Z = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=1002267743]
-custom_minimum_size = Vector2(0, 5.69)
-layout_mode = 2
-
 [node name="ContainerRestricoes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=866054742]
 custom_minimum_size = Vector2(850, 341.255)
 layout_mode = 2
 theme_override_constants/separation = -13
 
 [node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1305794751]
-custom_minimum_size = Vector2(0, 250)
-custom_maximum_size = Vector2(-1, 250)
+custom_minimum_size = Vector2(0, 300)
+custom_maximum_size = Vector2(-1, 300)
 layout_mode = 2
 
 [node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1285108412]
@@ -73,7 +69,12 @@ custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=735313933]
-custom_minimum_size = Vector2(800, 260.365)
+custom_minimum_size = Vector2(800, 300)
+custom_maximum_size = Vector2(800, 300)
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal" unique_id=1002267743]
+custom_minimum_size = Vector2(0, 57.635)
 layout_mode = 2
 
 [node name="Botoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1170674162]
