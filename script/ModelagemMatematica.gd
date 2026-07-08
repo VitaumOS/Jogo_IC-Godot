@@ -24,8 +24,8 @@ var inputs_demanda: Dictionary = {}
 func _ready() -> void:
 	
 	# Carrega os padrões salvos do inventário do jogador
-	if Global.get("padroes_salvos") != null:
-		lista_padroes_disponiveis = Global.padroes_salvos
+	if Global.padroes_desbloqueados != null:
+		lista_padroes_disponiveis = Global.padroes_desbloqueados
 	else:
 		lista_padroes_disponiveis = []
 		

@@ -68,6 +68,10 @@ func _gerar_visualizacao_demanda():
 			linha_meta.modulate = Color(0.8, 0.8, 0.8, 1.0) # Cinza inicial
 			
 			container_chapa.add_child(linha_meta)
+			
+	var quebra_linha = Control.new()
+	quebra_linha.custom_minimum_size = Vector2(2000, 0) 
+	container_chapa.add_child(quebra_linha)
 
 	for i in demanda.size():
 		var peca_info = Global.pecas_disponiveis[i]

@@ -70,7 +70,6 @@ layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=735313933]
 custom_minimum_size = Vector2(800, 300)
-custom_maximum_size = Vector2(800, 300)
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal" unique_id=1002267743]
