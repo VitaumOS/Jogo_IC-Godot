@@ -61,7 +61,6 @@ func _gerar_visualizacao_demanda():
 			
 			var label_progresso = Label.new()
 			label_progresso.name = "TextoProgresso"
-			label_progresso.text = "0/%d" % qtd_necessaria
 			
 			linha_meta.add_child(icone)
 			linha_meta.add_child(label_progresso)
@@ -75,19 +74,15 @@ func _gerar_visualizacao_demanda():
 
 	for i in demanda.size():
 		var peca_info = Global.pecas_disponiveis[i]
-		
 		var linha_desperdicio = HBoxContainer.new()
 		linha_desperdicio.name = "LinhaDesperdicio_" + str(i)
 		linha_desperdicio.set_meta("tipo_id", i)
 		linha_desperdicio.visible = false
-		
-		var icone_perda = _criar_icone_arma(peca_info, i)
 
 		var label_perda = Label.new()
 		label_perda.name = "TextoPerda"
-		label_perda.text = " x0"
 		
-		linha_desperdicio.add_child(icone_perda)
+		linha_desperdicio.add_child(_criar_icone_arma(peca_info, i))
 		linha_desperdicio.add_child(label_perda)
 		linha_desperdicio.modulate = Color(0.9, 0.2, 0.2, 1.0)
 		

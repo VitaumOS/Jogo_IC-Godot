@@ -12,7 +12,7 @@
     },
     {
       "nome": "Mestre Gato",
-      "texto": "Não tema. Sei que você vai conseguir. Mas lembre-se: nem tudo a gente consegue resolver de cabeça",
+      "texto": "Não tema. Sei que você vai conseguir. Mas lembre-se: nem tudo a gente consegue resolver de cabeça.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
     {
@@ -45,12 +45,12 @@
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Bem-vindo à [b]Loja de Padrões[/b]! Aqui você usa seu dinheiro para liberar novas combinações de corte. Quanto mais padrões você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
+      "texto": "Bem-vindo à [b]Loja[/b]! Aqui você usa seu dinheiro para liberar novas combinações de corte. Quanto mais padrões você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
     },
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Você comprar qualquer padrão de corte disponível e também chapas para atender os contratos!"
+      "texto": "Você pode comprar qualquer padrão de corte disponível e também chapas para atender os contratos!"
     }
   ],
 
@@ -67,8 +67,8 @@
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "texto": "Quando quiser escolher um contrato, clique no botão 'aceitar contrato' para ele ser enviado a sua ferraria!",
       "coordenada": [450, 330],
-      "foco_pos": [500, 250],
-      "foco_tamanho": [700, 80]
+      "foco_pos": [450, 250],
+      "foco_tamanho": [800, 80]
     }
   ],
 
@@ -79,16 +79,16 @@
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "foco_pos": [40, 650],
-      "foco_tamanho": [300, 50],
+      "foco_pos": [80, 700],
+      "foco_tamanho": [250, 40],
       "texto": "Preste atenção! Aquela barra [b]Vermelha[/b] ali embaixo apareceu. Isso significa [b]Desperdício[/b]! "
     },
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "foco_pos": [40, 650],
-      "foco_tamanho": [300, 50],
+      "foco_pos": [80, 700],
+      "foco_tamanho": [250, 40],
       "texto": "Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
     },
     {
@@ -146,7 +146,7 @@
   "3": [
     {
       "nome": "Jorge",
-      "texto": "Os pedidos estão aumentando! A Guarda Real enviou um contrato complexo combinando Adagas, Espadas e Machados...",
+      "texto": "Os pedidos estão aumentando! A Guarda Real enviou vários contratos com muitas armas!",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
@@ -193,7 +193,7 @@
   "treinamento_modelagem": [
     {
       "nome": "Mestre Gato", 
-      "texto": "Seguinte, Jorge. Irei te treinar nesse negócio de Modelagem Matemática",
+      "texto": "Seguinte, Jorge. Irei te treinar nesse negócio de Modelagem Matemática.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
 
@@ -207,26 +207,32 @@
       "nome": "Mestre Gato",
       "texto": "Isso que você tá vendo aqui é uma modelagem matemática pro problema do corte. ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300]
+      "coordenada": [450, 300],
+      "foco_pos": [300, 50],
+      "foco_tamanho": [500, 300]
     },
 
     {
       "nome": "Mestre Gato",
       "texto": "A parte de cima te fala que queremos o menor valor possível de cortes.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300]
+      "coordenada": [450, 300],
+      "foco_pos": [300, 50],
+      "foco_tamanho": [500, 300]
     },
 
 		{
       "nome": "Mestre Gato",
       "texto": "A parte debaixo te fala as restrições do problem, até porque se quisessemos o mínimo mesmo, era só colocar 0 para todos os cortes (risada)",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300]
+      "coordenada": [450, 300],
+      "foco_pos": [300, 50],
+      "foco_tamanho": [500, 300]
     },
 
 		{
       "nome": "Mestre Gato",
-      "texto": "Ahem, enfim! As restrições são, para esse problema, a demanda dos contratos que você estava atendendo",
+      "texto": "Ahem, enfim! As restrições são, para esse problema, a demanda dos contratos que você estava atendendo.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
 
