@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ccjtlwav80dao"]
+
+[ext_resource type="FontFile" uid="uid://bss7sc7tkvtqg" path="res://font/MedievalSharp-Regular.ttf" id="1_hhd02"]
+[ext_resource type="Script" uid="uid://w45i3klqs4b3" path="res://script/info.gd" id="1_oknid"]
+[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="2_oknid"]
+
+[node name="Info" type="HBoxContainer" unique_id=1171228805]
+offset_right = 458.0
+offset_bottom = 78.0
+theme_override_constants/separation = 98
+script = ExtResource("1_oknid")
+
+[node name="LabelQuantidade" type="Label" parent="." unique_id=485946694]
+custom_minimum_size = Vector2(92, 0)
+custom_maximum_size = Vector2(92, -1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_hhd02")
+theme_override_styles/normal = ExtResource("2_oknid")
+text = "Chapas: 999"
+horizontal_alignment = 1
+
+[node name="DiaPanel" type="Label" parent="." unique_id=19574949]
+custom_minimum_size = Vector2(50, 0)
+custom_maximum_size = Vector2(50, -1)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_oknid")
+text = "DIA: 10"
+horizontal_alignment = 1
+
+[node name="DinheiroPanel" type="Label" parent="." unique_id=1419843158]
+custom_minimum_size = Vector2(76, 0)
+custom_maximum_size = Vector2(76, -1)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_oknid")
+text = "R$ 99999"
+horizontal_alignment = 1

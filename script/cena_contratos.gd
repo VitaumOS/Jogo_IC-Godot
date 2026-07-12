@@ -3,20 +3,15 @@ extends Control
 @export var card_contrato: PackedScene
 
 @onready var container_contratos = $UI/ScrollContainer/VBoxContratos
-@onready var label_dinheiro = $UI/HBoxContainer/LabelDinheiro
 @onready var popup = $PopUp
 
 var lista_contratos = []
 
 func _ready():
 	lista_contratos = Global.contratos_disponiveis
-	_atualizar_ui_dinheiro()
 	_gerar_lista_contratos()
 	Global._verificar_gatilho_tutorial("primeiro_mural")
 
-##Atualiza o dinheiro :v
-func _atualizar_ui_dinheiro():
-	label_dinheiro.text = "R$ %d" % Global.dinheiro
 
 func _gerar_lista_contratos():
 	for c in container_contratos.get_children(): c.queue_free()

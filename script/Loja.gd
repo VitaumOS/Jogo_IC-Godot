@@ -2,10 +2,8 @@ extends Control
 
 @export var cena_card: PackedScene
 
-@onready var label_dinheiro = $UI/HBoxContainer/LabelDinheiro
 @onready var container_itens = $UI/ScrollContainer/VBoxItens
 @onready var label_feedback = $UI/LabelFeedback
-@onready var lbl_estoque_chapas = $UI/HBoxContainer/LabelQuantidade
 @onready var btn_comprar_chapa = $UI/PainelChapas/BtnComprarChapa 
 
 ## Lista de padrões inicialmente disponíveis
@@ -15,21 +13,17 @@ func _ready():
 	catalogo_loja = Global.padroes_na_loja
 	btn_comprar_chapa.text = "Comprar Chapas (R$ %d)" % Global.preco_chapa
 	_gerar_itens_loja()
-	_atualizar_display()
 	Global._verificar_gatilho_tutorial("primeira_loja")
 
 func _comprar_chapa():
 	if Global.dinheiro >= Global.preco_chapa:
 		Global.dinheiro -= Global.preco_chapa
 		Global.estoque_chapas += 1
-		_atualizar_display()
+		$UI/Info.atualizar()
 		label_feedback.text = "Chapa extra adquirida!"
 	else:
 		label_feedback.text = "Saldo insuficiente para chapa!"
 
-func _atualizar_display():
-	lbl_estoque_chapas.text = "Chapas: %d" % Global.estoque_chapas
-	label_dinheiro.text = "R$ %d" % Global.dinheiro
 	
 func _gerar_itens_loja():
 	for c in container_itens.get_children(): c.queue_free()
@@ -39,8 +33,7 @@ func _gerar_itens_loja():
 		var p_hbox = card.find_child("Control2").find_child("Visualizador_Padrao")
 		_renderizar_previa_no_card(p_hbox, item.composicao); 
 
-		card.find_child("NomePadrao").text = item.nome
-		var btn = card.find_child("Button"); btn.text = "Comprar (R$ %d)" % item.preco
+		var btn = card.find_child("Button"); btn.text = "R$ %d" % item.preco
 		if _ja_possui(item): btn.disabled = true; btn.text = "Adquirido"
 		btn.pressed.connect(func(): _tentar_comprar(item, btn))
 
@@ -63,6 +56,6 @@ func _ja_possui(item) -> bool:
 func _tentar_comprar(item, botao):
 	if Global.remover_dinheiro(item.preco):
 		Global.padroes_desbloqueados.append(item)
-		botao.disabled = true; botao.text = "Adquirido"; _atualizar_display()
+		botao.disabled = true; botao.text = "Adquirido"; $UI/Info.atualizar()
 		label_feedback.text = "Padrão desbloqueado!"
 	else: label_feedback.text = "Saldo insuficiente!"

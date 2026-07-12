@@ -2,25 +2,26 @@
 
 [ext_resource type="Script" uid="uid://c2y50kcdi0qys" path="res://script/contrato_visualizacao.gd" id="1_48txe"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48txe"]
+bg_color = Color(0.2665752, 0.26657522, 0.26657507, 0.6862745)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
 [node name="Contrato_visualizacao" type="Node2D" unique_id=1164244224]
 script = ExtResource("1_48txe")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=49026925]
+[node name="ColorRect" type="Panel" parent="." unique_id=864728774]
 modulate = Color(1, 1, 1, 0.64500004)
 offset_left = 46.0
-offset_top = 55.0
+offset_top = 52.0
 offset_right = 843.0
 offset_bottom = 215.0
-color = Color(0.24477637, 0.2447764, 0.24477637, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_48txe")
 
-[node name="ReferenceRect" type="ReferenceRect" parent="ColorRect" unique_id=859969170]
-layout_mode = 0
-offset_right = 798.0
-offset_bottom = 160.0
-border_color = Color(0, 0, 0, 1)
-border_width = 5.0
-
-[node name="Label" type="Label" parent="." unique_id=552204020]
+[node name="Contrato" type="Label" parent="." unique_id=552204020]
 offset_left = 64.0
 offset_top = 38.0
 offset_right = 164.0
@@ -44,3 +45,14 @@ layout_mode = 2
 custom_minimum_size = Vector2(760, 80)
 custom_maximum_size = Vector2(760, 80)
 layout_mode = 2
+
+[node name="lbl_ctn" type="Label" parent="." unique_id=927922471]
+offset_left = 46.0
+offset_top = 52.0
+offset_right = 844.0
+offset_bottom = 215.0
+theme_override_colors/font_color = Color(0.85376436, 0.59608823, 0.2716998, 1)
+theme_override_font_sizes/font_size = 35
+text = "Nenhum Contrato Selecionado"
+horizontal_alignment = 1
+vertical_alignment = 1

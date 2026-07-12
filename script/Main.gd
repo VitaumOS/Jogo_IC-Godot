@@ -4,9 +4,6 @@ extends Node2D
 
 # --- REFERÊNCIAS DE NÓS ---
 @onready var vbox_padroes_lista = $UI/Controle_Corpo/ScrollContainer/PadraoCorteSalvo
-@onready var label_dia = $UI/Topo/DiaPanel
-@onready var label_dinheiro = $UI/Topo/DinheiroPanel
-@onready var lbl_estoque_chapas = $UI/Topo/LabelQuantidade
 @onready var popup = $PopUp
 @onready var contrato_visualizacao = $UI/Contrato_visualizacao
 
@@ -23,14 +20,13 @@ func _ready():
 	add_to_group("main_logic")
 	demanda = Global.contrato_ativo.demanda if Global.contrato_ativo else [0,0,0,0,0,0]
 	_carregar_padroes_da_loja()
-	_atualizar_ui_estatica()
-	
+	contrato_visualizacao.inicializar(demanda, vbox_padroes_lista, padroes_corte_salvos_valor)
 	if Global.ultimo_desempenho_ritmo < 0:
 		_verificar_dialogo_diario()
 	else:
 		_finalizar_logica_pulp()
 		
-	#$UI/VBoxContainer/Control/BtnModel.visible = Global.dia_atual > 3
+	$UI/VBoxContainer/Modelagem.visible = Global.dia_atual > 3
 		
 	if Global.contrato_ativo:
 		if !Global.finalizou_tutorial_primeiro_contrato:
@@ -39,7 +35,7 @@ func _ready():
 			else:
 				Global._verificar_gatilho_tutorial("primeiro_contrato_escolhido2")	
 			Global.finalizou_tutorial_primeiro_contrato=true
-		contrato_visualizacao.inicializar(demanda, vbox_padroes_lista, padroes_corte_salvos_valor)
+		contrato_visualizacao.atualizar()
 		
 	_conectar_sinais_botoes_quantidade()
 	_atualizar_pintura_demanda()
@@ -55,8 +51,10 @@ func _conectar_sinais_botoes_quantidade():
 	for linha in vbox_padroes_lista.get_children():
 		var btn_mais = linha.find_child("btnMais") as Button
 		var btn_menos = linha.find_child("btnMenos") as Button
-		btn_mais.pressed.connect(_atualizar_pintura_demanda)
-		btn_menos.pressed.connect(_atualizar_pintura_demanda)
+		if !btn_mais.is_connected("pressed", _atualizar_pintura_demanda):
+			btn_mais.pressed.connect(_atualizar_pintura_demanda)
+		if !btn_menos.is_connected("pressed", _atualizar_pintura_demanda):
+			btn_menos.pressed.connect(_atualizar_pintura_demanda)
 		
 		if Global.dia_atual == 1:
 			var label_perda = linha.find_child("Perda") as Label
@@ -136,7 +134,7 @@ func get_total_chapas_usadas() -> int:
 			soma += linha.get_quantidade()
 	return soma
 
-func _on_resolver_pressed():
+func _on_bater_martelo_pressed():
 	popup.mostrar_confirmacao("Deseja iniciar o corte?")
 	var confirma = await popup.resposta 
 	
@@ -168,11 +166,6 @@ func _preparar_e_iniciar_forja():
 	Global.chapas_usadas_pelo_jogador = get_total_chapas_usadas()
 	get_tree().change_scene_to_file("res://scene/Forja_Ritmo.tscn")
 
-func _atualizar_ui_estatica():
-	label_dia.text = "DIA: %d" % Global.dia_atual
-	label_dinheiro.text = "R$ %d" % Global.dinheiro
-	lbl_estoque_chapas.text = "Chapas: %d" % Global.estoque_chapas
-
 
 func _finalizar_logica_pulp():
 	var z_user = Global.chapas_usadas_pelo_jogador
@@ -200,11 +193,9 @@ func _finalizar_logica_pulp():
 func _limpar_dados_transicao():
 	Global.armas_na_esteira_atual = []
 	Global.ultimo_desempenho_ritmo = -1.0
-	_atualizar_ui_estatica()
 
-
-#func _on_modelagem_pressed():
-	#if Global.dia_atual == 4 and !Global.finalizou_treino:
-		#get_tree().change_scene_to_file("res://scene/TreinoModelagem.tscn")
-	#else:
-		#get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")
+func _on_modelagem_pressed():
+	if Global.dia_atual == 4 and !Global.finalizou_treino:
+		get_tree().change_scene_to_file("res://scene/TreinoModelagem.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")

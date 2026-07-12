@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://xssr1johtnwf"]
 
 [ext_resource type="Script" uid="uid://b0xgd8amglmnu" path="res://script/Main.gd" id="1_7e7p4"]
-[ext_resource type="FontFile" uid="uid://bss7sc7tkvtqg" path="res://font/MedievalSharp-Regular.ttf" id="3_ex411"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_r2s5b"]
 [ext_resource type="Texture2D" uid="uid://vx0xpjoejn5n" path="res://images/Jorge_forja.png" id="4_2xbwx"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="5_bjq5w"]
 [ext_resource type="PackedScene" uid="uid://8268dsjrkovb" path="res://scene/aux_scene/contrato_visualizacao.tscn" id="7_6qt7c"]
 [ext_resource type="PackedScene" uid="uid://b6if7jes5m0v4" path="res://scene/aux_scene/LinhaListaPadrao.tscn" id="7_i1ld1"]
+[ext_resource type="PackedScene" uid="uid://ccjtlwav80dao" path="res://scene/aux_scene/info.tscn" id="7_ptkpm"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="9_2xbwx"]
 [ext_resource type="PackedScene" uid="uid://cnl37rt32qqw5" path="res://scene/aux_scene/abas.tscn" id="9_6qt7c"]
 [ext_resource type="PackedScene" uid="uid://niwiqe2egaiv" path="res://scene/aux_scene/Popup.tscn" id="10_6qt7c"]
@@ -22,30 +22,12 @@ texture = ExtResource("3_r2s5b")
 expand_mode = 1
 
 [node name="Jorge" type="TextureRect" parent="." unique_id=497482856]
-offset_left = -32.0
-offset_top = -150.0
-offset_right = 801.0
-offset_bottom = 650.0
+offset_left = 9.0
+offset_top = 103.0
+offset_right = 468.0
+offset_bottom = 535.0
 texture = ExtResource("4_2xbwx")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1208311030]
-offset_left = 23.0
-offset_top = 471.0
-offset_right = 320.0
-offset_bottom = 574.0
-theme_override_constants/separation = 30
-
-[node name="Bater_Martelo" type="Button" parent="VBoxContainer" unique_id=288751525]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-theme_override_styles/normal = ExtResource("5_bjq5w")
-text = "Bater Martelo"
-
-[node name="Modelagem" type="Button" parent="VBoxContainer" unique_id=1136193815]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-theme_override_styles/normal = ExtResource("5_bjq5w")
-text = "Modelagem"
+expand_mode = 3
 
 [node name="RectanglesParent" type="Node2D" parent="." unique_id=1562575107]
 
@@ -69,38 +51,6 @@ offset_top = 30.0
 offset_right = 766.0
 offset_bottom = 53.0
 
-[node name="Topo" type="HBoxContainer" parent="UI" unique_id=686192741]
-offset_left = 409.0
-offset_top = 37.0
-offset_right = 858.0
-offset_bottom = 78.0
-theme_override_constants/separation = 98
-
-[node name="LabelQuantidade" type="Label" parent="UI/Topo" unique_id=1382755545]
-custom_minimum_size = Vector2(92, 0)
-custom_maximum_size = Vector2(92, -1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_ex411")
-theme_override_styles/normal = ExtResource("5_bjq5w")
-text = "Chapas: 999"
-horizontal_alignment = 1
-
-[node name="DiaPanel" type="Label" parent="UI/Topo" unique_id=1964791292]
-custom_minimum_size = Vector2(50, 0)
-custom_maximum_size = Vector2(50, -1)
-layout_mode = 2
-theme_override_styles/normal = ExtResource("5_bjq5w")
-text = "DIA: 10"
-horizontal_alignment = 1
-
-[node name="DinheiroPanel" type="Label" parent="UI/Topo" unique_id=725101515]
-custom_minimum_size = Vector2(76, 0)
-custom_maximum_size = Vector2(76, -1)
-layout_mode = 2
-theme_override_styles/normal = ExtResource("5_bjq5w")
-text = "R$ 99999"
-horizontal_alignment = 1
-
 [node name="Controle_Corpo" type="Control" parent="UI" unique_id=1039932040]
 layout_mode = 3
 anchors_preset = 0
@@ -110,12 +60,12 @@ offset_right = 545.0
 offset_bottom = 396.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/Controle_Corpo" unique_id=223529208]
-custom_minimum_size = Vector2(550, 500.06)
-custom_maximum_size = Vector2(550, 500.06)
+custom_minimum_size = Vector2(538, 500.06)
+custom_maximum_size = Vector2(538, 500.06)
 layout_mode = 0
 offset_left = 262.0
 offset_top = 1.0
-offset_right = 862.0
+offset_right = 812.0
 offset_bottom = 501.06
 
 [node name="PadraoCorteSalvo" type="HBoxContainer" parent="UI/Controle_Corpo/ScrollContainer" unique_id=1545570322]
@@ -129,6 +79,31 @@ layout_mode = 2
 [node name="Contrato_visualizacao" parent="UI" unique_id=1164244224 instance=ExtResource("7_6qt7c")]
 position = Vector2(2, 557)
 
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=1208311030]
+offset_left = 23.0
+offset_top = 471.0
+offset_right = 320.0
+offset_bottom = 577.0
+theme_override_constants/separation = 30
+
+[node name="BaterMartelo" type="Button" parent="UI/VBoxContainer" unique_id=288751525]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = ExtResource("5_bjq5w")
+text = "Bater Martelo"
+
+[node name="Modelagem" type="Button" parent="UI/VBoxContainer" unique_id=1136193815]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = ExtResource("5_bjq5w")
+text = "Modelagem"
+
+[node name="Info" parent="UI" unique_id=1171228805 instance=ExtResource("7_ptkpm")]
+offset_left = 400.0
+offset_top = 22.0
+offset_right = 858.0
+offset_bottom = 100.0
+
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("9_2xbwx")]
 visible = false
 
@@ -138,3 +113,6 @@ visible = false
 [node name="Abas" parent="." unique_id=1131189550 instance=ExtResource("9_6qt7c")]
 offset_top = 813.56
 offset_bottom = 867.56
+
+[connection signal="pressed" from="UI/VBoxContainer/BaterMartelo" to="." method="_on_bater_martelo_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Modelagem" to="." method="_on_modelagem_pressed"]

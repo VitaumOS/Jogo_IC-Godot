@@ -3,6 +3,7 @@ extends Node2D
 @onready var container_chapa = $VBoxContainer/ContainerChapa
 @onready var container_excesso = $VBoxContainer/ContainerExcesso
 
+
 var demanda: Array = []
 var padroes_corte_salvos_valor: Array = []
 var vbox_padroes_lista: Container 
@@ -12,6 +13,10 @@ func inicializar(p_demanda: Array, p_vbox: Container, p_padroes_valores: Array) 
 	vbox_padroes_lista = p_vbox
 	padroes_corte_salvos_valor = p_padroes_valores
 	
+
+func atualizar():
+	if Global.contrato_ativo:
+		$lbl_ctn.visible=false
 	_gerar_visualizacao_demanda()
 	_atualizar_pintura_demanda()
 

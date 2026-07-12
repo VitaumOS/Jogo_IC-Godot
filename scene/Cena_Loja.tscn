@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dd0ohe51j087n" path="res://scene/aux_scene/Cena_Card_Loja.tscn" id="4_4qugu"]
 [ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="5_4qugu"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="6_cqb1c"]
+[ext_resource type="PackedScene" uid="uid://ccjtlwav80dao" path="res://scene/aux_scene/info.tscn" id="6_wjy46"]
 [ext_resource type="PackedScene" uid="uid://cnl37rt32qqw5" path="res://scene/aux_scene/abas.tscn" id="7_op4vh"]
 
 [node name="Loja" type="Control" unique_id=961802527]
@@ -23,10 +24,6 @@ expand_mode = 1
 
 [node name="UI" type="Control" parent="." unique_id=2051966678]
 anchors_preset = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 8.0
 
 [node name="LabelFeedback" type="Label" parent="UI" unique_id=1725209788]
 layout_mode = 0
@@ -38,14 +35,16 @@ horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI" unique_id=1154573931]
 layout_mode = 1
-offset_left = 24.0
+offset_left = 75.0
 offset_top = 95.0
-offset_right = 877.0
+offset_right = 845.0
 offset_bottom = 708.0
 
 [node name="VBoxItens" type="VBoxContainer" parent="UI/ScrollContainer" unique_id=952896832]
-custom_minimum_size = Vector2(800, 80)
+custom_minimum_size = Vector2(750, 105)
 layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
 
 [node name="Card" parent="UI/ScrollContainer/VBoxItens" unique_id=286221418 instance=ExtResource("4_4qugu")]
 layout_mode = 2
@@ -72,29 +71,12 @@ text = "Comprar Chapas (R$ 100)"
 icon_alignment = 1
 vertical_icon_alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=1601850019]
+[node name="Info" parent="UI" unique_id=1171228805 instance=ExtResource("6_wjy46")]
 layout_mode = 0
-offset_left = 498.0
-offset_top = 29.0
-offset_right = 800.0
-offset_bottom = 85.0
-theme_override_constants/separation = 120
-
-[node name="LabelQuantidade" type="Label" parent="UI/HBoxContainer" unique_id=527180709]
-custom_minimum_size = Vector2(93, 0)
-custom_maximum_size = Vector2(93, -1)
-layout_mode = 2
-theme_override_styles/normal = ExtResource("3_mypxv")
-text = "Chapas: 999"
-horizontal_alignment = 1
-
-[node name="LabelDinheiro" type="Label" parent="UI/HBoxContainer" unique_id=1041009093]
-custom_minimum_size = Vector2(76, 0)
-custom_maximum_size = Vector2(76, -1)
-layout_mode = 2
-theme_override_styles/normal = ExtResource("3_mypxv")
-text = "R$ 99999"
-horizontal_alignment = 1
+offset_left = 400.0
+offset_top = 22.0
+offset_right = 858.0
+offset_bottom = 100.0
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("6_cqb1c")]
 visible = false

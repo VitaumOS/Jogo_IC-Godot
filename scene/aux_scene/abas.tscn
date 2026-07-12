@@ -6,11 +6,12 @@
 [node name="Abas" type="HBoxContainer" unique_id=1131189550]
 offset_right = 899.0
 offset_bottom = 54.0
-theme_override_constants/separation = 78
+theme_override_constants/separation = 49
 alignment = 1
 script = ExtResource("1_xi30b")
 
 [node name="Contrato" type="Button" parent="." unique_id=1925084303]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("1_bo4j1")
@@ -18,18 +19,21 @@ text = "Contratos
 "
 
 [node name="Loja" type="Button" parent="." unique_id=692737973]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("1_bo4j1")
 text = "Loja"
 
 [node name="Forja" type="Button" parent="." unique_id=2003608545]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("1_bo4j1")
 text = "Forja"
 
 [node name="Encerrar" type="Button" parent="." unique_id=1927647038]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("1_bo4j1")
