@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cnl37rt32qqw5"]
+
+[node name="Abas" type="HBoxContainer" unique_id=1131189550]
+offset_right = 899.0
+offset_bottom = 54.0
+alignment = 1
+
+[node name="Contrato" type="Button" parent="." unique_id=1925084303]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Contratos
+"
+
+[node name="Loja" type="Button" parent="." unique_id=692737973]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Loja"
+
+[node name="Forja" type="Button" parent="." unique_id=2003608545]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Forja"
+
+[node name="Encerrar" type="Button" parent="." unique_id=1927647038]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Encerrar"

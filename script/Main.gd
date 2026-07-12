@@ -27,7 +27,6 @@ func _ready():
 	demanda = Global.contrato_ativo.demanda if Global.contrato_ativo else [0,0,0,0,0,0]
 	_carregar_padroes_da_loja()
 	_atualizar_ui_estatica()
-	_atualizar_display_contrato()
 	
 	if Global.ultimo_desempenho_ritmo < 0:
 		_verificar_dialogo_diario()
@@ -39,7 +38,11 @@ func _ready():
 	else:
 		$UI/VBoxContainer/Control/BtnModel.visible = true
 		
-	
+	if Global.contrato_ativo and !Global.padroes_desbloqueados.is_empty():
+		Global._verificar_gatilho_tutorial("primeiro_contrato_escolhido1")
+	elif Global.contrato_ativo and Global.padroes_desbloqueados.is_empty():
+		Global._verificar_gatilho_tutorial("primeiro_contrato_escolhido2")	
+		
 	_gerar_visualizacao_demanda()
 	_atualizar_pintura_demanda()
 	_conectar_sinais_botoes_quantidade()
@@ -235,7 +238,7 @@ func _on_resolver_pressed():
 	
 	if confirma:
 		if !verifica_cortes_usuario():
-			popup.mostrar_mensagem_erro("Cortes insuficientes!")
+			popup.mostrar_mensagem_erro("Os cortes não atenderam a demanda!")
 			return
 		elif Global.contrato_ativo == null:
 			popup.mostrar_mensagem_erro("Nenhum contrato foi solicitado!")
@@ -243,8 +246,6 @@ func _on_resolver_pressed():
 		elif get_total_chapas_usadas()>Global.estoque_chapas:
 			popup.mostrar_mensagem_erro("Chapas insuficientes!")
 			return
-		
-		
 		_preparar_e_iniciar_forja()
 
 func _preparar_e_iniciar_forja():
@@ -268,15 +269,6 @@ func _atualizar_ui_estatica():
 	label_dinheiro.text = "R$ %d" % Global.dinheiro
 	lbl_estoque_chapas.text = "Chapas: %d" % Global.estoque_chapas
 
-func _atualizar_display_contrato():
-	if not Global.contrato_ativo:
-		btn_contrato_visual.text = "MURAL DE \nCONTRATOS"
-		return
-	var txt = "%s\n\nDEMANDA:\n" % Global.contrato_ativo.nome
-	for i in demanda.size():
-		if demanda[i] > 0:
-			txt += "- %s: %d\n" % [pecas_disponiveis[i].nome, demanda[i]]
-	btn_contrato_visual.text = txt
 
 func _finalizar_logica_pulp():
 	var z_user = Global.chapas_usadas_pelo_jogador
@@ -305,7 +297,7 @@ func _limpar_dados_transicao():
 	Global.armas_na_esteira_atual = []
 	Global.ultimo_desempenho_ritmo = -1.0
 	_atualizar_ui_estatica()
-	_atualizar_display_contrato()
+
 
 func _on_modelagem_pressed():
 	if Global.dia_atual == 4 and !Global.finalizou_treino:
