@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bk2cgr6pirs1o" path="res://scene/aux_scene/Card_Contratos.tscn" id="2_jgr8c"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_76e4m"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_yji0f"]
-[ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="5_5rhh1"]
 [ext_resource type="PackedScene" uid="uid://niwiqe2egaiv" path="res://scene/aux_scene/Popup.tscn" id="5_jgr8c"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="7_2g3xn"]
+[ext_resource type="PackedScene" uid="uid://cnl37rt32qqw5" path="res://scene/aux_scene/abas.tscn" id="7_vct4r"]
 
 [node name="Cena_Contratos" type="Control" unique_id=1920571904]
 layout_mode = 3
@@ -36,15 +36,6 @@ offset_right = 805.0
 offset_bottom = 63.0
 theme_override_constants/separation = 556
 
-[node name="BtnVoltar" type="Button" parent="UI/HBoxContainer" unique_id=1163623123]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = ExtResource("3_yji0f")
-theme_override_styles/pressed = ExtResource("5_5rhh1")
-theme_override_styles/hover = ExtResource("5_5rhh1")
-theme_override_styles/hover_pressed = ExtResource("5_5rhh1")
-text = "Voltar ao jogo"
-
 [node name="LabelDinheiro" type="Label" parent="UI/HBoxContainer" unique_id=1563394821]
 custom_minimum_size = Vector2(76, 0)
 custom_maximum_size = Vector2(76, -1)
@@ -73,4 +64,7 @@ visible = false
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("7_2g3xn")]
 visible = false
 
-[connection signal="pressed" from="UI/HBoxContainer/BtnVoltar" to="." method="_on_btn_voltar_pressed"]
+[node name="Abas" parent="." unique_id=1131189550 instance=ExtResource("7_vct4r")]
+layout_mode = 0
+offset_top = 813.56
+offset_bottom = 867.56

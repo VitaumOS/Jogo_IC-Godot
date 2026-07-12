@@ -13,6 +13,7 @@ var preco_chapa: int = 100
 var recompensa_final: float = 0
 var finalizou_treino = false 
 var finalizou_primeiro_contrato = false
+var finalizou_tutorial_primeiro_contrato = false
 
 var chapas_usadas_pelo_jogador: int = 0
 var ultimo_desempenho_ritmo: float = -1.0 
@@ -134,6 +135,15 @@ func remover_dinheiro(qtd: int) -> bool:
 		dinheiro -= qtd
 		return true
 	return false
+
+func _criar_icone_arma(peca, tipo_id: int) -> TextureRect:
+	var icone = TextureRect.new()
+	icone.texture = load(peca.caminho_textura)
+	icone.custom_minimum_size = Vector2(50, 50)
+	icone.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icone.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icone.set_meta("tipo_id", tipo_id) 
+	return icone
 
 ##Inicia o próximo dia
 func proximo_dia():

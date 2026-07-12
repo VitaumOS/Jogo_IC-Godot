@@ -1,27 +1,41 @@
 [gd_scene format=3 uid="uid://cnl37rt32qqw5"]
 
+[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="1_bo4j1"]
+[ext_resource type="Script" uid="uid://c33u6rg3krij4" path="res://script/abas.gd" id="1_xi30b"]
+
 [node name="Abas" type="HBoxContainer" unique_id=1131189550]
 offset_right = 899.0
 offset_bottom = 54.0
+theme_override_constants/separation = 78
 alignment = 1
+script = ExtResource("1_xi30b")
 
 [node name="Contrato" type="Button" parent="." unique_id=1925084303]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("1_bo4j1")
 text = "Contratos
 "
 
 [node name="Loja" type="Button" parent="." unique_id=692737973]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("1_bo4j1")
 text = "Loja"
 
 [node name="Forja" type="Button" parent="." unique_id=2003608545]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("1_bo4j1")
 text = "Forja"
 
 [node name="Encerrar" type="Button" parent="." unique_id=1927647038]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("1_bo4j1")
 text = "Encerrar"
+
+[connection signal="pressed" from="Contrato" to="." method="_on_contrato_pressed"]
+[connection signal="pressed" from="Loja" to="." method="_on_loja_pressed"]
+[connection signal="pressed" from="Forja" to="." method="_on_forja_pressed"]
+[connection signal="pressed" from="Encerrar" to="." method="_on_encerrar_pressed"]

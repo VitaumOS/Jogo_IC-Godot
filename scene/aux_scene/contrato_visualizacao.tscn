@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://8268dsjrkovb"]
+
+[ext_resource type="Script" uid="uid://c2y50kcdi0qys" path="res://script/contrato_visualizacao.gd" id="1_48txe"]
+
+[node name="Contrato_visualizacao" type="Node2D" unique_id=1164244224]
+script = ExtResource("1_48txe")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=49026925]
+modulate = Color(1, 1, 1, 0.64500004)
+offset_left = 46.0
+offset_top = 55.0
+offset_right = 843.0
+offset_bottom = 215.0
+color = Color(0.24477637, 0.2447764, 0.24477637, 1)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="ColorRect" unique_id=859969170]
+layout_mode = 0
+offset_right = 798.0
+offset_bottom = 160.0
+border_color = Color(0, 0, 0, 1)
+border_width = 5.0
+
+[node name="Label" type="Label" parent="." unique_id=552204020]
+offset_left = 64.0
+offset_top = 38.0
+offset_right = 164.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 26
+text = "Contrato"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=185369305]
+offset_left = 61.0
+offset_top = 79.0
+offset_right = 825.0
+offset_bottom = 207.0
+alignment = 2
+
+[node name="ContainerChapa" type="HFlowContainer" parent="VBoxContainer" unique_id=360629877]
+custom_minimum_size = Vector2(760, 80)
+custom_maximum_size = Vector2(760, 80)
+layout_mode = 2
+
+[node name="ContainerExcesso" type="HFlowContainer" parent="VBoxContainer" unique_id=1173668588]
+custom_minimum_size = Vector2(760, 80)
+custom_maximum_size = Vector2(760, 80)
+layout_mode = 2

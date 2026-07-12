@@ -31,10 +31,6 @@ func _atualizar_display():
 	lbl_estoque_chapas.text = "Chapas: %d" % Global.estoque_chapas
 	label_dinheiro.text = "R$ %d" % Global.dinheiro
 	
-## Retorna para a cena principal
-func _on_voltar_pcu():
-	if get_tree().change_scene_to_file("res://scene/Cena_1.tscn") != OK: print("Erro ao carregar cena")
-
 func _gerar_itens_loja():
 	for c in container_itens.get_children(): c.queue_free()
 	for item in Global.padroes_na_loja:

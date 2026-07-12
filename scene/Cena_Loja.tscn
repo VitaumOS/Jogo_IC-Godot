@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dd0ohe51j087n" path="res://scene/aux_scene/Cena_Card_Loja.tscn" id="4_4qugu"]
 [ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="5_4qugu"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="6_cqb1c"]
+[ext_resource type="PackedScene" uid="uid://cnl37rt32qqw5" path="res://scene/aux_scene/abas.tscn" id="7_op4vh"]
 
 [node name="Loja" type="Control" unique_id=961802527]
 layout_mode = 3
@@ -40,7 +41,7 @@ layout_mode = 1
 offset_left = 24.0
 offset_top = 95.0
 offset_right = 877.0
-offset_bottom = 760.0
+offset_bottom = 708.0
 
 [node name="VBoxItens" type="VBoxContainer" parent="UI/ScrollContainer" unique_id=952896832]
 custom_minimum_size = Vector2(800, 80)
@@ -57,10 +58,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 312.0
-offset_top = 799.0
-offset_right = 548.0
-offset_bottom = 860.0
+offset_left = 314.0
+offset_top = 721.0
+offset_right = 550.0
+offset_bottom = 782.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = ExtResource("3_mypxv")
@@ -95,20 +96,12 @@ theme_override_styles/normal = ExtResource("3_mypxv")
 text = "R$ 99999"
 horizontal_alignment = 1
 
-[node name="BtnVoltar" type="Button" parent="UI" unique_id=451513788]
-layout_mode = 0
-offset_left = 71.0
-offset_top = 816.0
-offset_right = 187.0
-offset_bottom = 847.0
-theme_override_styles/normal = ExtResource("3_mypxv")
-theme_override_styles/pressed = ExtResource("5_4qugu")
-theme_override_styles/hover = ExtResource("5_4qugu")
-theme_override_styles/hover_pressed = ExtResource("5_4qugu")
-text = "Voltar ao Jogo"
-
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("6_cqb1c")]
 visible = false
 
+[node name="Abas" parent="." unique_id=1131189550 instance=ExtResource("7_op4vh")]
+layout_mode = 0
+offset_top = 813.56
+offset_bottom = 867.56
+
 [connection signal="pressed" from="UI/PainelChapas/BtnComprarChapa" to="." method="_comprar_chapa"]
-[connection signal="pressed" from="UI/BtnVoltar" to="." method="_on_voltar_pcu"]

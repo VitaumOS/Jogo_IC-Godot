@@ -3,15 +3,12 @@ extends Node2D
 @export var cena_linha_padrao: PackedScene
 
 # --- REFERÊNCIAS DE NÓS ---
-@onready var vbox_padroes_lista = $UI/Controle_Corpo/CorpoCentral/Control/LadoDireito/ScrollContainer/PadraoCorteSalvo
+@onready var vbox_padroes_lista = $UI/Controle_Corpo/ScrollContainer/PadraoCorteSalvo
 @onready var label_dia = $UI/Topo/DiaPanel
 @onready var label_dinheiro = $UI/Topo/DinheiroPanel
 @onready var lbl_estoque_chapas = $UI/Topo/LabelQuantidade
-@onready var btn_contrato_visual = $UI/Controle_Corpo/CorpoCentral/Control2/LadoEsquerdo/BotaoContratoGrande
 @onready var popup = $PopUp
-
-@onready var container_excesso = $UI/VisualizadorContrato/VBoxContainer/ContainerExcesso
-@onready var container_chapa = $UI/VisualizadorContrato/VBoxContainer/FundoChapa/MarginContainer/ContainerChapa
+@onready var contrato_visualizacao = $UI/Contrato_visualizacao
 
 # --- VARIÁVEIS DE LÓGICA ---
 var padroes_corte_salvos_valor: Array = [] 
@@ -33,117 +30,24 @@ func _ready():
 	else:
 		_finalizar_logica_pulp()
 		
-	if Global.dia_atual <= 3:
-		$UI/VBoxContainer/Control/BtnModel.visible = false
-	else:
-		$UI/VBoxContainer/Control/BtnModel.visible = true
+	#$UI/VBoxContainer/Control/BtnModel.visible = Global.dia_atual > 3
 		
-	if Global.contrato_ativo and !Global.padroes_desbloqueados.is_empty():
-		Global._verificar_gatilho_tutorial("primeiro_contrato_escolhido1")
-	elif Global.contrato_ativo and Global.padroes_desbloqueados.is_empty():
-		Global._verificar_gatilho_tutorial("primeiro_contrato_escolhido2")	
+	if Global.contrato_ativo:
+		if !Global.finalizou_tutorial_primeiro_contrato:
+			if !Global.padroes_desbloqueados.is_empty():
+				Global._verificar_gatilho_tutorial("primeiro_contrato_escolhido1")
+			else:
+				Global._verificar_gatilho_tutorial("primeiro_contrato_escolhido2")	
+			Global.finalizou_tutorial_primeiro_contrato=true
+		contrato_visualizacao.inicializar(demanda, vbox_padroes_lista, padroes_corte_salvos_valor)
 		
-	_gerar_visualizacao_demanda()
+	_conectar_sinais_botoes_quantidade()
 	_atualizar_pintura_demanda()
 	_conectar_sinais_botoes_quantidade()
 	
-func _gerar_visualizacao_demanda():
-
-	if Global.contrato_ativo == null: return
-	for i in demanda.size():
-		var qtd_necessaria = demanda[i]
-		if qtd_necessaria > 0:
-			var peca_info = Global.pecas_disponiveis[i]
-			
-			var linha_meta = HBoxContainer.new()
-			linha_meta.name = "LinhaMeta_" + str(i)
-			linha_meta.set_meta("tipo_id", i)
-			linha_meta.set_meta("qtd_necessaria", qtd_necessaria)
-			
-			var icone = _criar_icone_arma(peca_info, i)
-			
-			var label_progresso = Label.new()
-			label_progresso.name = "TextoProgresso"
-			
-			linha_meta.add_child(icone)
-			linha_meta.add_child(label_progresso)
-			linha_meta.modulate = Color(0.8, 0.8, 0.8, 1.0) # Cinza inicial
-			
-			container_chapa.add_child(linha_meta)
-			
-	var quebra_linha = Control.new()
-	quebra_linha.custom_minimum_size = Vector2(2000, 0) 
-	container_chapa.add_child(quebra_linha)
-
-	for i in demanda.size():
-		var peca_info = Global.pecas_disponiveis[i]
-		var linha_desperdicio = HBoxContainer.new()
-		linha_desperdicio.name = "LinhaDesperdicio_" + str(i)
-		linha_desperdicio.set_meta("tipo_id", i)
-		linha_desperdicio.visible = false
-
-		var label_perda = Label.new()
-		label_perda.name = "TextoPerda"
-		
-		linha_desperdicio.add_child(_criar_icone_arma(peca_info, i))
-		linha_desperdicio.add_child(label_perda)
-		linha_desperdicio.modulate = Color(0.9, 0.2, 0.2, 1.0)
-		
-		container_chapa.add_child(linha_desperdicio)
-
 
 func _atualizar_pintura_demanda():
-	var producao_total = [0, 0, 0, 0, 0, 0] 
-	
-	for linha in vbox_padroes_lista.get_children():
-		var qtd_uso = linha.quantidade 
-		if linha.has_meta("composicao"):
-			var composicao = linha.get_meta("composicao") 
-			for i in composicao.size():
-				producao_total[i] += (composicao[i] * qtd_uso)
-				
-	for c in container_excesso.get_children(): c.queue_free()
-	for filho in container_chapa.get_children():
-		
-		if filho.name.begins_with("LinhaMeta_") and filho.has_meta("tipo_id"):
-			var tipo_id = filho.get_meta("tipo_id")
-			var qtd_necessaria = filho.get_meta("qtd_necessaria")
-			var label_texto = filho.get_node("TextoProgresso") as Label
-			
-			var qtd_feita = producao_total[tipo_id]
-			
-			var qtd_exibida = qtd_feita if qtd_feita <= qtd_necessaria else qtd_necessaria
-			if label_texto:
-				label_texto.text = " %d/%d" % [qtd_exibida, qtd_necessaria]
-			if qtd_feita >= qtd_necessaria:
-				filho.modulate = Color(0.2, 0.8, 0.2, 1.0)
-			else:
-				filho.modulate = Color(0.8, 0.8, 0.8, 1.0)
-				
-		elif filho.name.begins_with("LinhaDesperdicio_") and filho.has_meta("tipo_id"):
-			var tipo_id = filho.get_meta("tipo_id")
-			var label_perda = filho.get_node("TextoPerda") as Label
-			
-			var qtd_produzida = producao_total[tipo_id]
-			var qtd_necessaria = demanda[tipo_id]
-			var qtd_desperdicio = qtd_produzida - qtd_necessaria
-			
-			if qtd_desperdicio > 0:
-				Global._verificar_gatilho_tutorial("primeiro_desperdicio")
-				if label_perda:
-					label_perda.text = " x%d" % qtd_desperdicio
-				filho.visible = true
-			else:
-				filho.visible = false
-
-func _criar_icone_arma(peca, tipo_id: int) -> TextureRect:
-	var icone = TextureRect.new()
-	icone.texture = load(peca.caminho_textura)
-	icone.custom_minimum_size = Vector2(50, 50)
-	icone.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	icone.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	icone.set_meta("tipo_id", tipo_id) 
-	return icone
+	contrato_visualizacao._atualizar_pintura_demanda()
 
 # Monitora e conecta os botões de mais e menos de cada padrão de corte da lista
 func _conectar_sinais_botoes_quantidade():
@@ -151,12 +55,12 @@ func _conectar_sinais_botoes_quantidade():
 	for linha in vbox_padroes_lista.get_children():
 		var btn_mais = linha.find_child("btnMais") as Button
 		var btn_menos = linha.find_child("btnMenos") as Button
-		btn_mais.pressed.connect(func(): _atualizar_pintura_demanda())
-		btn_menos.pressed.connect(func(): _atualizar_pintura_demanda())
+		btn_mais.pressed.connect(_atualizar_pintura_demanda)
+		btn_menos.pressed.connect(_atualizar_pintura_demanda)
 		
-		if Global.dia_atual==1:
-			var label_perda= linha.find_child("Perda") as Label
-			label_perda.visible=false
+		if Global.dia_atual == 1:
+			var label_perda = linha.find_child("Perda") as Label
+			if label_perda: label_perda.visible = false
 
 func _verificar_dialogo_diario():
 	if Global.deve_exibir_dialogo_do_dia():
@@ -299,11 +203,8 @@ func _limpar_dados_transicao():
 	_atualizar_ui_estatica()
 
 
-func _on_modelagem_pressed():
-	if Global.dia_atual == 4 and !Global.finalizou_treino:
-		get_tree().change_scene_to_file("res://scene/TreinoModelagem.tscn")
-	else:
-		get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")
-func _on_loja_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Loja.tscn")
-func _on_sair_pressed(): get_tree().change_scene_to_file("res://scene/Cena_Resumo.tscn")
-func _on_contrato_pressed(): get_tree().change_scene_to_file("res://scene/Cena_contratos.tscn")
+#func _on_modelagem_pressed():
+	#if Global.dia_atual == 4 and !Global.finalizou_treino:
+		#get_tree().change_scene_to_file("res://scene/TreinoModelagem.tscn")
+	#else:
+		#get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")
