@@ -14,17 +14,17 @@ offset_right = 45.300003
 offset_bottom = -10.9
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1691938254]
-position = Vector2(13, 40)
-scale = Vector2(0.21387832, 0.18421052)
+position = Vector2(16.5625, 43.5)
+scale = Vector2(0.18678707, 0.16578947)
 texture = ExtResource("1_fw3ul")
 
 [node name="Numero" type="Label" parent="." unique_id=372807820]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 4.0
-offset_top = 43.0
-offset_right = 44.0
-offset_bottom = 67.0
+offset_left = 7.0
+offset_top = 48.0
+offset_right = 47.0
+offset_bottom = 72.0
 theme_override_font_sizes/font_size = 18
 text = "N"
 horizontal_alignment = 1

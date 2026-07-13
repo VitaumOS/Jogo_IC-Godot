@@ -8,6 +8,8 @@ var demanda: Array = []
 var padroes_corte_salvos_valor: Array = []
 var vbox_padroes_lista: Container 
 
+const custom_ms = Vector2(70, 70)
+
 func inicializar(p_demanda: Array, p_vbox: Container, p_padroes_valores: Array) -> void:
 	demanda = p_demanda
 	vbox_padroes_lista = p_vbox
@@ -33,6 +35,7 @@ func _gerar_visualizacao_demanda():
 			linha_meta.set_meta("qtd_necessaria", qtd_necessaria)
 			
 			var icone = Global._criar_icone_arma(peca_info, i)
+			icone.custom_minimum_size = custom_ms
 			
 			var label_progresso = Label.new()
 			label_progresso.name = "TextoProgresso"
@@ -59,7 +62,10 @@ func _gerar_visualizacao_demanda():
 		label_perda.name = "TextoPerda"
 		label_perda.text = " x0"
 		
-		linha_desperdicio.add_child(Global._criar_icone_arma(peca_info, i))
+		var icone = Global._criar_icone_arma(peca_info, i)
+		icone.custom_minimum_size=custom_ms
+		
+		linha_desperdicio.add_child(icone)
 		linha_desperdicio.add_child(label_perda)
 		linha_desperdicio.modulate = Color(0.9, 0.2, 0.2, 1.0)
 		

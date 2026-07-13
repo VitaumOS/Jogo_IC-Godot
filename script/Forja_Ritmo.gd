@@ -23,16 +23,12 @@ func _ready():
 	var lista_nomes = Global.armas_na_esteira_atual
 	total_pecas = lista_nomes.size()
 	_atualiza_contador()
-	
-	if total_pecas == 0:
-		get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
-		return
 
 	modo_duas_esteiras = total_pecas > 30
 	_configurar_dificuldade()
 	
 	# Duplica o fundo da esteira caso o modo duplo esteja ativo
-	if modo_duas_esteiras and esteira:
+	if modo_duas_esteiras:
 		_duplicar_esteira_fundo()
 		
 	_inicializar_esteiras(lista_nomes)
@@ -44,8 +40,9 @@ func _configurar_dificuldade():
 func _duplicar_esteira_fundo():
 	var nova_esteira = esteira.duplicate()
 	nova_esteira.position.y += OFFSET_Y_SEGUNDA_ESTEIRA
-	# Adiciona na mesma árvore de nós, logo abaixo da esteira original
-	esteira.get_parent().add_child(nova_esteira)
+	var pai = esteira.get_parent()
+	pai.add_child(nova_esteira)
+	pai.move_child(nova_esteira, esteira.get_index() + 1)
 
 func _inicializar_esteiras(lista_nomes: Array):
 	var arma_posy = $ArmasContainer/PecaRitmo.position

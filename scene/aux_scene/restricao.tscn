@@ -5,29 +5,28 @@
 [ext_resource type="Texture2D" uid="uid://b210afj78xvug" path="res://images/maior_ou_igual.png" id="2_xblx3"]
 
 [node name="Restricao" type="HBoxContainer" unique_id=1322664123]
-custom_minimum_size = Vector2(32.78, 20.99)
-offset_left = 9.0
-offset_top = 5.0
-offset_right = 481.0
-offset_bottom = 91.0
+custom_minimum_size = Vector2(900, 85)
+custom_maximum_size = Vector2(900, 85)
+offset_right = 900.0
+offset_bottom = 85.0
+theme_override_constants/separation = 4
 alignment = 1
 
 [node name="Control" type="Control" parent="." unique_id=1480718807]
 layout_mode = 2
 
 [node name="Peca" type="TextureRect" parent="Control" unique_id=1480584354]
-custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.397
 anchor_bottom = 0.5
-offset_left = -41.0
-offset_top = -20.715
-offset_right = 28.320473
-offset_bottom = 31.069275
+offset_left = -58.134247
+offset_top = 3.1140556
+offset_right = 12.177734
+offset_bottom = 32.672745
 rotation = -0.2617994
 texture = ExtResource("1_y6s4v")
-expand_mode = 1
+expand_mode = 2
 
 [node name="spacer" type="Control" parent="." unique_id=211413365]
 custom_minimum_size = Vector2(26.52, 0)
@@ -35,7 +34,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="." unique_id=1890195571]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 20
 text = ":"
 
 [node name="Restricao" type="HBoxContainer" parent="." unique_id=2021102660]
@@ -63,7 +62,7 @@ layout_mode = 2
 [node name="demanda" type="Label" parent="." unique_id=1975933134]
 modulate = Color(1, 0.9063318, 0.58383155, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 20
 text = "22"
 horizontal_alignment = 1
 vertical_alignment = 1

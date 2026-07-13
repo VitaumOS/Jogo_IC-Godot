@@ -200,11 +200,10 @@ func _on_resolver_pressed() -> void:
 
 func _disparar_dialogo_local(falas: Array):
 	var node_dialogo = get_node_or_null("SistemaDialogo")
-	if node_dialogo and node_dialogo.has_method("iniciar_dialogo"):
-		for fala in falas:
-			fala["retrato"] = "res://Sprite/gatinhos/Ferreiro.png"
-			fala["retrato"] = load(fala["retrato"])
-		node_dialogo.iniciar_dialogo(falas)
+	for fala in falas:
+		fala["retrato"] = "res://Sprite/gatinhos/Ferreiro.png"
+		fala["retrato"] = load(fala["retrato"])
+	node_dialogo.iniciar_dialogo(falas)
 
 func _finalizar_treino():
 	_disparar_dialogo_local([

@@ -27,15 +27,15 @@ anchors_preset = 0
 
 [node name="LabelFeedback" type="Label" parent="UI" unique_id=1725209788]
 layout_mode = 0
-offset_left = 312.0
-offset_top = 768.0
-offset_right = 548.0
-offset_bottom = 807.0
+offset_left = 1.0
+offset_top = 716.0
+offset_right = 900.0
+offset_bottom = 740.0
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI" unique_id=1154573931]
 layout_mode = 1
-offset_left = 75.0
+offset_left = 61.0
 offset_top = 95.0
 offset_right = 845.0
 offset_bottom = 708.0
@@ -57,10 +57,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 314.0
-offset_top = 721.0
-offset_right = 550.0
-offset_bottom = 782.0
+offset_left = 324.0
+offset_top = 742.0
+offset_right = 560.0
+offset_bottom = 803.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = ExtResource("3_mypxv")

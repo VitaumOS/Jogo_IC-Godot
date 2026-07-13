@@ -55,13 +55,15 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="ScrollRestricoes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=1281827232]
+[node name="ScrollRestricoes" type="Control" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=2073009810]
 custom_minimum_size = Vector2(850, 312.62)
 layout_mode = 2
 
 [node name="ContainerRestricoes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes" unique_id=1681862503]
 custom_minimum_size = Vector2(850, 249.61)
-layout_mode = 2
+layout_mode = 0
+offset_right = 850.0
+offset_bottom = 249.61
 theme_override_constants/separation = 9
 
 [node name="Restricao" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes/ContainerRestricoes" unique_id=1322664123 instance=ExtResource("3_jntv4")]

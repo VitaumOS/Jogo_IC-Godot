@@ -18,33 +18,8 @@ func _sequencia_final():
 	create_tween().tween_property(label_transicao, "modulate:a", 0.0, 0.5)
 	await get_tree().create_timer(0.5).timeout
 	
-	_dialogo_mestre_gato()
-
-func _dialogo_mestre_gato():
-	var falas = [
-		{
-			"nome": "Mestre Gato",
-			"texto": "Jorge! Voltei da minha jornada pelos reinos distantes. Como estão os negócios?",
-			"retrato": load("res://Sprite/gatinhos/Ferreiro.png")
-		},
-		{
-			"nome": "Jorge",
-			"texto": "Miau! Mestre! Foi uma semana intensa... usei matemática pesada e cortes precisos para manter tudo em ordem!",
-			"retrato": load("res://Sprite/gatinhos/NekoJorge.png")
-		},
-		{
-			"nome": "Mestre Gato",
-			"texto": "Estou impressionado. Vejo que o saldo está positivo e os contratos foram cumpridos. Você provou ser um verdadeiro mestre da otimização!",
-			"retrato": load("res://Sprite/gatinhos/Ferreiro.png")
-		}
-	]
-	
-	var sistema = get_tree().root.find_child("SistemaDialogo", true, false)
-	if sistema:
-		sistema.iniciar_dialogo(falas)
-		sistema.dialogo_encerrado.connect(_mostrar_tela_vitoria)
-	else:
-		_mostrar_tela_vitoria()
+	Global._verificar_gatilho_tutorial("dia_final")
+	_mostrar_tela_vitoria()
 
 func _mostrar_tela_vitoria():
 	titulo_vitoria.visible = true
@@ -55,5 +30,4 @@ func _mostrar_tela_vitoria():
 	botao_voltar.modulate.a = 0
 	tw.tween_property(botao_voltar, "modulate:a", 1.0, 2.0)
 	
-func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene/telainicial.tscn")
+func _on_button_pressed(): get_tree().change_scene_to_file("res://scene/Telainicial.tscn")

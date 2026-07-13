@@ -10,8 +10,6 @@ var termo_restricao = load("res://scene/aux_scene/termo_restricao.tscn")
 @onready var container_restricoes = $MainMargin/LayoutPrincipal/PainelEsquerdo/ContainerRestricoes
 @onready var container_padroes_selecao = $MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes/ContainerPadroesSelecao
 @onready var resultado_lbl = $ResultadoCortesLabel
-@onready var btn_resolver = $MainMargin/LayoutPrincipal/PainelEsquerdo/Resolver
-@onready var btn_voltar = $MainMargin/LayoutPrincipal/PainelEsquerdo/Voltar
 
 var PYTHON_PATH = ProjectSettings.globalize_path("res://PythonFiles/venv/Scripts/python.exe")
 var PYTHON_SCRIPT = ProjectSettings.globalize_path("res://PythonFiles/resolve_modelagem_pu.py")
@@ -57,7 +55,7 @@ func _gerar_lista_direita_padroes() -> void:
 		_desenhar_sprites_no_visualizador(visualizador, padrao.get("composicao", []))
 		
 		btn_toggle.toggled.connect(func(is_pressed):
-			_alternar_padrao_na_modelagem(i, is_pressed, btn_toggle)
+			_alternar_padrao_na_modelagem(i, is_pressed)
 		)
 		container_padroes_selecao.add_child(h_box_item)
 		i=i+1
@@ -76,7 +74,7 @@ func _desenhar_sprites_no_visualizador(container: HBoxContainer, composicao: Arr
 			wrapper.add_child(s)
 			container.add_child(wrapper)
 
-func _alternar_padrao_na_modelagem(idx_padrao: int, is_active: bool, botao: Button) -> void:
+func _alternar_padrao_na_modelagem(idx_padrao: int, is_active: bool) -> void:
 	if is_active:
 		if not padroes_selecionados_indices.has(idx_padrao):
 			padroes_selecionados_indices.append(idx_padrao)
@@ -98,8 +96,6 @@ func _reorganizar_texto_botoes() -> void:
 	idx_atual += 1
 
 func _gerar_restricoes_demanda() -> void:
-	if not container_restricoes: return
-	
 	for child in container_restricoes.get_children():
 		child.queue_free()
 		
@@ -167,8 +163,7 @@ func _atualizar_equacoes_na_tela() -> void:
 				container_funcao.add_child(lbl_mais)
 			var mini = miniatura.instantiate()
 			container_funcao.add_child(mini)
-			var num_node = mini.find_child("Numero")
-			num_node.text = str(i + 1)
+			mini.find_child("Numero").text = str(i + 1)
 
 func _on_btn_resolver_pressed() -> void:
 	if padroes_selecionados_indices.is_empty(): return
@@ -205,9 +200,8 @@ func _on_btn_resolver_pressed() -> void:
 				texto_resultado += "Padrão x%d: cortar %d vez(es)\n" % [(j + 1), qtd_cortes]
 			
 			texto_resultado += "\nTotal de Chapas Utilizadas: %d" % total_chapas
-			if resultado_lbl:
-				resultado_lbl.text = texto_resultado
-				resultado_lbl.modulate = Color.GREEN
+			resultado_lbl.text = texto_resultado
+			resultado_lbl.modulate = Color.GREEN
 			
 
 func _on_btn_voltar_pressed() -> void:

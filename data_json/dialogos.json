@@ -67,7 +67,7 @@
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "texto": "Quando quiser escolher um contrato, clique no botão 'aceitar contrato' para ele ser enviado a sua ferraria!",
       "coordenada": [450, 330],
-      "foco_pos": [450, 250],
+      "foco_pos": [450, 270],
       "foco_tamanho": [800, 80]
     }
   ],
@@ -239,8 +239,8 @@
       "texto": "Isso que você tá vendo aqui é uma modelagem matemática pro problema do corte. ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 300],
-      "foco_pos": [300, 50],
-      "foco_tamanho": [500, 300]
+      "foco_pos": [450, 80],
+      "foco_tamanho": [500, 250]
     },
 
     {
@@ -248,17 +248,17 @@
       "texto": "A parte de cima te fala que queremos o menor valor possível de cortes.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 300],
-      "foco_pos": [300, 50],
-      "foco_tamanho": [500, 300]
+      "foco_pos": [450, 80],
+      "foco_tamanho": [500, 250]
     },
 
 		{
       "nome": "Mestre Gato",
-      "texto": "A parte debaixo te fala as restrições do problem, até porque se quisessemos o mínimo mesmo, era só colocar 0 para todos os cortes (risada)",
+      "texto": "A parte debaixo te fala as restrições do problema, até porque se quisessemos o mínimo mesmo, era só colocar 0 para todos os cortes (risada)",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 300],
-      "foco_pos": [300, 50],
-      "foco_tamanho": [500, 300]
+      "foco_pos": [450, 80],
+      "foco_tamanho": [500, 250]
     },
 
 		{
@@ -289,5 +289,24 @@
       "texto": "Finalmente tá mais tranquilo de resolver os contratos! Eles ficam mais complexos, mas esse algoritmo resolve tudo!",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
+  ],
+
+
+  "dia_final":[
+    {
+			"nome": "Mestre Gato",
+			"texto": "Jorge! Voltei da minha jornada pelos reinos distantes. Como estão os negócios?",
+			"retrato": "res://Sprite/gatinhos/Ferreiro.png"
+		},
+		{
+			"nome": "Jorge",
+			"texto": "Miau! Mestre! Foi uma semana intensa... usei matemática pesada e cortes precisos para manter tudo em ordem!",
+			"retrato": "res://Sprite/gatinhos/NekoJorge.png"
+		},
+		{
+			"nome": "Mestre Gato",
+			"texto": "Estou impressionado. Vejo que o saldo está positivo e os contratos foram cumpridos. Você provou ser um verdadeiro mestre da otimização!",
+			"retrato": "res://Sprite/gatinhos/Ferreiro.png"
+		}
   ]
 }

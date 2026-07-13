@@ -31,12 +31,11 @@
     
     { "dia": 5, "nome": "Linha de Lanças Real", "composicao": [0, 0, 0, 0, 0, 2], "preco": 350 },
     { "dia": 5, "nome": "Mix de Linha de Frente", "composicao": [2, 1, 1, 1, 1, 0], "preco": 400 },
-    { "dia": 5, "nome": "Engenharia Suprema", "composicao": [1, 0, 1, 1, 1, 1], "preco": 450 },
-    { "dia": 5, "nome": "Otimização de Lanças G", "composicao": [1, 1, 1, 0, 0, 2], "preco": 420 },
-    { "dia": 5, "nome": "Arsenal de Arcos Otimizado", "composicao": [3, 0, 0, 1, 2, 0], "preco": 380 },
+    { "dia": 5, "nome": "Engenharia Suprema", "composicao": [1, 0, 1, 1, 0, 1], "preco": 450 },
+    { "dia": 5, "nome": "Otimização de Lanças G", "composicao": [1, 1, 1, 0, 0, 1], "preco": 420 },
+    { "dia": 5, "nome": "Arsenal de Arcos Otimizado", "composicao": [1, 0, 0, 1, 2, 0], "preco": 380 },
     { "dia": 5, "nome": "Par de Lanças Puro", "composicao": [0, 0, 0, 0, 0, 2], "preco": 300 },
     { "dia": 5, "nome": "Forja Rápida de Elite", "composicao": [0, 1, 2, 1, 1, 0], "preco": 370 },
-    { "dia": 5, "nome": "Super Lote de Adagas", "composicao": [9, 0, 0, 0, 0, 0], "preco": 200 },
     
     { "dia": 6, "nome": "Padrão de Emergência Ineficiente", "composicao": [1, 0, 0, 0, 1, 0], "preco": 100 }
   ]

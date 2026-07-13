@@ -7,13 +7,13 @@ offset_left = -3.0
 offset_top = 11.0
 offset_right = 32.0
 offset_bottom = 97.0
-theme_override_constants/separation = 13
+theme_override_constants/separation = 6
 alignment = 1
 
 [node name="Qtd" type="Label" parent="." unique_id=215772531]
 custom_minimum_size = Vector2(0, 85.65)
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 20
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
