@@ -90,9 +90,9 @@ offset_bottom = 784.0
 [node name="AgrupadorMiniatura" type="Control" parent="." unique_id=2063621907]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 450.325
-offset_top = 330.625
-offset_right = 501.69543
+offset_left = 619.82
+offset_top = 314.0
+offset_right = 671.1908
 offset_bottom = 363.6756
 
 [node name="RetratoSprite_mini" type="TextureRect" parent="AgrupadorMiniatura" unique_id=2019978041]

@@ -33,8 +33,35 @@
     },
     {
       "nome": "Jorge",
-      "texto": "Quando terminar tudo que tem para fazer no dia, aperte o botão para passar o dia. Lembre-se que você tem taxas a pagar diariamente, então termine tudo mesmo antes de prosseguir!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+      "texto": "Aqui você acessa os contratos do jogo.",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "coordenada": [450, 430],
+      "foco_pos": [150, 840],
+      "foco_tamanho": [190, 45]
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Aqui você acessa a loja.",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "coordenada": [450, 430],
+      "foco_pos": [350, 840],
+      "foco_tamanho": [190, 45]
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Aqui você volta a forja, que é exatamente aqui.",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "coordenada": [450, 430],
+      "foco_pos": [550, 840],
+      "foco_tamanho": [190, 45]
+    },
+    {
+      "nome": "Jorge",
+      "texto": "E, quando terminar tudo que tem para fazer no dia, aperte em Encerrar. Lembre-se que você tem taxas a pagar diariamente, então termine tudo mesmo antes de prosseguir!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "coordenada": [450, 430],
+      "foco_pos": [750, 840],
+      "foco_tamanho": [190, 45]
     }
   ],
 
@@ -50,7 +77,17 @@
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Você pode comprar qualquer [b]molde de corte[/b] disponível e também chapas para atender os contratos!"
+      "texto": "Você pode comprar qualquer [b]molde de corte[/b] disponível pelo botão de compra!",
+      "foco_pos": [710, 145],
+      "foco_tamanho": [170, 50]
+    },
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Além disso, para conseguir utilizar os moldes, você vai precisar comprar chapas também!",
+      "coordenada": [450,450],
+      "foco_pos": [430, 770],
+      "foco_tamanho": [240, 50]
     }
   ],
 
@@ -68,7 +105,7 @@
       "texto": "Quando quiser escolher um contrato, clique no botão 'aceitar contrato' para ele ser enviado a sua ferraria!",
       "coordenada": [450, 330],
       "foco_pos": [450, 270],
-      "foco_tamanho": [800, 80]
+      "foco_tamanho": [800, 60]
     }
   ],
 
@@ -76,12 +113,16 @@
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato"
+      "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato.",
+      "coordenada": [620,330]
     },
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Selecione a quantidade de vezes que você vai utilizar cada molde para montar todas as armas necessárias!"
+      "texto": "Selecione a quantidade de vezes que você vai utilizar cada molde para montar todas as armas necessárias!",
+      "coordenada": [620,330],
+      "foco_pos": [340, 570],
+      "foco_tamanho": [70, 50]
     }
   ],
 
@@ -89,17 +130,20 @@
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato"
+      "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato.",
+      "coordenada": [620,330]
     },
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Mas olhe só! Você ainda não comprou nenhum molde para realizar ele."
+      "texto": "Mas olhe só! Você ainda não comprou nenhum molde para realizar ele.",
+      "coordenada": [620,330]
     },
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Acesse a loja para que você compre alguns moldes!"
+      "texto": "Acesse a loja para que você compre alguns moldes!",
+      "coordenada": [620,330]
     }
   ],
 
@@ -110,16 +154,16 @@
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "foco_pos": [125, 700],
-      "foco_tamanho": [220, 40],
+      "foco_pos": [150, 730],
+      "foco_tamanho": [150, 40],
       "texto": "Preste atenção! Aquela barra [b]Vermelha[/b] ali embaixo apareceu. Isso significa [b]Desperdício[/b]! "
     },
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "foco_pos": [125, 700],
-      "foco_tamanho": [220, 40],
+      "foco_pos": [150, 730],
+      "foco_tamanho": [150, 40],
       "texto": "Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
     },
     {
@@ -147,7 +191,7 @@
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Chega de adivinhar de cabeça! Esta é a tela de [b]Modelagem Matemática[/b]. Aqui nós transformamos a demanda em Restrições e os padrões em Variáveis de Decisão. O solver PuLP vai calcular a solução ótima para você!"
+      "texto": "Chega de adivinhar de cabeça! Esta é a tela de [b]Modelagem Matemática[/b]. Aqui nós transformamos a demanda em Restrições e os moldes em padrões de corte e variáveis de decisão. Teste com algum contrato!"
     }
   ],
 
@@ -161,13 +205,13 @@
     },
     {
       "nome": "Jorge",
-      "texto": " Agora podemos ver o quanto estamos gastando em cada padrão de corte!",
+      "texto": " Agora podemos ver o quanto estamos gastando em cada molde",
       "coordenada": [650, 130],
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
       "nome": "Jorge",
-      "texto": "Use isso como um guia para comprar padrões de corte: padrões de corte que desperdiçam muito devem ser evitados!",
+      "texto": "Use isso como um guia para comprar moldes: moldes que desperdiçam muito devem ser evitados!",
       "coordenada": [650, 130],
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     }
@@ -245,7 +289,7 @@
 
     {
       "nome": "Mestre Gato",
-      "texto": "A parte de cima te fala que queremos o menor valor possível de cortes.",
+      "texto": "A parte de cima te fala que queremos o menor valor possível de cortes, já que, para cada novo corte que fizermos, teremos que usar uma chapa nova.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 300],
       "foco_pos": [450, 80],
@@ -254,22 +298,42 @@
 
 		{
       "nome": "Mestre Gato",
-      "texto": "A parte debaixo te fala as restrições do problema, até porque se quisessemos o mínimo mesmo, era só colocar 0 para todos os cortes (risada)",
+      "texto": "A parte debaixo te fala as restrições do problema, indicando o quanto que iremos cortar de cada arma para cada padrão que selecionarmos.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 300],
       "foco_pos": [450, 80],
       "foco_tamanho": [500, 250]
     },
 
-		{
+    {
       "nome": "Mestre Gato",
-      "texto": "Ahem, enfim! As restrições são, para esse problema, a demanda dos contratos que você estava atendendo.",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+      "texto": "Tá vendo esses dois moldes aqui? Eles são equivalentes aos padrões de corte que estão nessa modelagem.",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 200],
+      "foco_pos": [40, 400],
+      "foco_tamanho": [500, 180]
+    },
+
+    {
+      "nome": "Mestre Gato",
+      "texto": "Lembra que tínhamos o valor de cada arma para fazer em cada contrato? Então, o valor que tínhamos que produzir é chamado de [b]demanda[/b].",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 200],
+      "foco_pos": [450, 80],
+      "foco_tamanho": [500, 250]
+    },
+    {
+      "nome": "Mestre Gato",
+      "texto": "Devemos alcançar o valor mínimo de cada restrição para que a modelagem esteja completa",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 200],
+      "foco_pos": [450, 80],
+      "foco_tamanho": [500, 250]
     },
 
 		{
       "nome": "Mestre Gato", 
-      "texto": "Tente resolver esses problemas agora!",
+      "texto": "Tente resolver esses problemas agora!Coloque os valores que você irá utilizar cada padrão de corte para que atenda todas restrições e atinja o mínimo.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     }
   ],

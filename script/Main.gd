@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var cena_linha_padrao: PackedScene
+@export var cena_resultado_dinheiro: PackedScene
 
 # --- REFERÊNCIAS DE NÓS ---
 @onready var vbox_padroes_lista = $UI/Controle_Corpo/ScrollContainer/PadraoCorteSalvo
@@ -181,10 +182,22 @@ func _finalizar_logica_pulp():
 		var res = JSON.parse_string(arquivo.get_as_text())
 		if res and res.get("status") == "Optimal":
 			var z_pulp = res["chapas_usadas"]
+			var alcancou_minimo = z_user <= z_pulp
+			
 			Global.estoque_chapas -= z_user
 			Global.registrar_contrato_concluido(Global.contrato_ativo)
-			Global.completar_contrato(z_user <= z_pulp, Global.ultimo_desempenho_ritmo)
-			popup.mostrar_conclusao_contrato()
+			Global.completar_contrato(alcancou_minimo, Global.ultimo_desempenho_ritmo)
+			
+			var tela_dinheiro = cena_resultado_dinheiro.instantiate()
+			$UI.add_child(tela_dinheiro)
+			var texto_minimo = tela_dinheiro.get_node("PanelContainer/VBox/VboxTexto/Label3")
+			texto_minimo.text = "Alcançou o mínimo de chapas: " + ("SIM (+20%)" if alcancou_minimo else "NÃO")
+			texto_minimo.modulate = (Color.GREEN if alcancou_minimo else Color.RED)
+			await tela_dinheiro.find_child("Continuar").pressed
+			tela_dinheiro.queue_free()
+			
+			
+
 	if !Global.finalizou_primeiro_contrato:
 		Global.finalizou_primeiro_contrato = true
 		Global._verificar_gatilho_tutorial("primeiro_contrato_concluido")

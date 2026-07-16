@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://xssr1johtnwf"]
 
 [ext_resource type="Script" uid="uid://b0xgd8amglmnu" path="res://script/Main.gd" id="1_7e7p4"]
+[ext_resource type="PackedScene" uid="uid://dgyfaxliye1pq" path="res://scene/cena_pontuacao.tscn" id="3_i1ld1"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_r2s5b"]
 [ext_resource type="Texture2D" uid="uid://vx0xpjoejn5n" path="res://images/Jorge_forja.png" id="4_2xbwx"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="5_bjq5w"]
@@ -14,6 +15,7 @@
 [node name="Main" type="Node2D" unique_id=1792108250]
 script = ExtResource("1_7e7p4")
 cena_linha_padrao = ExtResource("7_i1ld1")
+cena_resultado_dinheiro = ExtResource("3_i1ld1")
 
 [node name="Background" type="TextureRect" parent="." unique_id=54058751]
 offset_right = 900.0

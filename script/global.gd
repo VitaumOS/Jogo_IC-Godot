@@ -10,7 +10,15 @@ var dinheiro: int = 10000
 var ganhos_do_dia: int = 0
 var estoque_chapas: int = 0
 var preco_chapa: int = 100 
+
+var recompensa_base: float = 0
 var recompensa_final: float = 0
+
+var cena_main = false
+var cena_loja = false
+var cena_contrato = false
+
+var alcancou_metas_contrato: bool = false
 var finalizou_treino = false 
 var finalizou_primeiro_contrato = false
 var finalizou_tutorial_primeiro_contrato = false
@@ -112,6 +120,7 @@ func _carregar_json(caminho: String) -> Dictionary:
 func completar_contrato(conseguiu_minimo: bool, ritmo : float):
 	if contrato_ativo != null:
 		var recompensa = contrato_ativo.recompensa
+		recompensa_base = contrato_ativo.recompensa
 		var bonus = 0.0
 		if conseguiu_minimo:
 			bonus = recompensa*0.2
