@@ -32,7 +32,8 @@ layout_mode = 0
 offset_left = 11.0
 offset_top = -4.0
 offset_right = 861.0
-offset_bottom = 801.0
+offset_bottom = 854.0
+theme_override_constants/separation = 15
 
 [node name="PainelEsquerdo" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1054586216]
 layout_mode = 2
@@ -63,8 +64,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(850, 249.61)
 layout_mode = 0
 offset_right = 850.0
-offset_bottom = 249.61
-theme_override_constants/separation = 9
+offset_bottom = 287.0
+theme_override_constants/separation = -11
 
 [node name="Restricao" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes/ContainerRestricoes" unique_id=1322664123 instance=ExtResource("3_jntv4")]
 custom_minimum_size = Vector2(32.78, 72.065)
@@ -75,7 +76,7 @@ custom_minimum_size = Vector2(0, 361.685)
 layout_mode = 2
 
 [node name="ScrollPadroes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=705050902]
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(300, 318.735)
 layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=905768712]

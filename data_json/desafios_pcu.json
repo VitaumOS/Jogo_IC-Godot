@@ -2,9 +2,6 @@
   "problemas": [
     {
       "id": 1,
-      "titulo": "Desafio 1: Forja de Adagas",
-      "descricao": "O cliente precisa de adagas com urgência. Combine os padrões para entregar o pedido gastando o mínimo de chapas!",
-      "tamanho_chapa": 500.0,
       "demanda": [12, 0, 0, 0, 0, 0],
       "minimo_chapas_otimo": 3,
       "padroes_disponiveis": [
@@ -14,28 +11,26 @@
     },
     {
       "id": 2,
-      "titulo": "Desafio 2: Infantaria Básica",
-      "descricao": "Combine os cortes de Espadas M e Machados. Cuidado para não gerar muito desperdício de metal!",
-      "tamanho_chapa": 500.0,
-      "demanda": [0, 4, 0, 3, 0, 0],
-      "minimo_chapas_otimo": 4,
+      "demanda": [8, 5, 0, 5, 0, 0],
+      "minimo_chapas_otimo": 3,
       "padroes_disponiveis": [
-        { "nome": "Padrão Espadas", "composicao": [0, 2, 0, 0, 0, 0] },
-        { "nome": "Padrão Machados", "composicao": [0, 0, 0, 2, 0, 0] },
-        { "nome": "Combo Misto", "composicao": [0, 1, 0, 1, 0, 0] }
+        { "nome": "Misto Tático", "composicao": [3, 2, 0, 1, 0, 0] },
+        { "nome": "Linha de Choque", "composicao": [0, 3, 0, 2, 0, 0] },
+        { "nome": "Assalto Leve", "composicao": [5, 0, 0, 2, 0, 0] },
+        { "nome": "Lote Espadas", "composicao": [1, 4, 0, 0, 0, 0] },
+        { "nome": "Lote Machados", "composicao": [0, 1, 0, 4, 0, 0] }
       ]
     },
     {
       "id": 3,
-      "titulo": "Desafio 3: O Arsenal Avançado",
-      "descricao": "Desafio final! Forneça Arcos e Espadas G equilibrando perfeitamente o estoque.",
-      "tamanho_chapa": 500.0,
-      "demanda": [0, 0, 4, 0, 2, 0],
-      "minimo_chapas_otimo": 3,
+      "demanda": [0, 3, 3, 0, 3, 3],
+      "minimo_chapas_otimo": 4,
       "padroes_disponiveis": [
-        { "nome": "Corte Espada G", "composicao": [0, 0, 2, 0, 0, 0] },
-        { "nome": "Corte Arcos", "composicao": [0, 0, 0, 0, 2, 0] },
-        { "nome": "Fronteira Mista", "composicao": [0, 0, 1, 0, 1, 0] }
+        { "nome": "Longo Alcance", "composicao": [0, 1, 0, 0, 1, 1] },
+        { "nome": "Guarda Real", "composicao": [0, 0, 2, 0, 1, 0] },
+        { "nome": "Falange", "composicao": [0, 0, 0, 0, 0, 2] },
+        { "nome": "Vanguarda", "composicao": [0, 2, 1, 0, 1, 0] },
+        { "nome": "Apoio Pesado", "composicao": [0, 1, 3, 0, 0, 0] }
       ]
     }
   ]
