@@ -1,13 +1,12 @@
 {
   "padroes": [
-    { "dia": 1, "nome": "p1", "composicao": [4, 2, 0, 0, 0, 0], "preco": 200 },
-    { "dia": 1, "nome": "p2", "composicao": [2, 3, 0, 0, 0, 0], "preco": 250 },
+    { "dia": 1, "nome": "p1", "composicao": [5, 2, 0, 0, 0, 0], "preco": 170 },
+    { "dia": 1, "nome": "p2", "composicao": [2, 4, 0, 0, 0, 0], "preco": 250 },
     
     { "dia": 2, "nome": "p3", "composicao": [1, 0, 3, 0, 0, 0], "preco": 120 },
-    { "dia": 2, "nome": "p4", "composicao": [1, 2, 1, 0, 0, 0], "preco": 140 },
     { "dia": 2, "nome": "p5", "composicao": [2, 1, 2, 0, 0, 0], "preco": 160 },
     { "dia": 2, "nome": "p6", "composicao": [0, 2, 1, 0, 0, 0], "preco": 150 },
-    { "dia": 2, "nome": "p7", "composicao": [2, 1, 1, 0, 0, 0], "preco": 130 },
+    { "dia": 2, "nome": "p7", "composicao": [6, 1, 0, 0, 0, 0], "preco": 130 },
     
     { "dia": 3, "nome": "p8", "composicao": [1, 1, 1, 0, 0, 0], "preco": 100 },
     { "dia": 3, "nome": "p9", "composicao": [2, 1, 1, 1, 0, 0], "preco": 200 },

@@ -31,14 +31,13 @@ expand_mode = 1
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=790821855]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 0
-offset_left = 182.03
-offset_top = 198.72997
-offset_right = 735.0
-offset_bottom = 712.0
+offset_left = 232.0
+offset_top = 216.0
+offset_right = 680.0
+offset_bottom = 672.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_h5dlb")
 
 [node name="VBox" type="VBoxContainer" parent="PanelContainer" unique_id=1136549728]
-custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 theme_override_constants/separation = 46
 
@@ -61,20 +60,21 @@ theme_override_constants/separation = 14
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "Valor do contrato: R$500"
+text = "Valor do contrato: R$999"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="PanelContainer/VBox/VboxTexto" unique_id=1840941134]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Total de peças marteladas: 10/12"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="PanelContainer/VBox/VboxTexto" unique_id=95876632]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 text = "Alcançou o mínimo: Sim (+%20)"
 horizontal_alignment = 1
 

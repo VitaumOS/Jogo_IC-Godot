@@ -14,6 +14,7 @@ func _animar_entrada():
 
 func _on_btn_jogar_pressed():
 	Global.dia_atual = 1
+	Global.cena_main = true
 	Global.contratos_concluidos.clear()
 	get_tree().change_scene_to_file(CENA_PRINCIPAL)
 

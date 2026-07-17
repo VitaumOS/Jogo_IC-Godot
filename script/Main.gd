@@ -191,7 +191,7 @@ func _finalizar_logica_pulp():
 			var tela_dinheiro = cena_resultado_dinheiro.instantiate()
 			$UI.add_child(tela_dinheiro)
 			var texto_minimo = tela_dinheiro.get_node("PanelContainer/VBox/VboxTexto/Label3")
-			texto_minimo.text = "Alcançou o mínimo de chapas: " + ("SIM (+20%)" if alcancou_minimo else "NÃO")
+			texto_minimo.text = "Alcançou o mínimo: " + ("SIM (+20%)" if alcancou_minimo else "NÃO")
 			texto_minimo.modulate = (Color.GREEN if alcancou_minimo else Color.RED)
 			await tela_dinheiro.find_child("Continuar").pressed
 			tela_dinheiro.queue_free()
