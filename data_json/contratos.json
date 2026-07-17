@@ -3,7 +3,7 @@
     { "dia": 1, "nome": "Patrulha Rural", "demanda": [9, 0, 0, 0, 0, 0], "recompensa": 350 },
     { "dia": 1, "nome": "Segurança de Taberna", "demanda": [2, 8, 0, 0, 0, 0], "recompensa": 420 },
 
-    { "dia": 2, "nome": "Caça aos Ratos", "demanda": [0, 4, 4, 0, 0, 0], "recompensa": 400},
+    { "dia": 2, "nome": "Caça aos Ratos", "demanda": [0, 4, 4, 0, 0, 0], "recompensa": 400 },
     { "dia": 2, "nome": "Caravana de Seda", "demanda": [5, 4, 7, 9, 0, 0], "recompensa": 500 },
     { "dia": 2, "nome": "Armas para os soldados Reais", "demanda": [9, 12, 7, 12, 0, 0], "recompensa": 550 },
     { "dia": 2, "nome": "Caravana de Tecidos", "demanda": [11, 8, 5, 5, 0, 0], "recompensa": 600 },

@@ -34,6 +34,7 @@ func _iniciar_proximo_dia():
 	if Global.dinheiro < 0:
 		# Se estiver com saldo negativo, vai para a cena de Game Over
 		get_tree().change_scene_to_file("res://scene/GameOver.tscn")
+		return
 	if Global.dia_atual >= Global.DIA_FINAL:
 		# Se venceu o último dia, vai para a vitória
 		get_tree().change_scene_to_file("res://scene/Vitoria.tscn")
