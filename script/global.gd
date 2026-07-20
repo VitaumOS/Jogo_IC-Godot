@@ -27,12 +27,12 @@ var chapas_usadas_pelo_jogador: int = 0
 var ultimo_desempenho_ritmo: float = -1.0 
 
 var pecas_disponiveis: Array = [
-	{"nome": "Adaga", "largura": 53.0, "caminho_textura": "res://Sprite/adaga.png"},
-	{"nome": "Espada M", "largura": 97.0, "caminho_textura": "res://Sprite/Esp_Larg.png"},
-	{"nome": "Espada G", "largura": 123.0, "caminho_textura": "res://Sprite/Esp_Grande.png"},
-	{"nome": "Machado", "largura": 89.0, "caminho_textura": "res://Sprite/machado.png"},
-	{"nome": "Arco", "largura": 167.0, "caminho_textura": "res://Sprite/arco.png"},
-	{"nome": "Lança", "largura": 211.0, "caminho_textura": "res://Sprite/lanca.png"}
+	{"nome": "Adaga", "largura": 53.0, "caminho_textura": "res://Sprite/adaga-novo.png"},
+	{"nome": "Espada M", "largura": 97.0, "caminho_textura": "res://Sprite/Esp_Larg-novo.png"},
+	{"nome": "Espada G", "largura": 123.0, "caminho_textura": "res://Sprite/Esp_Grande-novo.png"},
+	{"nome": "Machado", "largura": 89.0, "caminho_textura": "res://Sprite/machado-novo.png"},
+	{"nome": "Escudo", "largura": 97.0, "caminho_textura": "res://Sprite/escudo_larg-novo.png"},
+	{"nome": "Lança", "largura": 211.0, "caminho_textura": "res://Sprite/lanca-novo.png"}
 ]
 
 var dialogos_vistos_hoje: Dictionary = {}
