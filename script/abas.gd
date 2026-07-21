@@ -38,5 +38,10 @@ func _on_encerrar_pressed():
 	popup.mostrar_confirmacao("Deseja finalizar o dia?")
 	var confirma = await popup.resposta 
 	if confirma:
+		if !Global.fez_contrato_diario:
+			popup.mostrar_mensagem("você precisa fazer ao menos um contrato!")
+			var confirma2 = await popup.resposta 
+			if confirma2:
+				return
 		organiza_botao(2)
 		get_tree().change_scene_to_file("res://scene/Cena_Resumo.tscn")

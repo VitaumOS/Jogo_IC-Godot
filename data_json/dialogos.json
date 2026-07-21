@@ -86,7 +86,7 @@
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "texto": "Além disso, para conseguir utilizar os moldes, você vai precisar comprar chapas também!",
       "coordenada": [450,450],
-      "foco_pos": [430, 770],
+      "foco_pos": [440, 770],
       "foco_tamanho": [240, 50]
     }
   ],

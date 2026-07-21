@@ -14,6 +14,7 @@ func _processar_financeiro_do_dia():
 	var custos = Global.CUSTO_DIARIO
 	var lucro_liquido = ganhos - custos
 	
+	Global.fez_contrato_diario = false
 	Global.dinheiro -= custos
 	label_titulo.text = "\nRELATÓRIO DO DIA %d " % Global.dia_atual
 	
