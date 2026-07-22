@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bl4t4eo4t7mfy"]
+
+[ext_resource type="PackedScene" uid="uid://cmi3quifa8djm" path="res://scene/aux_scene/miniatura_modelo_chapa.tscn" id="1_t87b3"]
+[ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/aux_scene/Padrao_Corte.tscn" id="2_t7sia"]
+
+[node name="PadraoCorteTreinamento" type="HBoxContainer" unique_id=1971917684]
+custom_minimum_size = Vector2(0, 50)
+offset_right = 90.0
+offset_bottom = 50.0
+theme_override_constants/separation = 2
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=653960270]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+text = "0"
+alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=1100907159]
+layout_mode = 2
+
+[node name="MiniaturaModeloChapa" parent="Control" unique_id=1265181084 instance=ExtResource("1_t87b3")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 547.0
+offset_top = -15.0
+offset_right = 582.0
+offset_bottom = 52.0
+
+[node name="PadraoCorte" parent="." unique_id=1343394717 instance=ExtResource("2_t7sia")]
+layout_mode = 2

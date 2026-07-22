@@ -1,16 +1,14 @@
 extends Control
 
-var cena_padrao_visual = load("res://scene/aux_scene/Padrao_Corte.tscn")
+var cena_padrao_visual = load("res://scene/aux_scene/padrao_corte_treinamento.tscn")
 var restricao = load("res://scene/aux_scene/restricao.tscn")
 var miniatura = load("res://scene/aux_scene/miniatura_modelo_chapa.tscn")
 var termo_restricao = load("res://scene/aux_scene/termo_restricao.tscn")
-
 
 @onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao/FuncaoObjetivo
 @onready var container_funcao = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao
 @onready var container_restricoes = $MainMargin/LayoutPrincipal/PainelEsquerdo/ScrollRestricoes/ContainerRestricoes
 @onready var container_padroes_selecao = $MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes/ContainerPadroesSelecao
-@onready var resultado_lbl = $ResultadoCortesLabel 
 @onready var btn_voltar = $MainMargin/LayoutPrincipal/Botoes/Voltar
 
 var lista_problemas: Array = []
@@ -23,7 +21,7 @@ var lista_demandas_meta: Array = []
 func _ready() -> void:
 	_carregar_todos_os_desafios()
 	_inicializar_problema(indice_problema_atual)
-	btn_voltar.visible=false
+	btn_voltar.visible = false
 	
 	Global._verificar_gatilho_tutorial("treinamento_modelagem")
 
@@ -44,10 +42,6 @@ func _inicializar_problema(indice: int):
 	problema_atual = lista_problemas[indice]
 	inputs_quantidade_padrao.clear()
 	
-	if resultado_lbl:
-		resultado_lbl.text = ""
-		resultado_lbl.modulate = Color.WHITE
-	
 	_gerar_lista_direita_padroes_treino()
 	_gerar_restricoes_demanda_treino()
 	_atualizar_equacoes_na_tela()
@@ -55,28 +49,14 @@ func _inicializar_problema(indice: int):
 func _gerar_lista_direita_padroes_treino() -> void:
 	for child in container_padroes_selecao.get_children():
 		child.queue_free()
-		
 	var i = 0
 	for padrao in problema_atual.padroes_disponiveis:
-		var h_box_item = HBoxContainer.new()
-		h_box_item.custom_minimum_size = Vector2(0, 60)
-		
-		var input_qtd = LineEdit.new()
-		input_qtd.custom_minimum_size = Vector2(70, 0)
-		input_qtd.alignment = HORIZONTAL_ALIGNMENT_CENTER
-		input_qtd.placeholder_text = "Vezes"
-		input_qtd.text = "0" 
-		
-		h_box_item.add_child(input_qtd)
-		inputs_quantidade_padrao[i] = input_qtd
-		
-		var instancia_visual = cena_padrao_visual.instantiate()
-		h_box_item.add_child(instancia_visual)
-			
-		var visualizador = instancia_visual.find_child("Visualizador_Padrao")
+		var h_box = cena_padrao_visual.instantiate()
+		h_box.find_child("MiniaturaModeloChapa").find_child("Numero").text = str(i + 1)
+		inputs_quantidade_padrao[i] = h_box.find_child("LineEdit")
+		var visualizador = h_box.find_child("PadraoCorte").find_child("Visualizador_Padrao")
 		_desenhar_sprites_no_visualizador(visualizador, padrao.get("composicao", []))
-		
-		container_padroes_selecao.add_child(h_box_item)
+		container_padroes_selecao.add_child(h_box)
 		i += 1
 
 func _desenhar_sprites_no_visualizador(container: HBoxContainer, composicao: Array) -> void:
@@ -84,8 +64,10 @@ func _desenhar_sprites_no_visualizador(container: HBoxContainer, composicao: Arr
 		var qtd = composicao[i]
 		var peca = Global.pecas_disponiveis[i]
 		for n in range(qtd):
-			var wrapper = Control.new(); wrapper.custom_minimum_size = Vector2(peca.largura, 50)
-			var s = Sprite2D.new(); s.texture = load(peca.caminho_textura)
+			var wrapper = Control.new()
+			wrapper.custom_minimum_size = Vector2(peca.largura, 50)
+			var s = Sprite2D.new()
+			s.texture = load(peca.caminho_textura)
 			if s.texture:
 				var t_size = s.texture.get_size()
 				s.scale = Vector2(peca.largura / t_size.x, 50.0 / t_size.y)
@@ -116,7 +98,7 @@ func _gerar_restricoes_demanda_treino() -> void:
 				if qtd_na_chapa > 0:
 					if not primeiro_termo:
 						var lbl_mais = Label.new()
-						lbl_mais.text = "          +"
+						lbl_mais.text = "         +"
 						lbl_mais.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 						lbl_tecnica.add_child(lbl_mais)
 					primeiro_termo = false
@@ -151,7 +133,8 @@ func _atualizar_equacoes_na_tela() -> void:
 
 	for i in range(problema_atual.padroes_disponiveis.size()):
 		if i > 0:
-			var lbl_mais = Label.new(); lbl_mais.text = "          +"
+			var lbl_mais = Label.new()
+			lbl_mais.text = "         +"
 			container_funcao.add_child(lbl_mais)
 		var mini = miniatura.instantiate()
 		container_funcao.add_child(mini)
@@ -189,7 +172,7 @@ func _on_resolver_pressed() -> void:
 		])
 	elif total_chapas_utilizadas > limite_otimo:
 		_disparar_dialogo_local([
-			{"nome": "Mestre Gato", "texto": "Você atendeu à demanda, mas usou [b]%d chapas[/b].A modelagem matemática prova que é possível resolver esse problema usando apenas [b]%d chapas[/b]! Ou seja, você desperdiçou valiosas chapas! Tente otimizar seus cortes." % [total_chapas_utilizadas, limite_otimo]}
+			{"nome": "Mestre Gato", "texto": "Você atendeu à demanda, mas usou [b]%d chapas[/b]. A modelagem matemática prova que é possível resolver esse problema usando apenas [b]%d chapas[/b]! Ou seja, você desperdiçou valiosas chapas! Tente otimizar seus cortes." % [total_chapas_utilizadas, limite_otimo]}
 		])
 	else:
 		_disparar_dialogo_local([
@@ -209,7 +192,8 @@ func _finalizar_treino():
 	_disparar_dialogo_local([
 		{"nome": "Mestre Gato", "texto": "Incrível, Jorge! Você provou que domina a modelagem e completou todos os exercícios."}
 	])
-	Global.finalizou_treino=true
-	btn_voltar.visible=true
+	Global.finalizou_treino = true
+	btn_voltar.visible = true
 	
-func _on_voltar_pressed(): get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
+func _on_voltar_pressed(): 
+	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")

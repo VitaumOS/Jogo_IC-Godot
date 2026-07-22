@@ -310,13 +310,22 @@
       "texto": "Tá vendo esses dois moldes aqui? Eles são equivalentes aos padrões de corte que estão nessa modelagem.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 200],
-      "foco_pos": [40, 400],
-      "foco_tamanho": [500, 180]
+      "foco_pos": [360, 500],
+      "foco_tamanho": [680, 120]
     },
 
     {
       "nome": "Mestre Gato",
-      "texto": "Lembra que tínhamos o valor de cada arma para fazer em cada contrato? Então, o valor que tínhamos que produzir é chamado de [b]demanda[/b].",
+      "texto": "O primeiro representa o padrão de corte 1, e ele produz 3 adagas. O segundo representa o padrão de corte 2, e ele produz 5 adagas ",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 200],
+      "foco_pos": [360, 500],
+      "foco_tamanho": [680, 120]
+    },
+
+    {
+      "nome": "Mestre Gato",
+      "texto": "Traduzindo o que está em cima: Ele quer que minimizamos a quantidade de padrões de cortes usados, isto é, ter o menor valor possível.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 200],
       "foco_pos": [450, 80],
@@ -324,19 +333,34 @@
     },
     {
       "nome": "Mestre Gato",
-      "texto": "Devemos alcançar o valor mínimo de cada restrição para que a modelagem esteja completa",
+      "texto": "E que, para conseguir o menor valor possível, a quantidade de adagas produzidas deve ser maior ou igual à 12! ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 200],
       "foco_pos": [450, 80],
       "foco_tamanho": [500, 250]
+    },
+    {
+      "nome": "Mestre Gato",
+      "texto": "Nesse problema, o valor 12 representa a nossa [b]DEMANDA[/b]: o valor mínimo necessário que esta restrição impõe no problema.",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 200],
+      "foco_pos": [450, 80],
+      "foco_tamanho": [500, 250]
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Isto fará mais sentido quando tivermos outras na conta, mas, por ora, vamos nos limitar a apenas [b]UMA PEÇA[/b].",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
 
 		{
       "nome": "Mestre Gato", 
-      "texto": "Tente resolver esses problemas agora!Coloque os valores que você irá utilizar cada padrão de corte para que atenda todas restrições e atinja o mínimo.",
+      "texto": "Tente resolver esses problemas agora! Coloque os valores que você irá utilizar cada padrão de corte para que atenda todas restrições e atinja o mínimo.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     }
   ],
+
 
 
   "5": [

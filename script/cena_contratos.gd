@@ -49,4 +49,5 @@ func _aceitar_contrato(contrato_escolhido):
 	var confirma = await popup.resposta 
 	if confirma:
 		Global.contrato_ativo = contrato_escolhido
+		_gerar_lista_contratos()
 		popup.mostrar_mensagem("Contrato Escolhido!")
