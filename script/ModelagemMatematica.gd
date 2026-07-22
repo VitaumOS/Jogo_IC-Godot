@@ -11,9 +11,20 @@ var termo_restricao = load("res://scene/aux_scene/termo_restricao.tscn")
 @onready var container_padroes_selecao = $MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes/ContainerPadroesSelecao
 @onready var resultado_lbl = $ResultadoCortesLabel
 
-var PYTHON_PATH = ProjectSettings.globalize_path("res://PythonFiles/venv/Scripts/python.exe")
-var PYTHON_SCRIPT = ProjectSettings.globalize_path("res://PythonFiles/resolve_modelagem_pu.py")
-var OUTPUT_FILE_PATH = ProjectSettings.globalize_path("res://resolve_modelagem.json")
+var PYTHON_EXE_PATH: String:
+	get:
+		if OS.has_feature("editor"):
+			return ProjectSettings.globalize_path("res://PythonFiles/resolve_modelagem_pu.exe")
+		else:
+			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/resolve_modelagem_pu.exe")
+
+var OUTPUT_FILE_PATH: String:
+	get:
+		if OS.has_feature("editor"):
+			return ProjectSettings.globalize_path("res://PythonFiles/resolve_modelagem.json")
+		else:
+			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/resolve_modelagem.json")
+
 
 var lista_padroes_disponiveis: Array = []       
 var padroes_selecionados_indices: Array = []    
@@ -181,28 +192,39 @@ func _on_btn_resolver_pressed() -> void:
 		for i in range(Global.contrato_ativo.demanda.size()):
 			matriz_demanda_manual[i] = Global.contrato_ativo.demanda[i]
 
-	var args = [PYTHON_SCRIPT, JSON.stringify(matriz_demanda_manual), JSON.stringify(composicoes_enviadas), OUTPUT_FILE_PATH]
-	OS.execute(PYTHON_PATH, args)
+	# Validação preventiva de segurança antes de disparar o processo externo
+	if not FileAccess.file_exists(PYTHON_EXE_PATH):
+		push_error("ERRO: Executável do solver de modelagem não encontrado em: " + PYTHON_EXE_PATH)
+		return
+
+	# Enviamos apenas os dados como argumentos limpos. O script Python processará como strings de terminal.
+	var args: Array[String] = [JSON.stringify(matriz_demanda_manual), JSON.stringify(composicoes_enviadas)]
 	
-	if FileAccess.file_exists(OUTPUT_FILE_PATH):
-		var file = FileAccess.open(OUTPUT_FILE_PATH, FileAccess.READ)
-		var resultado = JSON.parse_string(file.get_as_text())
-		file.close()
-		
-		if resultado and resultado.get("status") == "Optimal":
-			var solucao_lista = resultado.get("solucao", [])
-			var texto_resultado = "Plano de Corte Recomendado:\n"
-			var total_chapas = 0
+	var saida_terminal = []
+	var resultado_codigo = OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
+	
+	if resultado_codigo == 0:
+		if FileAccess.file_exists(OUTPUT_FILE_PATH):
+			var file = FileAccess.open(OUTPUT_FILE_PATH, FileAccess.READ)
+			var resultado = JSON.parse_string(file.get_as_text())
+			file.close()
 			
-			for j in range(solucao_lista.size()):
-				var qtd_cortes = int(solucao_lista[j])
-				total_chapas += qtd_cortes
-				texto_resultado += "Padrão x%d: cortar %d vez(es)\n" % [(j + 1), qtd_cortes]
-			
-			texto_resultado += "\nTotal de Chapas Utilizadas: %d" % total_chapas
-			resultado_lbl.text = texto_resultado
-			resultado_lbl.modulate = Color.GREEN
-			
+			if resultado and resultado.get("status") == "Optimal":
+				var solucao_lista = resultado.get("solucao", [])
+				var texto_resultado = "Plano de Corte Recomendado:\n"
+				var total_chapas = 0
+				
+				for j in range(solucao_lista.size()):
+					var qtd_cortes = int(solucao_lista[j])
+					total_chapas += qtd_cortes
+					texto_resultado += "Padrão x%d: cortar %d vez(es)\n" % [(j + 1), qtd_cortes]
+				
+				texto_resultado += "\nTotal de Chapas Utilizadas: %d" % total_chapas
+				resultado_lbl.text = texto_resultado
+				resultado_lbl.modulate = Color.GREEN
+			else:
+				resultado_lbl.text = "Solver executado, mas não encontrou uma solução ótima."
+				resultado_lbl.modulate = Color.RED
 
 func _on_btn_voltar_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
