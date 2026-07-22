@@ -80,7 +80,7 @@ custom_minimum_size = Vector2(300, 318.735)
 layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=905768712]
-custom_minimum_size = Vector2(800, 300)
+custom_minimum_size = Vector2(260, 300)
 layout_mode = 2
 
 [node name="Botoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1463631653]

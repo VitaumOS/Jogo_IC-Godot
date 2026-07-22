@@ -182,12 +182,10 @@ func _finalizar_logica_pulp():
 		_limpar_dados_transicao()
 		return
 
-	# Preparação robusta dos argumentos para envio de strings limpas ao terminal
 	var args: Array[String] = [str(demanda)]
 	for p in padroes_corte_salvos_valor: 
 		args.append(str(p))
 
-	# Executa diretamente o executável binário compilado pelo PyInstaller
 	var saida_terminal = []
 	var resultado_codigo = OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
 	
@@ -198,7 +196,6 @@ func _finalizar_logica_pulp():
 			
 			if res.get("status") == "Optimal":
 				var z_pulp = res["chapas_usadas"]
-				print(z_pulp)
 				var alcancou_minimo = z_user <= z_pulp
 				
 				Global.estoque_chapas -= z_user

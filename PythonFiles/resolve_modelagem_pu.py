@@ -26,7 +26,6 @@ def resolver_pcu(demanda, padroes, caminho_saida):
         solver = pulp.PULP_CBC_CMD(path=path_to_cbc, msg=False)
         status = prob.solve(solver)
     except Exception:
-        # Fallback de segurança usando o comando de execução direta
         status = prob.solve(pulp.PULP_CBC_CMD(msg=0))
     
     status_string = pulp.LpStatus[status]
@@ -36,22 +35,19 @@ def resolver_pcu(demanda, padroes, caminho_saida):
         "solucao": [int(pulp.value(x[j])) for j in range(num_padroes)] if status_string == "Optimal" else []
     }
     
-    # Salva diretamente no caminho exato determinado
     with open(caminho_saida, "w") as f:
         json.dump(resultado, f)
     sys.exit(0)
 
 if __name__ == "__main__":
-    # Define dinamicamente a pasta base atual (Diretório onde o jogo invocou o .exe)
     if getattr(sys, 'frozen', False):
         base_dir = os.path.dirname(sys.executable)
     else:
         base_dir = os.path.dirname(os.path.abspath(__file__))
         
-    # Cria o caminho absoluto dinâmico para o arquivo de saída, ignorando o sys.argv[3] antigo
+
     caminho_saida_dinamico = os.path.join(base_dir, "resolve_modelagem.json")
 
-    # Filtra argumentos válidos passados pela Godot
     args = [a for a in sys.argv[1:] if a.strip()]
 
     if len(args) < 2:
