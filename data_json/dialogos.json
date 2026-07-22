@@ -109,6 +109,8 @@
     }
   ],
 
+
+
   "primeiro_contrato_escolhido1": [
     {
       "nome": "Jorge",
@@ -170,7 +172,7 @@
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "texto": "É normal desperdiçar, as vezes o padrão de corte que você vai usar vai ultrapassar o limite, mas é sempre bom evitar e fazer escolhas mais econômicas!"
+      "texto": "É normal desperdiçar, as vezes o molde que você vai usar vai ultrapassar o limite, mas é sempre bom evitar e fazer escolhas mais econômicas!"
     }
   ],
 
@@ -195,7 +197,20 @@
     }
   ],
 
+  "primeira_forja":[
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Bem vindo à Fornalha! Aqui você irá criar as armas do seu contrato!"
+    },
 
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Tudo o que você tem que fazer é apertar a tecla no tempo certo para fazer a arma! Utilize as setas do seu teclado para isso."
+    }
+
+  ],
 
   "2": [
     {

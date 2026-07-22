@@ -64,5 +64,5 @@ func _tentar_comprar(item, botao):
 	if Global.remover_dinheiro(item.preco):
 		Global.padroes_desbloqueados.append(item)
 		botao.disabled = true; botao.text = "Adquirido"; $UI/Info.atualizar()
-		label_feedback.text = "Padrão desbloqueado!"
+		label_feedback.text = "Molde desbloqueado!"
 	else: label_feedback.text = "Saldo insuficiente!"

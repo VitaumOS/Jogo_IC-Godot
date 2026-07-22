@@ -23,6 +23,7 @@ var fez_contrato_diario: bool = false
 var finalizou_treino = false 
 var finalizou_primeiro_contrato = false
 var finalizou_tutorial_primeiro_contrato = false
+var finalizou_tutorial_forja = false
 
 var chapas_usadas_pelo_jogador: int = 0
 var ultimo_desempenho_ritmo: float = -1.0 
