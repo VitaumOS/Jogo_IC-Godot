@@ -44,3 +44,17 @@ theme_override_styles/pressed = ExtResource("4_7s6s6")
 theme_override_styles/hover = ExtResource("4_7s6s6")
 theme_override_styles/hover_pressed = ExtResource("4_7s6s6")
 text = "R$ 9999"
+
+[node name="Control3" type="Control" parent="HBox" unique_id=567819925]
+layout_mode = 2
+
+[node name="Desperdicio" type="Label" parent="HBox/Control3" unique_id=1272418426]
+custom_minimum_size = Vector2(47, 0)
+custom_maximum_size = Vector2(47, -1)
+layout_mode = 0
+offset_left = -64.0
+offset_top = 52.0
+offset_right = -17.0
+offset_bottom = 71.0
+text = "99.9%"
+horizontal_alignment = 1

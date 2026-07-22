@@ -56,10 +56,8 @@ func _conectar_sinais_botoes_quantidade():
 			btn_mais.pressed.connect(_atualizar_pintura_demanda)
 		if !btn_menos.is_connected("pressed", _atualizar_pintura_demanda):
 			btn_menos.pressed.connect(_atualizar_pintura_demanda)
-		
-		if Global.dia_atual == 1:
-			var label_perda = linha.find_child("Perda") as Label
-			if label_perda: label_perda.visible = false
+			
+		linha.find_child("Perda").visible = (!Global.dia_atual == 1)
 
 func _verificar_dialogo_diario():
 	if Global.deve_exibir_dialogo_do_dia():

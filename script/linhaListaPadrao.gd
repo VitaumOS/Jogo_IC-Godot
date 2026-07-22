@@ -29,20 +29,15 @@ func configurar(dados: Dictionary):
 		
 		largura_utilizada += p.largura_peca
 
-	var tamanho_total_chapa = Global.tamanho_container
-	var sobra_material = tamanho_total_chapa - largura_utilizada
-	
-	if sobra_material < 0: 
-		sobra_material = 0.0
-	var percentual_perda: float = (sobra_material / tamanho_total_chapa) * 100.0
+	var percentual_perda: float = (largura_utilizada/ Global.tamanho_container) * 100.0
 	
 	# Atualiza o texto da Label "Perda"
 	if label_perda:
 		label_perda.text = "%.1f%%" % percentual_perda
 		# Feedback visual por cores baseado na eficiência do corte
-		if percentual_perda == 0.0:
+		if percentual_perda == 100.0:
 			label_perda.modulate = Color(0.2, 0.8, 0.2) # Verde para desperdício zero
-		elif percentual_perda > 20.0:
+		elif percentual_perda < 80.0:
 			label_perda.modulate = Color(0.902, 0.796, 0.0, 1.0) # Vermelho para muita sobra
 		else:
 			label_perda.modulate = Color(0.8, 0.8, 0.8) # Cinza para perdas normais
