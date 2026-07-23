@@ -338,7 +338,7 @@
       "texto": "Tá vendo esses dois moldes aqui? Eles são chamados no problema de [b]PADRÕES DE CORTE[/b] e são eles que estão nessa modelagem.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 200],
-      "foco_pos": [420, 500],
+      "foco_pos": [430, 500],
       "foco_tamanho": [680, 120]
     },
 
@@ -347,7 +347,7 @@
       "texto": "O primeiro representa o padrão de corte 1, e ele produz 3 adagas. O segundo representa o padrão de corte 2, e ele produz 5 adagas ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 200],
-      "foco_pos": [420, 500],
+      "foco_pos": [430, 500],
       "foco_tamanho": [680, 120]
     },
 
@@ -387,6 +387,24 @@
       "texto": "Tente resolver esses problemas agora! Coloque os valores que você irá utilizar cada padrão de corte para que atenda todas restrições e atinja o mínimo.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     }
+  ],
+
+  "treinamento_modelagem2":[
+    {
+      "nome": "Mestre Gato", 
+      "texto": "é foda 1",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    }
+
+  ],
+
+  "treinamento_modelagem3":[
+    {
+      "nome": "Mestre Gato", 
+      "texto": "é foda 2",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    }
+
   ],
 
 

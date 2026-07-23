@@ -22,7 +22,6 @@ func _ready() -> void:
 	_carregar_todos_os_desafios()
 	_inicializar_problema(indice_problema_atual)
 	btn_voltar.visible = false
-	
 	Global._verificar_gatilho_tutorial("treinamento_modelagem")
 
 func _carregar_todos_os_desafios():
@@ -38,7 +37,6 @@ func _inicializar_problema(indice: int):
 	if indice >= lista_problemas.size():
 		_finalizar_treino()
 		return
-		
 	problema_atual = lista_problemas[indice]
 	inputs_quantidade_padrao.clear()
 	
@@ -147,23 +145,18 @@ func _on_resolver_pressed() -> void:
 	for idx in inputs_quantidade_padrao.keys():
 		var input_edit = inputs_quantidade_padrao[idx] as LineEdit
 		var vezes_cortar = int(input_edit.text.strip_edges()) if input_edit.text.strip_edges() != "" else 0
-		
 		total_chapas_utilizadas += vezes_cortar
-		
 		var padrao = problema_atual.padroes_disponiveis[idx]
 		var composicao = padrao.get("composicao", [])
-		
 		for i in composicao.size():
 			producao_usuario[i] += (composicao[i] * vezes_cortar)
 			
 	var demanda_exigida = problema_atual.demanda
 	var atendeu_demanda: bool = true
-	
 	for i in range(demanda_exigida.size()):
 		if producao_usuario[i] < demanda_exigida[i]:
 			atendeu_demanda = false
 			break
-			
 	var limite_otimo = problema_atual.get("minimo_chapas_otimo", 999)
 			
 	if not atendeu_demanda:
@@ -175,9 +168,11 @@ func _on_resolver_pressed() -> void:
 			{"nome": "Mestre Gato", "texto": "Você atendeu à demanda, mas usou [b]%d chapas[/b]. A modelagem matemática prova que é possível resolver esse problema usando apenas [b]%d chapas[/b]! Ou seja, você desperdiçou valiosas chapas! Tente otimizar seus cortes." % [total_chapas_utilizadas, limite_otimo]}
 		])
 	else:
-		_disparar_dialogo_local([
-			{"nome": "Mestre Gato", "texto": "Perfeito, Jorge! Você encontrou a solução ótima gastando apenas %d chapa(s). Vamos para o próximo!" % total_chapas_utilizadas}
-		])
+		if indice_problema_atual == 0:
+			Global._verificar_gatilho_tutorial("treinamento_modelagem2")
+		if indice_problema_atual == 1:
+			Global._verificar_gatilho_tutorial("treinamento_modelagem3")
+			
 		indice_problema_atual += 1
 		_inicializar_problema(indice_problema_atual)
 
