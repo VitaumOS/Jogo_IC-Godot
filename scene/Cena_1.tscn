@@ -62,14 +62,15 @@ offset_right = 545.0
 offset_bottom = 396.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/Controle_Corpo" unique_id=223529208]
-custom_maximum_size = Vector2(787.295, 500.06)
 layout_mode = 0
-offset_left = 262.0
+offset_left = 264.0
 offset_top = 1.0
-offset_right = 800.0
-offset_bottom = 501.06
+offset_right = 838.0
+offset_bottom = 501.0
 
 [node name="PadraoCorteSalvo" type="HBoxContainer" parent="UI/Controle_Corpo/ScrollContainer" unique_id=1545570322]
+custom_minimum_size = Vector2(542.56, 0)
+custom_maximum_size = Vector2(755.83, -1)
 layout_mode = 2
 theme_override_constants/separation = 67
 

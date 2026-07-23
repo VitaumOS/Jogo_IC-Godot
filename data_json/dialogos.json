@@ -86,7 +86,7 @@
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "texto": "Além disso, para conseguir utilizar os moldes, você vai precisar comprar chapas também!",
       "coordenada": [450,450],
-      "foco_pos": [430, 770],
+      "foco_pos": [440, 770],
       "foco_tamanho": [240, 50]
     }
   ],
@@ -108,6 +108,8 @@
       "foco_tamanho": [800, 60]
     }
   ],
+
+
 
   "primeiro_contrato_escolhido1": [
     {
@@ -170,7 +172,7 @@
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "texto": "É normal desperdiçar, as vezes o padrão de corte que você vai usar vai ultrapassar o limite, mas é sempre bom evitar e fazer escolhas mais econômicas!"
+      "texto": "É normal desperdiçar, as vezes o molde que você vai usar vai ultrapassar o limite, mas é sempre bom evitar e fazer escolhas mais econômicas!"
     }
   ],
 
@@ -195,7 +197,20 @@
     }
   ],
 
+  "primeira_forja":[
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Bem vindo à Fornalha! Aqui você irá criar as armas do seu contrato!"
+    },
 
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Tudo o que você tem que fazer é apertar a tecla no tempo certo para fazer a arma! Utilize as setas do seu teclado para isso."
+    }
+
+  ],
 
   "2": [
     {
@@ -274,69 +289,106 @@
 
 		{
       "nome": "Mestre Gato", 
-      "texto": "Pensa que é uma forma de representar as coisas do nosso mundo em uma linguagem matemática. Consequentemente, estamos tentando, através da matemática, procurar respostas para esses problemas do mundo real!",
+      "texto": "Pensa que é uma forma de representar os problemas do nosso mundo em uma linguagem matemática. Consequentemente, estamos tentando, através da matemática, procurar respostas para esses problemas do mundo real!",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Como deu para ver, você tem um problema para lidar: tentar resolver contratos mais complexos tentando gastar o mínimo possível de chapas. De cabeça é um problema complexo, por isso precisamos de uma modelagem para esse problema!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Esse problema que você está lidando é chamado de [b]O PROBLEMA DO CORTE UNIDIMENSIONAL[/b]. Ele é dimensional porque apenas uma dimensão das chapas importa para definir a arma: a largura. ",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+    
 			
     {
       "nome": "Mestre Gato",
-      "texto": "Isso que você tá vendo aqui é uma modelagem matemática pro problema do corte. ",
+      "texto": "Isso que você tá vendo aqui é uma modelagem matemática para o problema do corte. ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 300],
-      "foco_pos": [450, 80],
-      "foco_tamanho": [500, 250]
+      "foco_pos": [450, 120],
+      "foco_tamanho": [500, 200]
     },
 
     {
       "nome": "Mestre Gato",
-      "texto": "A parte de cima te fala que queremos o menor valor possível de cortes, já que, para cada novo corte que fizermos, teremos que usar uma chapa nova.",
+      "texto": "A parte de cima te fala que queremos o menor valor possível de cortes, já que, para cada novo corte que fizermos, teremos que usar uma chapa nova. O menor valor possível é chamado de [b]SOLUÇÃO ÓTIMA[/b]",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 300],
-      "foco_pos": [450, 80],
-      "foco_tamanho": [500, 250]
+      "foco_pos": [450, 120],
+      "foco_tamanho": [500, 200]
     },
 
 		{
       "nome": "Mestre Gato",
-      "texto": "A parte debaixo te fala as restrições do problema, indicando o quanto que iremos cortar de cada arma para cada padrão que selecionarmos.",
+      "texto": "A parte debaixo te fala as restrições do problema, indicando o quanto que iremos cortar de cada arma para cada molde que selecionarmos.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 300],
-      "foco_pos": [450, 80],
-      "foco_tamanho": [500, 250]
+      "foco_pos": [450, 120],
+      "foco_tamanho": [500, 200]
     },
 
     {
       "nome": "Mestre Gato",
-      "texto": "Tá vendo esses dois moldes aqui? Eles são equivalentes aos padrões de corte que estão nessa modelagem.",
+      "texto": "Tá vendo esses dois moldes aqui? Eles são chamados no problema de [b]PADRÕES DE CORTE[/b] e são eles que estão nessa modelagem.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 200],
-      "foco_pos": [40, 400],
-      "foco_tamanho": [500, 180]
+      "foco_pos": [420, 500],
+      "foco_tamanho": [680, 120]
     },
 
     {
       "nome": "Mestre Gato",
-      "texto": "Lembra que tínhamos o valor de cada arma para fazer em cada contrato? Então, o valor que tínhamos que produzir é chamado de [b]demanda[/b].",
+      "texto": "O primeiro representa o padrão de corte 1, e ele produz 3 adagas. O segundo representa o padrão de corte 2, e ele produz 5 adagas ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 200],
-      "foco_pos": [450, 80],
-      "foco_tamanho": [500, 250]
+      "foco_pos": [420, 500],
+      "foco_tamanho": [680, 120]
+    },
+
+    {
+      "nome": "Mestre Gato",
+      "texto": "Traduzindo o que está em cima: Ele quer que minimizamos a quantidade de padrões de cortes usados, isto é, ter o menor valor possível.",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 300],
+      "foco_pos": [450, 120],
+      "foco_tamanho": [500, 200]
     },
     {
       "nome": "Mestre Gato",
-      "texto": "Devemos alcançar o valor mínimo de cada restrição para que a modelagem esteja completa",
+      "texto": "E que, para conseguir o menor valor possível, a quantidade de adagas produzidas deve ser maior ou igual à 12! ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 200],
-      "foco_pos": [450, 80],
-      "foco_tamanho": [500, 250]
+      "coordenada": [450, 300],
+      "foco_pos": [450, 120],
+      "foco_tamanho": [500, 200]
+    },
+    {
+      "nome": "Mestre Gato",
+      "texto": "Nesse problema, o valor 12 representa a nossa [b]DEMANDA[/b]: o valor mínimo necessário que esta restrição impõe no problema.",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 300],
+      "foco_pos": [450, 120],
+      "foco_tamanho": [500, 200]
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Isto fará mais sentido quando tivermos outras na conta, mas, por ora, vamos nos limitar a apenas [b]UMA PEÇA[/b].",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
 
 		{
       "nome": "Mestre Gato", 
-      "texto": "Tente resolver esses problemas agora!Coloque os valores que você irá utilizar cada padrão de corte para que atenda todas restrições e atinja o mínimo.",
+      "texto": "Tente resolver esses problemas agora! Coloque os valores que você irá utilizar cada padrão de corte para que atenda todas restrições e atinja o mínimo.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     }
   ],
+
 
 
   "5": [

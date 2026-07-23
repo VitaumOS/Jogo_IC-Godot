@@ -8,6 +8,7 @@ extends Control
 
 ## Lista de padrões inicialmente disponíveis
 var catalogo_loja = []
+var padrao_tamanho = 0.0
 
 func _ready():
 	catalogo_loja = Global.padroes_na_loja
@@ -31,23 +32,29 @@ func _gerar_itens_loja():
 		var card = cena_card.instantiate()
 		container_itens.add_child(card)
 		var p_hbox = card.find_child("Control2").find_child("Visualizador_Padrao")
-		_renderizar_previa_no_card(p_hbox, item.composicao); 
-
+		_renderizar_previa_no_card(p_hbox, item.composicao)
+		
+		var lbl_porc = card.find_child("Control3").find_child("Desperdicio")
+		lbl_porc.visible = (!Global.dia_atual == 1)
+		var porcentagem = (padrao_tamanho/Global.tamanho_container)*100
+		lbl_porc.text = "%.1f%%"%porcentagem
+		
 		var btn = card.find_child("Button"); btn.text = "R$ %d" % item.preco
 		if _ja_possui(item): btn.disabled = true; btn.text = "Adquirido"
 		btn.pressed.connect(func(): _tentar_comprar(item, btn))
 
 ## Desenha as miniaturas das peças dentro do card da loja
 func _renderizar_previa_no_card(container: HBoxContainer, comp: Array):
+	padrao_tamanho = 0.0
 	for i in comp.size():
 		var peca = Global.pecas_disponiveis[i]
 		for n in comp[i]:
 			var w = Control.new(); w.custom_minimum_size = Vector2(peca.largura, 50)
 			var s = Sprite2D.new(); s.texture = load(peca.caminho_textura)
-			if s.texture:
-				var t_size = s.texture.get_size()
-				s.scale = Vector2(peca.largura / t_size.x, 50.0 / t_size.y)
-				s.position = Vector2(peca.largura / 2.0, 25)
+			padrao_tamanho += peca.largura
+			var t_size = s.texture.get_size()
+			s.scale = Vector2(peca.largura / t_size.x, 50.0 / t_size.y)
+			s.position = Vector2(peca.largura / 2.0, 25)
 			w.add_child(s); container.add_child(w)
 
 func _ja_possui(item) -> bool:
@@ -57,5 +64,5 @@ func _tentar_comprar(item, botao):
 	if Global.remover_dinheiro(item.preco):
 		Global.padroes_desbloqueados.append(item)
 		botao.disabled = true; botao.text = "Adquirido"; $UI/Info.atualizar()
-		label_feedback.text = "Padrão desbloqueado!"
+		label_feedback.text = "Molde desbloqueado!"
 	else: label_feedback.text = "Saldo insuficiente!"

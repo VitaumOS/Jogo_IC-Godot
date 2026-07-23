@@ -24,26 +24,20 @@ func mostrar_mensagem_erro(texto: String):
 func mostrar_mensagem(texto: String):
 	label_mensagem.text = texto
 	label_titulo.visible = false
-	btn_sim.visible = false
-	btn_nao.visible = false
-	btn_ok.visible = true
+	btn_sim.visible = false;btn_nao.visible = false;btn_ok.visible = true
 	_abrir()
 
 func mostrar_conclusao_contrato():
 	label_mensagem.text = "Contrato Concluído! Ganhou: R$%.2f" % Global.recompensa_final
 	label_titulo.visible = false
-	btn_sim.visible = false
-	btn_nao.visible = false
-	btn_ok.visible = true
+	btn_sim.visible = false;btn_nao.visible = false;btn_ok.visible = true
 	_abrir()
 
 ## Função para confirmação (Sim ou Não)
 func mostrar_confirmacao(texto: String):
 	label_mensagem.text = texto
 	label_titulo.visible = false
-	btn_sim.visible = true
-	btn_nao.visible = true
-	btn_ok.visible = false
+	btn_sim.visible = true;btn_nao.visible = true;btn_ok.visible = false
 	_abrir()
 
 func _abrir():

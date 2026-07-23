@@ -17,10 +17,11 @@ texture = ExtResource("1_juvp8")
 
 [node name="Letra" type="Label" parent="AreaLetra" unique_id=582828041]
 offset_left = -20.0
-offset_top = -8.0
+offset_top = -22.98
 offset_right = 20.0
-offset_bottom = 11.0
-text = "A"
+offset_bottom = 18.02
+theme_override_font_sizes/font_size = 30
+text = "↑"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true

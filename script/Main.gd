@@ -13,9 +13,19 @@ var padroes_corte_salvos_valor: Array = []
 var demanda: Array = []
 var pecas_disponiveis: Array = Global.pecas_disponiveis
 
-var PYTHON_PATH = ProjectSettings.globalize_path("res://PythonFiles/venv/Scripts/python.exe")
-var PYTHON_SCRIPT = ProjectSettings.globalize_path("res://PythonFiles/resolve_pcu_pl.py")
-const OUTPUT_FILE_NAME = "res://pulp_solution.json"
+var PYTHON_EXE_PATH: String:
+	get:
+		if OS.has_feature("editor"):
+			return ProjectSettings.globalize_path("res://PythonFiles/resolve_pcu_pl.exe")
+		else:
+			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/resolve_pcu_pl.exe")
+
+var OUTPUT_FILE_NAME: String:
+	get:
+		if OS.has_feature("editor"):
+			return ProjectSettings.globalize_path("res://PythonFiles/pulp_solution.json")
+		else:
+			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/pulp_solution.json")
 
 func _ready():
 	add_to_group("main_logic")
@@ -56,10 +66,8 @@ func _conectar_sinais_botoes_quantidade():
 			btn_mais.pressed.connect(_atualizar_pintura_demanda)
 		if !btn_menos.is_connected("pressed", _atualizar_pintura_demanda):
 			btn_menos.pressed.connect(_atualizar_pintura_demanda)
-		
-		if Global.dia_atual == 1:
-			var label_perda = linha.find_child("Perda") as Label
-			if label_perda: label_perda.visible = false
+			
+		linha.find_child("Perda").visible = (!Global.dia_atual == 1)
 
 func _verificar_dialogo_diario():
 	if Global.deve_exibir_dialogo_do_dia():
@@ -174,29 +182,33 @@ func _finalizar_logica_pulp():
 		_limpar_dados_transicao()
 		return
 
-	var args = [PYTHON_SCRIPT, str(demanda)]
-	for p in padroes_corte_salvos_valor: args.append(str(p))
+	var args: Array[String] = [str(demanda)]
+	for p in padroes_corte_salvos_valor: 
+		args.append(str(p))
+
+	var saida_terminal = []
+	var resultado_codigo = OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
 	
-	if OS.execute(PYTHON_PATH, args) == 0:
-		var arquivo = FileAccess.open(OUTPUT_FILE_NAME, FileAccess.READ)
-		var res = JSON.parse_string(arquivo.get_as_text())
-		if res and res.get("status") == "Optimal":
-			var z_pulp = res["chapas_usadas"]
-			var alcancou_minimo = z_user <= z_pulp
+	if resultado_codigo == 0:
+		if FileAccess.file_exists(OUTPUT_FILE_NAME):
+			var arquivo = FileAccess.open(OUTPUT_FILE_NAME, FileAccess.READ)
+			var res = JSON.parse_string(arquivo.get_as_text())
 			
-			Global.estoque_chapas -= z_user
-			Global.registrar_contrato_concluido(Global.contrato_ativo)
-			Global.completar_contrato(alcancou_minimo, Global.ultimo_desempenho_ritmo)
-			
-			var tela_dinheiro = cena_resultado_dinheiro.instantiate()
-			$UI.add_child(tela_dinheiro)
-			var texto_minimo = tela_dinheiro.get_node("PanelContainer/VBox/VboxTexto/Label3")
-			texto_minimo.text = "Alcançou o mínimo: " + ("SIM (+20%)" if alcancou_minimo else "NÃO")
-			texto_minimo.modulate = (Color.GREEN if alcancou_minimo else Color.RED)
-			await tela_dinheiro.find_child("Continuar").pressed
-			tela_dinheiro.queue_free()
-			
-			
+			if res.get("status") == "Optimal":
+				var z_pulp = res["chapas_usadas"]
+				var alcancou_minimo = z_user <= z_pulp
+				
+				Global.estoque_chapas -= z_user
+				Global.registrar_contrato_concluido(Global.contrato_ativo)
+				Global.completar_contrato(alcancou_minimo, Global.ultimo_desempenho_ritmo)
+				
+				var tela_dinheiro = cena_resultado_dinheiro.instantiate()
+				$UI.add_child(tela_dinheiro)
+				var texto_minimo = tela_dinheiro.get_node("PanelContainer/VBox/VboxTexto/Label3")
+				texto_minimo.text = "Alcançou o mínimo: " + ("SIM (+20%)" if alcancou_minimo else "NÃO")
+				texto_minimo.modulate = (Color.GREEN if alcancou_minimo else Color.RED)
+				await tela_dinheiro.find_child("Continuar").pressed
+				tela_dinheiro.queue_free()
 
 	if !Global.finalizou_primeiro_contrato:
 		Global.finalizou_primeiro_contrato = true

@@ -49,8 +49,5 @@ func _aceitar_contrato(contrato_escolhido):
 	var confirma = await popup.resposta 
 	if confirma:
 		Global.contrato_ativo = contrato_escolhido
-		_on_voltar_pressed()
-
-func _on_voltar_pressed():get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
-func _on_btn_voltar_pressed() -> void:
-	_on_voltar_pressed()
+		_gerar_lista_contratos()
+		popup.mostrar_mensagem("Contrato Escolhido!")

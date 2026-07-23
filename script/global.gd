@@ -6,7 +6,7 @@ const DINHEIRO_INICIAL: int = 800
 
 var tamanho_container: float = 500.0
 var dia_atual: int = 1
-var dinheiro: int = 1200
+var dinheiro: int = 3200
 var ganhos_do_dia: int = 0
 var estoque_chapas: int = 0
 var preco_chapa: int = 100 
@@ -19,19 +19,21 @@ var cena_loja = false
 var cena_contrato = false
 
 var alcancou_metas_contrato: bool = false
+var fez_contrato_diario: bool = false
 var finalizou_treino = false 
 var finalizou_primeiro_contrato = false
 var finalizou_tutorial_primeiro_contrato = false
+var finalizou_tutorial_forja = false
 
 var chapas_usadas_pelo_jogador: int = 0
 var ultimo_desempenho_ritmo: float = -1.0 
 
 var pecas_disponiveis: Array = [
 	{"nome": "Adaga", "largura": 53.0, "caminho_textura": "res://Sprite/adaga-novo.png"},
-	{"nome": "Espada M", "largura": 97.0, "caminho_textura": "res://Sprite/Esp_Larg-novo.png"},
+	{"nome": "Espada M", "largura": 87.0, "caminho_textura": "res://Sprite/Esp_Larg-novo.png"},
 	{"nome": "Espada G", "largura": 123.0, "caminho_textura": "res://Sprite/Esp_Grande-novo.png"},
 	{"nome": "Machado", "largura": 89.0, "caminho_textura": "res://Sprite/machado-novo.png"},
-	{"nome": "Escudo", "largura": 97.0, "caminho_textura": "res://Sprite/escudo_larg-novo.png"},
+	{"nome": "Escudo", "largura": 67.0, "caminho_textura": "res://Sprite/escudo_larg-novo.png"},
 	{"nome": "Lança", "largura": 211.0, "caminho_textura": "res://Sprite/lanca-novo.png"}
 ]
 
@@ -131,6 +133,7 @@ func completar_contrato(conseguiu_minimo: bool, ritmo : float):
 		dinheiro += recompensa
 		ganhos_do_dia += recompensa
 		contrato_ativo = null
+		fez_contrato_diario = true
 		return true
 	else:
 		return false

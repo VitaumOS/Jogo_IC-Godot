@@ -10,7 +10,14 @@ extends Node2D
 
 const VELOCIDADE_BASE = 350.0
 const ESPACAMENTO_BASE = 320.0
-const TECLAS = ["W", "A", "S", "D"]
+const TECLAS = ["Up", "Left", "Down", "Right"]
+const SIMBOLOS_SETAS = {
+	"Up": "↑",
+	"Left": "←",
+	"Down": "↓",
+	"Right": "→"
+}
+
 const OFFSET_Y_SEGUNDA_ESTEIRA = 80.0
 
 var velocidade_atual = 0.0
@@ -18,6 +25,7 @@ var armas_na_fila = []
 var acertos = 0
 var total_pecas = 0
 var modo_duas_esteiras = false
+var em_tutorial: bool = false
 
 func _ready():
 	var lista_nomes = Global.armas_na_esteira_atual
@@ -27,11 +35,21 @@ func _ready():
 	modo_duas_esteiras = total_pecas > 30
 	_configurar_dificuldade()
 	
-	# Duplica o fundo da esteira caso o modo duplo esteja ativo
 	if modo_duas_esteiras:
 		_duplicar_esteira_fundo()
 		
 	_inicializar_esteiras(lista_nomes)
+	if !Global.finalizou_tutorial_forja:
+		_checar_tutorial_forja()
+
+func _checar_tutorial_forja():
+	em_tutorial = true
+	Global._verificar_gatilho_tutorial("primeira_forja")
+	
+	var node_dialogo = get_node("/root/Dialogo")
+	await node_dialogo.dialogo_encerrado		
+	em_tutorial = false
+	Global.finalizou_tutorial_forja = true
 
 func _configurar_dificuldade():
 	var multiplicador = 1.0 + (Global.dia_atual - 1) * 0.02
@@ -74,7 +92,7 @@ func _configurar_input_peca(container: Node2D, linha_principal: bool):
 	
 	if linha_principal:
 		var tecla_sorteada = TECLAS[randi() % TECLAS.size()]
-		lbl.text = tecla_sorteada
+		lbl.text = SIMBOLOS_SETAS.get(tecla_sorteada, tecla_sorteada)
 		area_letra.set_meta("tecla", tecla_sorteada)
 	else:
 		lbl.text = ""
@@ -83,12 +101,16 @@ func _configurar_input_peca(container: Node2D, linha_principal: bool):
 			container.modulate = esteira.modulate
 
 func _process(delta):
+	if em_tutorial: return
+	
 	for peca in armas_na_fila:
 		peca.position.x -= velocidade_atual * delta
 		if peca.position.x < area_alvo.position.x - 150:
 			_remover_par_por_limite(peca)
 
 func _input(event):
+	if em_tutorial: return
+	
 	if event is InputEventKey and event.is_pressed() and not event.is_echo():
 		var tecla_pressionada = OS.get_keycode_string(event.get_keycode_with_modifiers())
 		if tecla_pressionada in TECLAS:
@@ -122,7 +144,6 @@ func _processar_resultado(peca_principal: Node2D, sucesso: bool):
 		
 	if modo_duas_esteiras:
 		_remover_par_de_baixo_associado(peca_principal)
-		
 	_efeito_fade_e_remover(peca_principal, sucesso)
 
 func _remover_par_de_baixo_associado(peca_principal: Node2D):
