@@ -28,12 +28,12 @@
 
     {
       "nome": "Jorge",
-      "texto": "Antes de mais nada, deixa eu te apresentar a ferraria: Aqui você pode selecionar um contrato, comprar moldes de cortes e chapas para atender o contrato e, quando tiver tudo pronto, você pode começar a BATER O FERRO, para montar todas as armas do contrato.",
+      "texto": "Antes de mais nada, deixa eu te apresentar a ferraria: Aqui você pode selecionar um contrato, comprar moldes de cortes e chapas para atender o contrato e, quando tiver tudo pronto, você pode começar a [b]BATER O MARTELO[/b], para montar todas as armas do contrato.",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
       "nome": "Jorge",
-      "texto": "Aqui você acessa os contratos do jogo.",
+      "texto": "Aqui você acessa os contratos do jogo. Ele vai te falar quantas peças de cada arma que ele vai querer",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [450, 430],
       "foco_pos": [150, 840],
@@ -41,7 +41,7 @@
     },
     {
       "nome": "Jorge",
-      "texto": "Aqui você acessa a loja.",
+      "texto": "Aqui você acessa a loja. Você compra moldes e chapas aqui.",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [450, 430],
       "foco_pos": [350, 840],
@@ -49,7 +49,7 @@
     },
     {
       "nome": "Jorge",
-      "texto": "Aqui você volta a forja, que é exatamente aqui.",
+      "texto": "Aqui você volta para a forja, que é exatamente aqui.",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [450, 430],
       "foco_pos": [550, 840],
@@ -57,7 +57,15 @@
     },
     {
       "nome": "Jorge",
-      "texto": "E, quando terminar tudo que tem para fazer no dia, aperte em Encerrar. Lembre-se que você tem taxas a pagar diariamente, então termine tudo mesmo antes de prosseguir!",
+      "texto": "E, quando terminar tudo que tem para fazer no dia, aperte em Encerrar. Lembre-se que você tem taxas a pagar diariamente, então termine tudo antes de prosseguir!",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "coordenada": [450, 430],
+      "foco_pos": [750, 840],
+      "foco_tamanho": [190, 45]
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Lembre-se: você só pode encerrar um dia quando completar ao menos um contrato diário!",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [450, 430],
       "foco_pos": [750, 840],
@@ -72,12 +80,12 @@
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Bem-vindo à [b]Loja[/b]! Aqui você usa seu dinheiro para liberar novas combinações de corte. Quanto mais padrões você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
+      "texto": "Bem-vindo à [b]LOJA[/b]! Aqui você usa seu dinheiro para liberar novas combinações de corte. Quanto mais padrões você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
     },
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Você pode comprar qualquer [b]molde de corte[/b] disponível pelo botão de compra!",
+      "texto": "Você pode comprar qualquer [b]MOLDE DE CORTE[/b] disponível pelo botão de compra!",
       "foco_pos": [710, 145],
       "foco_tamanho": [170, 50]
     },
@@ -88,6 +96,12 @@
       "coordenada": [450,450],
       "foco_pos": [440, 770],
       "foco_tamanho": [240, 50]
+    },
+    {
+      "nome": "Jorge",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Compre algumas para testar!",
+      "coordenada": [450,450]
     }
   ],
 
@@ -156,7 +170,7 @@
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "foco_pos": [140, 730],
+      "foco_pos": [135, 730],
       "foco_tamanho": [150, 40],
       "texto": "Preste atenção! Aquela barra [b]Vermelha[/b] ali embaixo apareceu. Isso significa [b]Desperdício[/b]! "
     },
@@ -164,7 +178,7 @@
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "foco_pos": [140, 730],
+      "foco_pos": [135, 730],
       "foco_tamanho": [150, 40],
       "texto": "Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
     },

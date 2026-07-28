@@ -13,6 +13,8 @@ var padroes_corte_salvos_valor: Array = []
 var demanda: Array = []
 var pecas_disponiveis: Array = Global.pecas_disponiveis
 
+var thread_pulp: Thread
+
 var PYTHON_EXE_PATH: String:
 	get:
 		if OS.has_feature("editor"):
@@ -173,7 +175,22 @@ func _preparar_e_iniciar_forja():
 
 	Global.armas_na_esteira_atual = lista_para_forjar
 	Global.chapas_usadas_pelo_jogador = get_total_chapas_usadas()
+	
+	# Prepara os argumentos antes de mudar de cena
+	var args_pulp: Array[String] = [str(demanda)]
+	for p in padroes_corte_salvos_valor: 
+		args_pulp.append(str(p))
+	
+	#Inicia a thread
+	thread_pulp = Thread.new()
+	thread_pulp.start(_executar_pulp_em_background.bind(args_pulp))
+	
 	get_tree().change_scene_to_file("res://scene/Forja_Ritmo.tscn")
+
+
+func _executar_pulp_em_background(args: Array[String]):
+	var saida_terminal = []
+	OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
 
 
 func _finalizar_logica_pulp():
@@ -182,33 +199,31 @@ func _finalizar_logica_pulp():
 		_limpar_dados_transicao()
 		return
 
-	var args: Array[String] = [str(demanda)]
-	for p in padroes_corte_salvos_valor: 
-		args.append(str(p))
+	if thread_pulp and thread_pulp.is_alive():
+		thread_pulp.wait_to_finish()
+	thread_pulp = null
 
-	var saida_terminal = []
-	var resultado_codigo = OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
-	
-	if resultado_codigo == 0:
-		if FileAccess.file_exists(OUTPUT_FILE_NAME):
-			var arquivo = FileAccess.open(OUTPUT_FILE_NAME, FileAccess.READ)
-			var res = JSON.parse_string(arquivo.get_as_text())
+	# Lê o arquivo que a Thread gerou durante o jogo de ritmo
+	if FileAccess.file_exists(OUTPUT_FILE_NAME):
+		var arquivo = FileAccess.open(OUTPUT_FILE_NAME, FileAccess.READ)
+		var res = JSON.parse_string(arquivo.get_as_text())
+		
+		if res and res.get("status") == "Optimal":
+			var z_pulp = res["chapas_usadas"]
+			var alcancou_minimo = z_user <= z_pulp
 			
-			if res.get("status") == "Optimal":
-				var z_pulp = res["chapas_usadas"]
-				var alcancou_minimo = z_user <= z_pulp
-				
-				Global.estoque_chapas -= z_user
-				Global.registrar_contrato_concluido(Global.contrato_ativo)
-				Global.completar_contrato(alcancou_minimo, Global.ultimo_desempenho_ritmo)
-				
-				var tela_dinheiro = cena_resultado_dinheiro.instantiate()
-				$UI.add_child(tela_dinheiro)
-				var texto_minimo = tela_dinheiro.get_node("PanelContainer/VBox/VboxTexto/Label3")
-				texto_minimo.text = "Alcançou o mínimo: " + ("SIM (+20%)" if alcancou_minimo else "NÃO")
-				texto_minimo.modulate = (Color.GREEN if alcancou_minimo else Color.RED)
-				await tela_dinheiro.find_child("Continuar").pressed
-				tela_dinheiro.queue_free()
+			Global.estoque_chapas -= z_user
+			Global.registrar_contrato_concluido(Global.contrato_ativo)
+			Global.completar_contrato(alcancou_minimo, Global.ultimo_desempenho_ritmo)
+			
+			var tela_dinheiro = cena_resultado_dinheiro.instantiate()
+			$UI.add_child(tela_dinheiro)
+			var texto_minimo = tela_dinheiro.get_node("PanelContainer/VBox/VboxTexto/Label3")
+			texto_minimo.text = "Alcançou o mínimo: " + ("SIM (+20%)" if alcancou_minimo else "NÃO")
+			texto_minimo.modulate = (Color.GREEN if alcancou_minimo else Color.RED)
+			await tela_dinheiro.find_child("Continuar").pressed
+			tela_dinheiro.queue_free()
+			$UI/Info.atualizar()
 
 	if !Global.finalizou_primeiro_contrato:
 		Global.finalizou_primeiro_contrato = true
