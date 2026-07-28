@@ -6,7 +6,7 @@ const DINHEIRO_INICIAL: int = 800
 
 var tamanho_container: float = 500.0
 var dia_atual: int = 1
-var dinheiro: int = 3200
+var dinheiro: int = 2200
 var ganhos_do_dia: int = 0
 var estoque_chapas: int = 0
 var preco_chapa: int = 100 

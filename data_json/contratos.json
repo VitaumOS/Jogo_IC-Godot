@@ -4,24 +4,24 @@
     { "dia": 1, "nome": "Segurança de Taberna", "demanda": [2, 8, 0, 0, 0, 0], "recompensa": 420 },
 
     { "dia": 2, "nome": "Caça aos Ratos", "demanda": [0, 4, 4, 0, 0, 0], "recompensa": 400 },
-    { "dia": 2, "nome": "Caravana de Seda", "demanda": [8, 7, 10, 0, 0, 0], "recompensa": 500 },
-    { "dia": 2, "nome": "Armas para os soldados Reais", "demanda": [15, 15, 10, 0, 0, 0], "recompensa": 550 },
-    { "dia": 2, "nome": "Caravana de Tecidos", "demanda": [13, 11, 5, 0, 0, 0], "recompensa": 600 },
+    { "dia": 2, "nome": "Caravana de Seda", "demanda": [8, 7, 10, 0, 0, 0], "recompensa": 800 },
+    { "dia": 2, "nome": "Armas para os soldados Reais", "demanda": [15, 15, 10, 0, 0, 0], "recompensa": 950 },
+    { "dia": 2, "nome": "Caravana de Tecidos", "demanda": [13, 11, 5, 0, 0, 0], "recompensa": 650 },
 
     { "dia": 3, "nome": "Supressão de Bandidos", "demanda": [15, 11, 10, 5, 0, 0], "recompensa": 950 },
-    { "dia": 3, "nome": "Escolta de Ervanário", "demanda": [25, 2, 30, 4, 0, 0], "recompensa": 1050 },
-    { "dia": 3, "nome": "Escolta de Comissários", "demanda": [30, 1, 3, 10, 0, 0], "recompensa": 1250 },
+    { "dia": 3, "nome": "Escolta de Ervanário", "demanda": [25, 2, 30, 4, 0, 0], "recompensa": 1500 },
+    { "dia": 3, "nome": "Escolta de Comissários", "demanda": [30, 1, 3, 10, 0, 0], "recompensa": 1350 },
 
     { "dia": 4, "nome": "Vigília Noturna", "demanda": [5, 5, 12, 8, 4, 0], "recompensa": 1400 },
     { "dia": 4, "nome": "Manutenção de Muralhas", "demanda": [11, 6, 11, 3, 6, 0], "recompensa": 1450 },
 
-    { "dia": 5, "nome": "Cerco ao Forte", "demanda": [19, 10, 7, 5, 6, 5], "recompensa": 1950 },
-    { "dia": 5, "nome": "Proteção Real", "demanda": [11, 11, 11, 7, 5, 2], "recompensa": 2000 },
+    { "dia": 5, "nome": "Cerco ao Forte", "demanda": [19, 10, 7, 5, 6, 5], "recompensa": 2450 },
+    { "dia": 5, "nome": "Proteção Real", "demanda": [11, 11, 11, 7, 5, 2], "recompensa": 2300 },
 
     { "dia": 6, "nome": "Exploração de Minas", "demanda": [7, 7, 19, 11, 4, 3], "recompensa": 3000 },
     { "dia": 6, "nome": "Expedição de Reconhecimento", "demanda": [9, 9, 9, 9, 5, 4], "recompensa": 3400 },
 
-    { "dia": 7, "nome": "Guarda de Honra Ducal", "demanda": [90, 4, 0, 0, 19, 5], "recompensa": 4900 },
-    { "dia": 7, "nome": "Batalha do Armagedom", "demanda": [60, 27, 19, 23, 9, 22], "recompensa": 3000 }
+    { "dia": 7, "nome": "Guarda de Honra Ducal", "demanda": [80, 4, 21, 6, 19, 5], "recompensa": 4000 },
+    { "dia": 7, "nome": "Batalha do Armagedom", "demanda": [60, 27, 19, 23, 9, 22], "recompensa": 3200 }
   ]
 }

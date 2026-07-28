@@ -156,7 +156,7 @@
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "foco_pos": [150, 730],
+      "foco_pos": [140, 730],
       "foco_tamanho": [150, 40],
       "texto": "Preste atenção! Aquela barra [b]Vermelha[/b] ali embaixo apareceu. Isso significa [b]Desperdício[/b]! "
     },
@@ -164,7 +164,7 @@
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "foco_pos": [150, 730],
+      "foco_pos": [140, 730],
       "foco_tamanho": [150, 40],
       "texto": "Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
     },

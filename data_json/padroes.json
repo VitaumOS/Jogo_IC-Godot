@@ -18,7 +18,7 @@
     { "dia": 4, "nome": "p14", "composicao": [2, 1, 0, 2, 0, 0], "preco": 250 },
     { "dia": 4, "nome": "p15", "composicao": [1, 1, 0, 0, 0, 0], "preco": 320 },
     { "dia": 4, "nome": "p16", "composicao": [1, 1, 0, 2, 0, 0], "preco": 280 },
-    { "dia": 4, "nome": "p17", "composicao": [2, 1, 0, 1, 1, 0], "preco": 260 },
+    { "dia": 4, "nome": "p17", "composicao": [2, 1, 0, 1, 2, 0], "preco": 260 },
     { "dia": 4, "nome": "p18", "composicao": [0, 1, 1, 1, 1, 0], "preco": 290 },
     { "dia": 4, "nome": "p19", "composicao": [2, 1, 1, 0, 1, 0], "preco": 230 },
     
