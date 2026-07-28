@@ -172,7 +172,7 @@
       "coordenada": [615, 450],
       "foco_pos": [135, 730],
       "foco_tamanho": [150, 40],
-      "texto": "Preste atenção! Aquela barra [b]Vermelha[/b] ali embaixo apareceu. Isso significa [b]Desperdício[/b]! "
+      "texto": "Preste atenção! Aquela barra [b]VERMELHA[/b] ali embaixo apareceu. Isso significa [b]DESPERDICIO[/b]! "
     },
     {
       "nome": "Jorge",
@@ -315,7 +315,7 @@
 
     {
       "nome": "Mestre Gato", 
-      "texto": "Esse problema que você está lidando é chamado de [b]O PROBLEMA DO CORTE UNIDIMENSIONAL[/b]. Ele é dimensional porque apenas uma dimensão das chapas importa para definir a arma: a largura. ",
+      "texto": "Esse problema que você está lidando é chamado de [b]O PROBLEMA DO CORTE UNIDIMENSIONAL[/b]. Ele é unidimensional porque apenas uma dimensão das chapas importa para definir a arma: a largura. ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
     
@@ -331,7 +331,16 @@
 
     {
       "nome": "Mestre Gato",
-      "texto": "A parte de cima te fala que queremos o menor valor possível de cortes, já que, para cada novo corte que fizermos, teremos que usar uma chapa nova. O menor valor possível é chamado de [b]SOLUÇÃO ÓTIMA[/b]",
+      "texto": "A parte de cima te fala que queremos o menor valor possível de cortes, já que, para cada novo corte que fizermos, teremos que usar uma chapa nova. ",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 300],
+      "foco_pos": [450, 120],
+      "foco_tamanho": [500, 200]
+    },
+
+    {
+      "nome": "Mestre Gato",
+      "texto": "O menor valor possível é chamado de [b]SOLUÇÃO ÓTIMA[/b]",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 300],
       "foco_pos": [450, 120],
@@ -352,7 +361,7 @@
       "texto": "Tá vendo esses dois moldes aqui? Eles são chamados no problema de [b]PADRÕES DE CORTE[/b] e são eles que estão nessa modelagem.",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 200],
-      "foco_pos": [430, 500],
+      "foco_pos": [435, 500],
       "foco_tamanho": [680, 120]
     },
 
@@ -361,7 +370,7 @@
       "texto": "O primeiro representa o padrão de corte 1, e ele produz 3 adagas. O segundo representa o padrão de corte 2, e ele produz 5 adagas ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 200],
-      "foco_pos": [430, 500],
+      "foco_pos": [435, 500],
       "foco_tamanho": [680, 120]
     },
 
@@ -392,7 +401,7 @@
 
     {
       "nome": "Mestre Gato", 
-      "texto": "Isto fará mais sentido quando tivermos outras na conta, mas, por ora, vamos nos limitar a apenas [b]UMA PEÇA[/b].",
+      "texto": "Isto fará mais sentido quando tivermos outras demandas na conta, mas, por ora, vamos nos limitar a apenas [b]UMA PEÇA[/b].",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
 
@@ -406,7 +415,55 @@
   "treinamento_modelagem2":[
     {
       "nome": "Mestre Gato", 
-      "texto": "é foda 1",
+      "texto": "Muito bem! Você descobriu uma forma de encontrar o menor valor possível para atender aquele problema!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Dentro daquela Modelagem Matemática, existe um algoritmo que procura o menor valor possível para aquele problema. São várias iterações que ocorrem até chegar no valor certo.",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Mas não vamos nos preocupar com isso agora, quero te mostrar outra coisa.",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Veja só! Agora essa nova modelagem pede novas armas!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+    {
+      "nome": "Mestre Gato",
+      "texto": "Agora essa modelagem possui 3 armas nas demandas!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 300],
+      "foco_pos": [450, 150],
+      "foco_tamanho": [600, 400]
+    },
+
+    {
+      "nome": "Mestre Gato",
+      "texto": "E agora temos muito mais padrões de corte nesse problema!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+      "coordenada": [450, 200],
+      "foco_pos": [435, 600],
+      "foco_tamanho": [680, 220]
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Uma coisa que é muito importante te falar: O problema encontra apenas o valor mínimo para resolvê-lo, mas COMO você vai resolver ele depende dos padrões selecionados. Isso significa que uma modelagem pode ter diversas formas de ser resolvido!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Nesse problema em questão, existe 3 formas de selecionar os padrões de corte de forma que você atenda a demanda e gaste o mínimo possível. Você sabe quais são? Vou te dar uma dica: O algoritmo para esse problema diz que é necessário [b]APENAS 3 CHAPAS[/b]",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     }
 
@@ -415,7 +472,25 @@
   "treinamento_modelagem3":[
     {
       "nome": "Mestre Gato", 
-      "texto": "é foda 2",
+      "texto": "Perfeito! Agora temos mais um último problema!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Esse é ainda mais complexo, mas tenho uma boa notícia! Essa será a última vez que você irá fazer esse treinamento e também a última vez que você irá selecionar de cabeça esses padrões de cortes!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Tem certas coisas no mundo que precisamos de ferramentas computacionais para encontrar a melhor solução. Usamos isso em quase tudo na vida: Contabilidade, trajeto para ir à algum lugar e, no nosso caso, resolver contratos na minha ferraria!",
+      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+    },
+
+    {
+      "nome": "Mestre Gato", 
+      "texto": "Quando terminar essa última modelagem, você terá acesso à esse algoritmo para resolver os contratos da ferraria. Você já entendeu como funciona aqui, então deixarei com você agora, boa sorte!",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     }
 
