@@ -101,7 +101,7 @@ text = "RESOLVER"
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_b2rob")
-text = "VOLTAR"
+text = "MODELAGEM"
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("5_gp12c")]
 visible = false

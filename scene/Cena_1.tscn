@@ -53,29 +53,26 @@ offset_top = 30.0
 offset_right = 766.0
 offset_bottom = 53.0
 
-[node name="Controle_Corpo" type="Control" parent="UI" unique_id=1039932040]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 45.0
-offset_top = 96.0
-offset_right = 545.0
-offset_bottom = 396.0
+[node name="ScrollContainer" type="ScrollContainer" parent="UI" unique_id=129733797]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 328.0
+offset_top = 104.0
+offset_right = -54.0
+offset_bottom = -299.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/Controle_Corpo" unique_id=223529208]
-layout_mode = 0
-offset_left = 264.0
-offset_top = 1.0
-offset_right = 838.0
-offset_bottom = 501.0
-
-[node name="PadraoCorteSalvo" type="HBoxContainer" parent="UI/Controle_Corpo/ScrollContainer" unique_id=1545570322]
-custom_minimum_size = Vector2(542.56, 0)
-custom_maximum_size = Vector2(755.83, -1)
+[node name="PadraoCorteSalvo" type="HBoxContainer" parent="UI/ScrollContainer" unique_id=1545570322]
+custom_minimum_size = Vector2(56.69, 0)
 layout_mode = 2
-theme_override_constants/separation = 67
+size_flags_horizontal = 3
+offset_transform_enabled = true
+theme_override_constants/separation = 64
 
-[node name="LinhaListaPadrao" parent="UI/Controle_Corpo/ScrollContainer/PadraoCorteSalvo" unique_id=282406503 instance=ExtResource("7_i1ld1")]
-custom_minimum_size = Vector2(0, 325.75)
+[node name="LinhaListaPadrao" parent="UI/ScrollContainer/PadraoCorteSalvo" unique_id=282406503 instance=ExtResource("7_i1ld1")]
+visible = false
 layout_mode = 2
 
 [node name="Contrato_visualizacao" parent="UI" unique_id=1164244224 instance=ExtResource("7_6qt7c")]

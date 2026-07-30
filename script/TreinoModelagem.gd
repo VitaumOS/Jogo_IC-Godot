@@ -191,4 +191,4 @@ func _finalizar_treino():
 	btn_voltar.visible = true
 	
 func _on_voltar_pressed(): 
-	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
+	get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")

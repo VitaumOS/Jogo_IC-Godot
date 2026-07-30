@@ -119,7 +119,7 @@
       "texto": "Quando quiser escolher um contrato, clique no botão 'aceitar contrato' para ele ser enviado a sua ferraria!",
       "coordenada": [450, 330],
       "foco_pos": [450, 270],
-      "foco_tamanho": [800, 60]
+      "foco_tamanho": [800, 70]
     }
   ],
 
@@ -171,7 +171,7 @@
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
       "foco_pos": [135, 730],
-      "foco_tamanho": [150, 40],
+      "foco_tamanho": [130, 40],
       "texto": "Preste atenção! Aquela barra [b]VERMELHA[/b] ali embaixo apareceu. Isso significa [b]DESPERDICIO[/b]! "
     },
     {
@@ -179,14 +179,14 @@
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
       "foco_pos": [135, 730],
-      "foco_tamanho": [150, 40],
+      "foco_tamanho": [130, 40],
       "texto": "Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
     },
     {
       "nome": "Jorge",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png",
       "coordenada": [615, 450],
-      "texto": "É normal desperdiçar, as vezes o molde que você vai usar vai ultrapassar o limite, mas é sempre bom evitar e fazer escolhas mais econômicas!"
+      "texto": "É normal desperdiçar, às vezes o molde que você vai usar vai ultrapassar o limite, mas é sempre bom evitar e fazer escolhas mais econômicas!"
     }
   ],
 
@@ -229,7 +229,7 @@
   "2": [
     {
       "nome": "Jorge",
-      "texto": "Ufa, o primeiro dia foi tranquilo. Mas olhe o chão da ferraria... está cheio de retalhos e pedaços de metal que sobraram dos cortes. Seria bom termos uma noção do quanto a gente tá desperdiçando,né.",
+      "texto": "Ufa, o primeiro dia foi tranquilo. Mas olhe o chão da ferraria... está cheio de retalhos e pedaços de metal que sobraram dos cortes. Seria bom termos uma noção do quanto a gente está desperdiçando,né.",
       "retrato": "res://Sprite/gatinhos/NekoJorge.png"
     },
     {
@@ -315,7 +315,7 @@
 
     {
       "nome": "Mestre Gato", 
-      "texto": "Esse problema que você está lidando é chamado de [b]O PROBLEMA DO CORTE UNIDIMENSIONAL[/b]. Ele é unidimensional porque apenas uma dimensão das chapas importa para definir a arma: a largura. ",
+      "texto": "Esse problema que você está lidando é chamado de [b]O PROBLEMA DO CORTE UNIDIMENSIONAL[/b]. Ele é unidimensional porque a chapa tem uma largura fixa e nós só cortamos ao longo de uma dimensão. ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
     
@@ -384,7 +384,7 @@
     },
     {
       "nome": "Mestre Gato",
-      "texto": "E que, para conseguir o menor valor possível, a quantidade de adagas produzidas deve ser maior ou igual à 12! ",
+      "texto": "E que, para conseguir o menor valor possível, a quantidade de adagas produzidas deve ser maior ou igual a 12! ",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png",
       "coordenada": [450, 300],
       "foco_pos": [450, 120],
@@ -401,7 +401,7 @@
 
     {
       "nome": "Mestre Gato", 
-      "texto": "Isto fará mais sentido quando tivermos outras demandas na conta, mas, por ora, vamos nos limitar a apenas [b]UMA PEÇA[/b].",
+      "texto": "Isso fará mais sentido quando tivermos outras demandas na conta, mas, por ora, vamos nos limitar a apenas [b]UMA PEÇA[/b].",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
 
@@ -463,7 +463,7 @@
 
     {
       "nome": "Mestre Gato", 
-      "texto": "Nesse problema em questão, existe 3 formas de selecionar os padrões de corte de forma que você atenda a demanda e gaste o mínimo possível. Você sabe quais são? Vou te dar uma dica: O algoritmo para esse problema diz que é necessário [b]APENAS 3 CHAPAS[/b]",
+      "texto": "Nesse problema em questão, existem 3 formas de selecionar os padrões de corte de forma que você atenda a demanda e gaste o mínimo possível. Você sabe quais são? Vou te dar uma dica: O algoritmo para esse problema diz que é necessário [b]APENAS 3 CHAPAS[/b]",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     }
 
@@ -484,13 +484,13 @@
 
     {
       "nome": "Mestre Gato", 
-      "texto": "Tem certas coisas no mundo que precisamos de ferramentas computacionais para encontrar a melhor solução. Usamos isso em quase tudo na vida: Contabilidade, trajeto para ir à algum lugar e, no nosso caso, resolver contratos na minha ferraria!",
+      "texto": "Tem certas coisas no mundo que precisamos de ferramentas computacionais para encontrar a melhor solução. Usamos isso em quase tudo na vida: Contabilidade, trajeto para ir a algum lugar e, no nosso caso, resolver contratos na minha ferraria!",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     },
 
     {
       "nome": "Mestre Gato", 
-      "texto": "Quando terminar essa última modelagem, você terá acesso à esse algoritmo para resolver os contratos da ferraria. Você já entendeu como funciona aqui, então deixarei com você agora, boa sorte!",
+      "texto": "Quando terminar essa última modelagem, você terá acesso a esse algoritmo para resolver os contratos da ferraria. Você já entendeu como funciona aqui, então deixarei com você agora, boa sorte!",
       "retrato": "res://Sprite/gatinhos/Ferreiro.png"
     }
 

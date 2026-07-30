@@ -41,7 +41,7 @@ func _on_encerrar_pressed() -> void:
 	popup.mostrar_confirmacao("Deseja finalizar o dia?")
 	var confirma = await popup.resposta 
 	if confirma:
-		if !Global.fez_contrato_diario:
+		if Global.fez_contrato_diario:
 			popup.mostrar_mensagem("Você precisa fazer ao menos um contrato!")
 			var confirma2 = await popup.resposta 
 			if confirma2:

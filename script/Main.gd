@@ -4,7 +4,7 @@ extends Node2D
 @export var cena_resultado_dinheiro: PackedScene
 
 # --- REFERÊNCIAS DE NÓS ---
-@onready var vbox_padroes_lista = $UI/Controle_Corpo/ScrollContainer/PadraoCorteSalvo
+@onready var vbox_padroes_lista = $UI/ScrollContainer/PadraoCorteSalvo
 @onready var popup = $PopUp
 @onready var contrato_visualizacao = $UI/Contrato_visualizacao
 
