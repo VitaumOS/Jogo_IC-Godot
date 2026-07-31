@@ -97,6 +97,10 @@ func _carregar_padroes_da_loja():
 	padroes_corte_salvos_valor.clear()
 	for item in Global.padroes_desbloqueados:
 		_exibir_padrao_na_lista(item)
+	
+	if Global.padroes_desbloqueados.size() > 8:
+		var item_vazio: Dictionary = {"dia": 0,"nome": "","composicao": [0, 0, 0, 0, 0, 0],"preco": 0}
+		_exibir_padrao_na_lista(item_vazio)
 
 func _exibir_padrao_na_lista(item: Dictionary):
 	var pecas_data = []
