@@ -80,6 +80,10 @@ custom_minimum_size = Vector2(840, 300)
 custom_maximum_size = Vector2(840, -1)
 layout_mode = 2
 
+[node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal" unique_id=769683837]
+custom_minimum_size = Vector2(0, 26.945)
+layout_mode = 2
+
 [node name="Botoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1170674162]
 custom_minimum_size = Vector2(0, 16)
 custom_maximum_size = Vector2(-1, 16)
@@ -90,6 +94,7 @@ alignment = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = ExtResource("4_0v088")
 text = "RESOLVER"
 
@@ -101,6 +106,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = ExtResource("4_0v088")
 text = "VOLTAR
 

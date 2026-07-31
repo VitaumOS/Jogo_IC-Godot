@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ceqrctdai7pi2"]
 
-[ext_resource type="Texture2D" uid="uid://b0covusih4ypb" path="res://Sprite/adaga.png" id="1_y6s4v"]
+[ext_resource type="Texture2D" uid="uid://ckpd858j40ovi" path="res://Sprite/adaga-novo.png" id="1_32u73"]
 [ext_resource type="PackedScene" uid="uid://dxwgvhexs1i1b" path="res://scene/aux_scene/termo_restricao.tscn" id="2_ano4k"]
 [ext_resource type="Texture2D" uid="uid://b210afj78xvug" path="res://images/maior_ou_igual.png" id="2_xblx3"]
 
@@ -25,7 +25,7 @@ offset_top = 3.1140556
 offset_right = 12.177734
 offset_bottom = 32.672745
 rotation = -0.2617994
-texture = ExtResource("1_y6s4v")
+texture = ExtResource("1_32u73")
 expand_mode = 2
 
 [node name="spacer" type="Control" parent="." unique_id=211413365]

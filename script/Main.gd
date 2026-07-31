@@ -18,9 +18,9 @@ var thread_pulp: Thread
 var PYTHON_EXE_PATH: String:
 	get:
 		if OS.has_feature("editor"):
-			return ProjectSettings.globalize_path("res://PythonFiles/resolve_pcu_pl.exe")
+			return ProjectSettings.globalize_path("res://PythonFiles/resolve_pulp.exe")
 		else:
-			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/resolve_pcu_pl.exe")
+			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/resolve_pulp.exe")
 
 var OUTPUT_FILE_NAME: String:
 	get:

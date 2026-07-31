@@ -14,16 +14,16 @@ var termo_restricao = load("res://scene/aux_scene/termo_restricao.tscn")
 var PYTHON_EXE_PATH: String:
 	get:
 		if OS.has_feature("editor"):
-			return ProjectSettings.globalize_path("res://PythonFiles/resolve_modelagem_pu.exe")
+			return ProjectSettings.globalize_path("res://PythonFiles/resolve_pulp.exe")
 		else:
-			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/resolve_modelagem_pu.exe")
+			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/resolve_pulp.exe")
 
 var OUTPUT_FILE_PATH: String:
 	get:
 		if OS.has_feature("editor"):
-			return ProjectSettings.globalize_path("res://PythonFiles/resolve_modelagem.json")
+			return ProjectSettings.globalize_path("res://PythonFiles/pulp_solution.json")
 		else:
-			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/resolve_modelagem.json")
+			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/pulp_solution.json")
 
 
 var lista_padroes_disponiveis: Array = []       
@@ -197,8 +197,11 @@ func _on_btn_resolver_pressed() -> void:
 		push_error("ERRO: Executável do solver de modelagem não encontrado em: " + PYTHON_EXE_PATH)
 		return
 
-	# Enviamos apenas os dados como argumentos limpos. O script Python processará como strings de terminal.
-	var args: Array[String] = [JSON.stringify(matriz_demanda_manual), JSON.stringify(composicoes_enviadas)]
+	var args: Array[String] = []
+	args.append(str(matriz_demanda_manual))
+	
+	for comp in composicoes_enviadas:
+		args.append(str(comp))
 	
 	var saida_terminal = []
 	var resultado_codigo = OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
@@ -211,13 +214,13 @@ func _on_btn_resolver_pressed() -> void:
 			
 			if resultado and resultado.get("status") == "Optimal":
 				var solucao_lista = resultado.get("solucao", [])
-				var texto_resultado = "Plano de Corte Recomendado:\n"
-				var total_chapas = 0
+				var total_chapas = resultado.get("chapas_usadas", 0)
 				
+				var texto_resultado = "Plano de Corte Recomendado:\n"
 				for j in range(solucao_lista.size()):
 					var qtd_cortes = int(solucao_lista[j])
-					total_chapas += qtd_cortes
-					texto_resultado += "Padrão x%d: cortar %d vez(es)\n" % [(j + 1), qtd_cortes]
+					if qtd_cortes > 0:
+						texto_resultado += "Padrão x%d: cortar %d vez(es)\n" % [(j + 1), qtd_cortes]
 				
 				texto_resultado += "\nTotal de Chapas Utilizadas: %d" % total_chapas
 				resultado_lbl.text = texto_resultado

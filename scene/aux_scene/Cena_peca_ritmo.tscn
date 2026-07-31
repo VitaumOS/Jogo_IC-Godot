@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bf7ivebfxw2wm"]
 
-[ext_resource type="Texture2D" uid="uid://b0covusih4ypb" path="res://Sprite/adaga.png" id="1_juvp8"]
+[ext_resource type="Texture2D" uid="uid://ckpd858j40ovi" path="res://Sprite/adaga-novo.png" id="1_20duf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1k8yr"]
 size = Vector2(10, 14)
@@ -9,9 +9,9 @@ size = Vector2(10, 14)
 position = Vector2(0, -2)
 
 [node name="Arma" type="Sprite2D" parent="." unique_id=509852646]
-position = Vector2(0, 70)
+position = Vector2(0, 73)
 scale = Vector2(0.55250007, 0.72999984)
-texture = ExtResource("1_juvp8")
+texture = ExtResource("1_20duf")
 
 [node name="AreaLetra" type="Area2D" parent="." unique_id=1419380839]
 
