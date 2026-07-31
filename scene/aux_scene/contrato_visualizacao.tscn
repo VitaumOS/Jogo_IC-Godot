@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://c2y50kcdi0qys" path="res://script/contrato_visualizacao.gd" id="1_48txe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48txe"]
-bg_color = Color(0.30748522, 0.1428257, 0.03876, 0.48800004)
+bg_color = Color(0.193449, 0.4335079, 0.4123363, 0.49400002)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.11058112, 0.08933445, 0.05259882, 1)
+border_color = Color(0.018608084, 0.013716635, 0.0064225337, 1)
 
 [node name="Contrato_visualizacao" type="Node2D" unique_id=1164244224]
 script = ExtResource("1_48txe")
@@ -22,12 +22,12 @@ offset_bottom = 215.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_48txe")
 
 [node name="Contrato" type="Label" parent="." unique_id=552204020]
-offset_left = 64.0
-offset_top = 38.0
-offset_right = 164.0
-offset_bottom = 68.0
+offset_left = 63.0
+offset_top = 32.0
+offset_right = 201.0
+offset_bottom = 74.0
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 36
 text = "Contrato"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=185369305]
@@ -52,7 +52,7 @@ offset_left = 46.0
 offset_top = 52.0
 offset_right = 844.0
 offset_bottom = 215.0
-theme_override_colors/font_color = Color(0.85376436, 0.59608823, 0.2716998, 1)
+theme_override_colors/font_color = Color(1, 0.60038817, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 35
 text = "Nenhum Contrato Selecionado"

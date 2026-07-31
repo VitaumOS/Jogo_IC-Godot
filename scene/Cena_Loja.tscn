@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://woxkkusp44ml"]
 
 [ext_resource type="Script" uid="uid://b5h61pvucrck8" path="res://script/Loja.gd" id="1_i4mbc"]
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_l66g6"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_mypxv"]
-[ext_resource type="Texture2D" uid="uid://bb3p3e1qtkhfx" path="res://images/background-novo.png" id="3_wjy46"]
 [ext_resource type="PackedScene" uid="uid://dd0ohe51j087n" path="res://scene/aux_scene/Cena_Card_Loja.tscn" id="4_4qugu"]
-[ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="5_4qugu"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="6_cqb1c"]
 [ext_resource type="PackedScene" uid="uid://ccjtlwav80dao" path="res://scene/aux_scene/info.tscn" id="6_wjy46"]
 [ext_resource type="PackedScene" uid="uid://cnl37rt32qqw5" path="res://scene/aux_scene/abas.tscn" id="7_op4vh"]
@@ -19,7 +18,7 @@ cena_card = ExtResource("4_4qugu")
 layout_mode = 0
 offset_right = 900.0
 offset_bottom = 900.0
-texture = ExtResource("3_wjy46")
+texture = ExtResource("3_l66g6")
 expand_mode = 1
 
 [node name="UI" type="Control" parent="." unique_id=2051966678]
@@ -52,6 +51,8 @@ layout_mode = 2
 [node name="PainelChapas" type="Node2D" parent="UI" unique_id=687913666]
 
 [node name="BtnComprarChapa" type="Button" parent="UI/PainelChapas" unique_id=1530258108]
+custom_minimum_size = Vector2(235, 60)
+custom_maximum_size = Vector2(235, 60)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -63,10 +64,9 @@ offset_right = 560.0
 offset_bottom = 803.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 19
 theme_override_styles/normal = ExtResource("3_mypxv")
-theme_override_styles/pressed = ExtResource("5_4qugu")
-theme_override_styles/hover = ExtResource("5_4qugu")
-theme_override_styles/hover_pressed = ExtResource("5_4qugu")
 text = "Comprar Chapas (R$ 100)"
 icon_alignment = 1
 vertical_icon_alignment = 2

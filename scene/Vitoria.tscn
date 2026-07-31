@@ -46,6 +46,7 @@ offset_left = 64.0
 offset_top = 736.0
 offset_right = 832.0
 offset_bottom = 832.0
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("4_71bpr")
 text = "Voltar para a tela inicial"

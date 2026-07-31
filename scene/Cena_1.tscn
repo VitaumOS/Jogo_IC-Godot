@@ -87,14 +87,14 @@ theme_override_constants/separation = 30
 
 [node name="BaterMartelo" type="Button" parent="UI/VBoxContainer" unique_id=288751525]
 layout_mode = 2
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 33
 theme_override_styles/normal = ExtResource("7_fqplq")
 text = "Bater Martelo"
 
 [node name="Modelagem" type="Button" parent="UI/VBoxContainer" unique_id=1136193815]
 layout_mode = 2
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 33
 theme_override_styles/normal = ExtResource("7_fqplq")
 text = "Modelagem"

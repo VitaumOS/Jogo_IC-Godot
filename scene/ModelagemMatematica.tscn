@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c02wodmxxy1a7" path="res://script/ModelagemMatematica.gd" id="1_k2b62"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_dxiy0"]
-[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_iqu4r"]
 [ext_resource type="PackedScene" uid="uid://ceqrctdai7pi2" path="res://scene/aux_scene/restricao.tscn" id="3_ojco2"]
-[ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="4_0v088"]
+[ext_resource type="StyleBox" uid="uid://prp5ppqhpa28" path="res://modelos/modelo_botao1_3.tres" id="4_0v088"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="5_0v088"]
 
 [node name="Modelagem" type="Control" unique_id=1765818540]
@@ -90,10 +89,8 @@ alignment = 1
 [node name="Resolver" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1928015222]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_styles/normal = ExtResource("3_iqu4r")
-theme_override_styles/pressed = ExtResource("4_0v088")
-theme_override_styles/hover = ExtResource("4_0v088")
-theme_override_styles/hover_pressed = ExtResource("4_0v088")
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_styles/normal = ExtResource("4_0v088")
 text = "RESOLVER"
 
 [node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1326058333]
@@ -101,12 +98,10 @@ custom_minimum_size = Vector2(55.92, 0)
 layout_mode = 2
 
 [node name="Voltar" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=822601583]
-custom_minimum_size = Vector2(182.595, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_styles/normal = ExtResource("3_iqu4r")
-theme_override_styles/pressed = ExtResource("4_0v088")
-theme_override_styles/hover = ExtResource("4_0v088")
-theme_override_styles/hover_pressed = ExtResource("4_0v088")
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_styles/normal = ExtResource("4_0v088")
 text = "VOLTAR
 
 "

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chq4x1jcttjf5"
-path="res://.godot/imported/placa_baixo.png-4166c891377f6cda31ea53725d24d894.ctex"
+uid="uid://t63a3pnc2c44"
+path="res://.godot/imported/placa_6-novo.png-fdc876342fa3605f63e850547934e4e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/placa_baixo.png"
-dest_files=["res://.godot/imported/placa_baixo.png-4166c891377f6cda31ea53725d24d894.ctex"]
+source_file="res://images/placa_6-novo.png"
+dest_files=["res://.godot/imported/placa_6-novo.png-fdc876342fa3605f63e850547934e4e5.ctex"]
 
 [params]
 

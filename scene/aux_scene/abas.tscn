@@ -14,7 +14,7 @@ script = ExtResource("1_xi30b")
 [node name="Contrato" type="Button" parent="." unique_id=1925084303]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("1_bo4j1")
 text = "Contratos
@@ -23,7 +23,7 @@ text = "Contratos
 [node name="Loja" type="Button" parent="." unique_id=692737973]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("1_bo4j1")
 text = "Loja"
@@ -31,7 +31,7 @@ text = "Loja"
 [node name="Forja" type="Button" parent="." unique_id=2003608545]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("1_bo4j1")
 text = "Forja"
@@ -39,7 +39,7 @@ text = "Forja"
 [node name="Encerrar" type="Button" parent="." unique_id=1927647038]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("1_bo4j1")
 text = "Encerrar"

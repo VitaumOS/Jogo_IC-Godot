@@ -36,10 +36,12 @@ offset_left = 208.0
 offset_top = 696.0
 offset_right = 684.0
 offset_bottom = 750.0
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("2_vq0q6")
 text = "Voltar pro Menu Principal"
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("3_vq0q6")]
+visible = false
 
 [connection signal="pressed" from="BtnVoltar" to="." method="_on_btn_voltar_pressed"]

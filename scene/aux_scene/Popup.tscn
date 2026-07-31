@@ -17,17 +17,17 @@ script = ExtResource("1_eykc1")
 
 [node name="Placa" type="PanelContainer" parent="." unique_id=568186395]
 offset_left = 272.0
-offset_top = 378.0
+offset_top = 340.0
 offset_right = 632.0
-offset_bottom = 578.0
+offset_bottom = 528.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_bry1k")
 
 [node name="Control2" type="Control" parent="." unique_id=821875847]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 505.0
-offset_top = 592.0
-offset_right = 506.0
+offset_top = 550.0
+offset_right = 507.0
 offset_bottom = 600.0
 mouse_filter = 1
 
@@ -70,10 +70,10 @@ mouse_filter = 1
 
 [node name="HBoxBtn" type="HBoxContainer" parent="Control" unique_id=1129267965]
 layout_mode = 0
-offset_left = -24.0
-offset_top = 240.0
-offset_right = 376.0
-offset_bottom = 267.0
+offset_left = -23.0
+offset_top = 194.0
+offset_right = 377.0
+offset_bottom = 221.0
 theme_override_constants/separation = 12
 alignment = 1
 

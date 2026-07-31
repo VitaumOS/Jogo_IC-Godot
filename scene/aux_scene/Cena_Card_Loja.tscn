@@ -30,16 +30,15 @@ size_flags_vertical = 8
 layout_mode = 2
 
 [node name="Button" type="Button" parent="HBox/Control" unique_id=1296401988]
-custom_minimum_size = Vector2(100, 20)
-custom_maximum_size = Vector2(100, 20)
+custom_minimum_size = Vector2(130, 45)
+custom_maximum_size = Vector2(130, 45)
 layout_mode = 0
-offset_left = 36.0
-offset_top = 35.0
-offset_right = 136.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(0, 0.9038137, 0.2625431, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 17
+offset_left = 22.0
+offset_top = 25.0
+offset_right = 152.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.18457298, 0.38410568, 0.14396593, 1)
+theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = ExtResource("3_hifco")
 text = "R$ 9999"
 
