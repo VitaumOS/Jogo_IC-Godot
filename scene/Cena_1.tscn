@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dgyfaxliye1pq" path="res://scene/cena_pontuacao.tscn" id="3_i1ld1"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_r2s5b"]
 [ext_resource type="Texture2D" uid="uid://vx0xpjoejn5n" path="res://images/Jorge_forja.png" id="4_2xbwx"]
-[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="5_bjq5w"]
 [ext_resource type="PackedScene" uid="uid://8268dsjrkovb" path="res://scene/aux_scene/contrato_visualizacao.tscn" id="7_6qt7c"]
+[ext_resource type="StyleBox" uid="uid://3iwff8hlkgf" path="res://modelos/modelo_botao1_2.tres" id="7_fqplq"]
 [ext_resource type="PackedScene" uid="uid://b6if7jes5m0v4" path="res://scene/aux_scene/LinhaListaPadrao.tscn" id="7_i1ld1"]
 [ext_resource type="PackedScene" uid="uid://ccjtlwav80dao" path="res://scene/aux_scene/info.tscn" id="7_ptkpm"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="9_2xbwx"]
@@ -57,8 +57,8 @@ offset_bottom = 53.0
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 328.0
-offset_top = 104.0
+offset_left = 316.0
+offset_top = 98.0
 offset_right = -54.0
 offset_bottom = -299.0
 grow_horizontal = 2
@@ -87,14 +87,16 @@ theme_override_constants/separation = 30
 
 [node name="BaterMartelo" type="Button" parent="UI/VBoxContainer" unique_id=288751525]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 33
-theme_override_styles/normal = ExtResource("5_bjq5w")
+theme_override_styles/normal = ExtResource("7_fqplq")
 text = "Bater Martelo"
 
 [node name="Modelagem" type="Button" parent="UI/VBoxContainer" unique_id=1136193815]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 33
-theme_override_styles/normal = ExtResource("5_bjq5w")
+theme_override_styles/normal = ExtResource("7_fqplq")
 text = "Modelagem"
 
 [node name="Info" parent="UI" unique_id=1171228805 instance=ExtResource("7_ptkpm")]

@@ -3,10 +3,9 @@
 [ext_resource type="Script" uid="uid://cip36qqen1j4e" path="res://script/TreinoModelagem.gd" id="1_nrhvf"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_jntv4"]
 [ext_resource type="PackedScene" uid="uid://cmi3quifa8djm" path="res://scene/aux_scene/miniatura_modelo_chapa.tscn" id="3_2kx74"]
-[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_b2rob"]
 [ext_resource type="PackedScene" uid="uid://ceqrctdai7pi2" path="res://scene/aux_scene/restricao.tscn" id="3_jntv4"]
-[ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="4_2kx74"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="5_gp12c"]
+[ext_resource type="StyleBox" uid="uid://3iwff8hlkgf" path="res://modelos/modelo_botao1_2.tres" id="5_jntv4"]
 
 [node name="Modelagem" type="Control" unique_id=1165207341]
 layout_mode = 3
@@ -91,16 +90,15 @@ alignment = 1
 [node name="Resolver" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=464434631]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_styles/normal = ExtResource("3_b2rob")
-theme_override_styles/pressed = ExtResource("4_2kx74")
-theme_override_styles/hover = ExtResource("4_2kx74")
-theme_override_styles/hover_pressed = ExtResource("4_2kx74")
+theme_override_constants/outline_size = 5
+theme_override_styles/normal = ExtResource("5_jntv4")
 text = "RESOLVER"
 
 [node name="Voltar" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1945429112]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_styles/normal = ExtResource("3_b2rob")
+theme_override_constants/outline_size = 5
+theme_override_styles/normal = ExtResource("5_jntv4")
 text = "MODELAGEM"
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("5_gp12c")]

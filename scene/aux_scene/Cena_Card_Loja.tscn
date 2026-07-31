@@ -2,8 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://cm8l14sk7oxig" path="res://modelos/modelo_cards.tres" id="1_84gtg"]
 [ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/aux_scene/Padrao_Corte.tscn" id="1_g54nd"]
-[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_84gtg"]
-[ext_resource type="StyleBox" uid="uid://dc0o6didq7a0q" path="res://modelos/modelo_botao_brilha.tres" id="4_7s6s6"]
+[ext_resource type="StyleBox" uid="uid://3iwff8hlkgf" path="res://modelos/modelo_botao1_2.tres" id="3_hifco"]
 
 [node name="Card" type="PanelContainer" unique_id=286221418]
 custom_minimum_size = Vector2(0, 100)
@@ -34,15 +33,14 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 20)
 custom_maximum_size = Vector2(100, 20)
 layout_mode = 0
-offset_left = 48.0
-offset_top = 41.0
-offset_right = 118.0
-offset_bottom = 61.0
+offset_left = 36.0
+offset_top = 35.0
+offset_right = 136.0
+offset_bottom = 55.0
 theme_override_colors/font_color = Color(0, 0.9038137, 0.2625431, 1)
-theme_override_styles/normal = ExtResource("3_84gtg")
-theme_override_styles/pressed = ExtResource("4_7s6s6")
-theme_override_styles/hover = ExtResource("4_7s6s6")
-theme_override_styles/hover_pressed = ExtResource("4_7s6s6")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = ExtResource("3_hifco")
 text = "R$ 9999"
 
 [node name="Control3" type="Control" parent="HBox" unique_id=567819925]

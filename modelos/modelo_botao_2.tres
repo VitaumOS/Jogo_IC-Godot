@@ -1,8 +1,6 @@
 [gd_resource type="StyleBoxTexture" format=3 uid="uid://c1laj21bixtl"]
 
-[ext_resource type="Texture2D" uid="uid://dmjb32mupue8t" path="res://images/placa_4.png" id="1_ve6q7"]
+[ext_resource type="Texture2D" uid="uid://cddtw30s3yc6g" path="res://images/placa_4-novo.png" id="1_ve6q7"]
 
 [resource]
 texture = ExtResource("1_ve6q7")
-expand_margin_top = 140.0
-expand_margin_bottom = 140.0

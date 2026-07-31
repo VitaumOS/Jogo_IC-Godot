@@ -26,6 +26,7 @@ offset_left = 64.0
 offset_top = 38.0
 offset_right = 164.0
 offset_bottom = 68.0
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 26
 text = "Contrato"
 
@@ -52,6 +53,7 @@ offset_top = 52.0
 offset_right = 844.0
 offset_bottom = 215.0
 theme_override_colors/font_color = Color(0.85376436, 0.59608823, 0.2716998, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 35
 text = "Nenhum Contrato Selecionado"
 horizontal_alignment = 1
