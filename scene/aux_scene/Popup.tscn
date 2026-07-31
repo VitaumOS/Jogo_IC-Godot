@@ -38,8 +38,7 @@ offset_left = -257.0
 offset_top = -108.0
 offset_right = 151.0
 offset_bottom = -4.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 7
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 20
 text = "Texto de Teste"
 horizontal_alignment = 1
@@ -53,8 +52,7 @@ offset_left = -257.0
 offset_top = -116.0
 offset_right = 151.0
 offset_bottom = -66.0
-theme_override_colors/font_color = Color(0.8, 0, 0.1882353, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.54165065, 0, 0.11472998, 1)
 theme_override_font_sizes/font_size = 37
 text = "ERRO"
 horizontal_alignment = 1
@@ -79,22 +77,28 @@ alignment = 1
 
 [node name="BtnSim" type="Button" parent="Control/HBoxBtn" unique_id=309139895]
 process_mode = 3
+custom_minimum_size = Vector2(33, 0)
+custom_maximum_size = Vector2(33, -1)
 layout_mode = 2
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_styles/normal = ExtResource("3_3c8re")
 text = "Sim"
 
 [node name="BtnNao" type="Button" parent="Control/HBoxBtn" unique_id=1079789033]
 process_mode = 3
+custom_minimum_size = Vector2(33, 0)
+custom_maximum_size = Vector2(33, -1)
 layout_mode = 2
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_styles/normal = ExtResource("3_3c8re")
 text = "Não"
 
 [node name="BtnOk" type="Button" parent="Control/HBoxBtn" unique_id=30888743]
 process_mode = 3
+custom_minimum_size = Vector2(33, 0)
+custom_maximum_size = Vector2(33, -1)
 layout_mode = 2
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_styles/normal = ExtResource("3_3c8re")
 text = "OK"
 
