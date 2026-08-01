@@ -2,7 +2,7 @@ extends Node
 
 const CUSTO_DIARIO = 200
 const DIA_FINAL: int = 7
-const DINHEIRO_INICIAL: int = 5200
+const DINHEIRO_INICIAL: int = 1200
 
 var tamanho_container: float = 500.0
 var dia_atual: int = 1

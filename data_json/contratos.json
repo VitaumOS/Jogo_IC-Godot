@@ -12,7 +12,7 @@
 	{ "dia": 3, "nome": "Escolta de Ervanário", "demanda": [25, 2, 30, 4, 0, 0], "recompensa": 1500 },
 	{ "dia": 3, "nome": "Escolta de Comissários", "demanda": [30, 1, 3, 10, 0, 0], "recompensa": 1350 },
 
-	{ "dia": 4, "nome": "Vigília Noturna", "demanda": [5, 5, 12, 8, 4, 0], "recompensa": 1400 },
+	{ "dia": 4, "nome": "Vigília Noturna", "demanda": [17, 5, 12, 8, 4, 0], "recompensa": 1400 },
 	{ "dia": 4, "nome": "Manutenção de Muralhas", "demanda": [11, 6, 11, 3, 6, 0], "recompensa": 1450 },
 
 	{ "dia": 5, "nome": "Cerco ao Forte", "demanda": [19, 10, 7, 5, 6, 5], "recompensa": 2450 },

@@ -31,7 +31,7 @@ func gerar_contrato(contrato):
 	lbl_dem.text = "Pedido: " + ", ".join(list_txt)
 	
 	#Valor da Recompensa
-	var lbl_val = card.find_child("Valor"); lbl_val.text = "Pagamento: R$ %d" % contrato.recompensa
+	var lbl_val = card.find_child("Valor"); lbl_val.text = "R$ %d" % contrato.recompensa
 	
 	#Botão de aceitar o contrato
 	var btn = card.find_child("Btn")

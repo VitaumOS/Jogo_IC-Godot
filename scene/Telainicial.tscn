@@ -75,7 +75,7 @@ offset_left = 761.0
 offset_top = 839.0
 offset_right = 874.0
 offset_bottom = 863.0
-text = "V0.4 - Teste"
+text = "V0.5 - Teste"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="MenuBotoes/BtnJogar" to="." method="_on_btn_jogar_pressed"]

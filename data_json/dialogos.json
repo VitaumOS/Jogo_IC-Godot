@@ -137,7 +137,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Selecione a quantidade de vezes que você vai utilizar cada molde para montar todas as armas necessárias!",
 	  "coordenada": [620,330],
-	  "foco_pos": [340, 570],
+	  "foco_pos": [350, 570],
 	  "foco_tamanho": [70, 50]
 	}
   ],
@@ -170,16 +170,16 @@
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "coordenada": [615, 450],
-	  "foco_pos": [135, 730],
-	  "foco_tamanho": [130, 40],
+	  "foco_pos": [120, 730],
+	  "foco_tamanho": [110, 40],
 	  "texto": "Preste atenção! Aquela barra [b]VERMELHA[/b] ali embaixo apareceu. Isso significa [b]DESPERDICIO[/b]! "
 	},
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "coordenada": [615, 450],
-	  "foco_pos": [135, 730],
-	  "foco_tamanho": [130, 40],
+	  "foco_pos": [120, 730],
+	  "foco_tamanho": [110, 40],
 	  "texto": "Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
 	},
 	{
