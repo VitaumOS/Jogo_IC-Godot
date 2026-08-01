@@ -1,37 +1,37 @@
 {
   "problemas": [
-    {
-      "id": 1,
-      "demanda": [12, 0, 0, 0, 0, 0],
-      "minimo_chapas_otimo": 3,
-      "padroes_disponiveis": [
-        { "nome": "Lote Adagas 3", "composicao": [3, 0, 0, 0, 0, 0] },
-        { "nome": "Lote Adagas 4", "composicao": [5, 0, 0, 0, 0, 0] }
-      ]
-    },
-    {
-      "id": 2,
-      "demanda": [6, 6, 0, 6, 0, 0],
-      "minimo_chapas_otimo": 3,
-      "padroes_disponiveis": [
-        { "nome": "Misto Tático", "composicao": [2, 2, 0, 2, 0, 0] },
-        { "nome": "Assalto Misto", "composicao": [3, 1, 0, 2, 0, 0] },
-        { "nome": "Falange Pesada", "composicao": [1, 3, 0, 2, 0, 0] },
-        { "nome": "Lote Machados", "composicao": [0, 1, 0, 4, 0, 0] },
-        { "nome": "Vanguarda", "composicao": [4, 2, 0, 1, 0, 0] }
-      ]
-    },
-    {
-      "id": 3,
-      "demanda": [0, 4, 4, 0, 4, 2],
-      "minimo_chapas_otimo": 4,
-      "padroes_disponiveis": [
-        { "nome": "Guarda Completa", "composicao": [0, 1, 1, 0, 1, 1] },
-        { "nome": "Misto Leve", "composicao": [0, 1, 1, 0, 1, 0] },
-        { "nome": "Linha de Frente", "composicao": [0, 2, 0, 0, 2, 0] },
-        { "nome": "Guarda de Elite", "composicao": [0, 0, 2, 0, 0, 1] },
-        { "nome": "Falange Ligeira", "composicao": [0, 3, 0, 0, 1, 0] }
-      ]
-    }
+	{
+	  "id": 1,
+	  "demanda": [12, 0, 0, 0, 0, 0],
+	  "minimo_chapas_otimo": 3,
+	  "padroes_disponiveis": [
+		{ "nome": "Lote Adagas 3", "composicao": [3, 0, 0, 0, 0, 0] },
+		{ "nome": "Lote Adagas 4", "composicao": [5, 0, 0, 0, 0, 0] }
+	  ]
+	},
+	{
+	  "id": 2,
+	  "demanda": [6, 6, 0, 6, 0, 0],
+	  "minimo_chapas_otimo": 3,
+	  "padroes_disponiveis": [
+		{ "nome": "Misto Tático", "composicao": [2, 2, 0, 2, 0, 0] },
+		{ "nome": "Assalto Misto", "composicao": [3, 1, 0, 2, 0, 0] },
+		{ "nome": "Falange Pesada", "composicao": [1, 3, 0, 2, 0, 0] },
+		{ "nome": "Lote Machados", "composicao": [0, 1, 0, 4, 0, 0] },
+		{ "nome": "Vanguarda", "composicao": [4, 2, 0, 1, 0, 0] }
+	  ]
+	},
+	{
+	  "id": 3,
+	  "demanda": [0, 4, 4, 0, 4, 2],
+	  "minimo_chapas_otimo": 4,
+	  "padroes_disponiveis": [
+		{ "nome": "Guarda Completa", "composicao": [0, 1, 1, 0, 1, 1] },
+		{ "nome": "Misto Leve", "composicao": [0, 1, 1, 0, 1, 0] },
+		{ "nome": "Linha de Frente", "composicao": [0, 2, 0, 0, 2, 0] },
+		{ "nome": "Guarda de Elite", "composicao": [0, 0, 2, 0, 0, 1] },
+		{ "nome": "Falange Ligeira", "composicao": [0, 3, 0, 0, 1, 0] }
+	  ]
+	}
   ]
 }

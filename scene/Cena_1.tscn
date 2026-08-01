@@ -25,9 +25,9 @@ expand_mode = 1
 
 [node name="Jorge" type="TextureRect" parent="." unique_id=497482856]
 offset_left = 9.0
-offset_top = 103.0
+offset_top = 132.0
 offset_right = 468.0
-offset_bottom = 535.0
+offset_bottom = 564.0
 texture = ExtResource("4_2xbwx")
 expand_mode = 3
 

@@ -1,522 +1,522 @@
 {
   "1": [
-    {
-      "nome": "Mestre Gato",
-      "texto": "[wave amp=20 freq=3]Miau![/wave] Escute com atenção, Jorge. Ficarei fora por [b]7 dias[/b] em uma conferência do Reino. A ferraria está sob o seu comando!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "S-Sete dias, Mestre?! Mas eu ainda me confundo um pouco na hora de planejar o corte das chapas de metal...",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Mestre Gato",
-      "texto": "Não tema. Sei que você vai conseguir. Mas lembre-se: nem tudo a gente consegue resolver de cabeça.",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "...",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "B-bom, vamos ver o que conseguimos fazer!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "[wave amp=20 freq=3]Miau![/wave] Escute com atenção, Jorge. Ficarei fora por [b]7 dias[/b] em uma conferência do Reino. A ferraria está sob o seu comando!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "S-Sete dias, Mestre?! Mas eu ainda me confundo um pouco na hora de planejar o corte das chapas de metal...",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "Não tema. Sei que você vai conseguir. Mas lembre-se: nem tudo a gente consegue resolver de cabeça.",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "...",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "B-bom, vamos ver o que conseguimos fazer!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
 
-    {
-      "nome": "Jorge",
-      "texto": "Antes de mais nada, deixa eu te apresentar a ferraria: Aqui você pode selecionar um contrato, comprar moldes de cortes e chapas para atender o contrato e, quando tiver tudo pronto, você pode começar a [b]BATER O MARTELO[/b], para montar todas as armas do contrato.",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Aqui você acessa os contratos do jogo. Ele vai te falar quantas peças de cada arma que ele vai querer",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "coordenada": [450, 430],
-      "foco_pos": [150, 840],
-      "foco_tamanho": [190, 45]
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Aqui você acessa a loja. Você compra moldes e chapas aqui.",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "coordenada": [450, 430],
-      "foco_pos": [350, 840],
-      "foco_tamanho": [190, 45]
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Aqui você volta para a forja, que é exatamente aqui.",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "coordenada": [450, 430],
-      "foco_pos": [550, 840],
-      "foco_tamanho": [190, 45]
-    },
-    {
-      "nome": "Jorge",
-      "texto": "E, quando terminar tudo que tem para fazer no dia, aperte em Encerrar. Lembre-se que você tem taxas a pagar diariamente, então termine tudo antes de prosseguir!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "coordenada": [450, 430],
-      "foco_pos": [750, 840],
-      "foco_tamanho": [190, 45]
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Lembre-se: você só pode encerrar um dia quando completar ao menos um contrato diário!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "coordenada": [450, 430],
-      "foco_pos": [750, 840],
-      "foco_tamanho": [190, 45]
-    }
+	{
+	  "nome": "Jorge",
+	  "texto": "Antes de mais nada, deixa eu te apresentar a ferraria: Aqui você pode selecionar um contrato, comprar moldes de cortes e chapas para atender o contrato e, quando tiver tudo pronto, você pode começar a [b]BATER O MARTELO[/b], para montar todas as armas do contrato.",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Aqui você acessa os contratos do jogo. Ele vai te falar quantas peças de cada arma que ele vai querer",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "coordenada": [450, 430],
+	  "foco_pos": [150, 840],
+	  "foco_tamanho": [190, 45]
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Aqui você acessa a loja. Você compra moldes e chapas aqui.",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "coordenada": [450, 430],
+	  "foco_pos": [350, 840],
+	  "foco_tamanho": [190, 45]
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Aqui você volta para a forja, que é exatamente aqui.",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "coordenada": [450, 430],
+	  "foco_pos": [550, 840],
+	  "foco_tamanho": [190, 45]
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "E, quando terminar tudo que tem para fazer no dia, aperte em Encerrar. Lembre-se que você tem taxas a pagar diariamente, então termine tudo antes de prosseguir!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "coordenada": [450, 430],
+	  "foco_pos": [750, 840],
+	  "foco_tamanho": [190, 45]
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Lembre-se: você só pode encerrar um dia quando completar ao menos um contrato diário!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "coordenada": [450, 430],
+	  "foco_pos": [750, 840],
+	  "foco_tamanho": [190, 45]
+	}
   ],
 
 
 
 
   "primeira_loja": [
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Bem-vindo à [b]LOJA[/b]! Aqui você usa seu dinheiro para liberar novas combinações de corte. Quanto mais padrões você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
-    },
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Você pode comprar qualquer [b]MOLDE DE CORTE[/b] disponível pelo botão de compra!",
-      "foco_pos": [710, 145],
-      "foco_tamanho": [170, 50]
-    },
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Além disso, para conseguir utilizar os moldes, você vai precisar comprar chapas também!",
-      "coordenada": [450,450],
-      "foco_pos": [440, 770],
-      "foco_tamanho": [240, 50]
-    },
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Compre algumas para testar!",
-      "coordenada": [450,450]
-    }
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Bem-vindo à [b]LOJA[/b]! Aqui você usa seu dinheiro para liberar novas combinações de corte. Quanto mais padrões você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Você pode comprar qualquer [b]MOLDE DE CORTE[/b] disponível pelo botão de compra!",
+	  "foco_pos": [710, 145],
+	  "foco_tamanho": [170, 50]
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Além disso, para conseguir utilizar os moldes, você vai precisar comprar chapas também!",
+	  "coordenada": [450,450],
+	  "foco_pos": [440, 770],
+	  "foco_tamanho": [240, 50]
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Compre algumas para testar!",
+	  "coordenada": [450,450]
+	}
   ],
 
 
 
   "primeiro_mural": [
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Este é o [b]Mural de Contratos[/b]. Aqui você escolhe quais pedidos a ferraria vai atender hoje. Fique de olho na demanda de armas e na recompensa antes de aceitar!"
-    }, 
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Quando quiser escolher um contrato, clique no botão 'aceitar contrato' para ele ser enviado a sua ferraria!",
-      "coordenada": [450, 330],
-      "foco_pos": [450, 270],
-      "foco_tamanho": [800, 70]
-    }
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Este é o [b]Mural de Contratos[/b]. Aqui você escolhe quais pedidos a ferraria vai atender hoje. Fique de olho na demanda de armas e na recompensa antes de aceitar!"
+	}, 
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Quando quiser escolher um contrato, clique no botão 'aceitar contrato' para ele ser enviado a sua ferraria!",
+	  "coordenada": [450, 330],
+	  "foco_pos": [450, 270],
+	  "foco_tamanho": [800, 70]
+	}
   ],
 
 
 
   "primeiro_contrato_escolhido1": [
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato.",
-      "coordenada": [620,330]
-    },
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Selecione a quantidade de vezes que você vai utilizar cada molde para montar todas as armas necessárias!",
-      "coordenada": [620,330],
-      "foco_pos": [340, 570],
-      "foco_tamanho": [70, 50]
-    }
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato.",
+	  "coordenada": [620,330]
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Selecione a quantidade de vezes que você vai utilizar cada molde para montar todas as armas necessárias!",
+	  "coordenada": [620,330],
+	  "foco_pos": [340, 570],
+	  "foco_tamanho": [70, 50]
+	}
   ],
 
   "primeiro_contrato_escolhido2": [
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato.",
-      "coordenada": [620,330]
-    },
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Mas olhe só! Você ainda não comprou nenhum molde para realizar ele.",
-      "coordenada": [620,330]
-    },
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Acesse a loja para que você compre alguns moldes!",
-      "coordenada": [620,330]
-    }
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato.",
+	  "coordenada": [620,330]
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Mas olhe só! Você ainda não comprou nenhum molde para realizar ele.",
+	  "coordenada": [620,330]
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Acesse a loja para que você compre alguns moldes!",
+	  "coordenada": [620,330]
+	}
   ],
 
 
 
   "primeiro_desperdicio": [
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "coordenada": [615, 450],
-      "foco_pos": [135, 730],
-      "foco_tamanho": [130, 40],
-      "texto": "Preste atenção! Aquela barra [b]VERMELHA[/b] ali embaixo apareceu. Isso significa [b]DESPERDICIO[/b]! "
-    },
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "coordenada": [615, 450],
-      "foco_pos": [135, 730],
-      "foco_tamanho": [130, 40],
-      "texto": "Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
-    },
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "coordenada": [615, 450],
-      "texto": "É normal desperdiçar, às vezes o molde que você vai usar vai ultrapassar o limite, mas é sempre bom evitar e fazer escolhas mais econômicas!"
-    }
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "coordenada": [615, 450],
+	  "foco_pos": [135, 730],
+	  "foco_tamanho": [130, 40],
+	  "texto": "Preste atenção! Aquela barra [b]VERMELHA[/b] ali embaixo apareceu. Isso significa [b]DESPERDICIO[/b]! "
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "coordenada": [615, 450],
+	  "foco_pos": [135, 730],
+	  "foco_tamanho": [130, 40],
+	  "texto": "Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "coordenada": [615, 450],
+	  "texto": "É normal desperdiçar, às vezes o molde que você vai usar vai ultrapassar o limite, mas é sempre bom evitar e fazer escolhas mais econômicas!"
+	}
   ],
 
   "primeiro_contrato_concluido":[
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Você concluiu seu primeiro contrato! Viu como é importante economizar as chapas utilizadas?"
-    },
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Sempre tente chegar no valor mínimo em todos os contratos para conseguir um bônus em dinheiro."
-    }
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Você concluiu seu primeiro contrato! Viu como é importante economizar as chapas utilizadas?"
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Sempre tente chegar no valor mínimo em todos os contratos para conseguir um bônus em dinheiro."
+	}
   ],
 
   "primeira_modelagem": [
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Chega de adivinhar de cabeça! Esta é a tela de [b]Modelagem Matemática[/b]. Aqui nós transformamos a demanda em Restrições e os moldes em padrões de corte e variáveis de decisão. Teste com algum contrato!"
-    }
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Chega de adivinhar de cabeça! Esta é a tela de [b]Modelagem Matemática[/b]. Aqui nós transformamos a demanda em Restrições e os moldes em padrões de corte e variáveis de decisão. Teste com algum contrato!"
+	}
   ],
 
   "primeira_forja":[
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Bem vindo à Fornalha! Aqui você irá criar as armas do seu contrato!"
-    },
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Bem vindo à Fornalha! Aqui você irá criar as armas do seu contrato!"
+	},
 
-    {
-      "nome": "Jorge",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-      "texto": "Tudo o que você tem que fazer é apertar a tecla no tempo certo para fazer a arma! Utilize as setas do seu teclado para isso."
-    }
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Tudo o que você tem que fazer é apertar a tecla no tempo certo para fazer a arma! Utilize as setas do seu teclado para isso."
+	}
 
   ],
 
   "2": [
-    {
-      "nome": "Jorge",
-      "texto": "Ufa, o primeiro dia foi tranquilo. Mas olhe o chão da ferraria... está cheio de retalhos e pedaços de metal que sobraram dos cortes. Seria bom termos uma noção do quanto a gente está desperdiçando,né.",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": " Agora podemos ver o quanto estamos gastando em cada molde",
-      "coordenada": [650, 130],
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Use isso como um guia para comprar moldes: moldes que desperdiçam muito devem ser evitados!",
-      "coordenada": [650, 130],
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    }
+	{
+	  "nome": "Jorge",
+	  "texto": "Ufa, o primeiro dia foi tranquilo. Mas olhe o chão da ferraria... está cheio de retalhos e pedaços de metal que sobraram dos cortes. Seria bom termos uma noção do quanto a gente está desperdiçando,né.",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": " Agora podemos ver o quanto estamos gastando em cada molde",
+	  "coordenada": [650, 130],
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Use isso como um guia para comprar moldes: moldes que desperdiçam muito devem ser evitados!",
+	  "coordenada": [650, 130],
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	}
   ],
 
 
   "3": [
-    {
-      "nome": "Jorge",
-      "texto": "Os pedidos estão aumentando! A Guarda Real enviou vários contratos com muitas armas!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "[shake rate=15 level=4]Minha cabeça está dando nós![/shake] Se eu coloco mais do Padrão 1 para suprir as adagas, acabo fazendo machados demais e estourando o estoque de chapas. Tentar adivinhar a combinação perfeita está ficando difícil...",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    }
+	{
+	  "nome": "Jorge",
+	  "texto": "Os pedidos estão aumentando! A Guarda Real enviou vários contratos com muitas armas!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "[shake rate=15 level=4]Minha cabeça está dando nós![/shake] Se eu coloco mais do Padrão 1 para suprir as adagas, acabo fazendo machados demais e estourando o estoque de chapas. Tentar adivinhar a combinação perfeita está ficando difícil...",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	}
   ],
 
 
   "4": [
-    {
-      "nome": "Jorge",
-      "texto": "Chega! [shake rate=20 level=8]Não dá mais![/shake] O contrato de hoje exige dezenas de armas. Passar horas combinando números de cabeça vai falir a ferraria ou me deixar louco.",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Espera, o que é esse livro? Modelagem Matemática? É algum livro do mestre?",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Tem até uma anotação do mestre aqui atrás do livro. ",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Mestre Gato",
-      "texto": "'Jorge, se tiver problemas em resolver esses problemas de cabeça e precisar de uma ajudinha, esse livro é a solução! '",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Certo! Entendi!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    },
-    {
-      "nome": "Jorge",
-      "texto": "Para saber mais sobre o tutorial de Modelagem Matemática, clique nesse botão!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    }
+	{
+	  "nome": "Jorge",
+	  "texto": "Chega! [shake rate=20 level=8]Não dá mais![/shake] O contrato de hoje exige dezenas de armas. Passar horas combinando números de cabeça vai falir a ferraria ou me deixar louco.",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Espera, o que é esse livro? Modelagem Matemática? É algum livro do mestre?",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Tem até uma anotação do mestre aqui atrás do livro. ",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "'Jorge, se tiver problemas em resolver esses problemas de cabeça e precisar de uma ajudinha, esse livro é a solução! '",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Certo! Entendi!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Para saber mais sobre o tutorial de Modelagem Matemática, clique nesse botão!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	}
   ],
 
   "treinamento_modelagem": [
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Seguinte, Jorge. Irei te treinar nesse negócio de Modelagem Matemática.",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Seguinte, Jorge. Irei te treinar nesse negócio de Modelagem Matemática.",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
 		{
-      "nome": "Mestre Gato", 
-      "texto": "Pensa que é uma forma de representar os problemas do nosso mundo em uma linguagem matemática. Consequentemente, estamos tentando, através da matemática, procurar respostas para esses problemas do mundo real!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	  "nome": "Mestre Gato", 
+	  "texto": "Pensa que é uma forma de representar os problemas do nosso mundo em uma linguagem matemática. Consequentemente, estamos tentando, através da matemática, procurar respostas para esses problemas do mundo real!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Como deu para ver, você tem um problema para lidar: tentar resolver contratos mais complexos tentando gastar o mínimo possível de chapas. De cabeça é um problema complexo, por isso precisamos de uma modelagem para esse problema!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Como deu para ver, você tem um problema para lidar: tentar resolver contratos mais complexos tentando gastar o mínimo possível de chapas. De cabeça é um problema complexo, por isso precisamos de uma modelagem para esse problema!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Esse problema que você está lidando é chamado de [b]O PROBLEMA DO CORTE UNIDIMENSIONAL[/b]. Ele é unidimensional porque a chapa tem uma largura fixa e nós só cortamos ao longo de uma dimensão. ",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
-    
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Esse problema que você está lidando é chamado de [b]O PROBLEMA DO CORTE UNIDIMENSIONAL[/b]. Ele é unidimensional porque a chapa tem uma largura fixa e nós só cortamos ao longo de uma dimensão. ",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
+	
 			
-    {
-      "nome": "Mestre Gato",
-      "texto": "Isso que você tá vendo aqui é uma modelagem matemática para o problema do corte. ",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300],
-      "foco_pos": [450, 120],
-      "foco_tamanho": [500, 200]
-    },
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "Isso que você tá vendo aqui é uma modelagem matemática para o problema do corte. ",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 300],
+	  "foco_pos": [450, 120],
+	  "foco_tamanho": [500, 200]
+	},
 
-    {
-      "nome": "Mestre Gato",
-      "texto": "A parte de cima te fala que queremos o menor valor possível de cortes, já que, para cada novo corte que fizermos, teremos que usar uma chapa nova. ",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300],
-      "foco_pos": [450, 120],
-      "foco_tamanho": [500, 200]
-    },
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "A parte de cima te fala que queremos o menor valor possível de cortes, já que, para cada novo corte que fizermos, teremos que usar uma chapa nova. ",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 300],
+	  "foco_pos": [450, 120],
+	  "foco_tamanho": [500, 200]
+	},
 
-    {
-      "nome": "Mestre Gato",
-      "texto": "O menor valor possível é chamado de [b]SOLUÇÃO ÓTIMA[/b]",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300],
-      "foco_pos": [450, 120],
-      "foco_tamanho": [500, 200]
-    },
-
-		{
-      "nome": "Mestre Gato",
-      "texto": "A parte debaixo te fala as restrições do problema, indicando o quanto que iremos cortar de cada arma para cada molde que selecionarmos.",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300],
-      "foco_pos": [450, 120],
-      "foco_tamanho": [500, 200]
-    },
-
-    {
-      "nome": "Mestre Gato",
-      "texto": "Tá vendo esses dois moldes aqui? Eles são chamados no problema de [b]PADRÕES DE CORTE[/b] e são eles que estão nessa modelagem.",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 200],
-      "foco_pos": [435, 500],
-      "foco_tamanho": [680, 120]
-    },
-
-    {
-      "nome": "Mestre Gato",
-      "texto": "O primeiro representa o padrão de corte 1, e ele produz 3 adagas. O segundo representa o padrão de corte 2, e ele produz 5 adagas ",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 200],
-      "foco_pos": [435, 500],
-      "foco_tamanho": [680, 120]
-    },
-
-    {
-      "nome": "Mestre Gato",
-      "texto": "Traduzindo o que está em cima: Ele quer que minimizamos a quantidade de padrões de cortes usados, isto é, ter o menor valor possível.",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300],
-      "foco_pos": [450, 120],
-      "foco_tamanho": [500, 200]
-    },
-    {
-      "nome": "Mestre Gato",
-      "texto": "E que, para conseguir o menor valor possível, a quantidade de adagas produzidas deve ser maior ou igual a 12! ",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300],
-      "foco_pos": [450, 120],
-      "foco_tamanho": [500, 200]
-    },
-    {
-      "nome": "Mestre Gato",
-      "texto": "Nesse problema, o valor 12 representa a nossa [b]DEMANDA[/b]: o valor mínimo necessário que esta restrição impõe no problema.",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300],
-      "foco_pos": [450, 120],
-      "foco_tamanho": [500, 200]
-    },
-
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Isso fará mais sentido quando tivermos outras demandas na conta, mas, por ora, vamos nos limitar a apenas [b]UMA PEÇA[/b].",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "O menor valor possível é chamado de [b]SOLUÇÃO ÓTIMA[/b]",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 300],
+	  "foco_pos": [450, 120],
+	  "foco_tamanho": [500, 200]
+	},
 
 		{
-      "nome": "Mestre Gato", 
-      "texto": "Tente resolver esses problemas agora! Coloque os valores que você irá utilizar cada padrão de corte para que atenda todas restrições e atinja o mínimo.",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    }
+	  "nome": "Mestre Gato",
+	  "texto": "A parte debaixo te fala as restrições do problema, indicando o quanto que iremos cortar de cada arma para cada molde que selecionarmos.",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 300],
+	  "foco_pos": [450, 120],
+	  "foco_tamanho": [500, 200]
+	},
+
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "Tá vendo esses dois moldes aqui? Eles são chamados no problema de [b]PADRÕES DE CORTE[/b] e são eles que estão nessa modelagem.",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 200],
+	  "foco_pos": [435, 500],
+	  "foco_tamanho": [680, 120]
+	},
+
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "O primeiro representa o padrão de corte 1, e ele produz 3 adagas. O segundo representa o padrão de corte 2, e ele produz 5 adagas ",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 200],
+	  "foco_pos": [435, 500],
+	  "foco_tamanho": [680, 120]
+	},
+
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "Traduzindo o que está em cima: Ele quer que minimizamos a quantidade de padrões de cortes usados, isto é, ter o menor valor possível.",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 300],
+	  "foco_pos": [450, 120],
+	  "foco_tamanho": [500, 200]
+	},
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "E que, para conseguir o menor valor possível, a quantidade de adagas produzidas deve ser maior ou igual a 12! ",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 300],
+	  "foco_pos": [450, 120],
+	  "foco_tamanho": [500, 200]
+	},
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "Nesse problema, o valor 12 representa a nossa [b]DEMANDA[/b]: o valor mínimo necessário que esta restrição impõe no problema.",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 300],
+	  "foco_pos": [450, 120],
+	  "foco_tamanho": [500, 200]
+	},
+
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Isso fará mais sentido quando tivermos outras demandas na conta, mas, por ora, vamos nos limitar a apenas [b]UMA PEÇA[/b].",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
+
+		{
+	  "nome": "Mestre Gato", 
+	  "texto": "Tente resolver esses problemas agora! Coloque os valores que você irá utilizar cada padrão de corte para que atenda todas restrições e atinja o mínimo.",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	}
   ],
 
   "treinamento_modelagem2":[
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Muito bem! Você descobriu uma forma de encontrar o menor valor possível para atender aquele problema!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Muito bem! Você descobriu uma forma de encontrar o menor valor possível para atender aquele problema!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Dentro daquela Modelagem Matemática, existe um algoritmo que procura o menor valor possível para aquele problema. São várias iterações que ocorrem até chegar no valor certo.",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Dentro daquela Modelagem Matemática, existe um algoritmo que procura o menor valor possível para aquele problema. São várias iterações que ocorrem até chegar no valor certo.",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Mas não vamos nos preocupar com isso agora, quero te mostrar outra coisa.",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Mas não vamos nos preocupar com isso agora, quero te mostrar outra coisa.",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Veja só! Agora essa nova modelagem pede novas armas!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Veja só! Agora essa nova modelagem pede novas armas!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
-    {
-      "nome": "Mestre Gato",
-      "texto": "Agora essa modelagem possui 3 armas nas demandas!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 300],
-      "foco_pos": [450, 150],
-      "foco_tamanho": [600, 400]
-    },
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "Agora essa modelagem possui 3 armas nas demandas!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 300],
+	  "foco_pos": [450, 150],
+	  "foco_tamanho": [600, 400]
+	},
 
-    {
-      "nome": "Mestre Gato",
-      "texto": "E agora temos muito mais padrões de corte nesse problema!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-      "coordenada": [450, 200],
-      "foco_pos": [435, 600],
-      "foco_tamanho": [680, 220]
-    },
+	{
+	  "nome": "Mestre Gato",
+	  "texto": "E agora temos muito mais padrões de corte nesse problema!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
+	  "coordenada": [450, 200],
+	  "foco_pos": [435, 600],
+	  "foco_tamanho": [680, 220]
+	},
 
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Uma coisa que é muito importante te falar: O problema encontra apenas o valor mínimo para resolvê-lo, mas COMO você vai resolver ele depende dos padrões selecionados. Isso significa que uma modelagem pode ter diversas formas de ser resolvido!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Uma coisa que é muito importante te falar: O problema encontra apenas o valor mínimo para resolvê-lo, mas COMO você vai resolver ele depende dos padrões selecionados. Isso significa que uma modelagem pode ter diversas formas de ser resolvido!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Nesse problema em questão, existem 3 formas de selecionar os padrões de corte de forma que você atenda a demanda e gaste o mínimo possível. Você sabe quais são? Vou te dar uma dica: O algoritmo para esse problema diz que é necessário [b]APENAS 3 CHAPAS[/b]",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    }
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Nesse problema em questão, existem 3 formas de selecionar os padrões de corte de forma que você atenda a demanda e gaste o mínimo possível. Você sabe quais são? Vou te dar uma dica: O algoritmo para esse problema diz que é necessário [b]APENAS 3 CHAPAS[/b]",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	}
 
   ],
 
   "treinamento_modelagem3":[
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Perfeito! Agora temos mais um último problema!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Perfeito! Agora temos mais um último problema!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Esse é ainda mais complexo, mas tenho uma boa notícia! Essa será a última vez que você irá fazer esse treinamento e também a última vez que você irá selecionar de cabeça esses padrões de cortes!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Esse é ainda mais complexo, mas tenho uma boa notícia! Essa será a última vez que você irá fazer esse treinamento e também a última vez que você irá selecionar de cabeça esses padrões de cortes!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Tem certas coisas no mundo que precisamos de ferramentas computacionais para encontrar a melhor solução. Usamos isso em quase tudo na vida: Contabilidade, trajeto para ir a algum lugar e, no nosso caso, resolver contratos na minha ferraria!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    },
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Tem certas coisas no mundo que precisamos de ferramentas computacionais para encontrar a melhor solução. Usamos isso em quase tudo na vida: Contabilidade, trajeto para ir a algum lugar e, no nosso caso, resolver contratos na minha ferraria!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	},
 
-    {
-      "nome": "Mestre Gato", 
-      "texto": "Quando terminar essa última modelagem, você terá acesso a esse algoritmo para resolver os contratos da ferraria. Você já entendeu como funciona aqui, então deixarei com você agora, boa sorte!",
-      "retrato": "res://Sprite/gatinhos/Ferreiro.png"
-    }
+	{
+	  "nome": "Mestre Gato", 
+	  "texto": "Quando terminar essa última modelagem, você terá acesso a esse algoritmo para resolver os contratos da ferraria. Você já entendeu como funciona aqui, então deixarei com você agora, boa sorte!",
+	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
+	}
 
   ],
 
 
 
   "5": [
-    {
-      "nome": "Jorge",
-      "texto": "Agora sim! Com a tela de Formulação Matemática ativada, posso ver as equações se formando em tempo real enquanto seleciono quais variáveis farão parte do modelo.",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    }
+	{
+	  "nome": "Jorge",
+	  "texto": "Agora sim! Com a tela de Formulação Matemática ativada, posso ver as equações se formando em tempo real enquanto seleciono quais variáveis farão parte do modelo.",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	}
   ],
 
   "6":[
-    {
-      "nome": "Jorge",
-      "texto": "Finalmente tá mais tranquilo de resolver os contratos! Eles ficam mais complexos, mas esse algoritmo resolve tudo!",
-      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
-    }
+	{
+	  "nome": "Jorge",
+	  "texto": "Finalmente tá mais tranquilo de resolver os contratos! Eles ficam mais complexos, mas esse algoritmo resolve tudo!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	}
   ],
 
 
   "dia_final":[
-    {
+	{
 			"nome": "Mestre Gato",
 			"texto": "Jorge! Voltei da minha jornada pelos reinos distantes. Como estão os negócios?",
 			"retrato": "res://Sprite/gatinhos/Ferreiro.png"

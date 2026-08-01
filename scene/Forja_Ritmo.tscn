@@ -50,6 +50,7 @@ color = Color(0.32941177, 0.32941177, 0.32941177, 0.7411765)
 [node name="ArmasContainer" type="Node2D" parent="." unique_id=1822504001]
 
 [node name="PecaRitmo" parent="ArmasContainer" unique_id=1237597533 instance=ExtResource("4_4vvbd")]
+visible = false
 position = Vector2(429, 392)
 
 [node name="FeedbackLabel" type="Label" parent="." unique_id=1915888874]
