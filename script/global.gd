@@ -2,7 +2,7 @@ extends Node
 
 const CUSTO_DIARIO = 200
 const DIA_FINAL: int = 7
-const DINHEIRO_INICIAL: int = 1200
+const DINHEIRO_INICIAL: int = 12000
 
 var tamanho_container: float = 500.0
 var dia_atual: int = 1
@@ -33,7 +33,7 @@ var pecas_disponiveis: Array = [
 	{"nome": "Espada M", "largura": 87.0, "caminho_textura": "res://Sprite/Esp_Larg-novo.png"},
 	{"nome": "Espada G", "largura": 123.0, "caminho_textura": "res://Sprite/Esp_Grande-novo.png"},
 	{"nome": "Machado", "largura": 89.0, "caminho_textura": "res://Sprite/machado-novo.png"},
-	{"nome": "Escudo", "largura": 67.0, "caminho_textura": "res://Sprite/escudo_larg-novo.png"},
+	{"nome": "Maça", "largura": 89.0, "caminho_textura": "res://Sprite/maca.png"},
 	{"nome": "Lança", "largura": 211.0, "caminho_textura": "res://Sprite/lanca-novo.png"}
 ]
 
