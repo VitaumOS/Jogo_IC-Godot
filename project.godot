@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 
 Global="*res://script/global.gd"
 Dialogo="*uid://dnci0t7lpn3u5"
+GerenciadorSom="*uid://cgo22wklta1yq"
 
 [display]
 

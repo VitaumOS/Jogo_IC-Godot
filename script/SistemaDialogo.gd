@@ -4,7 +4,8 @@ signal dialogo_iniciado
 signal dialogo_encerrado
 signal fala_completada(indice: int)
 
-# --- Nós do Diálogo Clássico (Padrão) ---
+
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var retrato_sprite = $RetratoControl/RetratoSprite
 @onready var nome_label = $Control/NomeLabel
 @onready var texto_label = $Control/TextoLabel
@@ -14,7 +15,6 @@ signal fala_completada(indice: int)
 @onready var retrato_control_classico = $RetratoControl
 @onready var tela_foco = $TelaFoco
 
-# --- Novos Nós para o Sistema de Miniaturas (Por Coordenada) ---
 @onready var agrupador_miniatura = $AgrupadorMiniatura
 @onready var retrato_sprite_mini = $AgrupadorMiniatura/RetratoSprite_mini
 @onready var background_mini = $AgrupadorMiniatura/Background_mini
@@ -22,11 +22,12 @@ signal fala_completada(indice: int)
 @onready var nome_label_mini = $AgrupadorMiniatura/Control_mini/NomeLabel
 @onready var texto_label_mini = $AgrupadorMiniatura/Control_mini/TextoLabel
 
-# Variáveis de controle
 var _lista_falas: Array = []
 var _indice_atual: int = 0
 var _esta_digitando: bool = false
 var _tween_digitacao: Tween
+
+var som_tecla = preload("res://sounds/SFX_RetroSinglev3.wav")
 
 func _ready():
 	visible = false
@@ -34,7 +35,6 @@ func _ready():
 	_esconder_miniaturas()
 	process_mode = PROCESS_MODE_ALWAYS
 
-## Função principal para iniciar uma sequência de diálogo
 func iniciar_dialogo(falas: Array):
 	if falas.is_empty():
 		return
@@ -49,7 +49,6 @@ func iniciar_dialogo(falas: Array):
 		if fala.has("foco_tamanho") and fala["foco_tamanho"] is Array:
 			fala["foco_tamanho"] = Vector2(fala["foco_tamanho"][0], fala["foco_tamanho"][1])
 	
-	# Trata automaticamente coordenadas vindas de arquivos JSON [x, y] para Vector2
 	for fala in _lista_falas:
 		if fala.has("coordenada") and fala["coordenada"] is Array:
 			var arr_coord = fala["coordenada"]
@@ -76,7 +75,6 @@ func _exibir_fala_atual():
 	seta_passar.visible = false
 	
 	if fala.has("foco_pos") and fala.has("foco_tamanho"):
-		# Passa os valores convertidos diretamente para o ShaderMaterial
 		var mat = tela_foco.material as ShaderMaterial
 		if mat:
 			mat.set_shader_parameter("posicao_foco", fala["foco_pos"])
@@ -123,6 +121,19 @@ func _iniciar_digitacao(label_alvo: RichTextLabel):
 	_tween_digitacao.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	_tween_digitacao.tween_property(label_alvo, "visible_characters", total_caracteres, duracao)
 	_tween_digitacao.finished.connect(_on_digitacao_finalizada)
+	
+	var caracteres_antigos = 0
+	while _esta_digitando:
+		var chars_atuais = label_alvo.visible_characters
+		if chars_atuais > caracteres_antigos:
+			var texto_atual = label_alvo.text
+			if chars_atuais <= texto_atual.length():
+				var char_atual = texto_atual[chars_atuais - 1]
+				if char_atual != " " and char_atual != "\n":
+					audio_player.stream = som_tecla
+					audio_player.play()
+			caracteres_antigos = chars_atuais
+		await get_tree().process_frame
 
 func _pular_digitacao():
 	if _tween_digitacao and _tween_digitacao.is_running():

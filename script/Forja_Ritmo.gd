@@ -27,7 +27,15 @@ var total_pecas = 0
 var modo_duas_esteiras = false
 var em_tutorial: bool = false
 
+# --- VARIÁVEIS DE ÁUDIO ---
+var audio_player: AudioStreamPlayer
+var som_acerto = preload("res://sounds/blacksmith-hammering_01.wav") 
+var som_erro = preload("res://sounds/blacksmith-hammering_01.wav")   
+
 func _ready():
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	
 	var lista_nomes = Global.armas_na_esteira_atual
 	total_pecas = lista_nomes.size()
 	_atualiza_contador()
@@ -139,8 +147,14 @@ func _processar_resultado(peca_principal: Node2D, sucesso: bool):
 	if sucesso:
 		acertos += 2 if modo_duas_esteiras else 1
 		_atualizar_feedback("PERFEITO!", Color.GREEN)
+		# Toca som de acerto
+		audio_player.stream = som_acerto
+		audio_player.play()
 	else:
 		_atualizar_feedback("ERROU!", Color.RED)
+		# Toca som de erro
+		audio_player.stream = som_erro
+		audio_player.play()
 		
 	if modo_duas_esteiras:
 		_remover_par_de_baixo_associado(peca_principal)
