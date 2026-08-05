@@ -1,7 +1,9 @@
 {
     "status": "Optimal",
-    "chapas_usadas": 2,
+    "chapas_usadas": 3,
     "solucao": [
+        0,
+        1,
         2
     ]
 }

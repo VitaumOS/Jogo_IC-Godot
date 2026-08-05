@@ -27,10 +27,9 @@ var total_pecas = 0
 var modo_duas_esteiras = false
 var em_tutorial: bool = false
 
-# --- VARIÁVEIS DE ÁUDIO ---
 var audio_player: AudioStreamPlayer
 var som_acerto = preload("res://sounds/blacksmith-hammering_01.wav") 
-var som_erro = preload("res://sounds/blacksmith-hammering_01.wav")   
+var som_erro = preload("res://sounds/blacksmith-hammering_01.wav")    
 
 func _ready():
 	audio_player = AudioStreamPlayer.new()
@@ -145,14 +144,19 @@ func _checar_batida(tecla: String):
 
 func _processar_resultado(peca_principal: Node2D, sucesso: bool):
 	if sucesso:
-		acertos += 2 if modo_duas_esteiras else 1
+		var pontos = 1
+		if modo_duas_esteiras:
+			var idx = armas_na_fila.find(peca_principal)
+			if idx != -1 and idx + 1 < armas_na_fila.size():
+				var peca_baixo = armas_na_fila[idx + 1]
+				if peca_baixo.get_node("AreaLetra").get_meta("tecla") == "NENHUMA":
+					pontos = 2
+		acertos = min(total_pecas, acertos + pontos)
 		_atualizar_feedback("PERFEITO!", Color.GREEN)
-		# Toca som de acerto
 		audio_player.stream = som_acerto
 		audio_player.play()
 	else:
 		_atualizar_feedback("ERROU!", Color.RED)
-		# Toca som de erro
 		audio_player.stream = som_erro
 		audio_player.play()
 		
