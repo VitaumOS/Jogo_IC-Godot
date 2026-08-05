@@ -4,6 +4,8 @@ var cena_padrao_visual = load("res://scene/aux_scene/Padrao_Corte.tscn")
 var restricao = load("res://scene/aux_scene/restricao.tscn")
 var miniatura = load("res://scene/aux_scene/miniatura_modelo_chapa.tscn")
 var termo_restricao = load("res://scene/aux_scene/termo_restricao.tscn")
+var cena_loading_preload = load("res://scene/aux_scene/loading.tscn")
+var padrao_corte_model = load("res://scene/aux_scene/padrao_corte_modelagem.tscn")
 
 @onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao/FuncaoObjetivo
 @onready var container_funcao = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao
@@ -26,13 +28,14 @@ var OUTPUT_FILE_PATH: String:
 			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/pulp_solution.json")
 
 
-var lista_padroes_disponiveis: Array = []       
-var padroes_selecionados_indices: Array = []    
-var inputs_demanda: Dictionary = {}              
+var lista_padroes_disponiveis: Array = []
+var padroes_selecionados_indices: Array = []
+var inputs_demanda: Dictionary = {}
+
+var _thread: Thread
+var _instancia_loading: Control
 
 func _ready() -> void:
-	
-	# Carrega os padrões salvos do inventário do jogador
 	if Global.padroes_desbloqueados != null:
 		lista_padroes_disponiveis = Global.padroes_desbloqueados
 	else:
@@ -48,28 +51,27 @@ func _gerar_lista_direita_padroes() -> void:
 	for child in container_padroes_selecao.get_children():
 		child.queue_free()
 	
-	var i =0
+	var i = 0
 	for padrao in Global.padroes_desbloqueados:
-		var h_box_item = HBoxContainer.new()
-		h_box_item.custom_minimum_size = Vector2(0, 60)
+		var padrao_corte_mod = padrao_corte_model.instantiate()
+		var btn_toggle = padrao_corte_mod.find_child("Button", true, false) as Button
+		var instancia_visual = padrao_corte_mod.find_child("PadraoCorte", true, false)
 		
-		var btn_toggle = Button.new()
-		btn_toggle.toggle_mode = true
-		btn_toggle.text = " Incluir "
-		btn_toggle.custom_minimum_size = Vector2(90, 0)
-		h_box_item.add_child(btn_toggle)
-		
-		var instancia_visual = cena_padrao_visual.instantiate()
-		h_box_item.add_child(instancia_visual)
+		if btn_toggle:
+			btn_toggle.toggle_mode = true
 			
-		var visualizador = instancia_visual.find_child("Visualizador_Padrao")
-		_desenhar_sprites_no_visualizador(visualizador, padrao.get("composicao", []))
+		if instancia_visual:
+			var visualizador = instancia_visual.find_child("Visualizador_Padrao", true, false)
+			if visualizador:
+				_desenhar_sprites_no_visualizador(visualizador, padrao.get("composicao", []))
 		
-		btn_toggle.toggled.connect(func(is_pressed):
-			_alternar_padrao_na_modelagem(i, is_pressed)
-		)
-		container_padroes_selecao.add_child(h_box_item)
-		i=i+1
+		var idx = i
+		if btn_toggle:
+			btn_toggle.toggled.connect(func(is_pressed):
+				_alternar_padrao_na_modelagem(idx, is_pressed)
+			)
+		container_padroes_selecao.add_child(padrao_corte_mod)
+		i += 1
 
 func _desenhar_sprites_no_visualizador(container: HBoxContainer, composicao: Array) -> void:
 	for i in range(composicao.size()):
@@ -88,7 +90,15 @@ func _desenhar_sprites_no_visualizador(container: HBoxContainer, composicao: Arr
 func _alternar_padrao_na_modelagem(idx_padrao: int, is_active: bool) -> void:
 	if is_active:
 		if not padroes_selecionados_indices.has(idx_padrao):
-			padroes_selecionados_indices.append(idx_padrao)
+			if padroes_selecionados_indices.size() < 5:
+				padroes_selecionados_indices.append(idx_padrao)
+			else:
+				var item = container_padroes_selecao.get_child(idx_padrao)
+				if item:
+					var btn = item.find_child("Button", true, false) as Button
+					if btn:
+						btn.set_pressed_no_signal(false)
+				return
 	else:
 		padroes_selecionados_indices.erase(idx_padrao)
 	_gerar_restricoes_demanda()
@@ -98,13 +108,28 @@ func _alternar_padrao_na_modelagem(idx_padrao: int, is_active: bool) -> void:
 func _reorganizar_texto_botoes() -> void:
 	var idx_atual = 0
 	for item in container_padroes_selecao.get_children():
-		var btn = item.get_child(0) as Button
-		if btn.is_pressed():
-			var posicao_na_equacao = padroes_selecionados_indices.find(idx_atual)
-			btn.text = " Ativo [%d] " % (posicao_na_equacao + 1)
-		else:
-			btn.text = " Incluir "
-	idx_atual += 1
+		var btn = item.find_child("Button", true, false) as Button
+		var minia = item.find_child("Miniatura*", true, false)
+		
+		if btn:
+			if btn.is_pressed():
+				var posicao_na_equacao = padroes_selecionados_indices.find(idx_atual)
+				if posicao_na_equacao != -1:
+					btn.text = "Ativo"
+					if minia:
+						minia.visible = true
+						var lbl_num = minia.find_child("Numero", true, false) as Label
+						if lbl_num:
+							lbl_num.text = str(posicao_na_equacao + 1)
+				else:
+					btn.set_pressed_no_signal(false)
+					if minia:
+						minia.visible = false
+			else:
+				btn.text = "Incluir"
+				if minia:
+					minia.visible = false
+		idx_atual += 1
 
 func _gerar_restricoes_demanda() -> void:
 	for child in container_restricoes.get_children():
@@ -139,7 +164,7 @@ func _gerar_restricoes_demanda() -> void:
 					primeiro_termo = false
 					
 					var termo = termo_restricao.instantiate()
-					termo.find_child("Qtd").text = str(qtd_na_chapa)        
+					termo.find_child("Qtd").text = str(qtd_na_chapa)
 					termo.find_child("Miniatura").find_child("Numero").text = str(j + 1)
 					lbl_tecnica.add_child(termo)
 			if primeiro_termo:
@@ -192,20 +217,31 @@ func _on_btn_resolver_pressed() -> void:
 		for i in range(Global.contrato_ativo.demanda.size()):
 			matriz_demanda_manual[i] = Global.contrato_ativo.demanda[i]
 
-	# Validação preventiva de segurança antes de disparar o processo externo
-	if not FileAccess.file_exists(PYTHON_EXE_PATH):
-		push_error("ERRO: Executável do solver de modelagem não encontrado em: " + PYTHON_EXE_PATH)
-		return
-
 	var args: Array[String] = []
 	args.append(str(matriz_demanda_manual))
-	
 	for comp in composicoes_enviadas:
 		args.append(str(comp))
-	
+
+	if cena_loading_preload:
+		_instancia_loading = cena_loading_preload.instantiate()
+		get_tree().root.add_child(_instancia_loading)
+
+	_thread = Thread.new()
+	_thread.start(_executar_solver_thread.bind(args))
+
+func _executar_solver_thread(args: Array) -> void:
 	var saida_terminal = []
 	var resultado_codigo = OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
 	
+	call_deferred("_finalizar_processamento", resultado_codigo)
+
+func _finalizar_processamento(resultado_codigo: int) -> void:
+	if _thread and _thread.is_alive():
+		_thread.wait_to_finish()
+
+	if _instancia_loading and is_instance_valid(_instancia_loading):
+		_instancia_loading.queue_free()
+
 	if resultado_codigo == 0:
 		if FileAccess.file_exists(OUTPUT_FILE_PATH):
 			var file = FileAccess.open(OUTPUT_FILE_PATH, FileAccess.READ)
@@ -228,6 +264,9 @@ func _on_btn_resolver_pressed() -> void:
 			else:
 				resultado_lbl.text = "Solver executado, mas não encontrou uma solução ótima."
 				resultado_lbl.modulate = Color.RED
+	else:
+		resultado_lbl.text = "Erro na execução do solver externo."
+		resultado_lbl.modulate = Color.RED
 
 func _on_btn_voltar_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
