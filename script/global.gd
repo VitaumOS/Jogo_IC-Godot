@@ -50,6 +50,34 @@ var contrato_ativo = null
 func _ready():
 	gerar_conteudo_do_dia()
 
+func resetar_jogo():
+	dia_atual = 1
+	dinheiro = DINHEIRO_INICIAL
+	ganhos_do_dia = 0
+	estoque_chapas = 0
+	recompensa_base = 0
+	recompensa_final = 0
+	cena_main = false
+	cena_loja = false
+	cena_contrato = false
+	alcancou_metas_contrato = false
+	fez_contrato_diario = false
+	finalizou_treino = false
+	finalizou_primeiro_contrato = false
+	finalizou_tutorial_primeiro_contrato = false
+	finalizou_tutorial_forja = false
+	chapas_usadas_pelo_jogador = 0
+	ultimo_desempenho_ritmo = -1.0
+	dialogos_vistos_hoje.clear()
+	contratos_disponiveis.clear()
+	padroes_na_loja.clear()
+	armas_na_esteira_atual.clear()
+	padroes_desbloqueados.clear()
+	contratos_concluidos.clear()
+	contrato_ativo = null
+	if has_meta("tutoriais_vistos"):
+		remove_meta("tutoriais_vistos")
+	gerar_conteudo_do_dia()
 
 ## Função adaptada para encontrar e rodar o diálogo na cena atual
 func _verificar_gatilho_tutorial(chave_tutorial: String) -> void:

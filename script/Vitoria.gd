@@ -30,4 +30,6 @@ func _mostrar_tela_vitoria():
 	botao_voltar.modulate.a = 0
 	tw.tween_property(botao_voltar, "modulate:a", 1.0, 2.0)
 	
-func _on_button_pressed(): get_tree().change_scene_to_file("res://scene/Telainicial.tscn")
+func _on_button_pressed(): 
+	Global.resetar_jogo()
+	get_tree().change_scene_to_file("res://scene/Telainicial.tscn")

@@ -4,7 +4,6 @@ extends Control
 @onready var btn_voltar = $BtnVoltar    
 
 func _ready():
-	# Inicializa o estado visual
 	titulo_faliu.modulate.a = 0
 	btn_voltar.visible = false
 	btn_voltar.disabled = true
@@ -37,11 +36,5 @@ func _mostrar_botao_final():
 	tween.tween_property(btn_voltar, "modulate:a", 1.0, 0.5)
 
 func _on_btn_voltar_pressed():
-	# Reset dos dados globais antes de voltar
-	Global.dinheiro = Global.DINHEIRO_INICIAL
-	Global.dia_atual = 1
-	Global.estoque_chapas = 0
-	Global.contrato_ativo = null
-	Global.contratos_concluidos.clear()
-	
+	Global.resetar_jogo()
 	get_tree().change_scene_to_file("res://scene/Telainicial.tscn")
