@@ -4,17 +4,30 @@ extends Control
 
 @onready var container_itens = $UI/ScrollContainer/VBoxItens
 @onready var label_feedback = $UI/LabelFeedback
-@onready var btn_comprar_chapa = $UI/PainelChapas/BtnComprarChapa 
+@onready var btn_comprar_chapa = $UI/PainelChapas/BtnComprarChapa
+@onready var btn_upgrade_todos_padroes = $UI/PainelChapas/Button
 
 ## Lista de padrões inicialmente disponíveis
 var catalogo_loja = []
 var padrao_tamanho = 0.0
+var preco_upgrade_todos: int = 500
 
 func _ready():
 	catalogo_loja = Global.padroes_na_loja
 	btn_comprar_chapa.text = "Comprar Chapas (R$ %d)" % Global.preco_chapa
 	_gerar_itens_loja()
 	Global._verificar_gatilho_tutorial("primeira_loja")
+	_verificar_visibilidade_upgrade()
+
+func _verificar_visibilidade_upgrade() -> void:
+	var exibir = (Global.dia_atual >= 4) and !Global.upgrade_todos_padroes_comprado
+	btn_upgrade_todos_padroes.visible = exibir
+	
+func _on_btn_comprar_upgrade_todos_padroes_pressed() -> void:
+	if Global.dinheiro >= preco_upgrade_todos and not Global.upgrade_todos_padroes_comprado:
+		Global.dinheiro -= preco_upgrade_todos
+		Global.upgrade_todos_padroes_comprado = true
+		_verificar_visibilidade_upgrade()
 
 func _comprar_chapa():
 	if Global.dinheiro >= Global.preco_chapa:

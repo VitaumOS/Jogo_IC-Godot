@@ -18,8 +18,7 @@ func _atualizar_texto() -> void:
 	var texto = "Processando"
 	for i in range(_pontos):
 		texto += "."
-	if label_processando:
-		label_processando.text = texto
+	label_processando.text = texto
 	
 	_pontos += 1
 	if _pontos > 3:
