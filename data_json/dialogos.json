@@ -37,7 +37,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "coordenada": [450, 430],
 	  "foco_pos": [150, 840],
-	  "foco_tamanho": [190, 45]
+	  "foco_tamanho": [190, 50]
 	},
 	{
 	  "nome": "Jorge",
@@ -45,7 +45,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "coordenada": [450, 430],
 	  "foco_pos": [350, 840],
-	  "foco_tamanho": [190, 45]
+	  "foco_tamanho": [190, 50]
 	},
 	{
 	  "nome": "Jorge",
@@ -53,7 +53,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "coordenada": [450, 430],
 	  "foco_pos": [550, 840],
-	  "foco_tamanho": [190, 45]
+	  "foco_tamanho": [190, 50]
 	},
 	{
 	  "nome": "Jorge",
@@ -61,7 +61,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "coordenada": [450, 430],
 	  "foco_pos": [750, 840],
-	  "foco_tamanho": [190, 45]
+	  "foco_tamanho": [190, 50]
 	},
 	{
 	  "nome": "Jorge",
@@ -69,7 +69,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "coordenada": [450, 430],
 	  "foco_pos": [750, 840],
-	  "foco_tamanho": [190, 45]
+	  "foco_tamanho": [190, 50]
 	}
   ],
 
@@ -87,15 +87,15 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Você pode comprar qualquer [b]MOLDE DE CORTE[/b] disponível pelo botão de compra!",
 	  "foco_pos": [710, 145],
-	  "foco_tamanho": [170, 50]
+	  "foco_tamanho": [150, 50]
 	},
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Além disso, para conseguir utilizar os moldes, você vai precisar comprar chapas também!",
 	  "coordenada": [450,450],
-	  "foco_pos": [440, 770],
-	  "foco_tamanho": [240, 50]
+	  "foco_pos": [430, 770],
+	  "foco_tamanho": [260, 60]
 	},
 	{
 	  "nome": "Jorge",
@@ -138,7 +138,7 @@
 	  "texto": "Selecione a quantidade de vezes que você vai utilizar cada molde para montar todas as armas necessárias!",
 	  "coordenada": [620,330],
 	  "foco_pos": [350, 570],
-	  "foco_tamanho": [70, 50]
+	  "foco_tamanho": [60, 50]
 	}
   ],
 
@@ -170,7 +170,7 @@
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "coordenada": [615, 450],
-	  "foco_pos": [120, 730],
+	  "foco_pos": [115, 730],
 	  "foco_tamanho": [110, 40],
 	  "texto": "Preste atenção! Aquela barra [b]VERMELHA[/b] ali embaixo apareceu. Isso significa [b]DESPERDICIO[/b]! "
 	},
@@ -178,7 +178,7 @@
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "coordenada": [615, 450],
-	  "foco_pos": [120, 730],
+	  "foco_pos": [115, 730],
 	  "foco_tamanho": [110, 40],
 	  "texto": "Você cortou mais peças do que o cliente pediu. Cada pedaço que sobra é dinheiro jogado no lixo!"
 	},

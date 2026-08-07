@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvryhcfe4u3sh" path="res://script/Forja_Ritmo.gd" id="1_1oy20"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_ooc03"]
-[ext_resource type="Texture2D" uid="uid://ukp4n3dlw7r8" path="res://images/cobre.png" id="3_sd6ah"]
+[ext_resource type="Texture2D" uid="uid://bmu7d4woc55mp" path="res://images/cobre-novo.png" id="4_0cjbd"]
 [ext_resource type="PackedScene" uid="uid://bf7ivebfxw2wm" path="res://scene/aux_scene/Cena_peca_ritmo.tscn" id="4_4vvbd"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="5_6ar0e"]
 
@@ -25,11 +25,10 @@ offset_top = 434.0
 offset_right = 872.0
 offset_bottom = 484.0
 
-[node name="Background" type="Sprite2D" parent="Esteira" unique_id=1656192740]
-position = Vector2(372.67453, 32.645515)
-scale = Vector2(0.9207567, 0.31200004)
-texture = ExtResource("3_sd6ah")
-offset = Vector2(7.545, -27.71)
+[node name="Background" type="Sprite2D" parent="Esteira" unique_id=816318630]
+position = Vector2(449, 28.000004)
+scale = Vector2(1, 0.40624976)
+texture = ExtResource("4_0cjbd")
 
 [node name="AreaAlvo" type="Area2D" parent="." unique_id=381046131]
 position = Vector2(449, 380)

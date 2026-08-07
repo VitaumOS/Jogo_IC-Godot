@@ -6,12 +6,12 @@ var miniatura = load("res://scene/aux_scene/miniatura_modelo_chapa.tscn")
 var termo_restricao = load("res://scene/aux_scene/termo_restricao.tscn")
 var cena_loading_preload = load("res://scene/aux_scene/loading.tscn")
 var padrao_corte_model = load("res://scene/aux_scene/padrao_corte_modelagem.tscn")
+var cena_mostra_cortes = load("res://scene/aux_scene/cena_mostra_cortes.tscn")
 
 @onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao/FuncaoObjetivo
 @onready var container_funcao = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao
 @onready var container_restricoes = $MainMargin/LayoutPrincipal/PainelEsquerdo/ContainerRestricoes
 @onready var container_padroes_selecao = $MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes/ContainerPadroesSelecao
-@onready var resultado_lbl = $ResultadoCortesLabel
 @onready var btn_selecionar_todos = $MainMargin/LayoutPrincipal/Botoes/UsarTodos
 
 var PYTHON_EXE_PATH: String:
@@ -101,7 +101,6 @@ func _alternar_padrao_na_modelagem(idx_padrao: int, is_active: bool) -> void:
 	_gerar_restricoes_demanda()
 	_atualizar_equacoes_na_tela()
 	_reorganizar_texto_botoes()
-	_reorganizar_texto_botoes()
 
 func _on_btn_selecionar_todos_pressed() -> void:
 	if not Global.upgrade_todos_padroes_comprado: return
@@ -134,7 +133,6 @@ func _reorganizar_texto_botoes() -> void:
 		var btn = item.find_child("Button", true, false) as Button
 		var minia = item.find_child("Miniatura*", true, false)
 		
-
 		if btn.is_pressed():
 			var posicao_na_equacao = padroes_selecionados_indices.find(idx_atual)
 			if posicao_na_equacao != -1:
@@ -271,21 +269,34 @@ func _finalizar_processamento(resultado_codigo: int) -> void:
 				var solucao_lista = resultado.get("solucao", [])
 				var total_chapas = resultado.get("chapas_usadas", 0)
 				
-				var texto_resultado = "Plano de Corte Recomendado:\n"
+				var texto_cortes = ""
 				for j in range(solucao_lista.size()):
 					var qtd_cortes = int(solucao_lista[j])
 					if qtd_cortes > 0:
-						texto_resultado += "Padrão x%d: cortar %d vez(es)\n" % [(j + 1), qtd_cortes]
+						texto_cortes += "Padrão %d: %d vez(es)\n" % [(j + 1), qtd_cortes]
 				
-				texto_resultado += "\nTotal de Chapas Utilizadas: %d" % total_chapas
-				resultado_lbl.text = texto_resultado
-				resultado_lbl.modulate = Color.GREEN
+				var texto_total = "Total de Chapas Utilizadas: %d" % total_chapas
+				_exibir_popup_resultado(texto_cortes, texto_total)
 			else:
-				resultado_lbl.text = "Solver executado, mas não encontrou uma solução ótima."
-				resultado_lbl.modulate = Color.RED
+				_exibir_popup_resultado("Solver executado, mas não encontrou uma solução ótima.", "")
 	else:
-		resultado_lbl.text = "Erro na execução do solver externo."
-		resultado_lbl.modulate = Color.RED
+		_exibir_popup_resultado("Erro na execução do solver externo.", "")
+
+func _exibir_popup_resultado(texto_label1: String, texto_label2: String) -> void:
+	var mostra_corte = cena_mostra_cortes.instantiate()
+	add_child(mostra_corte)
+	
+	var lbl1 = mostra_corte.find_child("Label1", true, false) as Label
+	var lbl2 = mostra_corte.find_child("Label2", true, false) as Label
+	var btn_continuar = mostra_corte.find_child("Continuar", true, false) as Button
+	
+	lbl1.text = texto_label1
+	lbl2.text = texto_label2
+	lbl2.visible = not texto_label2.is_empty()
+		
+	btn_continuar.pressed.connect(func():
+		mostra_corte.queue_free()
+	)
 
 func _on_btn_voltar_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")

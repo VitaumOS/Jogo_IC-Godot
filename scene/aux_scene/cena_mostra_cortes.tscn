@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://2g4hb541rct6"]
+
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="1_qa44e"]
+[ext_resource type="Texture2D" uid="uid://dv3s10mwtar4w" path="res://images/pergaminho-novo.png" id="2_r6n21"]
+[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_wgi0a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8nnd5"]
+texture = ExtResource("2_r6n21")
+expand_margin_left = 44.0
+expand_margin_top = 40.0
+expand_margin_right = 44.0
+expand_margin_bottom = 40.0
+
+[node name="Cena_mostra_cortes" type="Control" unique_id=550745846]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="." unique_id=322509233]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("1_qa44e")
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2010943215]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 0
+offset_left = 256.0
+offset_top = 216.0
+offset_right = 648.0
+offset_bottom = 672.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8nnd5")
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer" unique_id=953040240]
+layout_mode = 2
+theme_override_constants/separation = 46
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBox" unique_id=864377982]
+custom_maximum_size = Vector2(0.36, -1)
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="PanelContainer/VBox" unique_id=1414153127]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "Cortes para fazer"
+horizontal_alignment = 1
+
+[node name="VboxTexto" type="VBoxContainer" parent="PanelContainer/VBox" unique_id=1017512356]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Label1" type="Label" parent="PanelContainer/VBox/VboxTexto" unique_id=382900464]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Padrão 1: 9x
+Padrão 1: 9x
+Padrão 1: 9x
+Padrão 1: 9x
+Padrão 1: 9x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBox/VboxTexto" unique_id=368767498]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.5529412, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Total de chapas utilizadas: 22"
+horizontal_alignment = 1
+
+[node name="Continuar" type="Button" parent="PanelContainer/VBox" unique_id=1217835675]
+custom_minimum_size = Vector2(0.11, 40)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_wgi0a")
+text = "Continuar"

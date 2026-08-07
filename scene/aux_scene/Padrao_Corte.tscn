@@ -1,17 +1,16 @@
 [gd_scene format=3 uid="uid://7kv2da5w42t5"]
 
-[ext_resource type="Texture2D" uid="uid://ukp4n3dlw7r8" path="res://images/cobre.png" id="1_cmsfe"]
+[ext_resource type="Texture2D" uid="uid://bmu7d4woc55mp" path="res://images/cobre-novo.png" id="1_vap0a"]
 
 [node name="Control" type="Control" unique_id=1343394717]
 layout_mode = 3
 anchor_right = 0.028
 offset_right = -25.2
 
-[node name="Background" type="Sprite2D" parent="." unique_id=904192220]
-position = Vector2(263.00003, 28.999998)
-scale = Vector2(0.5619999, 0.255)
-texture = ExtResource("1_cmsfe")
-offset = Vector2(7.545, -27.71)
+[node name="Background" type="Sprite2D" parent="." unique_id=452736434]
+position = Vector2(266.5, 27)
+scale = Vector2(0.28779697, 0.34374997)
+texture = ExtResource("1_vap0a")
 
 [node name="Label" type="Label" parent="." unique_id=1033798898]
 visible = false
