@@ -94,9 +94,9 @@ alignment = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_0v088")
-text = "RESOLVER"
+text = "Resolver"
 
 [node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1326058333]
 custom_minimum_size = Vector2(55.92, 0)
@@ -106,11 +106,22 @@ layout_mode = 2
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_0v088")
-text = "VOLTAR
-
+text = "Voltar
 "
+
+[node name="Spacer2" type="Control" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=412164219]
+custom_minimum_size = Vector2(55.92, 0)
+layout_mode = 2
+
+[node name="UsarTodos" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=356635356]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("4_0v088")
+text = "Usar Todos"
 
 [node name="ResultadoCortesLabel" type="Label" parent="." unique_id=959085558]
 layout_mode = 0
@@ -125,3 +136,4 @@ visible = false
 
 [connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/Resolver" to="." method="_on_btn_resolver_pressed"]
 [connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/Voltar" to="." method="_on_btn_voltar_pressed"]
+[connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/UsarTodos" to="." method="_on_btn_selecionar_todos_pressed"]

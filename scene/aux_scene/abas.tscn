@@ -47,6 +47,8 @@ text = "Encerrar"
 [node name="PopUp" parent="." unique_id=1294504964 instance=ExtResource("3_qhldc")]
 visible = false
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=387229156]
+
 [connection signal="pressed" from="Contrato" to="." method="_on_contrato_pressed"]
 [connection signal="pressed" from="Loja" to="." method="_on_loja_pressed"]
 [connection signal="pressed" from="Forja" to="." method="_on_forja_pressed"]

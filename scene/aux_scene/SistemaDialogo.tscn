@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://blf1qegii74ss" path="res://script/SistemaDialogo.gd" id="1_ij1vx"]
 [ext_resource type="Shader" uid="uid://kv8eh66f5ae7" path="res://scene/aux_scene/SistemaDialogo.gdshader" id="2_nrl86"]
 [ext_resource type="Texture2D" uid="uid://dnhdenmr0eu8c" path="res://Sprite/gatinhos/NekoJorge.png" id="2_qn2xm"]
-[ext_resource type="Texture2D" uid="uid://bot8j6y37hdl0" path="res://images/pergaminho.png" id="3_6anm4"]
+[ext_resource type="Texture2D" uid="uid://dv3s10mwtar4w" path="res://images/pergaminho-novo.png" id="4_nrl86"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mucsi"]
 shader = ExtResource("2_nrl86")
@@ -35,19 +35,18 @@ offset_bottom = 872.0
 
 [node name="RetratoSprite" type="TextureRect" parent="RetratoControl" unique_id=246108845]
 layout_mode = 0
-offset_left = 499.0
-offset_top = -414.0
-offset_right = 811.0
-offset_bottom = -102.0
+offset_left = 505.0
+offset_top = -391.0
+offset_right = 817.0
+offset_bottom = -77.752014
 texture = ExtResource("2_qn2xm")
 expand_mode = 5
 
 [node name="Background" type="TextureRect" parent="." unique_id=893882926]
-offset_left = -48.0
-offset_top = 528.0
-offset_right = 920.0
+offset_top = 583.0
+offset_right = 900.0
 offset_bottom = 864.0
-texture = ExtResource("3_6anm4")
+texture = ExtResource("4_nrl86")
 expand_mode = 1
 
 [node name="Control" type="Control" parent="." unique_id=1186265395]
@@ -60,9 +59,9 @@ offset_bottom = 576.0
 
 [node name="NomeLabel" type="Label" parent="Control" unique_id=828267703]
 layout_mode = 0
-offset_top = 56.0
+offset_top = 69.0
 offset_right = 736.0
-offset_bottom = 96.0
+offset_bottom = 109.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 29
 text = "Gato"
@@ -70,11 +69,11 @@ text = "Gato"
 [node name="TextoLabel" type="RichTextLabel" parent="Control" unique_id=1209306460]
 layout_mode = 0
 offset_top = 112.0
-offset_right = 744.0
+offset_right = 769.0
 offset_bottom = 232.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "Texto genérico aqui pra testar um monte de coisa ner
 "
@@ -107,10 +106,10 @@ expand_mode = 3
 [node name="Background_mini" type="TextureRect" parent="AgrupadorMiniatura" unique_id=1145365260]
 layout_mode = 0
 offset_left = -270.01
-offset_top = 114.07999
+offset_top = 129.0
 offset_right = 263.99
-offset_bottom = 304.08
-texture = ExtResource("3_6anm4")
+offset_bottom = 286.0
+texture = ExtResource("4_nrl86")
 expand_mode = 1
 
 [node name="Control_mini" type="Control" parent="AgrupadorMiniatura" unique_id=204048040]
@@ -132,9 +131,9 @@ horizontal_alignment = 1
 
 [node name="TextoLabel" type="RichTextLabel" parent="AgrupadorMiniatura/Control_mini" unique_id=101537603]
 layout_mode = 0
-offset_left = -6.0350037
+offset_left = -20.809998
 offset_top = 80.70502
-offset_right = 411.965
+offset_right = 426.19
 offset_bottom = 176.70502
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
@@ -144,3 +143,6 @@ text = "Texto genérico aqui pra testar um monte de coisa neraaaaaaaaaaaaaaaaaaa
 "
 fit_content = true
 autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=65185317]
+volume_db = -3.328

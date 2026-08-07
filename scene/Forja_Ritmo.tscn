@@ -80,3 +80,5 @@ vertical_alignment = 1
 
 [node name="Dialogo" parent="." unique_id=477801998 instance=ExtResource("5_6ar0e")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1286278205]

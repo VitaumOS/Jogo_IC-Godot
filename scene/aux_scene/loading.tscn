@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://tfh1txootqvl"]
+
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="1_ehy0g"]
+[ext_resource type="Script" uid="uid://cn5irhbds8j0g" path="res://script/loading.gd" id="1_v6dw4"]
+
+[node name="Loading" type="Control" unique_id=466011710]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_v6dw4")
+
+[node name="Background" type="TextureRect" parent="." unique_id=166436521]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("1_ehy0g")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=39468868]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 900.0
+theme_override_font_sizes/font_size = 120
+text = "Processando..."
+horizontal_alignment = 1
+vertical_alignment = 1

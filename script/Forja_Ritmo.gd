@@ -27,7 +27,14 @@ var total_pecas = 0
 var modo_duas_esteiras = false
 var em_tutorial: bool = false
 
+var audio_player: AudioStreamPlayer
+var som_acerto = preload("res://sounds/blacksmith-hammering_01.wav") 
+var som_erro = preload("res://sounds/blacksmith-hammering_01.wav")    
+
 func _ready():
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	
 	var lista_nomes = Global.armas_na_esteira_atual
 	total_pecas = lista_nomes.size()
 	_atualiza_contador()
@@ -137,10 +144,21 @@ func _checar_batida(tecla: String):
 
 func _processar_resultado(peca_principal: Node2D, sucesso: bool):
 	if sucesso:
-		acertos += 2 if modo_duas_esteiras else 1
+		var pontos = 1
+		if modo_duas_esteiras:
+			var idx = armas_na_fila.find(peca_principal)
+			if idx != -1 and idx + 1 < armas_na_fila.size():
+				var peca_baixo = armas_na_fila[idx + 1]
+				if peca_baixo.get_node("AreaLetra").get_meta("tecla") == "NENHUMA":
+					pontos = 2
+		acertos = min(total_pecas, acertos + pontos)
 		_atualizar_feedback("PERFEITO!", Color.GREEN)
+		audio_player.stream = som_acerto
+		audio_player.play()
 	else:
 		_atualizar_feedback("ERROU!", Color.RED)
+		audio_player.stream = som_erro
+		audio_player.play()
 		
 	if modo_duas_esteiras:
 		_remover_par_de_baixo_associado(peca_principal)
