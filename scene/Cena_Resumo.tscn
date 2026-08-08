@@ -2,15 +2,17 @@
 
 [ext_resource type="Script" uid="uid://cftrsto61dfey" path="res://script/Cena_Resumo.gd" id="1_xr33j"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="3_kgimw"]
-[ext_resource type="Texture2D" uid="uid://dv3s10mwtar4w" path="res://images/pergaminho-novo.png" id="3_vqc6o"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="4_p4c0f"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kgimw"]
+load_path = "res://.godot/imported/contrato-novo.png-c0bc9b52948d11785af0922b52ca2aca.ctex"
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h5dlb"]
-texture = ExtResource("3_vqc6o")
-expand_margin_left = 20.0
-expand_margin_top = 68.0
-expand_margin_right = 20.0
-expand_margin_bottom = 50.0
+texture = SubResource("CompressedTexture2D_kgimw")
+expand_margin_left = 80.0
+expand_margin_top = 80.0
+expand_margin_right = 80.0
+expand_margin_bottom = 80.0
 
 [node name="Cena_Resumo" type="Control" unique_id=854328993]
 layout_mode = 3

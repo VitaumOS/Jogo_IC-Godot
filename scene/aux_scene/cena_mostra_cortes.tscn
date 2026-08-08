@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://2g4hb541rct6"]
 
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="1_qa44e"]
-[ext_resource type="Texture2D" uid="uid://dv3s10mwtar4w" path="res://images/pergaminho-novo.png" id="2_r6n21"]
 [ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="3_wgi0a"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_difj3"]
+load_path = "res://.godot/imported/contrato-novo.png-c0bc9b52948d11785af0922b52ca2aca.ctex"
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8nnd5"]
-texture = ExtResource("2_r6n21")
-expand_margin_left = 44.0
-expand_margin_top = 40.0
-expand_margin_right = 44.0
-expand_margin_bottom = 40.0
+texture = SubResource("CompressedTexture2D_difj3")
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
 
 [node name="Cena_mostra_cortes" type="Control" unique_id=550745846]
 layout_mode = 3

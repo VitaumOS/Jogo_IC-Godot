@@ -36,7 +36,7 @@ var pecas_disponiveis: Array = [
 	{"nome": "Espada G", "largura": 123.0, "caminho_textura": "res://Sprite/Esp_Grande-novo.png"},
 	{"nome": "Machado", "largura": 89.0, "caminho_textura": "res://Sprite/machado-novo.png"},
 	{"nome": "Maça", "largura": 89.0, "caminho_textura": "res://Sprite/maca.png"},
-	{"nome": "Lança", "largura": 211.0, "caminho_textura": "res://Sprite/lanca-novo.png"}
+	{"nome": "Lança", "largura": 143.0, "caminho_textura": "res://Sprite/lanca-novo.png"}
 ]
 
 var dialogos_vistos_hoje: Dictionary = {}
