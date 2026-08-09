@@ -45,7 +45,6 @@ var _instancia_loading: Control
 var visualizando_inventario: bool = true
 
 func _ready() -> void:
-	
 	for i in range(Global.pecas_disponiveis.size()):
 		valores_demanda_salvos[i] = 0
 
@@ -54,7 +53,8 @@ func _ready() -> void:
 	_gerar_restricoes_demanda()
 	_atualizar_equacoes_na_tela()
 	_atualizar_visibilidade_telas()
-
+	
+	Global._verificar_gatilho_tutorial("primeiro_sandbox1")
 
 func _criar_wrapper_peca(peca: Dictionary) -> Control:
 	var wrapper = Control.new()
@@ -70,6 +70,12 @@ func _criar_wrapper_peca(peca: Dictionary) -> Control:
 func _alternar_tela_criador_inventario() -> void:
 	visualizando_inventario = !visualizando_inventario
 	_atualizar_visibilidade_telas()
+	
+	# Chamadas da função global ao alternar telas
+	if not visualizando_inventario:
+		Global._verificar_gatilho_tutorial("primeiro_sandbox2")
+	else:
+		Global._verificar_gatilho_tutorial("primeiro_sandbox3")
 
 func _atualizar_visibilidade_telas() -> void:
 	painel_inventario.visible = visualizando_inventario
@@ -105,7 +111,6 @@ func _adicionar_peca_a_chapa(id_peca: int) -> void:
 	_atualizar_calculo_desperdicio()
 
 func _atualizar_calculo_desperdicio() -> void:
-
 	var pct = (comprimento_acumulado_atual / Global.tamanho_container) * 100.0
 	info_desperdicio.text = "Total da Chapa: %.1f%%" % pct
 

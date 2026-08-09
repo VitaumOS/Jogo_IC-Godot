@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://prp5ppqhpa28" path="res://modelos/modelo_botao1_3.tres" id="4_1gkh3"]
 [ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/aux_scene/Padrao_Corte.tscn" id="4_mymlt"]
 [ext_resource type="StyleBox" uid="uid://3iwff8hlkgf" path="res://modelos/modelo_botao1_2.tres" id="5_1gkh3"]
+[ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="7_pqctx"]
 
 [node name="Sandbox" type="Control" unique_id=1891637544]
 layout_mode = 3
@@ -160,7 +161,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_1gkh3")
-text = "Voltar
+text = "Modelagem
 "
 
 [node name="UsarTodos" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=898704581]
@@ -177,6 +178,9 @@ theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_1gkh3")
 text = "Alternar Tela"
+
+[node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("7_pqctx")]
+visible = false
 
 [connection signal="pressed" from="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/BotoesAcaoCriador/BtnLimparChapa" to="." method="_limpar_chapa_atual"]
 [connection signal="pressed" from="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/BotoesAcaoCriador/BtnAdicionarAoInventario" to="." method="_salvar_padrao_criado"]

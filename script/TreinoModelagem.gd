@@ -185,10 +185,10 @@ func _disparar_dialogo_local(falas: Array):
 
 func _finalizar_treino():
 	_disparar_dialogo_local([
-		{"nome": "Mestre Gato", "texto": "Incrível, Jorge! Você provou que domina a modelagem e completou todos os exercícios."}
+		{"nome": "Mestre Gato", "texto": "Incrível, Jorge! Você provou que domina a modelagem e completou todos os exercícios. Agora, vou te mostrar um modo super legal da modelagem, clique no botão 'Abrir Oficina'!"}
 	])
 	Global.finalizou_treino = true
 	btn_voltar.visible = true
 	
 func _on_voltar_pressed(): 
-	get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")
+	get_tree().change_scene_to_file("res://scene/sandbox.tscn")
