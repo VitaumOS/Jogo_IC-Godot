@@ -1,91 +1,176 @@
 [gd_scene format=3 uid="uid://b8mwb1udciwp2"]
 
 [ext_resource type="Script" uid="uid://cke3qs8ajbxtw" path="res://script/sandbox.gd" id="1_h0kme"]
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_htjak"]
+[ext_resource type="PackedScene" uid="uid://ceqrctdai7pi2" path="res://scene/aux_scene/restricao.tscn" id="3_mymlt"]
+[ext_resource type="StyleBox" uid="uid://prp5ppqhpa28" path="res://modelos/modelo_botao1_3.tres" id="4_1gkh3"]
 
 [node name="Sandbox" type="Control" unique_id=1891637544]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_h0kme")
 
-[node name="MainMargin" type="MarginContainer" parent="." unique_id=281384731]
+[node name="Background" type="TextureRect" parent="." unique_id=1525516334]
 layout_mode = 0
-offset_top = 3.0
-offset_right = 905.0
-offset_bottom = 891.0
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("2_htjak")
+expand_mode = 1
 
-[node name="LayoutPrincipal" type="HBoxContainer" parent="MainMargin" unique_id=1893035462]
+[node name="MainMargin" type="Control" parent="." unique_id=1143349704]
+anchors_preset = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 883.0
+offset_bottom = 873.0
+
+[node name="LayoutPrincipal" type="VBoxContainer" parent="MainMargin" unique_id=1904356984]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 14.0
+offset_right = 867.0
+offset_bottom = 863.0
+
+[node name="PainelEsquerdo" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1314670689]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="PainelFuncao" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=533216262]
+custom_minimum_size = Vector2(0, 76)
+custom_maximum_size = Vector2(-1, 76)
+layout_mode = 2
+theme_override_constants/separation = 9
+alignment = 1
+
+[node name="FuncaoObjetivo" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao" unique_id=1580561041]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Minimizar Z = "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContainerRestricoes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=896557480]
+custom_minimum_size = Vector2(850, 392)
+custom_maximum_size = Vector2(-1, 392)
+layout_mode = 2
+theme_override_constants/separation = -25
+
+[node name="Restricao" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/ContainerRestricoes" unique_id=1322664123 instance=ExtResource("3_mymlt")]
+visible = false
 layout_mode = 2
 
-[node name="PainelEsquerdo" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=509458363]
-custom_minimum_size = Vector2(900, 0)
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="PainelCriador" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo" unique_id=35458190]
+[node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1203141737]
+custom_minimum_size = Vector2(0, 340)
+custom_maximum_size = Vector2(-1, 317)
 layout_mode = 2
 
-[node name="VBox" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador" unique_id=1877784234]
+[node name="PainelInventario" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1517410103]
+visible = false
 layout_mode = 2
 
-[node name="TituloCriador" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox" unique_id=1170441442]
+[node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelInventario" unique_id=723198522]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Inventário"
+horizontal_alignment = 1
+
+[node name="ScrollPadroes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelInventario" unique_id=1086714806]
+custom_minimum_size = Vector2(300, 315.79)
 layout_mode = 2
 
-[node name="ContainerArmasBotoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox" unique_id=923020306]
+[node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelInventario/ScrollPadroes" unique_id=237850470]
+custom_minimum_size = Vector2(840, 300)
+custom_maximum_size = Vector2(840, -1)
 layout_mode = 2
 
-[node name="VisualizadorChapaAtual" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox" unique_id=1042263947]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="LinhaAcoesCriador" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox" unique_id=1877754277]
+[node name="PainelCriador" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1220201891]
 layout_mode = 2
 
-[node name="InfoDesperdicio" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox/LinhaAcoesCriador" unique_id=166772068]
+[node name="TituloCriador" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=2056721404]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Criador de Padrões"
+horizontal_alignment = 1
+
+[node name="ContainerArmasBotoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=406083231]
+layout_mode = 2
+alignment = 1
+
+[node name="VisualizadorChapaAtual" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=1534730817]
+layout_mode = 2
+theme_override_constants/separation = -12
+
+[node name="InfoDesperdicio" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=950999572]
 layout_mode = 2
 
-[node name="BtnLimparChapa" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox/LinhaAcoesCriador" unique_id=434935567]
-layout_mode = 2
-text = "LIMPAR"
-
-[node name="BtnAdicionarAoInventario" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/VBox/LinhaAcoesCriador" unique_id=2081153165]
-layout_mode = 2
-text = "ADICIONAR"
-
-[node name="PainelDemandas" type="PanelContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador" unique_id=1083958898]
+[node name="BotoesAcaoCriador" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=1032616451]
 layout_mode = 2
 
-[node name="VBox" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelDemandas" unique_id=974757920]
+[node name="BtnLimparChapa" type="Button" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/BotoesAcaoCriador" unique_id=2102697557]
+layout_mode = 2
+text = "Limpar"
+
+[node name="BtnAdicionarAoInventario" type="Button" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/BotoesAcaoCriador" unique_id=1736883331]
+layout_mode = 2
+text = "Adicionar"
+
+[node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal" unique_id=1024093052]
+custom_minimum_size = Vector2(0, 26.945)
 layout_mode = 2
 
-[node name="TituloDemandas" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelDemandas/VBox" unique_id=2102338001]
+[node name="Botoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=654618031]
+custom_minimum_size = Vector2(0, 16)
+custom_maximum_size = Vector2(-1, 16)
+layout_mode = 2
+alignment = 1
+
+[node name="Resolver" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=118634258]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("4_1gkh3")
+text = "Resolver"
+
+[node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=2092501947]
+custom_minimum_size = Vector2(55.92, 0)
 layout_mode = 2
 
-[node name="GridDemandasArmas" type="GridContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelDemandas/VBox" unique_id=950749020]
+[node name="Voltar" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1859972172]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-columns = 2
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("4_1gkh3")
+text = "Voltar
+"
 
-[node name="PainelAcoesFinais" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador" unique_id=2132216983]
-layout_mode = 2
-
-[node name="BtnResolverSandbox" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelAcoesFinais" unique_id=834441681]
-layout_mode = 2
-text = "RESOLVER"
-
-[node name="BtnVoltar" type="Button" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelAcoesFinais" unique_id=1693180716]
-layout_mode = 2
-text = "VOLTAR"
-
-[node name="ResultadoTxtLabel" type="Label" parent="MainMargin/LayoutPrincipal/PainelEsquerdo/PainelCriador/PainelAcoesFinais" unique_id=1182743470]
+[node name="Spacer2" type="Control" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1826094832]
+custom_minimum_size = Vector2(55.92, 0)
 layout_mode = 2
 
-[node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=2050211263]
+[node name="UsarTodos" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=898704581]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("4_1gkh3")
+text = "Usar Todos"
+
+[node name="Spacer3" type="Control" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=874819843]
+custom_minimum_size = Vector2(55.92, 0)
 layout_mode = 2
 
-[node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=119640686]
+[node name="AlternarTela" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1434714558]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("4_1gkh3")
+text = "Alternar Tela"
 
-[node name="ScrollInventario" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=828971197]
-layout_mode = 2
-
-[node name="ContainerModelagemPadroes" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollInventario" unique_id=138965009]
-layout_mode = 2
+[connection signal="pressed" from="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/BotoesAcaoCriador/BtnLimparChapa" to="." method="_limpar_chapa_atual"]
+[connection signal="pressed" from="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/BotoesAcaoCriador/BtnAdicionarAoInventario" to="." method="_salvar_padrao_criado"]
+[connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/Resolver" to="." method="_on_btn_resolver_pressed"]
+[connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/Voltar" to="." method="_on_btn_voltar_pressed"]
+[connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/UsarTodos" to="." method="_on_btn_selecionar_todos_pressed"]
+[connection signal="pressed" from="MainMargin/LayoutPrincipal/Botoes/AlternarTela" to="." method="_alternar_tela_criador_inventario"]

@@ -111,7 +111,7 @@
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-	  "texto": "Este é o [b]Mural de Contratos[/b]. Aqui você escolhe quais pedidos a ferraria vai atender hoje. Fique de olho na demanda de armas e na recompensa antes de aceitar!"
+	  "texto": "Este é o [b]MURAL DE CONTRATOS[/b]. Aqui você escolhe quais pedidos a ferraria vai atender hoje. Fique de olho na demanda de armas e na recompensa antes de aceitar!"
 	}, 
 	{
 	  "nome": "Jorge",
@@ -130,13 +130,13 @@
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato.",
-	  "coordenada": [620,330]
+	  "coordenada": [620,300]
 	},
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Selecione a quantidade de vezes que você vai utilizar cada molde para montar todas as armas necessárias!",
-	  "coordenada": [620,330],
+	  "coordenada": [620,300],
 	  "foco_pos": [350, 570],
 	  "foco_tamanho": [60, 50]
 	}
@@ -147,23 +147,60 @@
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato.",
-	  "coordenada": [620,330]
+	  "coordenada": [620,300]
 	},
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Mas olhe só! Você ainda não comprou nenhum molde para realizar ele.",
-	  "coordenada": [620,330]
+	  "coordenada": [620,300]
 	},
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Acesse a loja para que você compre alguns moldes!",
-	  "coordenada": [620,330]
+	  "coordenada": [620,300]
 	}
   ],
 
+  "primeiro_minimo": [
+    {
+      "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Fantástico! Você conseguiu produzir as peças utilizando o menor número possível de chapas de metal!"
+    },
+    {
+      "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+      "texto": "Toda vez que você fizer esse feito, você recebe um bônus de 20% na recompensa do contrato! Se esforce para conseguir isso sempre!"
+    }
+  ],
 
+  
+  "todos_contratos_concluidos": [
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Todos os contratos do dia foram concluídos! Você finalizar o dia agora! "
+	}
+  ],
+
+  "todos_contratos_concluidos_dia1": [
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Todos os contratos do dia foram concluídos! Você finalizar o dia agora! "
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Clique em Encerrar para terminar o dia!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "coordenada": [450, 430],
+	  "foco_pos": [750, 840],
+	  "foco_tamanho": [190, 50]
+	}
+
+  ],
 
   "primeiro_desperdicio": [
 	{

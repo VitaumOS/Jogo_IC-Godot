@@ -17,35 +17,44 @@ func _gerar_lista_contratos():
 	for c in container_contratos.get_children(): c.queue_free()
 	for contrato in lista_contratos: gerar_contrato(contrato)
 	
-##Gera um contrato para a página de contratos
+## Gera um contrato para a página de contratos
 func gerar_contrato(contrato):
 	var card = card_contrato.instantiate()
 	var lbl_nome = card.find_child("Nome")
 	lbl_nome.text = "📜 " + contrato.nome
 	
-	#Detalhes da Demanda
+	# Detalhes da Demanda
 	var lbl_dem = card.find_child("Demanda"); var list_txt = []
 	for i in contrato.demanda.size():
 		if contrato.demanda[i] > 0:
 			list_txt.append("%dx %s" % [contrato.demanda[i], Global.pecas_disponiveis[i].nome])
 	lbl_dem.text = "Pedido: " + ", ".join(list_txt)
 	
-	#Valor da Recompensa
+	# Valor da Recompensa
 	var lbl_val = card.find_child("Valor"); lbl_val.text = "R$ %d" % contrato.recompensa
 	
-	#Botão de aceitar o contrato
+	# Botão de aceitar/substituir o contrato
 	var btn = card.find_child("Btn")
-	if Global.contrato_ativo != null:
-		btn.disabled = true; btn.text = "Trabalho em Andamento..."
-	elif Global.contratos_concluidos.has(contrato):
-		btn.disabled = true; btn.text = "Contrato Concluído!"
+	if Global.contratos_concluidos.has(contrato):
+		btn.disabled = true
+		btn.text = "Contrato Concluído!"
+	elif Global.contrato_ativo == contrato:
+		btn.disabled = true
+		btn.text = "Contrato Escolhido"
 	else:
-		btn.text = "Aceitar Contrato"; btn.pressed.connect(func(): _aceitar_contrato(contrato))
+		btn.disabled = false
+		if Global.contrato_ativo != null:
+			btn.text = "Substituir Contrato"
+		else:
+			btn.text = "Aceitar Contrato"
+		btn.pressed.connect(func(): _aceitar_contrato(contrato))
+
 	container_contratos.add_child(card)	
 
-##mostra um popup confirmando o contrato e o adiciona no ciclo do jogo
+## Mostra um popup confirmando o contrato e o adiciona no ciclo do jogo
 func _aceitar_contrato(contrato_escolhido):
-	popup.mostrar_confirmacao("Deseja escolher esse contrato?")
+	var mensagem = "Deseja substituir o contrato atual por este?" if Global.contrato_ativo != null else "Deseja escolher esse contrato?"
+	popup.mostrar_confirmacao(mensagem)
 	var confirma = await popup.resposta 
 	if confirma:
 		Global.contrato_ativo = contrato_escolhido

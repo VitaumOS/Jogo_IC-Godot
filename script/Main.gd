@@ -47,13 +47,11 @@ func _ready():
 				Global._verificar_gatilho_tutorial("primeiro_contrato_escolhido1")
 			else:
 				Global._verificar_gatilho_tutorial("primeiro_contrato_escolhido2")	
-			Global.finalizou_tutorial_primeiro_contrato=true
+			Global.finalizou_tutorial_primeiro_contrato = true
 		contrato_visualizacao.atualizar()
 		
 	_conectar_sinais_botoes_quantidade()
 	_atualizar_pintura_demanda()
-	_conectar_sinais_botoes_quantidade()
-	
 
 func _atualizar_pintura_demanda():
 	contrato_visualizacao._atualizar_pintura_demanda()
@@ -64,9 +62,9 @@ func _conectar_sinais_botoes_quantidade():
 	for linha in vbox_padroes_lista.get_children():
 		var btn_mais = linha.find_child("btnMais") as Button
 		var btn_menos = linha.find_child("btnMenos") as Button
-		if !btn_mais.is_connected("pressed", _atualizar_pintura_demanda):
+		if btn_mais and !btn_mais.is_connected("pressed", _atualizar_pintura_demanda):
 			btn_mais.pressed.connect(_atualizar_pintura_demanda)
-		if !btn_menos.is_connected("pressed", _atualizar_pintura_demanda):
+		if btn_menos and !btn_menos.is_connected("pressed", _atualizar_pintura_demanda):
 			btn_menos.pressed.connect(_atualizar_pintura_demanda)
 			
 		linha.find_child("Perda").visible = (!Global.dia_atual == 1)
@@ -80,11 +78,11 @@ func _verificar_dialogo_diario():
 			var falas_do_dia = todos_dialogos[dia_str]
 			if has_node("/root/Dialogo"):
 				for fala in falas_do_dia:
-					if fala.has("retrato"):
+					if fala.has("retrato") and fala["retrato"] is String:
 						fala["retrato"] = load(fala["retrato"])
 				Dialogo.iniciar_dialogo(falas_do_dia)
 
-# Função auxiliar de carregamento (caso não tenha no Main, pode usar a do Global)
+# Função auxiliar de carregamento
 func _carregar_json(caminho: String) -> Dictionary:
 	if not FileAccess.file_exists(caminho): return {}
 	var arquivo = FileAccess.open(caminho, FileAccess.READ)
@@ -99,7 +97,7 @@ func _carregar_padroes_da_loja():
 		_exibir_padrao_na_lista(item)
 	
 	if Global.padroes_desbloqueados.size() > 8:
-		var item_vazio: Dictionary = {"dia": 0,"nome": "","composicao": [0, 0, 0, 0, 0, 0],"preco": 0}
+		var item_vazio: Dictionary = {"dia": 0, "nome": "", "composicao": [0, 0, 0, 0, 0, 0], "preco": 0}
 		_exibir_padrao_na_lista(item_vazio)
 
 func _exibir_padrao_na_lista(item: Dictionary):
@@ -117,7 +115,6 @@ func _exibir_padrao_na_lista(item: Dictionary):
 	linha.configurar(item)
 	padroes_corte_salvos_valor.append(item.composicao)
 
-# Função auxiliar interna criada estritamente para manter o escopo limpo
 func box_pecas_data_append(arr: Array, i: int):
 	arr.append({
 		"largura_peca": Global.pecas_disponiveis[i].largura,
@@ -160,7 +157,7 @@ func _on_bater_martelo_pressed():
 		elif Global.contrato_ativo == null:
 			popup.mostrar_mensagem_erro("Nenhum contrato foi solicitado!")
 			return
-		elif get_total_chapas_usadas()>Global.estoque_chapas:
+		elif get_total_chapas_usadas() > Global.estoque_chapas:
 			popup.mostrar_mensagem_erro("Chapas insuficientes!")
 			return
 		_preparar_e_iniciar_forja()
@@ -180,29 +177,25 @@ func _preparar_e_iniciar_forja():
 	Global.armas_na_esteira_atual = lista_para_forjar
 	Global.chapas_usadas_pelo_jogador = get_total_chapas_usadas()
 	
-	# Prepara os argumentos antes de mudar de cena
 	var args_pulp: Array[String] = [str(demanda)]
 	for p in padroes_corte_salvos_valor: 
 		args_pulp.append(str(p))
 	
-	#Inicia a thread
 	thread_pulp = Thread.new()
 	thread_pulp.start(_executar_pulp_em_background.bind(args_pulp))
 	
 	get_tree().change_scene_to_file("res://scene/Forja_Ritmo.tscn")
 
-
 func _executar_pulp_em_background(args: Array[String]):
 	var saida_terminal = []
 	OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
-
 
 func _finalizar_logica_pulp():
 	var z_user = Global.chapas_usadas_pelo_jogador
 	if Global.estoque_chapas < z_user:
 		_limpar_dados_transicao()
 		return
-
+		
 	if thread_pulp and thread_pulp.is_alive():
 		thread_pulp.wait_to_finish()
 	thread_pulp = null
@@ -215,7 +208,6 @@ func _finalizar_logica_pulp():
 		if res and res.get("status") == "Optimal":
 			var z_pulp = res["chapas_usadas"]
 			var alcancou_minimo = z_user <= z_pulp
-			
 			Global.estoque_chapas -= z_user
 			Global.registrar_contrato_concluido(Global.contrato_ativo)
 			Global.completar_contrato(alcancou_minimo, Global.ultimo_desempenho_ritmo)
@@ -224,7 +216,13 @@ func _finalizar_logica_pulp():
 			$UI.add_child(tela_dinheiro)
 			var texto_minimo = tela_dinheiro.get_node("PanelContainer/VBox/VboxTexto/Label3")
 			texto_minimo.text = "Alcançou o mínimo: " + ("SIM (+20%)" if alcancou_minimo else "NÃO")
-			texto_minimo.modulate = (Color.GREEN if alcancou_minimo else Color.RED)
+			var cor_resultado = Color.GREEN if alcancou_minimo else Color.RED
+			texto_minimo.add_theme_color_override("font_color", cor_resultado)
+			
+			if alcancou_minimo and !Global.alcancou_primeiro_minimo:
+				Global.alcancou_primeiro_minimo = true
+				Global._verificar_gatilho_tutorial("primeiro_minimo")
+			
 			await tela_dinheiro.find_child("Continuar").pressed
 			tela_dinheiro.queue_free()
 			$UI/Info.atualizar()
@@ -232,6 +230,13 @@ func _finalizar_logica_pulp():
 	if !Global.finalizou_primeiro_contrato:
 		Global.finalizou_primeiro_contrato = true
 		Global._verificar_gatilho_tutorial("primeiro_contrato_concluido")
+	
+	if Global.todos_contratos_concluidos():
+		Global._verificar_gatilho_tutorial("todos_contratos_concluidos")
+		
+	if Global.todos_contratos_concluidos() and Global.dia_atual==1:
+		Global._verificar_gatilho_tutorial("todos_contratos_concluidos_dia1")
+
 	_limpar_dados_transicao()
 
 func _limpar_dados_transicao():

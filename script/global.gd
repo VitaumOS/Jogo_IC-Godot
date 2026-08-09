@@ -25,7 +25,7 @@ var finalizou_treino = false
 var finalizou_primeiro_contrato = false
 var finalizou_tutorial_primeiro_contrato = false
 var finalizou_tutorial_forja = false
-
+var alcancou_primeiro_minimo: bool = false
 
 var chapas_usadas_pelo_jogador: int = 0
 var ultimo_desempenho_ritmo: float = -1.0 
@@ -53,21 +53,17 @@ func _ready():
 	gerar_conteudo_do_dia()
 
 func resetar_jogo():
-	dia_atual = 1
-	dinheiro = DINHEIRO_INICIAL
-	ganhos_do_dia = 0
-	estoque_chapas = 0
-	recompensa_base = 0
-	recompensa_final = 0
-	cena_main = false
-	cena_loja = false
-	cena_contrato = false
+	dia_atual = 1; dinheiro = DINHEIRO_INICIAL; ganhos_do_dia = 0;
+	estoque_chapas = 0; recompensa_base = 0; recompensa_final = 0;
+	cena_main = false; cena_loja = false; cena_contrato = false;
 	alcancou_metas_contrato = false
 	fez_contrato_diario = false
+	upgrade_todos_padroes_comprado = false
 	finalizou_treino = false
 	finalizou_primeiro_contrato = false
 	finalizou_tutorial_primeiro_contrato = false
 	finalizou_tutorial_forja = false
+	alcancou_primeiro_minimo = false
 	chapas_usadas_pelo_jogador = 0
 	ultimo_desempenho_ritmo = -1.0
 	dialogos_vistos_hoje.clear()
@@ -80,6 +76,15 @@ func resetar_jogo():
 	if has_meta("tutoriais_vistos"):
 		remove_meta("tutoriais_vistos")
 	gerar_conteudo_do_dia()
+
+## Verifica se todos os contratos gerados para o dia atual foram concluídos
+func todos_contratos_concluidos() -> bool:
+	if contratos_disponiveis.is_empty():
+		return true
+	for c in contratos_disponiveis:
+		if not contratos_concluidos.has(c):
+			return false
+	return true
 
 ## Função adaptada para encontrar e rodar o diálogo na cena atual
 func _verificar_gatilho_tutorial(chave_tutorial: String) -> void:
@@ -123,6 +128,9 @@ func usar_chapa_extra():
 ## Gera novos contratos e padrões aleatórios
 func gerar_conteudo_do_dia():
 	contratos_disponiveis.clear()
+	contratos_concluidos.clear()
+	padroes_na_loja.clear()
+	
 	var dados_contratos = _carregar_json("res://data_json/contratos.json")
 	var dados_padroes = _carregar_json("res://data_json/padroes.json")
 
@@ -139,6 +147,8 @@ func gerar_conteudo_do_dia():
 ## Função auxiliar para ler qualquer arquivo JSON
 func _carregar_json(caminho: String) -> Dictionary:
 	var arquivo = FileAccess.open(caminho, FileAccess.READ)
+	if not arquivo:
+		return {}
 	var conteudo = arquivo.get_as_text()
 	var json = JSON.new()
 	var erro = json.parse(conteudo)
@@ -155,13 +165,16 @@ func completar_contrato(conseguiu_minimo: bool, ritmo : float):
 		recompensa_base = contrato_ativo.recompensa
 		var bonus = 0.0
 		if conseguiu_minimo:
-			bonus = recompensa*0.2
-		#a recompensa é dado pela metade da recompensa do contrato + a proporção de acertos + o bonus do mínimo
-		recompensa = (recompensa/2.0)+((recompensa*ritmo)/2.0) 
+			bonus = recompensa * 0.2
+		# a recompensa é dada pela metade da recompensa do contrato + a proporção de acertos + o bônus do mínimo
+		recompensa = (recompensa / 2.0) + ((recompensa * ritmo) / 2.0) 
 		recompensa += bonus
 		recompensa_final = recompensa
 		dinheiro += recompensa
 		ganhos_do_dia += recompensa
+		
+		registrar_contrato_concluido(contrato_ativo)
+		
 		contrato_ativo = null
 		fez_contrato_diario = true
 		return true
@@ -187,7 +200,7 @@ func _criar_icone_arma(peca, tipo_id: int) -> TextureRect:
 	icone.set_meta("tipo_id", tipo_id) 
 	return icone
 
-##Inicia o próximo dia
+## Inicia o próximo dia
 func proximo_dia():
 	dia_atual += 1
 	ganhos_do_dia = 0
