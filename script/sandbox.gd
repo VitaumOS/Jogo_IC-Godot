@@ -1,34 +1,23 @@
 extends Control
 
-var cena_padrao_visual = load("res://scene/aux_scene/Padrao_Corte.tscn")
 var restricao = load("res://scene/aux_scene/restricao.tscn")
 var miniatura = load("res://scene/aux_scene/miniatura_modelo_chapa.tscn")
 var termo_restricao = load("res://scene/aux_scene/termo_restricao.tscn")
 var cena_loading_preload = load("res://scene/aux_scene/loading.tscn")
 var padrao_corte_model = load("res://scene/aux_scene/padrao_corte_modelagem.tscn")
 var cena_mostra_cortes = load("res://scene/aux_scene/cena_mostra_cortes.tscn")
-var bloco_peca_chapa = load("res://scene/aux_scene/bloco_peca_chapa.tscn")
 
 @onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao/FuncaoObjetivo
 @onready var container_funcao = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao
 @onready var container_restricoes = $MainMargin/LayoutPrincipal/PainelEsquerdo/ContainerRestricoes
-
-@onready var btn_resolver = $MainMargin/LayoutPrincipal/Botoes/Resolver
-@onready var btn_voltar = $MainMargin/LayoutPrincipal/Botoes/Voltar
 @onready var btn_selecionar_todos = $MainMargin/LayoutPrincipal/Botoes/UsarTodos
 @onready var btn_alternar_tela = $MainMargin/LayoutPrincipal/Botoes/AlternarTela
-
-@onready var painel_direito = $MainMargin/LayoutPrincipal/PainelDireito
 @onready var painel_inventario = $MainMargin/LayoutPrincipal/PainelDireito/PainelInventario
 @onready var painel_criador = $MainMargin/LayoutPrincipal/PainelDireito/PainelCriador
-
 @onready var container_padroes_selecao = $MainMargin/LayoutPrincipal/PainelDireito/PainelInventario/ScrollPadroes/ContainerPadroesSelecao
-
 @onready var container_armas_botoes = $MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/ContainerArmasBotoes
-@onready var visualizador_chapa_atual = $MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/VisualizadorChapaAtual
+@onready var visualizador_chapa_atual = $MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/PadraoCorte
 @onready var info_desperdicio = $MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/InfoDesperdicio
-@onready var btn_limpar_chapa = $MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/BotoesAcaoCriador/BtnLimparChapa
-@onready var btn_adicionar_ao_inventario = $MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/BotoesAcaoCriador/BtnAdicionarAoInventario
 
 var PYTHON_EXE_PATH: String:
 	get:
@@ -48,7 +37,6 @@ var lista_padroes_disponiveis: Array = []
 var padroes_selecionados_indices: Array = []
 var valores_demanda_salvos: Dictionary = {} 
 
-var largura_maxima_chapa: float = 500.0
 var comprimento_acumulado_atual: float = 0.0
 var chapa_em_construcao_composicao: Array = []
 
@@ -57,7 +45,6 @@ var _instancia_loading: Control
 var visualizando_inventario: bool = true
 
 func _ready() -> void:
-	btn_selecionar_todos.visible = Global.upgrade_todos_padroes_comprado
 	
 	for i in range(Global.pecas_disponiveis.size()):
 		valores_demanda_salvos[i] = 0
@@ -68,6 +55,18 @@ func _ready() -> void:
 	_atualizar_equacoes_na_tela()
 	_atualizar_visibilidade_telas()
 
+
+func _criar_wrapper_peca(peca: Dictionary) -> Control:
+	var wrapper = Control.new()
+	wrapper.custom_minimum_size = Vector2(peca.largura, 50)
+	var s = Sprite2D.new()
+	s.texture = load(peca.caminho_textura)
+	var t_size = s.texture.get_size()
+	s.scale = Vector2(peca.largura / t_size.x, 50.0 / t_size.y)
+	s.position = Vector2(peca.largura / 2.0, 25)
+	wrapper.add_child(s)
+	return wrapper
+
 func _alternar_tela_criador_inventario() -> void:
 	visualizando_inventario = !visualizando_inventario
 	_atualizar_visibilidade_telas()
@@ -75,7 +74,6 @@ func _alternar_tela_criador_inventario() -> void:
 func _atualizar_visibilidade_telas() -> void:
 	painel_inventario.visible = visualizando_inventario
 	painel_criador.visible = !visualizando_inventario
-	btn_alternar_tela.text = "Criar Padrões" if visualizando_inventario else "Ver Inventário"
 
 func _inicializar_criador() -> void:
 	for child in container_armas_botoes.get_children():
@@ -93,31 +91,30 @@ func _inicializar_criador() -> void:
 func _adicionar_peca_a_chapa(id_peca: int) -> void:
 	var peca = Global.pecas_disponiveis[id_peca]
 	
-	if comprimento_acumulado_atual + peca.largura > largura_maxima_chapa:
+	if comprimento_acumulado_atual + peca.largura > Global.tamanho_container:
 		info_desperdicio.text = "Não cabe!"
 		return
 		
 	comprimento_acumulado_atual += peca.largura
 	chapa_em_construcao_composicao[id_peca] += 1
 	
-	var bloco = bloco_peca_chapa.instantiate()
-	bloco.custom_minimum_size = Vector2(peca.largura, 50)
-	bloco.find_child("Textura", true, false).texture = load(peca.caminho_textura)
-	visualizador_chapa_atual.add_child(bloco)
+	var container_target = visualizador_chapa_atual.find_child("Visualizador_Padrao", true, false)
+	var wrapper = _criar_wrapper_peca(peca)
+	container_target.add_child(wrapper)
 	
 	_atualizar_calculo_desperdicio()
 
 func _atualizar_calculo_desperdicio() -> void:
-	if comprimento_acumulado_atual == 0:
-		info_desperdicio.text = "Desperdício: 100%"
-		return
-	var sobra = largura_maxima_chapa - comprimento_acumulado_atual
-	var pct_perda = (sobra / largura_maxima_chapa) * 100.0
-	info_desperdicio.text = "Desperdício: %.1f%%" % pct_perda
+
+	var pct = (comprimento_acumulado_atual / Global.tamanho_container) * 100.0
+	info_desperdicio.text = "Total da Chapa: %.1f%%" % pct
 
 func _limpar_chapa_atual() -> void:
-	for child in visualizador_chapa_atual.get_children():
+	var container_target = visualizador_chapa_atual.find_child("Visualizador_Padrao", true, false)
+
+	for child in container_target.get_children():
 		child.queue_free()
+			
 	comprimento_acumulado_atual = 0.0
 	chapa_em_construcao_composicao.resize(Global.pecas_disponiveis.size())
 	chapa_em_construcao_composicao.fill(0)
@@ -126,18 +123,13 @@ func _limpar_chapa_atual() -> void:
 func _salvar_padrao_criado() -> void:
 	if comprimento_acumulado_atual == 0: return
 	
-	var sobra = largura_maxima_chapa - comprimento_acumulado_atual
-	var pct_perda = (sobra / largura_maxima_chapa) * 100.0
-	
 	var novo_padrao = {
-		"composicao": chapa_em_construcao_composicao.duplicate(),
-		"desperdicio": pct_perda
+		"composicao": chapa_em_construcao_composicao.duplicate()
 	}
 	
 	lista_padroes_disponiveis.append(novo_padrao)
 	
 	_limpar_chapa_atual()
-	
 	_gerar_lista_direita_padroes()
 	_gerar_restricoes_demanda()
 	_atualizar_equacoes_na_tela()
@@ -168,19 +160,12 @@ func _gerar_lista_direita_padroes() -> void:
 		
 	_reorganizar_texto_botoes()
 
-func _desenhar_sprites_no_visualizador(container: HBoxContainer, composicao: Array) -> void:
+func _desenhar_sprites_no_visualizador(container: Node, composicao: Array) -> void:
 	for i in range(composicao.size()):
 		var qtd = composicao[i]
 		var peca = Global.pecas_disponiveis[i]
 		for n in range(qtd):
-			var wrapper = Control.new()
-			wrapper.custom_minimum_size = Vector2(peca.largura, 50)
-			var s = Sprite2D.new()
-			s.texture = load(peca.caminho_textura)
-			var t_size = s.texture.get_size()
-			s.scale = Vector2(peca.largura / t_size.x, 50.0 / t_size.y)
-			s.position = Vector2(peca.largura / 2.0, 25)
-			wrapper.add_child(s)
+			var wrapper = _criar_wrapper_peca(peca)
 			container.add_child(wrapper)
 
 func _alternar_padrao_na_modelagem(idx_padrao: int, is_active: bool) -> void:
@@ -233,12 +218,11 @@ func _gerar_restricoes_demanda() -> void:
 		img_peca.texture = load(Global.pecas_disponiveis[i].caminho_textura)
 		
 		var input_demanda = rest.find_child("demanda_input", true, false) as LineEdit
-		input_demanda.visible=true
-		rest.find_child("demanda").visible=false
+		input_demanda.visible = true
+		rest.find_child("demanda").visible = false
 		input_demanda.text = str(valores_demanda_salvos[i])
 		input_demanda.text_changed.connect(func(texto: String):
-			var regex = RegEx.create_from_string("^[0-9]*$")
-			var match_res = regex.search(texto)
+			var match_res = RegEx.create_from_string("^[0-9]*$").search(texto)
 			if match_res:
 				input_demanda.text = match_res.get_string()
 				valores_demanda_salvos[i] = input_demanda.text.to_int()
@@ -306,9 +290,9 @@ func _atualizar_equacoes_na_tela() -> void:
 				lbl_mais.text = "    +"
 				lbl_mais.add_theme_font_size_override("font_size", 18)
 				container_funcao.add_child(lbl_mais)
-			var mini = miniatura.instantiate()
-			container_funcao.add_child(mini)
-			mini.find_child("Numero").text = str(i + 1)
+			var minia = miniatura.instantiate()
+			container_funcao.add_child(minia)
+			minia.find_child("Numero").text = str(i + 1)
 
 func _on_btn_selecionar_todos_pressed() -> void:
 	if not Global.upgrade_todos_padroes_comprado: return

@@ -68,13 +68,12 @@ text = "22"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Node2D" type="Node2D" parent="." unique_id=74537286]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1817123324]
+layout_mode = 2
+alignment = 1
 
-[node name="demanda_input" type="LineEdit" parent="Node2D" unique_id=234046022]
+[node name="demanda_input" type="LineEdit" parent="VBoxContainer" unique_id=234046022]
 custom_minimum_size = Vector2(50, 30)
 custom_maximum_size = Vector2(50, 30)
-offset_left = 531.0
-offset_top = 27.0
-offset_right = 581.0
-offset_bottom = 57.0
+layout_mode = 2
 alignment = 1

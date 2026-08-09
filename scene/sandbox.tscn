@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_htjak"]
 [ext_resource type="PackedScene" uid="uid://ceqrctdai7pi2" path="res://scene/aux_scene/restricao.tscn" id="3_mymlt"]
 [ext_resource type="StyleBox" uid="uid://prp5ppqhpa28" path="res://modelos/modelo_botao1_3.tres" id="4_1gkh3"]
+[ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/aux_scene/Padrao_Corte.tscn" id="4_mymlt"]
+[ext_resource type="StyleBox" uid="uid://3iwff8hlkgf" path="res://modelos/modelo_botao1_2.tres" id="5_1gkh3"]
 
 [node name="Sandbox" type="Control" unique_id=1891637544]
 layout_mode = 3
@@ -19,10 +21,10 @@ expand_mode = 1
 
 [node name="MainMargin" type="Control" parent="." unique_id=1143349704]
 anchors_preset = 0
-offset_left = 14.0
-offset_top = 9.0
-offset_right = 883.0
-offset_bottom = 873.0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 899.0
+offset_bottom = 896.0
 
 [node name="LayoutPrincipal" type="VBoxContainer" parent="MainMargin" unique_id=1904356984]
 layout_mode = 0
@@ -60,12 +62,11 @@ visible = false
 layout_mode = 2
 
 [node name="PainelDireito" type="VBoxContainer" parent="MainMargin/LayoutPrincipal" unique_id=1203141737]
-custom_minimum_size = Vector2(0, 340)
+custom_minimum_size = Vector2(880, 340)
 custom_maximum_size = Vector2(-1, 317)
 layout_mode = 2
 
 [node name="PainelInventario" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1517410103]
-visible = false
 layout_mode = 2
 
 [node name="TituloInventario" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelInventario" unique_id=723198522]
@@ -79,12 +80,16 @@ custom_minimum_size = Vector2(300, 315.79)
 layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelInventario/ScrollPadroes" unique_id=237850470]
-custom_minimum_size = Vector2(840, 300)
+custom_minimum_size = Vector2(270, 300)
 custom_maximum_size = Vector2(840, -1)
 layout_mode = 2
+offset_transform_enabled = true
 
 [node name="PainelCriador" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=1220201891]
+visible = false
 layout_mode = 2
+theme_override_constants/separation = 29
+alignment = 1
 
 [node name="TituloCriador" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=2056721404]
 layout_mode = 2
@@ -93,25 +98,41 @@ text = "Criador de Padrões"
 horizontal_alignment = 1
 
 [node name="ContainerArmasBotoes" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=406083231]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 alignment = 1
 
-[node name="VisualizadorChapaAtual" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=1534730817]
+[node name="PadraoCorte" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=1343394717 instance=ExtResource("4_mymlt")]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-theme_override_constants/separation = -12
+offset_transform_enabled = true
+offset_transform_position = Vector2(172.04, 0)
 
 [node name="InfoDesperdicio" type="Label" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=950999572]
 layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Não Cabe"
+horizontal_alignment = 1
 
 [node name="BotoesAcaoCriador" type="HBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador" unique_id=1032616451]
 layout_mode = 2
+theme_override_constants/separation = 23
+alignment = 1
 
 [node name="BtnLimparChapa" type="Button" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/BotoesAcaoCriador" unique_id=2102697557]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = ExtResource("5_1gkh3")
 text = "Limpar"
 
 [node name="BtnAdicionarAoInventario" type="Button" parent="MainMargin/LayoutPrincipal/PainelDireito/PainelCriador/BotoesAcaoCriador" unique_id=1736883331]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = ExtResource("5_1gkh3")
 text = "Adicionar"
 
 [node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal" unique_id=1024093052]
@@ -122,6 +143,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 16)
 custom_maximum_size = Vector2(-1, 16)
 layout_mode = 2
+theme_override_constants/separation = 50
 alignment = 1
 
 [node name="Resolver" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=118634258]
@@ -132,10 +154,6 @@ theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_1gkh3")
 text = "Resolver"
 
-[node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=2092501947]
-custom_minimum_size = Vector2(55.92, 0)
-layout_mode = 2
-
 [node name="Voltar" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1859972172]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -145,10 +163,6 @@ theme_override_styles/normal = ExtResource("4_1gkh3")
 text = "Voltar
 "
 
-[node name="Spacer2" type="Control" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1826094832]
-custom_minimum_size = Vector2(55.92, 0)
-layout_mode = 2
-
 [node name="UsarTodos" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=898704581]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -156,10 +170,6 @@ theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_1gkh3")
 text = "Usar Todos"
-
-[node name="Spacer3" type="Control" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=874819843]
-custom_minimum_size = Vector2(55.92, 0)
-layout_mode = 2
 
 [node name="AlternarTela" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1434714558]
 layout_mode = 2
