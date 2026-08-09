@@ -71,7 +71,6 @@ func _alternar_tela_criador_inventario() -> void:
 	visualizando_inventario = !visualizando_inventario
 	_atualizar_visibilidade_telas()
 	
-	# Chamadas da função global ao alternar telas
 	if not visualizando_inventario:
 		Global._verificar_gatilho_tutorial("primeiro_sandbox2")
 	else:

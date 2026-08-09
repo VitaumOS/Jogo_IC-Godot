@@ -551,8 +551,8 @@
 	  "texto": "Clique em 'Alternar Tela' para eu te mostrar o criador de padrões.",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 430],
-	  "foco_pos": [750, 840],
-	  "foco_tamanho": [190, 50]
+	  "foco_pos": [755, 845],
+	  "foco_tamanho": [200, 45]
 	}
   	],
 
@@ -570,7 +570,7 @@
 	  "texto": "Clique em um dos botões para selecionar uma arma para adicionar no seu padrão de corte.",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 230],
-	  "foco_pos": [450, 560],
+	  "foco_pos": [455, 565],
 	  "foco_tamanho": [500, 40]
 	},
 
@@ -579,8 +579,8 @@
 	  "texto": "Quando estiver satisfeito do seu padrão de corte, aperte em 'Adicionar', e seu padrão de corte será enviado para o inventário!",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 230],
-	  "foco_pos": [540, 770],
-	  "foco_tamanho": [170, 40]
+	  "foco_pos": [545, 765],
+	  "foco_tamanho": [165, 40]
 	},
 
 	{
@@ -588,8 +588,8 @@
 	  "texto": "Quando terminar de montar seus padrões, volte para o inventário clicando em 'Alternar Tela'.",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 230],
-	  "foco_pos": [750, 840],
-	  "foco_tamanho": [190, 50]
+	  "foco_pos": [755, 845],
+	  "foco_tamanho": [195, 45]
 	}
   	],
 
@@ -605,8 +605,8 @@
 	  "texto": "Explicando o resto da oficina, aqui é onde você irá colocar o valor da demanda da arma. Caso não queira que a arma seja usada na modelagem, apenas deixe o valor 0.",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 430],
-	  "foco_pos": [150, 840],
-	  "foco_tamanho": [190, 50]
+	  "foco_pos": [539, 132],
+	  "foco_tamanho": [55, 35]
 	},
 
 	{
@@ -614,24 +614,24 @@
 	  "texto": "Este botão é para você resolver a modelagem, e ele te dará quantas vezes você irá cortar cada padrão.",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 430],
-	  "foco_pos": [150, 840],
-	  "foco_tamanho": [190, 50]
+	  "foco_pos": [150, 845],
+	  "foco_tamanho": [195, 45]
 	},
 	{
 	  "nome": "Mestre Gato",
 	  "texto": "Caso não queira selecionar nenhum padrão de corte específico, apenas aperte o botão 'Usar Todos' e você colocará todos os seus padrões de corte no problema.",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 430],
-	  "foco_pos": [150, 840],
-	  "foco_tamanho": [190, 50]
+	  "foco_pos": [550, 845],
+	  "foco_tamanho": [195, 45]
 	},
 	{
 	  "nome": "Mestre Gato",
 	  "texto": "Por fim, caso não queira mais usar a oficina, apenas aperte o botão 'Modelagem' e você continuará sua história.",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 430],
-	  "foco_pos": [150, 840],
-	  "foco_tamanho": [190, 50]
+	  "foco_pos": [350, 845],
+	  "foco_tamanho": [195, 45]
 	},
 
 	{
