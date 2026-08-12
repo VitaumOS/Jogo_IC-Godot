@@ -94,7 +94,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Além disso, para conseguir utilizar os moldes, você vai precisar comprar chapas também!",
 	  "coordenada": [450,450],
-	  "foco_pos": [435, 770],
+	  "foco_pos": [440, 772],
 	  "foco_tamanho": [260, 60]
 	},
 	{
@@ -244,8 +244,68 @@
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-	  "texto": "Chega de adivinhar de cabeça! Esta é a tela de [b]Modelagem Matemática[/b]. Aqui nós transformamos a demanda em Restrições e os moldes em padrões de corte e variáveis de decisão. Teste com algum contrato!"
+	  "texto": "Chega de adivinhar de cabeça! Esta é a tela de [b]MODELAGEM MATEMÁTICA[/b]. Aqui nós transformamos a demanda em Restrições e os moldes em padrões de corte e variáveis de decisão."
+	},
+
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "O funcionamento daqui é o mesmo da Oficina Livre, mas aqui as demandas são dadas pelos contratos e você utiliza os padrões de corte que você comprou.Além disso, você só pode usar até no máximo de 5 padrões de corte por modelagem."
+	},
+
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Seguindo o que o Mestre nos ensinou, como a gente vai utilizar menos padrões de corte do que o total que a gente tem, isso pode fazer a gente utilizar mais chapas que deveria, então faça várias combinações para encontrar a melhor resposta!"
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Inclusive, se você quiser usar todos os seus padrões de corte, visite a loja que lá tem uma surpresinha!"
+	},
+
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "No momento, você não selecionou nenhum contrato, então as demandas serão igual a zero."
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Acesse o mural de contratos para aceitar um e depois volte na Modelagem Matemática!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "coordenada": [450, 430],
+	  "foco_pos": [150, 840],
+	  "foco_tamanho": [190, 50]
 	}
+  ],
+
+  "loja_botao_comprar_todos":[
+
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Olha, tem algo novo para comprar na loja!",
+	  "coordenada": [450,450],
+	  "foco_pos": [150, 772],
+	  "foco_tamanho": [260, 60]
+	},
+
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Esse botão faz você comprar uma melhoria na Modelagem: ele faz você usar TODOS os seus padrões de corte sem ter que selecionar nenhum! Isso vai facilitar muito sua vida e vai te garantir a solução ótima do problema!",
+	  "coordenada": [450,450],
+	  "foco_pos": [150, 772],
+	  "foco_tamanho": [260, 60]
+	},
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Junte um dinheiro para comprar essa melhoria!",
+	  "coordenada": [450,450]
+	}
+
+
   ],
 
   "primeira_forja":[
@@ -479,7 +539,7 @@
 	  "texto": "Agora essa modelagem possui 3 armas nas demandas!",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 400],
-	  "foco_pos": [400, 150],
+	  "foco_pos": [430, 170],
 	  "foco_tamanho": [650, 300]
 	},
 
@@ -489,7 +549,7 @@
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 200],
 	  "foco_pos": [440, 600],
-	  "foco_tamanho": [680, 270]
+	  "foco_tamanho": [680, 280]
 	},
 
 	{
