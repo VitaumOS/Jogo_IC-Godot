@@ -39,7 +39,7 @@ func _ready():
 	total_pecas = lista_nomes.size()
 	_atualiza_contador()
 
-	modo_duas_esteiras = total_pecas > 30
+	modo_duas_esteiras = total_pecas >= 30
 	_configurar_dificuldade()
 	
 	if modo_duas_esteiras:

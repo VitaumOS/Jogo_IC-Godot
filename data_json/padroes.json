@@ -22,12 +22,14 @@
 	{ "dia": 4, "nome": "p18", "composicao": [0, 1, 1, 1, 1, 0], "preco": 290 },
 	{ "dia": 4, "nome": "p19", "composicao": [2, 1, 1, 0, 1, 0], "preco": 230 },
 	
-	{ "dia": 5, "nome": "p20", "composicao": [1, 0, 1, 1, 0, 1], "preco": 450 },
-	{ "dia": 5, "nome": "p21", "composicao": [1, 1, 1, 0, 0, 1], "preco": 420 },
-	{ "dia": 5, "nome": "p22", "composicao": [1, 0, 1, 1, 1, 0], "preco": 380 },
+	{ "dia": 5, "nome": "p20", "composicao": [1, 0, 1, 1, 0, 1], "preco": 320 },
+	{ "dia": 5, "nome": "p21", "composicao": [1, 1, 1, 0, 0, 1], "preco": 310 },
+	{ "dia": 5, "nome": "p222", "composicao": [1, 0, 1, 1, 1, 0], "preco": 280 },
+	{ "dia": 5, "nome": "p224", "composicao": [0, 0, 1, 3, 1, 0], "preco": 330 },
+	{ "dia": 5, "nome": "p223", "composicao": [4, 0, 0, 0, 2, 0], "preco": 230 },
 	
-	{ "dia": 6, "nome": "p23", "composicao": [1, 0, 0, 1, 1, 0], "preco": 100 },
-	{ "dia": 6, "nome": "p24", "composicao": [0, 1, 0, 1, 0, 1], "preco": 180 },
+	{ "dia": 6, "nome": "p23", "composicao": [0, 2, 0, 0, 0, 2], "preco": 300 },
+	{ "dia": 6, "nome": "p24", "composicao": [0, 1, 0, 1, 0, 1], "preco": 130 },
 	{ "dia": 6, "nome": "p25", "composicao": [1, 0, 1, 0, 0, 1], "preco": 240 },
 	{ "dia": 6, "nome": "p26", "composicao": [1, 1, 0, 2, 1, 0], "preco": 160 },
 	{ "dia": 6, "nome": "p27", "composicao": [0, 1, 1, 1, 1, 0], "preco": 220 }

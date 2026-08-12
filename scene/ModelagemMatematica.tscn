@@ -72,12 +72,12 @@ text = "Inventário"
 horizontal_alignment = 1
 
 [node name="ScrollPadroes" type="ScrollContainer" parent="MainMargin/LayoutPrincipal/PainelDireito" unique_id=286250799]
-custom_minimum_size = Vector2(300, 315.79)
+custom_minimum_size = Vector2(292.65, 315.79)
 layout_mode = 2
 
 [node name="ContainerPadroesSelecao" type="VBoxContainer" parent="MainMargin/LayoutPrincipal/PainelDireito/ScrollPadroes" unique_id=735313933]
-custom_minimum_size = Vector2(840, 300)
-custom_maximum_size = Vector2(840, -1)
+custom_minimum_size = Vector2(278, 300)
+custom_maximum_size = Vector2(278, -1)
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="MainMargin/LayoutPrincipal" unique_id=769683837]

@@ -14,6 +14,7 @@
 
 	{ "dia": 4, "nome": "Vigília Noturna", "demanda": [17, 5, 12, 8, 4, 0], "recompensa": 1200 },
 	{ "dia": 4, "nome": "Manutenção de Muralhas", "demanda": [11, 6, 11, 3, 6, 0], "recompensa": 1250 },
+	{ "dia": 4, "nome": "Armas, Armas, Armas!", "demanda": [18, 11, 9, 6, 7, 0], "recompensa": 1450 },
 
 	{ "dia": 5, "nome": "Cerco ao Forte", "demanda": [19, 10, 7, 5, 6, 5], "recompensa": 1450 },
 	{ "dia": 5, "nome": "Proteção Real", "demanda": [11, 11, 11, 7, 5, 2], "recompensa": 1350 },

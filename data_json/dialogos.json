@@ -65,7 +65,7 @@
 	},
 	{
 	  "nome": "Jorge",
-	  "texto": "Lembre-se: você só pode encerrar um dia quando completar ao menos um contrato diário!",
+	  "texto": "Lembre-se: você só pode encerrar um dia quando completar todos os contratos do dia!",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "coordenada": [450, 430],
 	  "foco_pos": [750, 840],
@@ -94,7 +94,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Além disso, para conseguir utilizar os moldes, você vai precisar comprar chapas também!",
 	  "coordenada": [450,450],
-	  "foco_pos": [430, 770],
+	  "foco_pos": [435, 770],
 	  "foco_tamanho": [260, 60]
 	},
 	{
@@ -118,7 +118,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Quando quiser escolher um contrato, clique no botão 'aceitar contrato' para ele ser enviado a sua ferraria!",
 	  "coordenada": [450, 330],
-	  "foco_pos": [450, 270],
+	  "foco_pos": [450, 265],
 	  "foco_tamanho": [800, 70]
 	}
   ],
@@ -130,15 +130,15 @@
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Veja! Esses são os cortes que você precisa fazer para atender o contrato.",
-	  "coordenada": [620,300]
+	  "coordenada": [620,270]
 	},
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Selecione a quantidade de vezes que você vai utilizar cada molde para montar todas as armas necessárias!",
-	  "coordenada": [620,300],
-	  "foco_pos": [350, 570],
-	  "foco_tamanho": [60, 50]
+	  "coordenada": [620,270],
+	  "foco_pos": [355, 570],
+	  "foco_tamanho": [70, 50]
 	}
   ],
 
@@ -398,7 +398,7 @@
 	  "texto": "Tá vendo esses dois moldes aqui? Eles são chamados no problema de [b]PADRÕES DE CORTE[/b] e são eles que estão nessa modelagem.",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 200],
-	  "foco_pos": [435, 500],
+	  "foco_pos": [440, 500],
 	  "foco_tamanho": [680, 120]
 	},
 
@@ -407,7 +407,7 @@
 	  "texto": "O primeiro representa o padrão de corte 1, e ele produz 3 adagas. O segundo representa o padrão de corte 2, e ele produz 5 adagas ",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 200],
-	  "foco_pos": [435, 500],
+	  "foco_pos": [440, 500],
 	  "foco_tamanho": [680, 120]
 	},
 
@@ -478,9 +478,9 @@
 	  "nome": "Mestre Gato",
 	  "texto": "Agora essa modelagem possui 3 armas nas demandas!",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
-	  "coordenada": [450, 300],
-	  "foco_pos": [450, 150],
-	  "foco_tamanho": [600, 400]
+	  "coordenada": [450, 400],
+	  "foco_pos": [400, 150],
+	  "foco_tamanho": [650, 300]
 	},
 
 	{
@@ -488,8 +488,8 @@
 	  "texto": "E agora temos muito mais padrões de corte nesse problema!",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 200],
-	  "foco_pos": [435, 600],
-	  "foco_tamanho": [680, 220]
+	  "foco_pos": [440, 600],
+	  "foco_tamanho": [680, 270]
 	},
 
 	{

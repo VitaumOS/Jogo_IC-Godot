@@ -382,4 +382,4 @@ func _exibir_popup_resultado(texto_label1: String, texto_label2: String) -> void
 	btn_continuar.pressed.connect(func(): mostra_corte.queue_free())
 
 func _on_btn_voltar_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
+	get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")
