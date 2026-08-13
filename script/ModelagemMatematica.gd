@@ -158,6 +158,11 @@ func _gerar_restricoes_demanda() -> void:
 	for i in range(demanda_contrato.size()):
 		if demanda_contrato[i] > 0:
 			var rest = restricao.instantiate()
+			
+			var input_demanda = rest.find_child("demanda_input", true, false)
+			input_demanda.visible = false
+			rest.find_child("demanda").visible = true
+			
 			rest.find_child("Peca").texture = load(Global.pecas_disponiveis[i].caminho_textura)
 			var lbl_tecnica = rest.find_child("Restricao")
 			lbl_tecnica.name = "CoeficientesPeca_" + str(i)
