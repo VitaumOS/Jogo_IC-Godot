@@ -81,6 +81,11 @@ func _gerar_restricoes_demanda_treino() -> void:
 	for i in range(demanda_desafio.size()):
 		if demanda_desafio[i] > 0:
 			var rest = restricao.instantiate()
+			
+			var input_demanda = rest.find_child("demanda_input", true, false)
+			input_demanda.visible = false
+			rest.find_child("demanda").visible = true
+			
 			rest.find_child("Peca").texture = load(Global.pecas_disponiveis[i].caminho_textura)
 			var lbl_tecnica = rest.find_child("Restricao")
 

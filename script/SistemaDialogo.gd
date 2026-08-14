@@ -4,7 +4,6 @@ signal dialogo_iniciado
 signal dialogo_encerrado
 signal fala_completada(indice: int)
 
-
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var retrato_sprite = $RetratoControl/RetratoSprite
 @onready var nome_label = $Control/NomeLabel
@@ -43,17 +42,13 @@ func iniciar_dialogo(falas: Array):
 	
 	for fala in _lista_falas:
 		if fala.has("coordenada") and fala["coordenada"] is Array:
-			fala["coordenada"] = Vector2(fala["coordenada"][0], fala["coordenada"][1])
+			var arr_coord = fala["coordenada"]
+			if arr_coord.size() == 2:
+				fala["coordenada"] = Vector2(arr_coord[0], arr_coord[1])
 		if fala.has("foco_pos") and fala["foco_pos"] is Array:
 			fala["foco_pos"] = Vector2(fala["foco_pos"][0], fala["foco_pos"][1])
 		if fala.has("foco_tamanho") and fala["foco_tamanho"] is Array:
 			fala["foco_tamanho"] = Vector2(fala["foco_tamanho"][0], fala["foco_tamanho"][1])
-	
-	for fala in _lista_falas:
-		if fala.has("coordenada") and fala["coordenada"] is Array:
-			var arr_coord = fala["coordenada"]
-			if arr_coord.size() == 2:
-				fala["coordenada"] = Vector2(arr_coord[0], arr_coord[1])
 				
 	_indice_atual = 0
 	visible = true
@@ -93,8 +88,7 @@ func _exibir_fala_atual():
 		
 		nome_label_mini.text = fala.get("nome", "???")
 		texto_label_mini.bbcode_text = fala.get("texto", "")
-		
-		retrato_sprite_mini.texture = fala["retrato"] 
+		retrato_sprite_mini.texture = load(fala["retrato"]) if fala["retrato"] is String else fala["retrato"]
 
 		_iniciar_digitacao(texto_label_mini)
 	else:
@@ -104,7 +98,7 @@ func _exibir_fala_atual():
 		background.visible = true
 		
 		nome_label.text = fala.get("nome", "???")
-		retrato_sprite.texture = fala["retrato"] 
+		retrato_sprite.texture = load(fala["retrato"]) if fala["retrato"] is String else fala["retrato"]
 
 		texto_label.bbcode_text = fala.get("texto", "")
 		_iniciar_digitacao(texto_label)
@@ -115,7 +109,15 @@ func _iniciar_digitacao(label_alvo: RichTextLabel):
 	texto_label_mini.visible_characters = 0
 	
 	var total_caracteres = label_alvo.get_total_character_count()
-	var duracao = total_caracteres * 0.04
+	
+	var delay_caractere = Global.get_delay_caractere() if Global.has_method("get_delay_caractere") else 0.03
+	
+	if delay_caractere <= 0.0:
+		label_alvo.visible_characters = total_caracteres
+		_on_digitacao_finalizada()
+		return
+
+	var duracao = total_caracteres * delay_caractere
 	
 	_tween_digitacao = create_tween()
 	_tween_digitacao.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
@@ -137,7 +139,7 @@ func _iniciar_digitacao(label_alvo: RichTextLabel):
 
 func _pular_digitacao():
 	if _tween_digitacao and _tween_digitacao.is_running():
-		_tween_digitacao.kill() 
+		_tween_digitacao.kill()
 	
 	var fala = _lista_falas[_indice_atual]
 	if fala.has("coordenada") and fala["coordenada"] is Vector2:

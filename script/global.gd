@@ -11,6 +11,11 @@ var ganhos_do_dia: int = 0
 var estoque_chapas: int = 0
 var preco_chapa: int = 100 
 
+enum VelocidadeTexto { LENTA, MEDIA, INSTANTANEA }
+
+var som_mutado: bool = false
+var velocidade_dialogo: VelocidadeTexto = VelocidadeTexto.MEDIA
+
 var recompensa_base: float = 0
 var recompensa_final: float = 0
 
@@ -76,6 +81,24 @@ func resetar_jogo():
 	if has_meta("tutoriais_vistos"):
 		remove_meta("tutoriais_vistos")
 	gerar_conteudo_do_dia()
+
+## Retorna o tempo de atraso (delay) entre cada letra em segundos
+func get_delay_caractere() -> float:
+	match velocidade_dialogo:
+		VelocidadeTexto.LENTA:
+			return 0.08
+		VelocidadeTexto.MEDIA:
+			return 0.03
+		VelocidadeTexto.INSTANTANEA:
+			return 0.0
+		_:
+			return 0.03
+			
+## Alterna o áudio principal do jogo
+func definir_mute_som(mutado: bool) -> void:
+	som_mutado = mutado
+	var bus_index = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_mute(bus_index, mutado)
 
 ## Verifica se todos os contratos gerados para o dia atual foram concluídos
 func todos_contratos_concluidos() -> bool:

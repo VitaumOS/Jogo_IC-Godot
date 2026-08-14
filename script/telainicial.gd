@@ -19,7 +19,7 @@ func _on_btn_jogar_pressed():
 	get_tree().change_scene_to_file(CENA_PRINCIPAL)
 
 func _on_btn_opcoes_pressed():
-	print("Abrindo Opções...")
+	get_tree().change_scene_to_file("res://scene/opcoes.tscn")
 
 func _on_btn_sair_pressed():
 	get_tree().quit()

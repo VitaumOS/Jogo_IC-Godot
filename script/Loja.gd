@@ -17,10 +17,12 @@ func _ready():
 	btn_comprar_chapa.text = "Comprar Chapas (R$ %d)" % Global.preco_chapa
 	_gerar_itens_loja()
 	Global._verificar_gatilho_tutorial("primeira_loja")
+	if Global.dia_atual ==4 and Global.finalizou_treino:
+		Global._verificar_gatilho_tutorial("loja_botao_comprar_todos")
 	_verificar_visibilidade_upgrade()
 
 func _verificar_visibilidade_upgrade() -> void:
-	var exibir = (Global.dia_atual >= 4) and !Global.upgrade_todos_padroes_comprado
+	var exibir = (Global.dia_atual >= 4) and !Global.upgrade_todos_padroes_comprado and Global.finalizou_treino
 	btn_upgrade_todos_padroes.visible = exibir
 	
 func _on_btn_comprar_upgrade_todos_padroes_pressed() -> void:

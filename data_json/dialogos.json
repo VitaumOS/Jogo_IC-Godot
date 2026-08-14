@@ -86,8 +86,8 @@
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Você pode comprar qualquer [b]MOLDE DE CORTE[/b] disponível pelo botão de compra!",
-	  "foco_pos": [710, 145],
-	  "foco_tamanho": [150, 50]
+	  "foco_pos": [700, 145],
+	  "foco_tamanho": [135, 50]
 	},
 	{
 	  "nome": "Jorge",
@@ -272,10 +272,7 @@
 	{
 	  "nome": "Jorge",
 	  "texto": "Acesse o mural de contratos para aceitar um e depois volte na Modelagem Matemática!",
-	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-	  "coordenada": [450, 430],
-	  "foco_pos": [150, 840],
-	  "foco_tamanho": [190, 50]
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
 	}
   ],
 
@@ -286,16 +283,25 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Olha, tem algo novo para comprar na loja!",
 	  "coordenada": [450,450],
-	  "foco_pos": [150, 772],
+	  "foco_pos": [640, 772],
 	  "foco_tamanho": [260, 60]
 	},
 
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-	  "texto": "Esse botão faz você comprar uma melhoria na Modelagem: ele faz você usar TODOS os seus padrões de corte sem ter que selecionar nenhum! Isso vai facilitar muito sua vida e vai te garantir a solução ótima do problema!",
+	  "texto": "Esse botão faz você comprar uma melhoria na Modelagem: ele faz você usar TODOS os seus padrões de corte sem ter que selecionar nenhum!",
 	  "coordenada": [450,450],
-	  "foco_pos": [150, 772],
+	  "foco_pos": [640, 772],
+	  "foco_tamanho": [260, 60]
+	},
+
+	{
+	  "nome": "Jorge",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
+	  "texto": "Isso vai facilitar muito sua vida e vai te garantir a solução ótima do problema!",
+	  "coordenada": [450,450],
+	  "foco_pos": [640, 772],
 	  "foco_tamanho": [260, 60]
 	},
 	{
@@ -539,8 +545,8 @@
 	  "texto": "Agora essa modelagem possui 3 armas nas demandas!",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 400],
-	  "foco_pos": [430, 170],
-	  "foco_tamanho": [650, 300]
+	  "foco_pos": [440, 180],
+	  "foco_tamanho": [665, 330]
 	},
 
 	{
@@ -548,7 +554,7 @@
 	  "texto": "E agora temos muito mais padrões de corte nesse problema!",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 200],
-	  "foco_pos": [440, 600],
+	  "foco_pos": [440, 585],
 	  "foco_tamanho": [680, 280]
 	},
 

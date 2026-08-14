@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://6tgbjimlu3pu"]
+
+[ext_resource type="Script" uid="uid://cnr1h1q2fhasn" path="res://script/opcoes.gd" id="1_88oab"]
+[ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="1_glqjm"]
+[ext_resource type="StyleBox" uid="uid://prp5ppqhpa28" path="res://modelos/modelo_botao1_3.tres" id="3_vcprm"]
+
+[node name="Opcoes" type="Control" unique_id=1498930364]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_88oab")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1177435381]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 900.0
+texture = ExtResource("1_glqjm")
+expand_mode = 1
+
+[node name="PainelCentral" type="PanelContainer" parent="." unique_id=1178602601]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 896.0
+offset_bottom = 832.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PainelCentral" unique_id=1261635233]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelCentral/MarginContainer" unique_id=1323903380]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="Titulo" type="Label" parent="PainelCentral/MarginContainer/VBoxContainer" unique_id=875417057]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Opções"
+horizontal_alignment = 1
+
+[node name="HSeparator1" type="HSeparator" parent="PainelCentral/MarginContainer/VBoxContainer" unique_id=1712688800]
+layout_mode = 2
+
+[node name="HBoxSom" type="HBoxContainer" parent="PainelCentral/MarginContainer/VBoxContainer" unique_id=867872366]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelSom" type="Label" parent="PainelCentral/MarginContainer/VBoxContainer/HBoxSom" unique_id=2026360347]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Mutar Som"
+
+[node name="CheckMute" type="CheckBox" parent="PainelCentral/MarginContainer/VBoxContainer/HBoxSom" unique_id=1502070912]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxVelocidade" type="HBoxContainer" parent="PainelCentral/MarginContainer/VBoxContainer" unique_id=817449964]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelVelocidade" type="Label" parent="PainelCentral/MarginContainer/VBoxContainer/HBoxVelocidade" unique_id=568761411]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Velocidade dos Textos"
+
+[node name="OptionVelocidade" type="OptionButton" parent="PainelCentral/MarginContainer/VBoxContainer/HBoxVelocidade" unique_id=1321516526]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PainelCentral/MarginContainer/VBoxContainer" unique_id=1962390512]
+layout_mode = 2
+
+[node name="Node2D" type="Node2D" parent="PainelCentral/MarginContainer/VBoxContainer" unique_id=1006989815]
+
+[node name="BtnVoltar" type="Button" parent="PainelCentral/MarginContainer/VBoxContainer/Node2D" unique_id=1853571846]
+custom_minimum_size = Vector2(1.225, 0)
+offset_left = 256.0
+offset_top = 257.0
+offset_right = 640.0
+offset_bottom = 276.0
+theme_override_styles/normal = ExtResource("3_vcprm")
+text = "Voltar"
