@@ -22,7 +22,7 @@ func _ready():
 	_verificar_visibilidade_upgrade()
 
 func _verificar_visibilidade_upgrade() -> void:
-	var exibir = (Global.dia_atual >= 4) and !Global.upgrade_todos_padroes_comprado and Global.finalizou_treino
+	var exibir = (Global.dia_atual >= 5) and !Global.upgrade_todos_padroes_comprado and Global.finalizou_treino
 	btn_upgrade_todos_padroes.visible = exibir
 	
 func _on_btn_comprar_upgrade_todos_padroes_pressed() -> void:

@@ -158,7 +158,7 @@ func gerar_conteudo_do_dia():
 	var dados_padroes = _carregar_json("res://data_json/padroes.json")
 
 	var contratos_possiveis = dados_contratos.get("contratos", []).filter(func(c): return c.dia == dia_atual)
-	var padroes_possiveis = dados_padroes.get("padroes", []).filter(func(p): return p.dia == dia_atual)
+	var padroes_possiveis = dados_padroes.get("padroes", []).filter(func(p): return p.dia <= dia_atual)
 	
 	contratos_possiveis.shuffle()
 	for i in contratos_possiveis:

@@ -41,12 +41,12 @@ func _on_encerrar_pressed() -> void:
 	popup.mostrar_confirmacao("Deseja finalizar o dia?")
 	var confirma = await popup.resposta 
 	if confirma:
-		if !Global.todos_contratos_concluidos():
+		if Global.todos_contratos_concluidos():
 			popup.mostrar_mensagem("Você precisa concluir todos os contratos do dia!")
 			var confirma2 = await popup.resposta 
 			if confirma2:
 				return
-		if Global.dia_atual == 4 and !Global.finalizou_treino:
+		if Global.dia_atual == 5 and !Global.finalizou_treino:
 			popup.mostrar_mensagem("Você precisa concluir o treinamento antes de prosseguir!")
 			var confirma2 = await popup.resposta 
 			if confirma2:

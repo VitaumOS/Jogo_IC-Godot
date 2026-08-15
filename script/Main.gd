@@ -39,7 +39,7 @@ func _ready():
 	else:
 		_finalizar_logica_pulp()
 		
-	$UI/VBoxContainer/Modelagem.visible = Global.dia_atual > 3
+	$UI/VBoxContainer/Modelagem.visible = Global.dia_atual > 4
 		
 	if Global.contrato_ativo:
 		if !Global.finalizou_tutorial_primeiro_contrato:
@@ -244,7 +244,7 @@ func _limpar_dados_transicao():
 	Global.ultimo_desempenho_ritmo = -1.0
 
 func _on_modelagem_pressed():
-	if Global.dia_atual == 4 and !Global.finalizou_treino:
+	if Global.dia_atual == 5 and !Global.finalizou_treino:
 		get_tree().change_scene_to_file("res://scene/TreinoModelagem.tscn")
 	else:
 		get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")

@@ -80,7 +80,7 @@
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-	  "texto": "Bem-vindo à [b]LOJA[/b]! Aqui você usa seu dinheiro para liberar novas combinações de corte. Quanto mais padrões você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
+	  "texto": "Bem-vindo à [b]LOJA[/b]! Aqui você usa seu dinheiro para liberar novas combinações de corte. Quanto mais moldes você tiver, mais fácil será combinar as peças para reduzir o desperdício!"
 	},
 	{
 	  "nome": "Jorge",
@@ -283,7 +283,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Olha, tem algo novo para comprar na loja!",
 	  "coordenada": [450,450],
-	  "foco_pos": [640, 772],
+	  "foco_pos": [740, 772],
 	  "foco_tamanho": [260, 60]
 	},
 
@@ -292,7 +292,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Esse botão faz você comprar uma melhoria na Modelagem: ele faz você usar TODOS os seus padrões de corte sem ter que selecionar nenhum!",
 	  "coordenada": [450,450],
-	  "foco_pos": [640, 772],
+	  "foco_pos": [740, 772],
 	  "foco_tamanho": [260, 60]
 	},
 
@@ -301,7 +301,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Isso vai facilitar muito sua vida e vai te garantir a solução ótima do problema!",
 	  "coordenada": [450,450],
-	  "foco_pos": [640, 772],
+	  "foco_pos": [740, 772],
 	  "foco_tamanho": [260, 60]
 	},
 	{
@@ -364,7 +364,7 @@
   ],
 
 
-  "4": [
+  "5": [
 	{
 	  "nome": "Jorge",
 	  "texto": "Chega! [shake rate=20 level=8]Não dá mais![/shake] O contrato de hoje exige dezenas de armas. Passar horas combinando números de cabeça vai falir a ferraria ou me deixar louco.",
@@ -708,7 +708,7 @@
   	],
 
 
-  "5": [
+  "6": [
 	{
 	  "nome": "Jorge",
 	  "texto": "Agora sim! Com a tela de Formulação Matemática ativada, posso ver as equações se formando em tempo real enquanto seleciono quais variáveis farão parte do modelo.",
@@ -716,10 +716,20 @@
 	}
   ],
 
-  "6":[
+  "7":[
 	{
 	  "nome": "Jorge",
-	  "texto": "Finalmente tá mais tranquilo de resolver os contratos! Eles ficam mais complexos, mas esse algoritmo resolve tudo!",
+	  "texto": "O ÚLTIMO DIA! Finalmente esse dia chegou!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Foram dias bem complicados, mas depois que começamos a utilizar a modelagem matemática para resolver os contratos da ferraria, minha vida facilitou muito!",
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "Hoje os contratos estão bem cheios, mas nada com que precisamos nos preocupar. Vamos completar eles!",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
 	}
   ],
