@@ -363,6 +363,29 @@
 	}
   ],
 
+  "4": [
+    {
+      "nome": "Jorge",
+      "texto": "*Suspiro*... Minhas patas estão doloridas. Passei a noite inteira em claro tentando calcular como cortar as chapas de ontem sem jogar metal no lixo.",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "E o pior é que hoje a demanda veio dobrada! São maças, espadas e adagas em quantidades absurdas...",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "[shake rate=12 level=3]Estou vendo números flutuando até quando fecho os olhos![/shake] Tentar adivinhar a combinação de padrões na ponta do lápis está destruindo meu cérebro.",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Vamos tentar dar o nosso melhor hoje... mas honestamente? Sinto que estou no meu limite.",
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    }
+  ],
+
 
   "5": [
 	{
