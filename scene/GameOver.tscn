@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bbpyvdto8o8eg" path="res://script/GameOver.gd" id="1_u7gfx"]
 [ext_resource type="StyleBox" uid="uid://c1laj21bixtl" path="res://modelos/modelo_botao_2.tres" id="2_vq0q6"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="3_vq0q6"]
+[ext_resource type="StyleBox" uid="uid://bew20hrixsyos" path="res://modelos/modelo_botao_2_pressionado.tres" id="4_3qd2y"]
 
 [node name="GameOver" type="Control" unique_id=2075479652]
 layout_mode = 3
@@ -39,6 +40,9 @@ offset_bottom = 750.0
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("2_vq0q6")
+theme_override_styles/pressed = ExtResource("4_3qd2y")
+theme_override_styles/hover = ExtResource("4_3qd2y")
+theme_override_styles/disabled = ExtResource("4_3qd2y")
 text = "Voltar pro Menu Principal"
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("3_vq0q6")]

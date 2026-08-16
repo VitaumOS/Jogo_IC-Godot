@@ -11,8 +11,8 @@ theme_override_constants/separation = 77
 script = ExtResource("1_oknid")
 
 [node name="LabelQuantidade" type="Label" parent="." unique_id=485946694]
-custom_minimum_size = Vector2(92, 0)
-custom_maximum_size = Vector2(92, -1)
+custom_minimum_size = Vector2(100, 0)
+custom_maximum_size = Vector2(100, -1)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bfsddobccdcyu" path="res://script/popup.gd" id="1_eykc1"]
 [ext_resource type="Texture2D" uid="uid://bfl0aswilvahf" path="res://images/placa_3-novo.png" id="2_qx40o"]
 [ext_resource type="StyleBox" uid="uid://dq8xvrejv7qaa" path="res://modelos/modelo_botao_pequeno_popup.tres" id="3_3c8re"]
+[ext_resource type="StyleBox" uid="uid://u3qp805ybpb4" path="res://modelos/modelo_botao_pequeno_popup_pressionado.tres" id="4_3c8re"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bry1k"]
 texture = ExtResource("2_qx40o")
@@ -82,6 +83,9 @@ custom_maximum_size = Vector2(40, -1)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_styles/normal = ExtResource("3_3c8re")
+theme_override_styles/pressed = ExtResource("4_3c8re")
+theme_override_styles/hover = ExtResource("4_3c8re")
+theme_override_styles/disabled = ExtResource("4_3c8re")
 text = "Sim"
 
 [node name="BtnNao" type="Button" parent="Control/HBoxBtn" unique_id=1079789033]
@@ -91,6 +95,9 @@ custom_maximum_size = Vector2(40, -1)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_styles/normal = ExtResource("3_3c8re")
+theme_override_styles/pressed = ExtResource("4_3c8re")
+theme_override_styles/hover = ExtResource("4_3c8re")
+theme_override_styles/disabled = ExtResource("4_3c8re")
 text = "Não"
 
 [node name="BtnOk" type="Button" parent="Control/HBoxBtn" unique_id=30888743]
@@ -100,6 +107,9 @@ custom_maximum_size = Vector2(40, -1)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_styles/normal = ExtResource("3_3c8re")
+theme_override_styles/pressed = ExtResource("4_3c8re")
+theme_override_styles/hover = ExtResource("4_3c8re")
+theme_override_styles/disabled = ExtResource("4_3c8re")
 text = "OK"
 
 [connection signal="pressed" from="Control/HBoxBtn/BtnSim" to="." method="_on_btn_sim_pressed"]

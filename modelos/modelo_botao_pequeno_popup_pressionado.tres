@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://u3qp805ybpb4"]
+
+[ext_resource type="Texture2D" uid="uid://c3ysuyhoc67q3" path="res://images/placa-novo_pressionado.png" id="1_kl585"]
+
+[resource]
+texture = ExtResource("1_kl585")
+expand_margin_left = 5.0
+expand_margin_right = 5.0

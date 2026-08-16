@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cnr1h1q2fhasn" path="res://script/opcoes.gd" id="1_88oab"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="1_glqjm"]
 [ext_resource type="StyleBox" uid="uid://prp5ppqhpa28" path="res://modelos/modelo_botao1_3.tres" id="3_vcprm"]
+[ext_resource type="StyleBox" uid="uid://bgqd41mw2b5c2" path="res://modelos/modelo_botao1_3_pressionado.tres" id="4_0hpy6"]
 
 [node name="Opcoes" type="Control" unique_id=1498930364]
 layout_mode = 3
@@ -75,4 +76,7 @@ offset_top = 257.0
 offset_right = 640.0
 offset_bottom = 276.0
 theme_override_styles/normal = ExtResource("3_vcprm")
+theme_override_styles/pressed = ExtResource("4_0hpy6")
+theme_override_styles/hover = ExtResource("4_0hpy6")
+theme_override_styles/disabled = ExtResource("4_0hpy6")
 text = "Voltar"

@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="1_sgi23"]
 [ext_resource type="Script" uid="uid://c1huws2alkim3" path="res://script/Vitoria.gd" id="1_wbk6c"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_wbk6c"]
-[ext_resource type="StyleBox" uid="uid://dki2hhovuf137" path="res://modelos/modelo_botao1.tres" id="4_71bpr"]
+[ext_resource type="StyleBox" uid="uid://c1laj21bixtl" path="res://modelos/modelo_botao_2.tres" id="4_71bpr"]
+[ext_resource type="StyleBox" uid="uid://bew20hrixsyos" path="res://modelos/modelo_botao_2_pressionado.tres" id="5_7mqwl"]
 
 [node name="Vitoria" type="Control" unique_id=1271914637]
 layout_mode = 3
@@ -49,6 +50,9 @@ offset_bottom = 832.0
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("4_71bpr")
+theme_override_styles/pressed = ExtResource("5_7mqwl")
+theme_override_styles/hover = ExtResource("5_7mqwl")
+theme_override_styles/disabled = ExtResource("5_7mqwl")
 text = "Voltar para a tela inicial"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

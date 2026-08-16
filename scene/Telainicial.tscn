@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://1sopopv3cr6k" path="res://script/telainicial.gd" id="1_jvgit"]
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_sl5yf"]
 [ext_resource type="StyleBox" uid="uid://c1laj21bixtl" path="res://modelos/modelo_botao_2.tres" id="3_sl5yf"]
+[ext_resource type="StyleBox" uid="uid://bew20hrixsyos" path="res://modelos/modelo_botao_2_pressionado.tres" id="4_ri3o4"]
 
 [node name="Telainicial" type="Control" unique_id=494973562]
 layout_mode = 3
@@ -41,6 +42,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = ExtResource("3_sl5yf")
+theme_override_styles/pressed = ExtResource("4_ri3o4")
+theme_override_styles/hover = ExtResource("4_ri3o4")
+theme_override_styles/disabled = ExtResource("4_ri3o4")
 text = "Iniciar Jogo"
 
 [node name="HSeparator" type="HSeparator" parent="MenuBotoes" unique_id=1472345835]
@@ -54,6 +58,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = ExtResource("3_sl5yf")
+theme_override_styles/pressed = ExtResource("4_ri3o4")
+theme_override_styles/hover = ExtResource("4_ri3o4")
+theme_override_styles/disabled = ExtResource("4_ri3o4")
 text = "Opções"
 
 [node name="HSeparator2" type="HSeparator" parent="MenuBotoes" unique_id=1877227195]
@@ -67,6 +74,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = ExtResource("3_sl5yf")
+theme_override_styles/pressed = ExtResource("4_ri3o4")
+theme_override_styles/hover = ExtResource("4_ri3o4")
+theme_override_styles/disabled = ExtResource("4_ri3o4")
 text = "Sair"
 
 [node name="VersaoBael" type="Label" parent="." unique_id=376734861]

@@ -8,6 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://3iwff8hlkgf" path="res://modelos/modelo_botao1_2.tres" id="7_fqplq"]
 [ext_resource type="PackedScene" uid="uid://b6if7jes5m0v4" path="res://scene/aux_scene/LinhaListaPadrao.tscn" id="7_i1ld1"]
 [ext_resource type="PackedScene" uid="uid://ccjtlwav80dao" path="res://scene/aux_scene/info.tscn" id="7_ptkpm"]
+[ext_resource type="StyleBox" uid="uid://b8newboyk4sy1" path="res://modelos/modelo_botao1_2_pressionado.tres" id="8_ptkpm"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="9_2xbwx"]
 [ext_resource type="PackedScene" uid="uid://cnl37rt32qqw5" path="res://scene/aux_scene/abas.tscn" id="9_6qt7c"]
 [ext_resource type="PackedScene" uid="uid://niwiqe2egaiv" path="res://scene/aux_scene/Popup.tscn" id="10_6qt7c"]
@@ -90,6 +91,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 33
 theme_override_styles/normal = ExtResource("7_fqplq")
+theme_override_styles/pressed = ExtResource("8_ptkpm")
+theme_override_styles/hover = ExtResource("8_ptkpm")
+theme_override_styles/disabled = ExtResource("8_ptkpm")
 text = "Bater Martelo"
 
 [node name="Modelagem" type="Button" parent="UI/VBoxContainer" unique_id=1136193815]
@@ -97,6 +101,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 33
 theme_override_styles/normal = ExtResource("7_fqplq")
+theme_override_styles/pressed = ExtResource("8_ptkpm")
+theme_override_styles/hover = ExtResource("8_ptkpm")
+theme_override_styles/disabled = ExtResource("8_ptkpm")
 text = "Modelagem"
 
 [node name="Info" parent="UI" unique_id=1171228805 instance=ExtResource("7_ptkpm")]

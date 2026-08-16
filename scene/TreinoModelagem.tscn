@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ceqrctdai7pi2" path="res://scene/aux_scene/restricao.tscn" id="3_jntv4"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="5_gp12c"]
 [ext_resource type="StyleBox" uid="uid://prp5ppqhpa28" path="res://modelos/modelo_botao1_3.tres" id="5_jntv4"]
+[ext_resource type="StyleBox" uid="uid://bgqd41mw2b5c2" path="res://modelos/modelo_botao1_3_pressionado.tres" id="6_b2rob"]
 
 [node name="Modelagem" type="Control" unique_id=1165207341]
 layout_mode = 3
@@ -93,6 +94,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = ExtResource("5_jntv4")
+theme_override_styles/pressed = ExtResource("6_b2rob")
+theme_override_styles/hover = ExtResource("6_b2rob")
+theme_override_styles/disabled = ExtResource("6_b2rob")
 text = "Resolver"
 
 [node name="Voltar" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1945429112]
@@ -101,6 +105,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = ExtResource("5_jntv4")
+theme_override_styles/pressed = ExtResource("6_b2rob")
+theme_override_styles/hover = ExtResource("6_b2rob")
+theme_override_styles/disabled = ExtResource("6_b2rob")
 text = "Abrir Oficina"
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("5_gp12c")]

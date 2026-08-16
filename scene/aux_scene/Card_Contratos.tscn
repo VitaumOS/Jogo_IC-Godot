@@ -2,6 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://cm8l14sk7oxig" path="res://modelos/modelo_cards.tres" id="1_70j0s"]
 [ext_resource type="StyleBox" uid="uid://c1laj21bixtl" path="res://modelos/modelo_botao_2.tres" id="2_n6ot5"]
+[ext_resource type="StyleBox" uid="uid://bew20hrixsyos" path="res://modelos/modelo_botao_2_pressionado.tres" id="3_j4v2i"]
 
 [node name="Node2D" type="PanelContainer" unique_id=358080767]
 custom_minimum_size = Vector2(320, 220)
@@ -47,4 +48,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = ExtResource("2_n6ot5")
+theme_override_styles/pressed = ExtResource("3_j4v2i")
+theme_override_styles/hover = ExtResource("3_j4v2i")
+theme_override_styles/disabled = ExtResource("3_j4v2i")
 text = "Aceitar Contrato"

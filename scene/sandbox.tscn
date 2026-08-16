@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/aux_scene/Padrao_Corte.tscn" id="4_mymlt"]
 [ext_resource type="StyleBox" uid="uid://3iwff8hlkgf" path="res://modelos/modelo_botao1_2.tres" id="5_1gkh3"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="7_pqctx"]
+[ext_resource type="StyleBox" uid="uid://bgqd41mw2b5c2" path="res://modelos/modelo_botao1_3_pressionado.tres" id="7_s02lu"]
 
 [node name="Sandbox" type="Control" unique_id=1891637544]
 layout_mode = 3
@@ -153,6 +154,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_1gkh3")
+theme_override_styles/pressed = ExtResource("7_s02lu")
+theme_override_styles/hover = ExtResource("7_s02lu")
+theme_override_styles/disabled = ExtResource("7_s02lu")
 text = "Resolver"
 
 [node name="Voltar" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1859972172]
@@ -161,6 +165,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_1gkh3")
+theme_override_styles/pressed = ExtResource("7_s02lu")
+theme_override_styles/hover = ExtResource("7_s02lu")
+theme_override_styles/disabled = ExtResource("7_s02lu")
 text = "Modelagem
 "
 
@@ -170,6 +177,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_1gkh3")
+theme_override_styles/pressed = ExtResource("7_s02lu")
+theme_override_styles/hover = ExtResource("7_s02lu")
+theme_override_styles/disabled = ExtResource("7_s02lu")
 text = "Usar Todos"
 
 [node name="AlternarTela" type="Button" parent="MainMargin/LayoutPrincipal/Botoes" unique_id=1434714558]
@@ -177,6 +187,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_1gkh3")
+theme_override_styles/pressed = ExtResource("7_s02lu")
+theme_override_styles/hover = ExtResource("7_s02lu")
+theme_override_styles/disabled = ExtResource("7_s02lu")
 text = "Alternar Tela"
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("7_pqctx")]
