@@ -5,33 +5,30 @@
 	
 	{ "dia": 2, "nome": "p3", "composicao": [1, 0, 3, 0, 0, 0], "preco": 180 },
 	{ "dia": 2, "nome": "p5", "composicao": [2, 1, 2, 0, 0, 0], "preco": 160 },
-	{ "dia": 2, "nome": "p6", "composicao": [0, 2, 1, 0, 0, 0], "preco": 150 },
+	{ "dia": 2, "nome": "p6", "composicao": [0, 2, 1, 0, 0, 0], "preco": 100 },
 	{ "dia": 2, "nome": "p7", "composicao": [6, 1, 0, 0, 0, 0], "preco": 130 },
 	
-	{ "dia": 3, "nome": "p8", "composicao": [1, 1, 1, 0, 0, 0], "preco": 120 },
 	{ "dia": 3, "nome": "p9", "composicao": [2, 1, 1, 1, 0, 0], "preco": 230 },
 	{ "dia": 3, "nome": "p10", "composicao": [1, 0, 1, 0, 0, 0], "preco": 100 },
-	{ "dia": 3, "nome": "p11", "composicao": [1, 2, 1, 1, 0, 0], "preco": 280 },
-	{ "dia": 3, "nome": "p12", "composicao": [1, 0, 2, 2, 0, 0], "preco": 320 },
-	{ "dia": 3, "nome": "p13", "composicao": [0, 1, 0, 1, 0, 0], "preco": 180 },
+	{ "dia": 3, "nome": "p11", "composicao": [1, 2, 1, 1, 0, 0], "preco": 250 },
+	{ "dia": 3, "nome": "p12", "composicao": [1, 0, 2, 2, 0, 0], "preco": 280 },
+	{ "dia": 3, "nome": "p13", "composicao": [0, 1, 0, 1, 0, 0], "preco": 120 },
 	
 	{ "dia": 4, "nome": "p14", "composicao": [2, 1, 0, 2, 0, 0], "preco": 250 },
-	{ "dia": 4, "nome": "p15", "composicao": [1, 1, 0, 0, 0, 0], "preco": 120 },
-	{ "dia": 4, "nome": "p16", "composicao": [1, 1, 0, 2, 0, 0], "preco": 280 },
-	{ "dia": 4, "nome": "p17", "composicao": [2, 1, 0, 1, 2, 0], "preco": 260 },
-	{ "dia": 4, "nome": "p18", "composicao": [0, 1, 1, 1, 1, 0], "preco": 290 },
-	{ "dia": 4, "nome": "p19", "composicao": [2, 1, 1, 0, 1, 0], "preco": 230 },
+	{ "dia": 4, "nome": "p16", "composicao": [0, 2, 0, 2, 0, 0], "preco": 220 },
+	{ "dia": 4, "nome": "p17", "composicao": [2, 1, 0, 1, 2, 0], "preco": 290 },
+	{ "dia": 4, "nome": "p18", "composicao": [0, 1, 1, 1, 1, 0], "preco": 270 },
 	
 	{ "dia": 5, "nome": "p20", "composicao": [1, 0, 1, 1, 0, 1], "preco": 320 },
 	{ "dia": 5, "nome": "p21", "composicao": [1, 1, 1, 0, 0, 1], "preco": 310 },
 	{ "dia": 5, "nome": "p222", "composicao": [1, 0, 1, 1, 1, 0], "preco": 280 },
-	{ "dia": 5, "nome": "p224", "composicao": [0, 0, 1, 3, 1, 0], "preco": 330 },
-	{ "dia": 5, "nome": "p223", "composicao": [4, 0, 0, 0, 2, 0], "preco": 230 },
+	{ "dia": 5, "nome": "p224", "composicao": [0, 0, 1, 3, 1, 0], "preco": 310 },
+	{ "dia": 5, "nome": "p223", "composicao": [0, 0, 0, 3, 2, 0], "preco": 290 },
 	
-	{ "dia": 6, "nome": "p23", "composicao": [0, 2, 0, 0, 0, 2], "preco": 300 },
+	{ "dia": 6, "nome": "p23", "composicao": [0, 2, 0, 0, 0, 2], "preco": 350 },
+	{ "dia": 6, "nome": "p29", "composicao": [0, 0, 2, 1, 0, 1], "preco": 330 },
 	{ "dia": 6, "nome": "p24", "composicao": [0, 1, 0, 1, 0, 1], "preco": 130 },
-	{ "dia": 6, "nome": "p25", "composicao": [1, 0, 1, 0, 0, 1], "preco": 240 },
-	{ "dia": 6, "nome": "p26", "composicao": [1, 1, 0, 2, 1, 0], "preco": 160 },
-	{ "dia": 6, "nome": "p27", "composicao": [0, 1, 1, 1, 1, 0], "preco": 220 }
+	{ "dia": 6, "nome": "p26", "composicao": [1, 1, 0, 2, 1, 0], "preco": 260 },
+	{ "dia": 6, "nome": "p27", "composicao": [0, 1, 1, 0, 3, 0], "preco": 300 }
   ]
 }

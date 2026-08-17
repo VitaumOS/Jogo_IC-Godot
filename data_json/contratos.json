@@ -9,8 +9,8 @@
 	{ "dia": 2, "nome": "Caravana de Tecidos", "demanda": [13, 11, 5, 0, 0, 0], "recompensa": 750 },
 
 	{ "dia": 3, "nome": "Supressão de Bandidos", "demanda": [15, 11, 10, 5, 0, 0], "recompensa": 950 },
-	{ "dia": 3, "nome": "Escolta de Ervanário", "demanda": [25, 2, 30, 4, 0, 0], "recompensa": 1200 },
-	{ "dia": 3, "nome": "Escolta de Comissários", "demanda": [30, 3, 3, 10, 0, 0], "recompensa": 1350 },
+	{ "dia": 3, "nome": "Escolta de Ervanário", "demanda": [25, 2, 27, 4, 0, 0], "recompensa": 1200 },
+	{ "dia": 3, "nome": "Escolta de Comissários", "demanda": [23, 3, 3, 10, 0, 0], "recompensa": 1350 },
 
 	{ "dia": 4, "nome": "Vigília Noturna", "demanda": [17, 5, 12, 8, 4, 0], "recompensa": 1200 },
 	{ "dia": 4, "nome": "Manutenção de Muralhas", "demanda": [11, 6, 11, 3, 6, 0], "recompensa": 1250 },

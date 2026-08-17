@@ -1,20 +1,8 @@
 {
     "status": "Optimal",
-    "chapas_usadas": 28,
+    "chapas_usadas": 2,
     "solucao": [
-        3,
         0,
-        1,
-        0,
-        5,
-        0,
-        4,
-        0,
-        0,
-        0,
-        6,
-        8,
-        0,
-        1
+        2
     ]
 }

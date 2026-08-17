@@ -31,16 +31,14 @@ func configurar(dados: Dictionary):
 
 	var percentual_perda: float = (largura_utilizada/ Global.tamanho_container) * 100.0
 	
-	# Atualiza o texto da Label "Perda"
-	if label_perda:
-		label_perda.text = "%.1f%%" % percentual_perda
+	label_perda.text = "%.1f%%" % percentual_perda
 		# Feedback visual por cores baseado na eficiência do corte
-		if percentual_perda == 100.0:
-			label_perda.modulate = Color(0.2, 0.8, 0.2) # Verde para desperdício zero
-		elif percentual_perda < 80.0:
-			label_perda.modulate = Color(0.902, 0.796, 0.0, 1.0) # Vermelho para muita sobra
-		else:
-			label_perda.modulate = Color(0.8, 0.8, 0.8) # Cinza para perdas normais
+	if percentual_perda == 100.0:
+		label_perda.modulate = Color(0.2, 0.8, 0.2) # Verde para desperdício zero
+	elif percentual_perda < 80.0:
+		label_perda.modulate = Color(0.902, 0.796, 0.0, 1.0) # Vermelho para muita sobra
+	else:
+		label_perda.modulate = Color(0.8, 0.8, 0.8) # Cinza para perdas normais
 
 func _on_btn_mais_pressed() -> void:
 	quantidade += 1
