@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ccjtlwav80dao" path="res://scene/aux_scene/info.tscn" id="6_wjy46"]
 [ext_resource type="PackedScene" uid="uid://cnl37rt32qqw5" path="res://scene/aux_scene/abas.tscn" id="7_op4vh"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_72ck4"]
+
 [node name="Loja" type="Control" unique_id=961802527]
 layout_mode = 3
 anchors_preset = 0
@@ -95,6 +97,16 @@ offset_left = 400.0
 offset_top = 22.0
 offset_right = 858.0
 offset_bottom = 100.0
+
+[node name="TooltipArmas" type="PanelContainer" parent="UI" unique_id=568335877]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_72ck4")
+
+[node name="LabelTooltip" type="Label" parent="UI/TooltipArmas" unique_id=642012096]
+layout_mode = 2
 
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("6_cqb1c")]
 visible = false

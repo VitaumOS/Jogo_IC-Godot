@@ -6,6 +6,8 @@ extends Control
 @onready var label_feedback = $UI/LabelFeedback
 @onready var btn_comprar_chapa = $UI/PainelChapas/BtnComprarChapa
 @onready var btn_upgrade_todos_padroes = $UI/PainelChapas/Button
+@onready var tooltip_armas = $UI/TooltipArmas
+@onready var label_tooltip = $UI/TooltipArmas/LabelTooltip
 
 ## Lista de padrões disponíveis na loja
 var catalogo_loja = []
@@ -17,9 +19,13 @@ func _ready():
 	btn_comprar_chapa.text = "Comprar Chapas (R$ %d)" % Global.preco_chapa
 	_gerar_itens_loja()
 	Global._verificar_gatilho_tutorial("primeira_loja")
-	if Global.dia_atual ==4 and Global.finalizou_treino:
+	if Global.dia_atual == 4 and Global.finalizou_treino:
 		Global._verificar_gatilho_tutorial("loja_botao_comprar_todos")
 	_verificar_visibilidade_upgrade()
+
+func _process(_delta):
+	if tooltip_armas and tooltip_armas.visible:
+		tooltip_armas.global_position = get_global_mouse_position() + Vector2(15, 15)
 
 func _verificar_visibilidade_upgrade() -> void:
 	var exibir = (Global.dia_atual >= 5) and !Global.upgrade_todos_padroes_comprado and Global.finalizou_treino
@@ -65,6 +71,28 @@ func _gerar_itens_loja():
 			btn.text = "Adquirido"
 			
 		btn.pressed.connect(func(): _tentar_comprar(item, btn))
+
+		var texto_detalhes = _gerar_texto_composicao(item.composicao)
+		card.mouse_entered.connect(func(): _exibir_tooltip(texto_detalhes))
+		card.mouse_exited.connect(func(): _esconder_tooltip())
+
+## Monta a string formatada com a quantidade de cada arma
+func _gerar_texto_composicao(comp: Array) -> String:
+	var linhas = []
+	for i in range(comp.size()):
+		var qtd = comp[i]
+		if qtd > 0:
+			var nome_arma = Global.pecas_disponiveis[i].nome
+			linhas.append("%dx %s" % [qtd, nome_arma])
+	
+	return "\n".join(linhas)
+
+func _exibir_tooltip(texto: String):
+	label_tooltip.text = texto
+	tooltip_armas.visible = true
+
+func _esconder_tooltip():
+	tooltip_armas.visible = false
 
 ## Desenha as miniaturas das peças dentro do card da loja
 func _renderizar_previa_no_card(container: HBoxContainer, comp: Array):
