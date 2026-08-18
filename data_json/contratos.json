@@ -22,7 +22,7 @@
 	{ "dia": 6, "nome": "Exploração de Minas", "demanda": [12, 7, 19, 11, 8, 7], "recompensa": 1750 },
 	{ "dia": 6, "nome": "Expedição de Reconhecimento", "demanda": [19, 9, 11, 9, 7, 8], "recompensa": 1500 },
 
-	{ "dia": 7, "nome": "Guarda de Honra Ducal", "demanda": [40, 21, 21, 6, 17, 11], "recompensa": 1900 },
-	{ "dia": 7, "nome": "Batalha do Armagedom", "demanda": [35, 22, 19, 17, 9, 20], "recompensa": 2200 }
+	{ "dia": 7, "nome": "Guarda de Honra Ducal", "demanda": [23, 21, 19, 6, 17, 11], "recompensa": 2200 },
+	{ "dia": 7, "nome": "Batalha do Armagedom", "demanda": [35, 18, 13, 11, 9, 17], "recompensa": 2400 }
   ]
 }

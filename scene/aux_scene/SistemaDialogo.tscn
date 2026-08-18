@@ -145,5 +145,5 @@ fit_content = true
 autowrap_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=65185317]
-volume_db = -11.648
-pitch_scale = 0.52
+volume_db = -14.434
+pitch_scale = 0.7

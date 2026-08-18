@@ -80,3 +80,5 @@ theme_override_styles/pressed = ExtResource("4_0hpy6")
 theme_override_styles/hover = ExtResource("4_0hpy6")
 theme_override_styles/disabled = ExtResource("4_0hpy6")
 text = "Voltar"
+
+[connection signal="pressed" from="PainelCentral/MarginContainer/VBoxContainer/Node2D/BtnVoltar" to="." method="_on_btn_voltar_pressed"]

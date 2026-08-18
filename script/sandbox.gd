@@ -10,8 +10,6 @@ var cena_mostra_cortes = load("res://scene/aux_scene/cena_mostra_cortes.tscn")
 @onready var funcao_objetivo_lbl = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao/FuncaoObjetivo
 @onready var container_funcao = $MainMargin/LayoutPrincipal/PainelEsquerdo/PainelFuncao
 @onready var container_restricoes = $MainMargin/LayoutPrincipal/PainelEsquerdo/ContainerRestricoes
-@onready var btn_selecionar_todos = $MainMargin/LayoutPrincipal/Botoes/UsarTodos
-@onready var btn_alternar_tela = $MainMargin/LayoutPrincipal/Botoes/AlternarTela
 @onready var painel_inventario = $MainMargin/LayoutPrincipal/PainelDireito/PainelInventario
 @onready var painel_criador = $MainMargin/LayoutPrincipal/PainelDireito/PainelCriador
 @onready var container_padroes_selecao = $MainMargin/LayoutPrincipal/PainelDireito/PainelInventario/ScrollPadroes/ContainerPadroesSelecao
@@ -299,16 +297,32 @@ func _atualizar_equacoes_na_tela() -> void:
 			minia.find_child("Numero").text = str(i + 1)
 
 func _on_btn_selecionar_todos_pressed() -> void:
-	if not Global.upgrade_todos_padroes_comprado: return
+	if lista_padroes_disponiveis.is_empty(): return
 	
 	padroes_selecionados_indices.clear()
 	for i in range(lista_padroes_disponiveis.size()):
 		padroes_selecionados_indices.append(i)
 		
+		if i < container_padroes_selecao.get_child_count():
+			var item = container_padroes_selecao.get_child(i)
+			item.find_child("Button", true, false).set_pressed_no_signal(true)
+				
 	_gerar_restricoes_demanda()
 	_atualizar_equacoes_na_tela()
 	_reorganizar_texto_botoes()
 	_on_btn_resolver_pressed()
+	_limpar_selecao_padroes()
+	
+## Limpa o array de seleções e reseta o estado visual de todos os botões na UI
+func _limpar_selecao_padroes() -> void:
+	padroes_selecionados_indices.clear()
+	
+	for item in container_padroes_selecao.get_children():
+		item.find_child("Button", true, false).set_pressed_no_signal(false)
+			
+	_gerar_restricoes_demanda()
+	_atualizar_equacoes_na_tela()
+	_reorganizar_texto_botoes()
 
 func _on_btn_resolver_pressed() -> void:
 	if padroes_selecionados_indices.is_empty(): return
@@ -364,7 +378,7 @@ func _finalizar_processamento(resultado_codigo: int) -> void:
 				var texto_total = "Total de Chapas Utilizadas: %d" % total_chapas
 				_exibir_popup_resultado(texto_cortes, texto_total)
 			else:
-				_exibir_popup_resultado("Aviso", "Inviável: Os padrões criados não conseguem suprir a demanda digitada.")
+				_exibir_popup_resultado("Aviso", "Inviável: Os padrões criados não \nconseguem suprir a demanda digitada.")
 	else:
 		_exibir_popup_resultado("Erro na execução do solver externo.", "")
 

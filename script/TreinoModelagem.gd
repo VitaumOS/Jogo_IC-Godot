@@ -51,6 +51,7 @@ func _gerar_lista_direita_padroes_treino() -> void:
 	for padrao in problema_atual.padroes_disponiveis:
 		var h_box = cena_padrao_visual.instantiate()
 		h_box.find_child("MiniaturaModeloChapa").find_child("Numero").text = str(i + 1)
+		h_box.find_child("LineEdit").max_length=1
 		inputs_quantidade_padrao[i] = h_box.find_child("LineEdit")
 		var visualizador = h_box.find_child("PadraoCorte").find_child("Visualizador_Padrao")
 		_desenhar_sprites_no_visualizador(visualizador, padrao.get("composicao", []))
