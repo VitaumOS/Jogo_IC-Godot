@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cx1kycxphclcy" path="res://images/background.png" id="2_ooc03"]
 [ext_resource type="Texture2D" uid="uid://bmu7d4woc55mp" path="res://images/cobre-novo.png" id="4_0cjbd"]
 [ext_resource type="PackedScene" uid="uid://bf7ivebfxw2wm" path="res://scene/aux_scene/Cena_peca_ritmo.tscn" id="4_4vvbd"]
+[ext_resource type="Texture2D" uid="uid://dpne5u42giqhp" path="res://images/area_alvo.png" id="5_0cjbd"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="5_6ar0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sd6ah"]
@@ -76,6 +77,14 @@ offset_bottom = 207.0
 text = "0/40"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TexturaArea" type="TextureRect" parent="." unique_id=978952410]
+offset_left = 420.0
+offset_top = 360.0
+offset_right = 481.0
+offset_bottom = 423.0
+texture = ExtResource("5_0cjbd")
+expand_mode = 1
 
 [node name="Dialogo" parent="." unique_id=477801998 instance=ExtResource("5_6ar0e")]
 visible = false
