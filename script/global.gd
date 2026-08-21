@@ -82,6 +82,18 @@ func resetar_jogo():
 		remove_meta("tutoriais_vistos")
 	gerar_conteudo_do_dia()
 
+
+var cena_anterior: String = "res://scene/TelaInicial.tscn"
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		var cena_atual = get_tree().current_scene
+		
+		if cena_atual.name != "res://scene/Forja_Ritmo.tscn":
+			if cena_atual.scene_file_path != "res://scene/Opcoes.tscn":
+				cena_anterior = cena_atual.scene_file_path
+				get_tree().change_scene_to_file("res://scene/Opcoes.tscn")
+
 ## Retorna o tempo de atraso (delay) entre cada letra em segundos
 func get_delay_caractere() -> float:
 	match velocidade_dialogo:

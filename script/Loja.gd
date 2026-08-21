@@ -19,7 +19,7 @@ func _ready():
 	btn_comprar_chapa.text = "Comprar Chapas (R$ %d)" % Global.preco_chapa
 	_gerar_itens_loja()
 	Global._verificar_gatilho_tutorial("primeira_loja")
-	if Global.dia_atual == 4 and Global.finalizou_treino:
+	if Global.dia_atual == 5 and Global.finalizou_treino:
 		Global._verificar_gatilho_tutorial("loja_botao_comprar_todos")
 	_verificar_visibilidade_upgrade()
 

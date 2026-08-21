@@ -27,4 +27,7 @@ func _on_option_velocidade_item_selected(index: int) -> void:
 	Global.velocidade_dialogo = index as Global.VelocidadeTexto
 
 func _on_btn_voltar_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene/Telainicial.tscn")
+	if Global.cena_anterior != "" and FileAccess.file_exists(Global.cena_anterior):
+		get_tree().change_scene_to_file(Global.cena_anterior)
+	else:
+		get_tree().change_scene_to_file("res://scene/TelaInicial.tscn")

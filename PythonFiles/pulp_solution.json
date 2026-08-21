@@ -1,6 +1,8 @@
 {
-    "status": "Infeasible",
-    "chapas_usadas": 0,
-    "solucao": [],
-    "erro_detalhe": "Falha no solver"
+    "status": "Optimal",
+    "chapas_usadas": 2,
+    "solucao": [
+        2,
+        0
+    ]
 }
