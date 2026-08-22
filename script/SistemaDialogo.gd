@@ -4,6 +4,8 @@ signal dialogo_iniciado
 signal dialogo_encerrado
 signal fala_completada(indice: int)
 
+@export var intervalo_som_caracteres: int = 3 
+
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var retrato_sprite = $RetratoControl/RetratoSprite
 @onready var nome_label = $Control/NomeLabel
@@ -26,7 +28,10 @@ var _indice_atual: int = 0
 var _esta_digitando: bool = false
 var _tween_digitacao: Tween
 
-var som_tecla = preload("res://sounds/SFX_RetroSinglev3.wav")
+# SONS DE VOZ
+var som_jorge = preload("res://sounds/jorge-fala.wav")
+var som_mestre = preload("res://sounds/mestre-fala.wav")
+var _som_fala_atual: AudioStream
 
 func _ready():
 	visible = false
@@ -41,13 +46,13 @@ func iniciar_dialogo(falas: Array):
 	_lista_falas = falas.duplicate()
 	
 	for fala in _lista_falas:
-		if fala.has("coordenada") and fala["coordenada"] is Array:
+		if fala.has("coordenada"):
 			var arr_coord = fala["coordenada"]
 			if arr_coord.size() == 2:
 				fala["coordenada"] = Vector2(arr_coord[0], arr_coord[1])
-		if fala.has("foco_pos") and fala["foco_pos"] is Array:
+		if fala.has("foco_pos"):
 			fala["foco_pos"] = Vector2(fala["foco_pos"][0], fala["foco_pos"][1])
-		if fala.has("foco_tamanho") and fala["foco_tamanho"] is Array:
+		if fala.has("foco_tamanho"):
 			fala["foco_tamanho"] = Vector2(fala["foco_tamanho"][0], fala["foco_tamanho"][1])
 				
 	_indice_atual = 0
@@ -69,6 +74,12 @@ func _exibir_fala_atual():
 	var tem_coordenada = fala.has("coordenada") and fala["coordenada"] is Vector2
 	seta_passar.visible = false
 	
+	var nome_personagem = fala.get("nome", "")
+	if "Mestre" in nome_personagem:
+		_som_fala_atual = som_mestre
+	else:
+		_som_fala_atual = som_jorge
+
 	if fala.has("foco_pos") and fala.has("foco_tamanho"):
 		var mat = tela_foco.material as ShaderMaterial
 		if mat:
@@ -125,16 +136,24 @@ func _iniciar_digitacao(label_alvo: RichTextLabel):
 	_tween_digitacao.finished.connect(_on_digitacao_finalizada)
 	
 	var caracteres_antigos = 0
+	var acumulador_letras = 0 
+
 	while _esta_digitando:
 		var chars_atuais = label_alvo.visible_characters
 		if chars_atuais > caracteres_antigos:
-			var texto_atual = label_alvo.text
-			if chars_atuais <= texto_atual.length():
-				var char_atual = texto_atual[chars_atuais - 1]
-				if char_atual != " " and char_atual != "\n":
-					audio_player.stream = som_tecla
-					audio_player.play()
+			var dif = chars_atuais - caracteres_antigos
 			caracteres_antigos = chars_atuais
+			acumulador_letras += dif
+
+			if acumulador_letras >= intervalo_som_caracteres:
+				acumulador_letras = 0
+				var texto_atual = label_alvo.text
+				if chars_atuais <= texto_atual.length():
+					var char_atual = texto_atual[chars_atuais - 1]
+					if char_atual != " " and char_atual != "\n":
+						audio_player.stream = _som_fala_atual
+						audio_player.play()
+
 		await get_tree().process_frame
 
 func _pular_digitacao():
