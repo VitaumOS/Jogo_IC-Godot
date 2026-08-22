@@ -283,7 +283,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Olha, tem algo novo para comprar na loja!",
 	  "coordenada": [450,450],
-	  "foco_pos": [740, 772],
+	  "foco_pos": [730, 772],
 	  "foco_tamanho": [260, 60]
 	},
 
@@ -292,7 +292,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Esse botão faz você comprar uma melhoria na Modelagem: ele faz você usar TODOS os seus padrões de corte sem ter que selecionar nenhum!",
 	  "coordenada": [450,450],
-	  "foco_pos": [740, 772],
+	  "foco_pos": [730, 772],
 	  "foco_tamanho": [260, 60]
 	},
 
@@ -301,7 +301,7 @@
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
 	  "texto": "Isso vai facilitar muito sua vida e vai te garantir a solução ótima do problema!",
 	  "coordenada": [450,450],
-	  "foco_pos": [740, 772],
+	  "foco_pos": [730, 772],
 	  "foco_tamanho": [260, 60]
 	},
 	{
