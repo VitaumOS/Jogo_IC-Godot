@@ -7,8 +7,10 @@ const DINHEIRO_INICIAL: int = 1200
 var tamanho_container: float = 500.0
 var dia_atual: int = 1
 var dinheiro: int = DINHEIRO_INICIAL
-var ganhos_do_dia: int = 0
+var dinheiro_inicio_do_dia: int = DINHEIRO_INICIAL
 var estoque_chapas: int = 0
+var estoque_chapas_inicio_do_dia: int = 0 # Salva as chapas do início do dia
+var ganhos_do_dia: int = 0
 var preco_chapa: int = 100 
 
 enum VelocidadeTexto { LENTA, MEDIA, INSTANTANEA }
@@ -57,9 +59,23 @@ var contrato_ativo = null
 func _ready():
 	gerar_conteudo_do_dia()
 
+## Reseta o dia atual devolvendo o dinheiro e chapas iniciais + R$ 500 de bônus
+func desistir_e_reiniciar_dia():
+	dinheiro = dinheiro_inicio_do_dia + 500
+	estoque_chapas = estoque_chapas_inicio_do_dia # Restaura o estoque de chapas do início do dia
+	ganhos_do_dia = 0
+	contrato_ativo = null
+	
+	if has_meta("quantidades_padroes_salvas"):
+		remove_meta("quantidades_padroes_salvas")
+		
+	gerar_conteudo_do_dia()
+	get_tree().change_scene_to_file("res://scene/Cena_1.tscn")
+
 func resetar_jogo():
-	dia_atual = 1; dinheiro = DINHEIRO_INICIAL; ganhos_do_dia = 0;
-	estoque_chapas = 0; recompensa_base = 0; recompensa_final = 0;
+	dia_atual = 1; dinheiro = DINHEIRO_INICIAL; dinheiro_inicio_do_dia = DINHEIRO_INICIAL;
+	estoque_chapas = 0; estoque_chapas_inicio_do_dia = 0; ganhos_do_dia = 0;
+	recompensa_base = 0; recompensa_final = 0;
 	cena_main = false; cena_loja = false; cena_contrato = false;
 	alcancou_metas_contrato = false
 	fez_contrato_diario = false
@@ -81,7 +97,6 @@ func resetar_jogo():
 	if has_meta("tutoriais_vistos"):
 		remove_meta("tutoriais_vistos")
 	gerar_conteudo_do_dia()
-
 
 var cena_anterior: String = "res://scene/TelaInicial.tscn"
 
@@ -166,6 +181,10 @@ func gerar_conteudo_do_dia():
 	contratos_concluidos.clear()
 	padroes_na_loja.clear()
 	
+	# Salva os recursos do início do dia
+	dinheiro_inicio_do_dia = dinheiro
+	estoque_chapas_inicio_do_dia = estoque_chapas
+	
 	var dados_contratos = _carregar_json("res://data_json/contratos.json")
 	var dados_padroes = _carregar_json("res://data_json/padroes.json")
 
@@ -201,7 +220,6 @@ func completar_contrato(conseguiu_minimo: bool, ritmo : float):
 		var bonus = 0.0
 		if conseguiu_minimo:
 			bonus = recompensa * 0.2
-		# a recompensa é dada pela metade da recompensa do contrato + a proporção de acertos + o bônus do mínimo
 		recompensa = (recompensa / 2.0) + ((recompensa * ritmo) / 2.0) 
 		recompensa += bonus
 		recompensa_final = recompensa

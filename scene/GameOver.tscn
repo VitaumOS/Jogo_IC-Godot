@@ -5,6 +5,7 @@
 [ext_resource type="StyleBox" uid="uid://c1laj21bixtl" path="res://modelos/modelo_botao_2.tres" id="2_vq0q6"]
 [ext_resource type="PackedScene" uid="uid://dnci0t7lpn3u5" path="res://scene/aux_scene/SistemaDialogo.tscn" id="3_vq0q6"]
 [ext_resource type="StyleBox" uid="uid://bew20hrixsyos" path="res://modelos/modelo_botao_2_pressionado.tres" id="4_3qd2y"]
+[ext_resource type="PackedScene" uid="uid://niwiqe2egaiv" path="res://scene/aux_scene/Popup.tscn" id="6_n68tt"]
 
 [node name="GameOver" type="Control" unique_id=2075479652]
 layout_mode = 3
@@ -31,12 +32,17 @@ text = "VOCÊ FALIU..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BtnVoltar" type="Button" parent="." unique_id=618037606]
+[node name="HB" type="HBoxContainer" parent="." unique_id=581688376]
 layout_mode = 0
-offset_left = 208.0
-offset_top = 696.0
-offset_right = 684.0
-offset_bottom = 750.0
+offset_top = 776.0
+offset_right = 900.0
+offset_bottom = 830.0
+alignment = 1
+
+[node name="BtnVoltar" type="Button" parent="HB" unique_id=618037606]
+custom_minimum_size = Vector2(408, 54)
+custom_maximum_size = Vector2(408, 54)
+layout_mode = 2
 theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("2_vq0q6")
@@ -45,7 +51,22 @@ theme_override_styles/hover = ExtResource("4_3qd2y")
 theme_override_styles/disabled = ExtResource("4_3qd2y")
 text = "Voltar pro Menu Principal"
 
+[node name="BtnRecomecarDia" type="Button" parent="HB" unique_id=569290153]
+custom_minimum_size = Vector2(408, 54)
+custom_maximum_size = Vector2(408, 54)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.26666668, 0.18431373, 0.13333334, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_vq0q6")
+theme_override_styles/pressed = ExtResource("4_3qd2y")
+theme_override_styles/hover = ExtResource("4_3qd2y")
+theme_override_styles/disabled = ExtResource("4_3qd2y")
+text = "Recomeçar Dia"
+
 [node name="SistemaDialogo" parent="." unique_id=477801998 instance=ExtResource("3_vq0q6")]
 visible = false
 
-[connection signal="pressed" from="BtnVoltar" to="." method="_on_btn_voltar_pressed"]
+[node name="PopUp" parent="." unique_id=1294504964 instance=ExtResource("6_n68tt")]
+
+[connection signal="pressed" from="HB/BtnVoltar" to="." method="_on_btn_voltar_pressed"]
+[connection signal="pressed" from="HB/BtnRecomecarDia" to="." method="_on_btn_recomecar_dia_pressed"]

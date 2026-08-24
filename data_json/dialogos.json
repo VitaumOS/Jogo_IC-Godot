@@ -176,6 +176,27 @@
     }
   ],
 
+  "primeira_falha_minimo": [
+    {
+      "nome": "Jorge",
+      "texto": "Poxa, gastamos mais chapas do que o necessário para esse pedido... Não conseguimos o bônus de eficiência de 20%.",
+	  "coordenada":[450,550],
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+    {
+      "nome": "Jorge",
+      "texto": "Existia algum modo de você ter selecionado os moldes para que você utilizasse menos chapas do que você utilizou.",
+	  "coordenada":[450,550],
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    },
+	{
+      "nome": "Jorge",
+      "texto": "Mas sem choro! Vamos prestar mais atenção na próxima.",
+	  "coordenada":[450,550],
+      "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+    }
+  ],
+
   
   "todos_contratos_concluidos": [
 	{
@@ -337,7 +358,7 @@
 	},
 	{
 	  "nome": "Jorge",
-	  "texto": " Agora podemos ver o quanto estamos gastando em cada molde",
+	  "texto": " Agora podemos ver o quanto estamos gastando em cada molde.",
 	  "coordenada": [650, 130],
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
 	},

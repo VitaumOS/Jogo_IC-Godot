@@ -7,6 +7,7 @@ extends Node2D
 @onready var vbox_padroes_lista = $UI/ScrollContainer/PadraoCorteSalvo
 @onready var popup = $PopUp
 @onready var contrato_visualizacao = $UI/Contrato_visualizacao
+@onready var btn_desistir = $UI/Desistir
 
 # --- VARIÁVEIS DE LÓGICA ---
 var padroes_corte_salvos_valor: Array = [] 
@@ -52,6 +53,12 @@ func _ready():
 		
 	_conectar_sinais_botoes_quantidade()
 	_atualizar_pintura_demanda()
+	_atualizar_botao_desistir()
+	
+func _atualizar_botao_desistir():
+	
+	btn_desistir.visible = (Global.dia_atual >= 2)
+	btn_desistir.disabled = (Global.dinheiro >= 100)
 
 func _atualizar_pintura_demanda():
 	contrato_visualizacao._atualizar_pintura_demanda()
@@ -250,9 +257,10 @@ func _finalizar_logica_pulp():
 			var cor_resultado = Color.DARK_GREEN if alcancou_minimo else Color.RED
 			texto_minimo.add_theme_color_override("font_color", cor_resultado)
 			
-			if alcancou_minimo and !Global.alcancou_primeiro_minimo:
-				Global.alcancou_primeiro_minimo = true
+			if alcancou_minimo:
 				Global._verificar_gatilho_tutorial("primeiro_minimo")
+			else:
+				Global._verificar_gatilho_tutorial("primeira_falha_minimo")
 			
 			await tela_dinheiro.find_child("Continuar").pressed
 			tela_dinheiro.queue_free()
@@ -274,9 +282,26 @@ func _limpar_dados_transicao():
 	Global.armas_na_esteira_atual = []
 	Global.ultimo_desempenho_ritmo = -1.0
 	Global.set_meta("quantidades_padroes_salvas", {})
+	
+	for linha in vbox_padroes_lista.get_children():
+		if "quantidade" in linha:
+			linha.quantidade = 0
+		if linha.has_method("set_quantidade"):
+			linha.set_quantidade(0)
+		elif linha.has_method("definir_quantidade"):
+			linha.definir_quantidade(0)
+		
+		linha.find_child("lblQtd").text = "0"
+	_atualizar_pintura_demanda()
 
 func _on_modelagem_pressed():
 	if Global.dia_atual == 5 and !Global.finalizou_treino:
 		get_tree().change_scene_to_file("res://scene/TreinoModelagem.tscn")
 	else:
 		get_tree().change_scene_to_file("res://scene/ModelagemMatematica.tscn")
+		
+func _on_btn_desistir_pressed():
+	$PopUp.mostrar_confirmacao("Deseja declarar falência? Você poderá reiniciar o dia com um bônus ou fechar o jogo.")
+	var confirma = await $PopUp.resposta
+	if confirma:
+		get_tree().change_scene_to_file("res://scene/GameOver.tscn")
