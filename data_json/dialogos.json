@@ -353,19 +353,26 @@
   "2": [
 	{
 	  "nome": "Jorge",
-	  "texto": "Ufa, o primeiro dia foi tranquilo. Mas olhe o chão da ferraria... está cheio de retalhos e pedaços de metal que sobraram dos cortes. Seria bom termos uma noção do quanto a gente está desperdiçando,né.",
+	  "texto": "Ufa, o primeiro dia foi tranquilo. Mas olhe o chão da ferraria... está cheio de retalhos e pedaços de metal que sobraram dos cortes. Seria bom a gente não desperdiçar tanto.",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
 	},
 	{
 	  "nome": "Jorge",
-	  "texto": " Agora podemos ver o quanto estamos gastando em cada molde.",
-	  "coordenada": [650, 130],
+	  "texto": " Uma dica que eu te dou: A loja agora atualizou o estoque de moldes, porém nem todos os moldes são ideais, eles geram poucas armas e você vai gastar mais chapas do que devia. Evite de comprar eles!",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
 	},
 	{
 	  "nome": "Jorge",
-	  "texto": "Use isso como um guia para comprar moldes: moldes que desperdiçam muito devem ser evitados!",
-	  "coordenada": [650, 130],
+	  "texto": "Além disso, temos esse botão agora. Basicamente, se você não gastar o mínimo possível constantemente, comprar moldes ruins e não montar todas as armas do contrato, pode ser que você fique agarrado... ",
+	  "foco_pos": [160, 60],
+	  "foco_tamanho": [250, 50],
+	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
+	},
+	{
+	  "nome": "Jorge",
+	  "texto": "[shake rate=20 level=10]E bom... se isso acontecer[/shake], vamos ter que declarar falência...Então preste muita atenção!",
+	  "foco_pos": [160, 60],
+	  "foco_tamanho": [250, 50],
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png"
 	}
   ],

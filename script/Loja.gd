@@ -57,12 +57,6 @@ func _gerar_itens_loja():
 		var p_hbox = card.find_child("Control2").find_child("Visualizador_Padrao")
 		_renderizar_previa_no_card(p_hbox, item.composicao)
 		
-		var lbl_porc = card.find_child("Control3").find_child("Desperdicio")
-		lbl_porc.visible = (Global.dia_atual != 1)
-		
-		var porcentagem = (padrao_tamanho / Global.tamanho_container) * 100.0
-		lbl_porc.text = "%.1f%%" % porcentagem
-		
 		var btn = card.find_child("Button")
 		btn.text = "R$ %d" % item.preco
 		
