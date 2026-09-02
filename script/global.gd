@@ -9,7 +9,7 @@ var dia_atual: int = 1
 var dinheiro: int = DINHEIRO_INICIAL
 var dinheiro_inicio_do_dia: int = DINHEIRO_INICIAL
 var estoque_chapas: int = 0
-var estoque_chapas_inicio_do_dia: int = 0 # Salva as chapas do início do dia
+var estoque_chapas_inicio_do_dia: int = 0
 var ganhos_do_dia: int = 0
 var preco_chapa: int = 100 
 
@@ -56,13 +56,49 @@ var contratos_concluidos: Array = []
 
 var contrato_ativo = null
 
+var musica_global = preload("res://sounds/main-theme.wav")
+var player_musica: AudioStreamPlayer
+var cena_anterior: String = "res://scene/TelaInicial.tscn"
+
 func _ready():
 	gerar_conteudo_do_dia()
+	_iniciar_musica_continua()
+
+func _iniciar_musica_continua():
+	player_musica = AudioStreamPlayer.new()
+	player_musica.bus = "Master"
+	player_musica.process_mode = PROCESS_MODE_ALWAYS
+	player_musica.stream = musica_global
+	
+	player_musica.finished.connect(func(): 
+		if player_musica.stream:
+			player_musica.play()
+	)
+	
+	add_child(player_musica)
+	
+	await get_tree().process_frame
+	if not player_musica.playing:
+		player_musica.play()
+
+## Controle da tecla ESC (Opções)
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		var cena_atual = get_tree().current_scene
+		if not cena_atual: return
+		
+		var caminho = cena_atual.scene_file_path if cena_atual.scene_file_path else cena_atual.name
+		caminho = caminho.to_lower()
+		
+		if not "forja_ritmo" in caminho and not "opcoes" in caminho:
+			if cena_atual.scene_file_path:
+				cena_anterior = cena_atual.scene_file_path
+			get_tree().change_scene_to_file("res://scene/Opcoes.tscn")
 
 ## Reseta o dia atual devolvendo o dinheiro e chapas iniciais + R$ 500 de bônus
 func desistir_e_reiniciar_dia():
 	dinheiro = dinheiro_inicio_do_dia + 500
-	estoque_chapas = estoque_chapas_inicio_do_dia # Restaura o estoque de chapas do início do dia
+	estoque_chapas = estoque_chapas_inicio_do_dia
 	ganhos_do_dia = 0
 	contrato_ativo = null
 	
@@ -97,17 +133,6 @@ func resetar_jogo():
 	if has_meta("tutoriais_vistos"):
 		remove_meta("tutoriais_vistos")
 	gerar_conteudo_do_dia()
-
-var cena_anterior: String = "res://scene/TelaInicial.tscn"
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		var cena_atual = get_tree().current_scene
-		
-		if cena_atual.name != "res://scene/Forja_Ritmo.tscn":
-			if cena_atual.scene_file_path != "res://scene/Opcoes.tscn":
-				cena_anterior = cena_atual.scene_file_path
-				get_tree().change_scene_to_file("res://scene/Opcoes.tscn")
 
 ## Retorna o tempo de atraso (delay) entre cada letra em segundos
 func get_delay_caractere() -> float:
@@ -181,7 +206,6 @@ func gerar_conteudo_do_dia():
 	contratos_concluidos.clear()
 	padroes_na_loja.clear()
 	
-	# Salva os recursos do início do dia
 	dinheiro_inicio_do_dia = dinheiro
 	estoque_chapas_inicio_do_dia = estoque_chapas
 	
