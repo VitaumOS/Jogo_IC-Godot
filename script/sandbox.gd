@@ -339,48 +339,65 @@ func _on_btn_resolver_pressed() -> void:
 	for i in range(Global.pecas_disponiveis.size()):
 		matriz_demanda_manual[i] = valores_demanda_salvos[i]
 
-	var args: Array[String] = []
-	args.append(str(matriz_demanda_manual))
-	for comp in composicoes_enviadas:
-		args.append(str(comp))
-
 	_instancia_loading = cena_loading_preload.instantiate()
 	get_tree().root.add_child(_instancia_loading)
 
-	_thread = Thread.new()
-	_thread.start(_executar_solver_thread.bind(args))
+	# EXECUÇÃO VIA API REMOTA OU EXECUTÁVEL LOCAL
+	if Global.usar_api or OS.has_feature("web"):
+		Global.requisitar_solucao_pulp(matriz_demanda_manual, composicoes_enviadas)
+		
+		var tempo_espera: float = 0.0
+		while Global.resultado_pulp == null and tempo_espera < 30.0:
+			await get_tree().create_timer(0.2).timeout
+			tempo_espera += 0.2
+			
+		_processar_resultado(Global.resultado_pulp)
+	else:
+		var args: Array[String] = []
+		args.append(str(matriz_demanda_manual))
+		for comp in composicoes_enviadas:
+			args.append(str(comp))
+
+		_thread = Thread.new()
+		_thread.start(_executar_solver_thread.bind(args))
 
 func _executar_solver_thread(args: Array) -> void:
 	var saida_terminal = []
 	var resultado_codigo = OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
-	call_deferred("_finalizar_processamento", resultado_codigo)
+	call_deferred("_finalizar_processamento_local", resultado_codigo)
 
-func _finalizar_processamento(resultado_codigo: int) -> void:
-	_thread.wait_to_finish()
-	_instancia_loading.queue_free()
+func _finalizar_processamento_local(resultado_codigo: int) -> void:
+	if _thread and _thread.is_alive():
+		_thread.wait_to_finish()
+	_thread = null
 
-	if resultado_codigo == 0:
-		if FileAccess.file_exists(OUTPUT_FILE_PATH):
-			var file = FileAccess.open(OUTPUT_FILE_PATH, FileAccess.READ)
-			var resultado = JSON.parse_string(file.get_as_text())
-			file.close()
-			
-			if resultado and resultado.get("status") == "Optimal":
-				var solucao_lista = resultado.get("solucao", [])
-				var total_chapas = resultado.get("chapas_usadas", 0)
-				
-				var texto_cortes = ""
-				for j in range(solucao_lista.size()):
-					var qtd_cortes = int(solucao_lista[j])
-					if qtd_cortes > 0:
-						texto_cortes += "Padrão %d: %d vez(es)\n" % [(j + 1), qtd_cortes]
-				
-				var texto_total = "Total de Chapas Utilizadas: %d" % total_chapas
-				_exibir_popup_resultado(texto_cortes, texto_total)
-			else:
-				_exibir_popup_resultado("Aviso", "Inviável: Os padrões criados não \nconseguem suprir a demanda digitada.")
+	var resultado = null
+	if resultado_codigo == 0 and FileAccess.file_exists(OUTPUT_FILE_PATH):
+		var file = FileAccess.open(OUTPUT_FILE_PATH, FileAccess.READ)
+		resultado = JSON.parse_string(file.get_as_text())
+		file.close()
+
+	_processar_resultado(resultado)
+
+func _processar_resultado(resultado) -> void:
+	if is_instance_valid(_instancia_loading):
+		_instancia_loading.queue_free()
+
+	if resultado and resultado.get("status") == "Optimal":
+		var solucao_lista = resultado.get("solucao", [])
+		var total_chapas = resultado.get("chapas_usadas", 0)
+		
+		var texto_cortes = ""
+		for j in range(solucao_lista.size()):
+			var qtd_cortes = int(solucao_lista[j])
+			if qtd_cortes > 0:
+				texto_cortes += "Padrão %d: %d vez(es)\n" % [(j + 1), qtd_cortes]
+		
+		var texto_total = "Total de Chapas Utilizadas: %d" % total_chapas
+		_exibir_popup_resultado(texto_cortes, texto_total)
 	else:
-		_exibir_popup_resultado("Erro na execução do solver externo.", "")
+		var detalhe = resultado.get("erro_detalhe", "Inviável: Os padrões criados não \nconseguem suprir a demanda digitada.") if resultado else "Erro na execução do solver."
+		_exibir_popup_resultado("Aviso", detalhe)
 
 func _exibir_popup_resultado(texto_label1: String, texto_label2: String) -> void:
 	var mostra_corte = cena_mostra_cortes.instantiate()

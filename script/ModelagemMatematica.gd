@@ -28,7 +28,6 @@ var OUTPUT_FILE_PATH: String:
 		else:
 			return OS.get_executable_path().get_base_dir().path_join("PythonFiles/pulp_solution.json")
 
-
 var lista_padroes_disponiveis: Array = []
 var padroes_selecionados_indices: Array = []
 var inputs_demanda: Dictionary = {}
@@ -47,7 +46,6 @@ func _ready() -> void:
 	_gerar_restricoes_demanda()
 	_atualizar_equacoes_na_tela()
 	Global._verificar_gatilho_tutorial("primeira_modelagem")
-
 
 func _gerar_lista_direita_padroes() -> void:
 	for child in container_padroes_selecao.get_children():
@@ -108,6 +106,7 @@ func _on_btn_selecionar_todos_pressed() -> void:
 	var composicoes_enviadas = []
 	for padrao in Global.padroes_desbloqueados:
 		composicoes_enviadas.append(padrao.get("composicao", []))
+		
 	var matriz_demanda_manual = []
 	matriz_demanda_manual.resize(Global.pecas_disponiveis.size())
 	matriz_demanda_manual.fill(0)
@@ -116,16 +115,86 @@ func _on_btn_selecionar_todos_pressed() -> void:
 		for i in range(Global.contrato_ativo.demanda.size()):
 			matriz_demanda_manual[i] = Global.contrato_ativo.demanda[i]
 
-	var args: Array[String] = []
-	args.append(str(matriz_demanda_manual))
-	for comp in composicoes_enviadas:
-		args.append(str(comp))
+	_resolver_problema(matriz_demanda_manual, composicoes_enviadas)
 
-	_instancia_loading = cena_loading_preload.instantiate()
-	get_tree().root.add_child(_instancia_loading)
+func _on_btn_resolver_pressed() -> void:
+	if padroes_selecionados_indices.is_empty(): return
+		
+	var composicoes_enviadas = []
+	for idx in padroes_selecionados_indices:
+		var padrao = Global.padroes_desbloqueados[idx]
+		composicoes_enviadas.append(padrao.get("composicao", []))
+		
+	var matriz_demanda_manual = []
+	matriz_demanda_manual.resize(Global.pecas_disponiveis.size())
+	matriz_demanda_manual.fill(0)
+	
+	if Global.contrato_ativo:
+		for i in range(Global.contrato_ativo.demanda.size()):
+			matriz_demanda_manual[i] = Global.contrato_ativo.demanda[i]
 
-	_thread = Thread.new()
-	_thread.start(_executar_solver_thread.bind(args))
+	_resolver_problema(matriz_demanda_manual, composicoes_enviadas)
+
+func _resolver_problema(demanda_p: Array, composicoes_p: Array) -> void:
+	if cena_loading_preload:
+		_instancia_loading = cena_loading_preload.instantiate()
+		get_tree().root.add_child(_instancia_loading)
+
+	if Global.usar_api or OS.has_feature("web"):
+		Global.requisitar_solucao_pulp(demanda_p, composicoes_p)
+		
+		var tempo_espera: float = 0.0
+		while Global.resultado_pulp == null and tempo_espera < 30.0:
+			await get_tree().create_timer(0.2).timeout
+			tempo_espera += 0.2
+			
+		_processar_resultado(Global.resultado_pulp)
+	else:
+		var args: Array[String] = []
+		args.append(str(demanda_p))
+		for comp in composicoes_p:
+			args.append(str(comp))
+
+		_thread = Thread.new()
+		_thread.start(_executar_solver_thread.bind(args))
+
+func _executar_solver_thread(args: Array) -> void:
+	var saida_terminal = []
+	var resultado_codigo = OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
+	call_deferred("_finalizar_processamento_local", resultado_codigo)
+
+func _finalizar_processamento_local(resultado_codigo: int) -> void:
+	if _thread and _thread.is_alive():
+		_thread.wait_to_finish()
+	_thread = null
+
+	var resultado = null
+	if resultado_codigo == 0 and FileAccess.file_exists(OUTPUT_FILE_PATH):
+		var file = FileAccess.open(OUTPUT_FILE_PATH, FileAccess.READ)
+		resultado = JSON.parse_string(file.get_as_text())
+		file.close()
+
+	_processar_resultado(resultado)
+
+func _processar_resultado(resultado) -> void:
+	if is_instance_valid(_instancia_loading):
+		_instancia_loading.queue_free()
+
+	if resultado and resultado.get("status") == "Optimal":
+		var solucao_lista = resultado.get("solucao", [])
+		var total_chapas = resultado.get("chapas_usadas", 0)
+		
+		var texto_cortes = ""
+		for j in range(solucao_lista.size()):
+			var qtd_cortes = int(solucao_lista[j])
+			if qtd_cortes > 0:
+				texto_cortes += "Padrão %d: %d vez(es)\n" % [(j + 1), qtd_cortes]
+		
+		var texto_total = "Total de Chapas Utilizadas: %d" % total_chapas
+		_exibir_popup_resultado(texto_cortes, texto_total)
+	else:
+		var detalhe = resultado.get("erro_detalhe", "Solver executado, mas não encontrou uma solução ótima.") if resultado else "Erro na execução do solver."
+		_exibir_popup_resultado("Aviso", detalhe)
 
 func _reorganizar_texto_botoes() -> void:
 	var idx_atual = 0
@@ -222,70 +291,6 @@ func _atualizar_equacoes_na_tela() -> void:
 			var mini = miniatura.instantiate()
 			container_funcao.add_child(mini)
 			mini.find_child("Numero").text = str(i + 1)
-
-func _on_btn_resolver_pressed() -> void:
-	if padroes_selecionados_indices.is_empty(): return
-		
-	var composicoes_enviadas = []
-	for idx in padroes_selecionados_indices:
-		var padrao = Global.padroes_desbloqueados[idx]
-		composicoes_enviadas.append(padrao.get("composicao", []))
-		
-	var matriz_demanda_manual = []
-	matriz_demanda_manual.resize(Global.pecas_disponiveis.size())
-	matriz_demanda_manual.fill(0)
-	
-	if Global.contrato_ativo:
-		for i in range(Global.contrato_ativo.demanda.size()):
-			matriz_demanda_manual[i] = Global.contrato_ativo.demanda[i]
-
-	var args: Array[String] = []
-	args.append(str(matriz_demanda_manual))
-	for comp in composicoes_enviadas:
-		args.append(str(comp))
-
-	if cena_loading_preload:
-		_instancia_loading = cena_loading_preload.instantiate()
-		get_tree().root.add_child(_instancia_loading)
-
-	_thread = Thread.new()
-	_thread.start(_executar_solver_thread.bind(args))
-
-func _executar_solver_thread(args: Array) -> void:
-	var saida_terminal = []
-	var resultado_codigo = OS.execute(PYTHON_EXE_PATH, args, saida_terminal, true)
-	
-	call_deferred("_finalizar_processamento", resultado_codigo)
-
-func _finalizar_processamento(resultado_codigo: int) -> void:
-	if _thread and _thread.is_alive():
-		_thread.wait_to_finish()
-
-	if _instancia_loading and is_instance_valid(_instancia_loading):
-		_instancia_loading.queue_free()
-
-	if resultado_codigo == 0:
-		if FileAccess.file_exists(OUTPUT_FILE_PATH):
-			var file = FileAccess.open(OUTPUT_FILE_PATH, FileAccess.READ)
-			var resultado = JSON.parse_string(file.get_as_text())
-			file.close()
-			
-			if resultado and resultado.get("status") == "Optimal":
-				var solucao_lista = resultado.get("solucao", [])
-				var total_chapas = resultado.get("chapas_usadas", 0)
-				
-				var texto_cortes = ""
-				for j in range(solucao_lista.size()):
-					var qtd_cortes = int(solucao_lista[j])
-					if qtd_cortes > 0:
-						texto_cortes += "Padrão %d: %d vez(es)\n" % [(j + 1), qtd_cortes]
-				
-				var texto_total = "Total de Chapas Utilizadas: %d" % total_chapas
-				_exibir_popup_resultado(texto_cortes, texto_total)
-			else:
-				_exibir_popup_resultado("Solver executado, mas não encontrou uma solução ótima.", "")
-	else:
-		_exibir_popup_resultado("Erro na execução do solver externo.", "")
 
 func _exibir_popup_resultado(texto_label1: String, texto_label2: String) -> void:
 	var mostra_corte = cena_mostra_cortes.instantiate()

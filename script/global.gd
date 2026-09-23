@@ -34,6 +34,10 @@ var finalizou_tutorial_primeiro_contrato = false
 var finalizou_tutorial_forja = false
 var alcancou_primeiro_minimo: bool = false
 
+var resultado_pulp = null
+var API_URL: String = "https://render-python-api-j8iw.onrender.com/resolver"
+var usar_api: bool = OS.has_feature("web")
+
 var chapas_usadas_pelo_jogador: int = 0
 var ultimo_desempenho_ritmo: float = -1.0 
 
@@ -63,6 +67,49 @@ var cena_anterior: String = "res://scene/TelaInicial.tscn"
 func _ready():
 	gerar_conteudo_do_dia()
 	_iniciar_musica_continua()
+	_acordar_servidor_python()
+
+func _acordar_servidor_python() -> void:
+	var http_ping = HTTPRequest.new()
+	add_child(http_ping)
+	
+	var url_ping = API_URL.replace("/resolver", "/ping")
+	
+	http_ping.request_completed.connect(func(_result, response_code, _headers, _body):
+		http_ping.queue_free()
+	)
+	http_ping.request(url_ping, [], HTTPClient.METHOD_GET)
+	
+func requisitar_solucao_pulp(demanda_p: Array, padroes_p: Array) -> void:
+	resultado_pulp = null
+	
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	
+	var payload = JSON.stringify({
+		"demanda": demanda_p,
+		"padroes": padroes_p
+	})
+	
+	var headers = ["Content-Type: application/json"]
+	
+	http_request.request_completed.connect(func(_result, response_code, _headers, body):
+		var body_str = body.get_string_from_utf8()
+		if response_code == 200:
+			var json_res = JSON.parse_string(body_str)
+			if json_res != null:
+				resultado_pulp = json_res
+			else:
+				resultado_pulp = {"status": "Error", "erro_detalhe": "Resposta inválida do servidor"}
+		else:
+			resultado_pulp = {
+				"status": "Error", 
+				"erro_detalhe": "Erro no servidor (Código HTTP %d). Verifique os logs no Render." % response_code
+			}
+		http_request.queue_free()
+	)
+	
+	http_request.request(API_URL, headers, HTTPClient.METHOD_POST, payload)
 
 func _iniciar_musica_continua():
 	player_musica = AudioStreamPlayer.new()

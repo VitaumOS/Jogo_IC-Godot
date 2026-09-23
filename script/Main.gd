@@ -14,6 +14,7 @@ var padroes_corte_salvos_valor: Array = []
 var demanda: Array = []
 var pecas_disponiveis: Array = Global.pecas_disponiveis
 
+# Variáveis para execução local por Executável
 var thread_pulp: Thread
 
 var PYTHON_EXE_PATH: String:
@@ -35,6 +36,7 @@ func _ready():
 	demanda = Global.contrato_ativo.demanda if Global.contrato_ativo else [0,0,0,0,0,0]
 	_carregar_padroes_da_loja()
 	contrato_visualizacao.inicializar(demanda, vbox_padroes_lista, padroes_corte_salvos_valor)
+	
 	if Global.ultimo_desempenho_ritmo < 0:
 		_verificar_dialogo_diario()
 	else:
@@ -56,7 +58,6 @@ func _ready():
 	_atualizar_botao_desistir()
 	
 func _atualizar_botao_desistir():
-	
 	btn_desistir.visible = (Global.dia_atual >= 2)
 	btn_desistir.disabled = (Global.dinheiro >= 100)
 
@@ -64,7 +65,6 @@ func _atualizar_pintura_demanda():
 	contrato_visualizacao._atualizar_pintura_demanda()
 	_salvar_quantidades_atuais()
 
-# Salva o estado atual de quantidade de cada padrão no Global
 func _salvar_quantidades_atuais():
 	if not Global.has_meta("quantidades_padroes_salvas"):
 		Global.set_meta("quantidades_padroes_salvas", {})
@@ -79,7 +79,6 @@ func _salvar_quantidades_atuais():
 			
 	Global.set_meta("quantidades_padroes_salvas", dict_qtds)
 
-# Monitora e conecta os botões de mais e menos de cada padrão de corte da lista
 func _conectar_sinais_botoes_quantidade():
 	await get_tree().process_frame
 	for linha in vbox_padroes_lista.get_children():
@@ -153,7 +152,6 @@ func _exibir_padrao_na_lista(item: Dictionary):
 			var lbl = linha.find_child("lblQtd") as Label
 			lbl.text = str(qtd_salva)
 
-
 func box_pecas_data_append(arr: Array, i: int):
 	arr.append({
 		"largura_peca": Global.pecas_disponiveis[i].largura,
@@ -216,12 +214,15 @@ func _preparar_e_iniciar_forja():
 	Global.armas_na_esteira_atual = lista_para_forjar
 	Global.chapas_usadas_pelo_jogador = get_total_chapas_usadas()
 	
-	var args_pulp: Array[String] = [str(demanda)]
-	for p in padroes_corte_salvos_valor: 
-		args_pulp.append(str(p))
-	
-	thread_pulp = Thread.new()
-	thread_pulp.start(_executar_pulp_em_background.bind(args_pulp))
+	if Global.usar_api or OS.has_feature("web"):
+		Global.requisitar_solucao_pulp(demanda, padroes_corte_salvos_valor)
+	else:
+		var args_pulp: Array[String] = [str(demanda)]
+		for p in padroes_corte_salvos_valor: 
+			args_pulp.append(str(p))
+		
+		thread_pulp = Thread.new()
+		thread_pulp.start(_executar_pulp_em_background.bind(args_pulp))
 	
 	get_tree().change_scene_to_file("res://scene/Forja_Ritmo.tscn")
 
@@ -234,37 +235,50 @@ func _finalizar_logica_pulp():
 	if Global.estoque_chapas < z_user:
 		_limpar_dados_transicao()
 		return
-		
-	if thread_pulp and thread_pulp.is_alive():
-		thread_pulp.wait_to_finish()
-	thread_pulp = null
 
-	if FileAccess.file_exists(OUTPUT_FILE_NAME):
-		var arquivo = FileAccess.open(OUTPUT_FILE_NAME, FileAccess.READ)
-		var res = JSON.parse_string(arquivo.get_as_text())
+	var res = null
+
+	if Global.usar_api or OS.has_feature("web"):
+		var tempo_espera: float = 0.0
+		while Global.resultado_pulp == null and tempo_espera < 30.0:
+			await get_tree().create_timer(0.2).timeout
+			tempo_espera += 0.2
+		res = Global.resultado_pulp
+	else:
+		if thread_pulp and thread_pulp.is_alive():
+			thread_pulp.wait_to_finish()
+		thread_pulp = null
+
+		if FileAccess.file_exists(OUTPUT_FILE_NAME):
+			var arquivo = FileAccess.open(OUTPUT_FILE_NAME, FileAccess.READ)
+			res = JSON.parse_string(arquivo.get_as_text())
+
+	# PROCESSAMENTO UNIFICADO DA RESPOSTA
+	if res and res.get("status") == "Optimal":
+		var z_pulp = res["chapas_usadas"]
+		var alcancou_minimo = z_user <= z_pulp
+		Global.estoque_chapas -= z_user
+		Global.registrar_contrato_concluido(Global.contrato_ativo)
+		Global.completar_contrato(alcancou_minimo, Global.ultimo_desempenho_ritmo)
 		
-		if res and res.get("status") == "Optimal":
-			var z_pulp = res["chapas_usadas"]
-			var alcancou_minimo = z_user <= z_pulp
-			Global.estoque_chapas -= z_user
-			Global.registrar_contrato_concluido(Global.contrato_ativo)
-			Global.completar_contrato(alcancou_minimo, Global.ultimo_desempenho_ritmo)
-			
-			var tela_dinheiro = cena_resultado_dinheiro.instantiate()
-			$UI.add_child(tela_dinheiro)
-			var texto_minimo = tela_dinheiro.get_node("PanelContainer/VBox/VboxTexto/Label3")
-			texto_minimo.text = "Alcançou o mínimo: " + ("SIM (+20%)" if alcancou_minimo else "NÃO")
-			var cor_resultado = Color.DARK_GREEN if alcancou_minimo else Color.RED
-			texto_minimo.add_theme_color_override("font_color", cor_resultado)
-			
-			if alcancou_minimo:
-				Global._verificar_gatilho_tutorial("primeiro_minimo")
-			else:
-				Global._verificar_gatilho_tutorial("primeira_falha_minimo")
-			
-			await tela_dinheiro.find_child("Continuar").pressed
-			tela_dinheiro.queue_free()
-			$UI/Info.atualizar()
+		var tela_dinheiro = cena_resultado_dinheiro.instantiate()
+		$UI.add_child(tela_dinheiro)
+		var texto_minimo = tela_dinheiro.get_node("PanelContainer/VBox/VboxTexto/Label3")
+		texto_minimo.text = "Alcançou o mínimo: " + ("SIM (+20%)" if alcancou_minimo else "NÃO")
+		var cor_resultado = Color.DARK_GREEN if alcancou_minimo else Color.RED
+		texto_minimo.add_theme_color_override("font_color", cor_resultado)
+		
+		if alcancou_minimo:
+			Global._verificar_gatilho_tutorial("primeiro_minimo")
+		else:
+			Global._verificar_gatilho_tutorial("primeira_falha_minimo")
+		
+		await tela_dinheiro.find_child("Continuar").pressed
+		tela_dinheiro.queue_free()
+		$UI/Info.atualizar()
+	else:
+		var detalhe = res.get("erro_detalhe", "Sem resposta da otimização") if res else "Falha ao ler resultado"
+		popup.mostrar_mensagem_erro("Erro ao processar otimização: " + str(detalhe))
 
 	if !Global.finalizou_primeiro_contrato:
 		Global.finalizou_primeiro_contrato = true
@@ -273,7 +287,7 @@ func _finalizar_logica_pulp():
 	if Global.todos_contratos_concluidos():
 		Global._verificar_gatilho_tutorial("todos_contratos_concluidos")
 		
-	if Global.todos_contratos_concluidos() and Global.dia_atual==1:
+	if Global.todos_contratos_concluidos() and Global.dia_atual == 1:
 		Global._verificar_gatilho_tutorial("todos_contratos_concluidos_dia1")
 
 	_limpar_dados_transicao()
@@ -282,6 +296,7 @@ func _limpar_dados_transicao():
 	Global.armas_na_esteira_atual = []
 	Global.ultimo_desempenho_ritmo = -1.0
 	Global.set_meta("quantidades_padroes_salvas", {})
+	Global.resultado_pulp = null
 	
 	for linha in vbox_padroes_lista.get_children():
 		if "quantidade" in linha:
@@ -291,7 +306,9 @@ func _limpar_dados_transicao():
 		elif linha.has_method("definir_quantidade"):
 			linha.definir_quantidade(0)
 		
-		linha.find_child("lblQtd").text = "0"
+		var lbl = linha.find_child("lblQtd")
+		if lbl:
+			lbl.text = "0"
 	_atualizar_pintura_demanda()
 
 func _on_modelagem_pressed():

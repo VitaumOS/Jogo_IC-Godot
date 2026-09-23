@@ -12,10 +12,10 @@ const VELOCIDADE_BASE = 350.0
 const ESPACAMENTO_BASE = 320.0
 const TECLAS = ["Up", "Left", "Down", "Right"]
 const SIMBOLOS_SETAS = {
-	"Up": "↑",
-	"Left": "←",
-	"Down": "↓",
-	"Right": "→"
+	"Up": "^",
+	"Left": "<",
+	"Down": "v",
+	"Right": ">"
 }
 
 const OFFSET_Y_SEGUNDA_ESTEIRA = 80.0
