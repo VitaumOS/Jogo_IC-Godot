@@ -265,13 +265,13 @@
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-	  "texto": "Chega de adivinhar de cabeça! Esta é a tela de [b]MODELAGEM MATEMÁTICA[/b]. Aqui nós transformamos a demanda em Restrições e os moldes em padrões de corte e variáveis de decisão."
+	  "texto": "Chega de adivinhar de cabeça! Esta é a [b]OFICINA DE MODELAGEM[/b]. Aqui nós transformamos a demanda em Restrições e os moldes em padrões de corte e variáveis de decisão."
 	},
 
 	{
 	  "nome": "Jorge",
 	  "retrato": "res://Sprite/gatinhos/NekoJorge.png",
-	  "texto": "O funcionamento daqui é o mesmo da Oficina Livre, mas aqui as demandas são dadas pelos contratos e você utiliza os padrões de corte que você comprou.Além disso, você só pode usar até no máximo de 5 padrões de corte por modelagem."
+	  "texto": "O funcionamento daqui é o mesmo do Laboratório, mas aqui as demandas são dadas pelos contratos e você utiliza os padrões de corte que você comprou.Além disso, você só pode usar até no máximo de 5 padrões de corte por modelagem."
 	},
 
 	{
@@ -653,7 +653,7 @@
   	"primeiro_sandbox1": [
 	{
 	  "nome": "Mestre Gato", 
-	  "texto": "Bem vindo a Oficina de Modelagem! Aqui você estará livre para montar qualquer modelagem matemática para o Problema do Corte!",
+	  "texto": "Bem vindo ao Laboratório de Padrões! Aqui você estará livre para montar qualquer modelagem matemática para o Problema do Corte!",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png"
 	},
 
@@ -676,7 +676,7 @@
 	"primeiro_sandbox2": [
 	{
 	  "nome": "Mestre Gato",
-	  "texto": "Este é o modo de criar padrões!",
+	  "texto": "Este é o modo de criar padrões de corte!",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 230]
 
@@ -719,7 +719,7 @@
 
 	{
 	  "nome": "Mestre Gato",
-	  "texto": "Explicando o resto da oficina, aqui é onde você irá colocar o valor da demanda da arma. Caso não queira que a arma seja usada na modelagem, apenas deixe o valor 0.",
+	  "texto": "Explicando o resto do laboratório, aqui é onde você irá colocar o valor da demanda da arma. Caso não queira que a arma seja usada na modelagem, apenas deixe o valor 0.",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 430],
 	  "foco_pos": [539, 132],
@@ -744,7 +744,7 @@
 	},
 	{
 	  "nome": "Mestre Gato",
-	  "texto": "Por fim, caso não queira mais usar a oficina, apenas aperte o botão 'Modelagem' e você continuará sua história.",
+	  "texto": "Por fim, caso não queira mais usar o laboratório, apenas aperte o botão 'Modelagem' e você continuará sua história.",
 	  "retrato": "res://Sprite/gatinhos/Ferreiro.png",
 	  "coordenada": [450, 430],
 	  "foco_pos": [350, 845],

@@ -70,11 +70,11 @@ func _iniciar_musica_continua():
 	player_musica.process_mode = PROCESS_MODE_ALWAYS
 	player_musica.stream = musica_global
 	
-	player_musica.finished.connect(func(): 
-		if player_musica.stream:
-			player_musica.play()
-	)
+	player_musica.volume_db = -8.0
 	
+	player_musica.finished.connect(func(): 
+		player_musica.play()
+	)
 	add_child(player_musica)
 	
 	await get_tree().process_frame
