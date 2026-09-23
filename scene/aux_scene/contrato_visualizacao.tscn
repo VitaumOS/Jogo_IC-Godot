@@ -10,6 +10,8 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.018608084, 0.013716635, 0.0064225337, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48txe"]
+
 [node name="Contrato_visualizacao" type="Node2D" unique_id=1164244224]
 script = ExtResource("1_48txe")
 
@@ -59,3 +61,12 @@ theme_override_font_sizes/font_size = 35
 text = "Nenhum Contrato Selecionado"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TooltipArmas" type="PanelContainer" parent="." unique_id=1189850260]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_48txe")
+
+[node name="Label" type="Label" parent="TooltipArmas" unique_id=1584884303]
+layout_mode = 2

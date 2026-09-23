@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://drbm1p0vl1sck" path="res://script/linhaListaPadrao.gd" id="1_4tggn"]
 [ext_resource type="PackedScene" uid="uid://7kv2da5w42t5" path="res://scene/aux_scene/Padrao_Corte.tscn" id="1_cvc00"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jv2d2"]
+
 [node name="LinhaListaPadrao" type="VBoxContainer" unique_id=282406503]
 offset_right = 598.0
 offset_bottom = 41.0
@@ -11,6 +13,7 @@ script = ExtResource("1_4tggn")
 
 [node name="EspaçadorVisual" type="Control" parent="." unique_id=890417992]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Control" parent="EspaçadorVisual" unique_id=1343394717 instance=ExtResource("1_cvc00")]
 custom_minimum_size = Vector2(8.46, 0)
@@ -19,8 +22,8 @@ anchors_preset = 0
 anchor_right = 0.0
 offset_left = 11.794918
 offset_top = 449.409
-offset_right = 504.44797
-offset_bottom = 454.12244
+offset_right = 544.7949
+offset_bottom = 509.409
 rotation = -1.5707964
 scale = Vector2(0.815, 0.815)
 
@@ -61,6 +64,14 @@ horizontal_alignment = 1
 [node name="btnMais" type="Button" parent="Control/ControlesQuantidade/HBoxBotoes" unique_id=1522758180]
 layout_mode = 2
 text = "+"
+
+[node name="TooltipArmas" type="PanelContainer" parent="." unique_id=2121239420]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jv2d2")
+
+[node name="Label" type="Label" parent="TooltipArmas" unique_id=1603759514]
+layout_mode = 2
 
 [connection signal="pressed" from="Control/ControlesQuantidade/HBoxBotoes/btnMenos" to="." method="_on_btn_menos_pressed"]
 [connection signal="pressed" from="Control/ControlesQuantidade/HBoxBotoes/btnMais" to="." method="_on_btn_mais_pressed"]

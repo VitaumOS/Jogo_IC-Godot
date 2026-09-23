@@ -6,6 +6,7 @@
 layout_mode = 3
 anchor_right = 0.028
 offset_right = -25.2
+mouse_filter = 1
 
 [node name="Background" type="Sprite2D" parent="." unique_id=452736434]
 position = Vector2(266.5, 27)
